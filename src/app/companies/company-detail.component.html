@@ -1,0 +1,12 @@
+Company Detail
+
+<div *ngIf="company">
+    <h2>{{company.name}} details!</h2>
+    <div>
+        <label>id: </label>{{company.id}}
+    </div>
+    <div>
+        <label>name: </label>
+        <input [(ngModel)]="company.name" placeholder="name"/>
+    </div>
+</div>
