@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import 'rxjs/add/operator/switchMap';
+import { Observable } from 'rxjs/Observable';
 
 import { Company } from '../companies';
 import { CompanyService } from './company.service';
@@ -10,15 +13,20 @@ import { CompanyService } from './company.service';
     providers: [CompanyService]
 })
 export class CompanyListComponent implements OnInit {
-    companies: Company[];
+    companies$: Observable<Company[]>;
 
-    constructor(private companyService: CompanyService) { }
+    private selectedId: number;
+
+    constructor(
+        private companyService: CompanyService,
+        private route: ActivatedRoute
+    ) { }
 
     ngOnInit(): void {
-        this.getCompanies();
-    }
-
-    getCompanies(): void {
-        this.companyService.getCompanies().then(companies => this.companies = companies);
+        this.companies$ = this.route.paramMap
+            .switchMap((params: ParamMap) => {
+                this.selectedId = + params.get('id');
+                return this.companyService.getCompanies();
+            });
     }
 }

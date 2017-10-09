@@ -1,20 +1,25 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/map';
 
-import { Company } from '../companies';
+
 import { COMPANIES } from '../mock-companies';
+
+
+export class Company {
+    constructor(public id: number, public name: string) { }
+}
 
 @Injectable()
 export class CompanyService {
-    getCompanies(): Promise<Company[]> {
-        return Promise.resolve(COMPANIES);
-    }
+    
+    getCompanies() { return Observable.of(COMPANIES); }
 
-    // See the "Take it slow" appendix
-    getCompaniesSlowly(): Promise<Company[]> {
-        return new Promise(resolve => {
-            // Simulate server latency with 2 second delay
-            setTimeout(() => resolve(this.getCompanies()), 2000);
-        });
+    getCompany(id: number | string) {
+        return this.getCompanies()
+        // (+) before `id` turns the string into a number
+            .map(companies => companies.find(company => company.id === + id));
     }
 }
 

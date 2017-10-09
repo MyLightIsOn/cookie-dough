@@ -1,7 +1,10 @@
 Company List
 
 <ul>
-    <li *ngFor="let company of companies">
-        {{ company.name }}
+    <li *ngFor="let company of companies$ | async"
+        [class.selected]="company.id === selectedId">
+        <a [routerLink]="['/company', company.id]">
+            <span class="badge">{{ company.id }}</span>{{ company.name }}
+        </a>
     </li>
 </ul>

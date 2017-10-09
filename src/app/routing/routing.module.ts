@@ -8,7 +8,7 @@ import { PageNotFoundComponent } from '../page-not-found/page-not-found.componen
 const appRoutes: Routes = [
     {path: 'search', component: SearchComponent},
     {path: 'register', component: RegisterComponent},
-    { path: '',   redirectTo: '/search', pathMatch: 'full' },
+    {path: '',   redirectTo: '/search', pathMatch: 'full'},
     {path: '**', component: PageNotFoundComponent}
 ];
 

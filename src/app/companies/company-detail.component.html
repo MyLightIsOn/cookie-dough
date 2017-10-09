@@ -1,7 +1,7 @@
 Company Detail
 
-<div *ngIf="company">
-    <h2>{{company.name}} details!</h2>
+<div *ngIf="company$ | async as company">
+    <h2>{{company.id}} details!</h2>
     <div>
         <label>id: </label>{{company.id}}
     </div>
@@ -9,4 +9,6 @@ Company Detail
         <label>name: </label>
         <input [(ngModel)]="company.name" placeholder="name"/>
     </div>
+
+    <button (click)="goToCompanies(company)">Back</button>
 </div>
