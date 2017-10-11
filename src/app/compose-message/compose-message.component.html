@@ -1,0 +1,8 @@
+<h3>Contact Crisis Center</h3>
+<div *ngIf="details">
+  {{ details }}
+</div>
+<p *ngIf="!sending">
+  <button (click)="send()">Send</button>
+  <button (click)="cancel()">Cancel</button>
+</p>

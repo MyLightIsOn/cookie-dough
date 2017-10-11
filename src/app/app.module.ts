@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { RoutingModule } from './routing/routing.module';
@@ -8,15 +9,18 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { RegisterComponent } from './register/register.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ComposeMessageComponent } from './compose-message/compose-message.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         SearchComponent,
         RegisterComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        ComposeMessageComponent
     ],
     imports: [
+        BrowserAnimationsModule,
         BrowserModule,
         CompanyModule,
         RoutingModule
