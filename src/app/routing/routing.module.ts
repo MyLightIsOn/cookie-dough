@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SearchComponent } from '../search/search.component';
 import { RegisterComponent } from '../register/register.component';
-import { ComposeMessageComponent } from "../compose-message/compose-message.component"
+import { ComposeMessageComponent } from "../compose-message/compose-message.component";
+import { CanDeactivateGuard } from "../can-deactivate-guard.service";
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
@@ -19,7 +20,11 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes)
     ],
     exports: [
-        RouterModule],
+        RouterModule
+    ],
+    providers: [
+        CanDeactivateGuard
+    ],
     declarations: []
 })
 export class RoutingModule { }

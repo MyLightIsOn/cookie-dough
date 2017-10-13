@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
- import { Company, CompanyService } from './company.service'
+import { Company } from './company.service';
+import {DialogService} from "../dialog.service";
 
 @Component({
     selector: 'company-detail',
@@ -11,22 +12,45 @@ import 'rxjs/add/operator/switchMap';
     styleUrls: ['./companies.component.css']
 })
 export class CompanyDetailComponent implements OnInit {
-    company$: Observable<Company>;
+    company: Company;
+    editName: string;
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private companyService: CompanyService
+        public dialogService: DialogService
     ) {}
 
     ngOnInit() {
-        this.company$ = this.route.paramMap
-            .switchMap((params: ParamMap) =>
-                this.companyService.getCompany(params.get('id')));
+        this.route.data
+            .subscribe((data: { company: Company }) => {
+                this.editName = data.company.name;
+                this.company = data.company;
+            });
     }
 
-    goToCompanies(company: Company) {
-        let companyId = company ? company.id : null;
+    goToCompanies() {
+        let companyId = this.company ? this.company.id : null;
         this.router.navigate(['/companies', { id: companyId}]);
     }
+
+    cancel() {
+        this.goToCompanies();
+    }
+
+    save() {
+        this.company.name = this.editName;
+        this.goToCompanies();
+    }
+
+    canDeactivate(): Observable<boolean> | boolean {
+        // Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
+        if (!this.company || this.company.name === this.editName) {
+            return true;
+        }
+        // Otherwise ask the user with the dialog service and return its
+        // observable which resolves to true or false when the user decides
+        return this.dialogService.confirm('Discard changes?');
+    }
+
 }

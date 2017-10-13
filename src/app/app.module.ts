@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { RoutingModule } from './routing/routing.module';
 import { CompanyModule } from './companies/company.module';
@@ -14,6 +13,8 @@ import { SearchComponent } from './search/search.component';
 import { RegisterComponent } from './register/register.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
+
+import { DialogService } from './dialog.service';
 
 @NgModule({
     declarations: [
@@ -32,7 +33,9 @@ import { ComposeMessageComponent } from './compose-message/compose-message.compo
         LoginRoutingModule,
         RoutingModule
     ],
-    providers: [],
+    providers: [
+        DialogService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
