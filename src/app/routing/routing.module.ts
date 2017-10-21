@@ -6,12 +6,13 @@ import { RegisterComponent } from '../register/register.component';
 import { ComposeMessageComponent } from '../compose-message/compose-message.component';
 import { CanDeactivateGuard } from '../can-deactivate-guard.service';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
+import { AuthGuard } from '../auth-guard.service';
 
 const appRoutes: Routes = [
     {path: 'search', component: SearchComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'compose', component: ComposeMessageComponent, outlet: 'popup'},
-    {path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule'},
+    {path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule', canLoad: [AuthGuard]},
     {path: '',   redirectTo: '/search', pathMatch: 'full'},
     {path: '**', component: PageNotFoundComponent}
 ];

@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     templateUrl: './admin.component.html',
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit {
+    ngOnInit() {
+        console.log('Admin OnInit');
+    }
 }
-console.log('Test Lazy');
+console.log('Loading Admin Component');

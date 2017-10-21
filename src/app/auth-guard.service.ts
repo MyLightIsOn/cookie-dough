@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import {
     CanActivate,
     CanActivateChild,
+    CanLoad,
     Router,
+    Route,
     ActivatedRouteSnapshot,
     RouterStateSnapshot,
     NavigationExtras
@@ -10,17 +12,23 @@ import {
 import { AuthService } from './auth.service';
 
 @Injectable()
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     constructor(private authService: AuthService, private router: Router) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        let url: string = state.url;
+        const url: string = state.url;
 
         return this.checkLogin(url);
     }
 
     canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         return this.canActivate(route, state);
+    }
+
+    canLoad(route: Route): boolean {
+        const url = `/${route.path}`;
+
+        return this.checkLogin(url);
     }
 
     checkLogin(url: string): boolean {
@@ -30,11 +38,11 @@ export class AuthGuard implements CanActivate, CanActivateChild {
         this.authService.redirectUrl = url;
 
         // Create a dummy session id
-        let sessionId = 123456789;
+        const sessionId = 123456789;
 
         // Set our navigation extras object
         // that contains our global query params and fragment
-        let navigationExtras: NavigationExtras = {
+        const navigationExtras: NavigationExtras = {
             queryParams: { 'session_id': sessionId },
             fragment: 'anchor'
         };
