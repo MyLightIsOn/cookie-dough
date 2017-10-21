@@ -3,7 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 
-import { Company } from '../companies';
+import { Company } from '../_interfaces/companies';
 import { CompanyService } from './company.service';
 
 @Component({

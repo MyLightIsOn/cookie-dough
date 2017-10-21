@@ -1,4 +1,4 @@
-import { Company } from './companies';
+import { Company } from './_interfaces/companies';
 
 export const COMPANIES: Company[] = [
     { id: 11, name: 'Bobs Diamonds' },

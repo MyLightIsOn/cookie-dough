@@ -4,10 +4,10 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
 import { Company } from './company.service';
-import {DialogService} from "../dialog.service";
+import {DialogService} from '../dialog.service';
 
 @Component({
-    selector: 'company-detail',
+    selector: 'app-company-detail',
     templateUrl: './company-detail.component.html',
     styleUrls: ['./companies.component.css']
 })
