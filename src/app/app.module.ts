@@ -4,9 +4,8 @@ import { NgModule } from '@angular/core';
 
 import { RoutingModule } from './routing/routing.module';
 import { CompanyModule } from './companies/company.module';
-import { AdminModule } from "./admin/admin.module";
-import { LoginComponent } from "./login/login.component";
-import { LoginRoutingModule } from "./login/login-routing.module";
+import { LoginComponent } from './login/login.component';
+import { LoginRoutingModule } from './login/login-routing.module';
 
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
@@ -29,7 +28,6 @@ import { DialogService } from './dialog.service';
         BrowserAnimationsModule,
         BrowserModule,
         CompanyModule,
-        AdminModule,
         LoginRoutingModule,
         RoutingModule
     ],

@@ -5,3 +5,4 @@ import { Component } from '@angular/core';
 })
 export class AdminComponent {
 }
+console.log('Test Lazy');
