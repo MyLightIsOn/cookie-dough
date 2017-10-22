@@ -1,7 +1,7 @@
 import { Component, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { slideInDownAnimation }   from '../animations';
+import { slideInDownAnimation } from '../animations';
 
 @Component({
     templateUrl: './compose-message.component.html',
