@@ -1,3 +1,12 @@
+/*
+The styles in this stylesheet are general styles that
+apply to the whole app. Specific component styles will
+be in each component folder
+*/
+
+
+/************** Element Styles **************/
+
 html {
     box-sizing: border-box;
 }
@@ -18,10 +27,8 @@ a {
     color: black;
 }
 
-#app-container {
-    position: relative;
-    min-height: 100%;
-}
+
+/************** Main Navigation **************/
 
 nav {
     border-bottom: 1px solid #000000;
@@ -32,8 +39,6 @@ nav {
 }
 
 
-/************** Main Navigation **************/
-
 .nav-button {
     display: block;
     height: 50px;
@@ -41,7 +46,6 @@ nav {
     position: absolute;
     right: 0;
     cursor: pointer;
-    border: 1px solid #000;
 }
 
 .nav-button:after {
@@ -84,6 +88,30 @@ nav {
     display: block;
     width: 100%;
     padding: 17px 0 17px 10px;
+}
+
+.header-logo {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #000000;
+}
+
+.header-logo-name {
+    position: absolute;
+    font-weight: bold;
+    left: 50px;
+    top: 17px;
+}
+
+
+/************** Main App Container Styles **************/
+
+#app-container {
+    position: relative;
+    min-height: 100%;
 }
 
 #content-container {
