@@ -10,7 +10,7 @@ export class SearchComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        console.log('SEARCH!')
+        console.log('SEARCH!');
     }
 
 }

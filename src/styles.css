@@ -85,3 +85,7 @@ nav {
     width: 100%;
     padding: 17px 0 17px 10px;
 }
+
+#content-container {
+    padding: 70px 20px 20px;
+}

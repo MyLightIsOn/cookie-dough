@@ -30,7 +30,7 @@ export class CompanyDetailComponent implements OnInit {
     }
 
     goToCompanies() {
-        let companyId = this.company ? this.company.id : null;
+        const companyId = this.company ? this.company.id : null;
         this.router.navigate(['/companies', { id: companyId}]);
     }
 
