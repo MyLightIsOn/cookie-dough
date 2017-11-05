@@ -3,31 +3,41 @@ The styles in this stylesheet are general styles that
 apply to the whole app. Specific component styles will
 be in each component folder
 */
-/************** Element Styles **************/
-html {
-  box-sizing: border-box; }
 
+
+/************** Element Styles **************/
+
+html {
+  box-sizing: border-box;
+}
 *, *:before, *:after {
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 body, html {
   padding: 0;
   margin: 0;
   height: 100%;
   min-height: 100%;
-  font-family: Arial,Helvetica Neue,Helvetica,sans-serif; }
+  font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+}
 
 a {
   text-decoration: none;
-  color: black; }
+  color: black;
+}
+
 
 /************** Main Navigation **************/
+
 nav {
   border-bottom: 1px solid #000000;
   height: 50px;
   width: 100%;
   position: fixed;
-  top: 0; }
+  top: 0;
+}
+
 
 .nav-button {
   display: block;
@@ -35,7 +45,8 @@ nav {
   width: 50px;
   position: absolute;
   right: 0;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 .nav-button:after {
   content: '';
@@ -44,7 +55,8 @@ nav {
   height: 50px;
   display: block;
   background: url("assets/glyphicons/glyphicons/png/glyphicons-show-lines.png") no-repeat 9px 15px;
-  background-size: 30px; }
+  background-size: 30px;
+}
 
 #menu-container {
   position: fixed;
@@ -53,25 +65,30 @@ nav {
   transition: 0.3s;
   width: 100%;
   min-height: 100%;
-  background: #ffffff; }
+  background: #ffffff;
+}
 
 #menu-container.menuOpen {
-  left: 0; }
+  left: 0;
+}
 
 #menu-container ul {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 #menu-container li {
   list-style: none;
   border: 1px solid #000000;
   border-left: 0;
-  border-right: 0; }
+  border-right: 0;
+}
 
 #menu-container li a {
   display: block;
   width: 100%;
-  padding: 17px 0 17px 10px; }
+  padding: 17px 0 17px 10px;
+}
 
 .header-logo {
   position: absolute;
@@ -79,20 +96,24 @@ nav {
   top: 10px;
   width: 30px;
   height: 30px;
-  border: 1px solid #000000; }
+  border: 1px solid #000000;
+}
 
 .header-logo-name {
   position: absolute;
   font-weight: bold;
   left: 50px;
-  top: 17px; }
+  top: 17px;
+}
+
 
 /************** Main App Container Styles **************/
+
 #app-container {
   position: relative;
-  min-height: 100%; }
+  min-height: 100%;
+}
 
 #content-container {
-  padding: 70px 20px 20px; }
-
-/*# sourceMappingURL=styles.css.map */
+  padding: 70px 20px 20px;
+}            
