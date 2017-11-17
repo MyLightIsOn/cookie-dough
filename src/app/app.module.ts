@@ -6,6 +6,7 @@ import { RoutingModule } from './routing/routing.module';
 import { CompanyModule } from './companies/company.module';
 import { LoginComponent } from './login/login.component';
 import { LoginRoutingModule } from './login/login-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
@@ -29,7 +30,8 @@ import { DialogService } from './dialog.service';
         BrowserModule,
         CompanyModule,
         LoginRoutingModule,
-        RoutingModule
+        RoutingModule,
+        HttpClientModule
     ],
     providers: [
         DialogService
