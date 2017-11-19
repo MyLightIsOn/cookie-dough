@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: process.env.API_URI
+    apiUrl: 'gempathy-api.herokuapp.com'
 };
 
