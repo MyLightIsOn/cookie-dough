@@ -2,18 +2,14 @@
     <nav>
         <img src="../assets/images/img_placholder.png" class="header-logo">
         <span class="header-logo-name">Gempathy</span>
-        <span class="nav-button" (click)="menuToggle()" [class.menuOpen]="wasClicked"></span>
     </nav>
     <div id="menu-container" [class.menuOpen]="wasClicked">
-        <ul>
-            <li (click)="menuToggle()"><a routerLink="/search" routerLinkActive="active">Search</a></li>
-            <li (click)="menuToggle()"><a routerLink="/register" routerLinkActive="active">Register</a></li>
-            <li (click)="menuToggle()"><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
-            <li (click)="menuToggle()"><a routerLink="/companies" routerLinkActive="active">Companies</a></li>
-            <li (click)="menuToggle()"><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
-            <li (click)="menuToggle()"><a routerLink="/" routerLinkActive="active">Home</a></li>
+
+            <a routerLink="/search" routerLinkActive="active">Search</a>
+           <a routerLink="/register" routerLinkActive="active">Sign Up</a>
+            <a routerLink="/register" routerLinkActive="active">About Us</a>
+            <a routerLink="/contact" routerLinkActive="active">Contact</a>
             <!--<a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>-->
-        </ul>
     </div>
 
     <div id="content-container">
