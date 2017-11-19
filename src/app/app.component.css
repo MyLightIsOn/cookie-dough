@@ -36,7 +36,20 @@ nav {
     flex-grow: 4;
     flex-basis: 0;
     border: 1px solid #000;
-    padding: 20px 0; }
+    padding: 40px 0 3px;
+    position: relative; }
+  #menu-container .search-icon {
+    background: url("../assets/icons/ic_search_black_24dp_2x.png") no-repeat 50% 3px;
+    background-size: 35px; }
+  #menu-container .signup-icon {
+    background: url("../assets/icons/ic_person_add_black_24dp_2x.png") no-repeat 50% 3px;
+    background-size: 35px; }
+  #menu-container .about-icon {
+    background: url("../assets/icons/ic_info_outline_black_24dp_2x.png") no-repeat 50% 3px;
+    background-size: 35px; }
+  #menu-container .contact-icon {
+    background: url("../assets/icons/ic_email_black_24dp_2x.png") no-repeat 50% 3px;
+    background-size: 35px; }
 
 /************** Main App Container Styles **************/
 #app-container {

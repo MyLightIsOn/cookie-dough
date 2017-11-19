@@ -3,18 +3,18 @@
         <img src="../assets/images/img_placholder.png" class="header-logo">
         <span class="header-logo-name">Gempathy</span>
     </nav>
-    <div id="menu-container" [class.menuOpen]="wasClicked">
+    <div id="menu-container">
 
-            <a routerLink="/search" routerLinkActive="active">Search</a>
-           <a routerLink="/register" routerLinkActive="active">Sign Up</a>
-            <a routerLink="/register" routerLinkActive="active">About Us</a>
-            <a routerLink="/contact" routerLinkActive="active">Contact</a>
-            <!--<a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>-->
+        <a routerLink="/search" routerLinkActive="active" class="search-icon">Search</a>
+        <a routerLink="/register" routerLinkActive="active" class="signup-icon">Sign Up</a>
+        <a routerLink="/register" routerLinkActive="active" class="about-icon">About Us</a>
+        <a routerLink="/contact" routerLinkActive="active" class="contact-icon">Contact</a>
+        <!--<a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>-->
     </div>
 
     <div id="content-container">
         <router-outlet></router-outlet>
     </div>
-<router-outlet name="popup"></router-outlet>
+    <router-outlet name="popup"></router-outlet>
 </div>
 
