@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
@@ -14,11 +15,11 @@ export class Company {
 
 @Injectable()
 export class CompanyService {
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient) {}
     results: any;
 
     testGrab() {
-        this.http.get('http://localhost:3030/todos').subscribe(data => {
+        this.http.get(environment.apiUrl + '/companies').subscribe(data => {
             // Read the result field from the JSON response.
             console.log(data);
         });

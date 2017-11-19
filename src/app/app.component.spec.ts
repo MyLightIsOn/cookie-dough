@@ -10,7 +10,7 @@ describe('AppComponent', () => {
       ],
         imports: [ RouterTestingModule.withRoutes([
             {
-              path: 'search',
+                path: 'search',
                 component: RouterTestingModule
             }
         ])]

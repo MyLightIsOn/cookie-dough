@@ -1,8 +1,8 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CompanyListComponent }    from './company-list.component';
-import { CompanyDetailComponent }  from './company-detail.component';
+import { CompanyListComponent }    from './component-list/company-list.component';
+import { CompanyDetailComponent }  from './component-detail/company-detail.component';
 
 import { CanDeactivateGuard } from "../can-deactivate-guard.service";
 
