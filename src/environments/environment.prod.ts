@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'gempathy-api.herokuapp.com'
+    apiUrl: 'https://gempathy-api.herokuapp.com/companies'
 };
 
