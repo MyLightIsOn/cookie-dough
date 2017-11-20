@@ -23,7 +23,7 @@ export class CompanyListComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.companyService.testGrab();
+        this.companyService.getCompanies();
 
         this.companies$ = this.route.paramMap
             .switchMap((params: ParamMap) => {

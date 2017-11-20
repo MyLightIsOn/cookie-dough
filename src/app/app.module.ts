@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
 
 import { DialogService } from './dialog.service';
+import { CompanyObjectPipe } from './company-object.pipe';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { DialogService } from './dialog.service';
         RegisterComponent,
         PageNotFoundComponent,
         ComposeMessageComponent,
-        LoginComponent
+        LoginComponent,
+        CompanyObjectPipe
     ],
     imports: [
         BrowserAnimationsModule,

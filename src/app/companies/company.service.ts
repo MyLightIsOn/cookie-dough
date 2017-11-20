@@ -16,15 +16,12 @@ export class Company {
 @Injectable()
 export class CompanyService {
     constructor(private http: HttpClient) {}
-    results: any;
+    companies: any[];
 
-    testGrab() {
-        this.http.get(environment.apiUrl + '/companies').subscribe(data => {
-            // Read the result field from the JSON response.
-            console.log(data);
-        });
+    getAllCompanies() {
+        return this.http.get(environment.apiUrl + '/companies').map((res: Response) => res);
     }
-    
+
     getCompanies() { return Observable.of(COMPANIES); }
 
     getCompany(id: number | string) {

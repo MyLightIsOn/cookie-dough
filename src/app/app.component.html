@@ -13,6 +13,12 @@
     </div>
 
     <div id="content-container">
+        <ul>
+            <li *ngFor="let company of companies$ | companyObject">{{company['field_3']}}
+                <br /><span [innerHTML]="company['field_4']"></span>
+            </li>
+        </ul>
+        
         <router-outlet></router-outlet>
     </div>
     <router-outlet name="popup"></router-outlet>
