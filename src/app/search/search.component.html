@@ -3,9 +3,9 @@
     <span>The internet's largest gemstone and jewerly database</span>
   </div>
 
-  <input type="text" id="main-search" placeholder="Begin Search Here">
+  <input type="text" id="main-search" placeholder="Begin Search Here" [(ngModel)]="company">
   <ul>
-    <li *ngFor="let company of companies$ | companyObject">{{company['field_3']}}
+    <li *ngFor="let company of companies$ | companyObject | filter: company">{{company['field_3']}}
       <br /><span [innerHTML]="company['field_4']"></span>
     </li>
   </ul>

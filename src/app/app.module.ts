@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { FormsModule} from '@angular/forms';
 
 import { RoutingModule } from './routing/routing.module';
 import { CompanyModule } from './companies/company.module';
@@ -15,7 +16,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
 
 import { DialogService } from './dialog.service';
-import { CompanyObjectPipe } from './company-object.pipe';
+import { CompanyObjectPipe } from './_pipes/company-object.pipe';
+import { FilterCompaniesPipe } from './_pipes/filter-companies.pipe';
 
 @NgModule({
     declarations: [
@@ -25,7 +27,8 @@ import { CompanyObjectPipe } from './company-object.pipe';
         PageNotFoundComponent,
         ComposeMessageComponent,
         LoginComponent,
-        CompanyObjectPipe
+        CompanyObjectPipe,
+        FilterCompaniesPipe
     ],
     imports: [
         BrowserAnimationsModule,
@@ -33,7 +36,8 @@ import { CompanyObjectPipe } from './company-object.pipe';
         CompanyModule,
         LoginRoutingModule,
         RoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule
     ],
     providers: [
         DialogService
