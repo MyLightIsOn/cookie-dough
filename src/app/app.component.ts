@@ -1,13 +1,10 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CompanyService } from './companies/company.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
-})
-
-@NgModule({
+    styleUrls: ['./app.component.css'],
     providers: [ CompanyService ]
 })
 
