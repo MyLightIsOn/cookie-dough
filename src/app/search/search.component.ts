@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CompanyService } from '../companies/company.service';
 
 @Component({
     selector: 'app-search',
@@ -6,11 +7,16 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+    public companies$;
 
-    constructor() { }
+    constructor(private companyService: CompanyService) { }
 
     ngOnInit() {
-        console.log('SEARCH!');
+        this.companyList();
     }
 
+    // Subscribes to the Observable from Company Service to populate the view
+    companyList() {
+        this.companyService.companyDataObservable.subscribe((data) => this.companies$ = data[0].records);
+    }
 }

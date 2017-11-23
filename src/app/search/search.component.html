@@ -4,4 +4,9 @@
   </div>
 
   <input type="text" id="main-search" placeholder="Begin Search Here">
+  <ul>
+    <li *ngFor="let company of companies$ | companyObject">{{company['field_3']}}
+      <br /><span [innerHTML]="company['field_4']"></span>
+    </li>
+  </ul>
 </div>

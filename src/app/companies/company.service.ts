@@ -16,10 +16,12 @@ export class Company {
 @Injectable()
 export class CompanyService {
     constructor(private http: HttpClient) {}
+    companyDataObservable: Observable<object>;
     companies: any[];
 
+    // Returns an Observable after making an HTTP request to get the companies
     getAllCompanies() {
-        return this.http.get(environment.apiUrl + '/companies').map((res: Response) => res);
+        this.companyDataObservable = this.http.get(environment.apiUrl + '/companies').map((res: Response) => res);
     }
 
     getCompanies() { return Observable.of(COMPANIES); }
@@ -30,4 +32,3 @@ export class CompanyService {
             .map(companies => companies.find(company => company.id === + id));
     }
 }
-

@@ -1,7 +1,5 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { CompanyService } from './companies/company.service';
-import { Company } from './_interfaces/companies';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'app-root',
@@ -19,8 +17,8 @@ export class AppComponent implements OnInit {
 
     constructor(private companyService: CompanyService) {}
 
-    /*Calls GET request for company list as soon as app loads*/
+    /*Uses service to get a company list as soon as the app loads*/
     ngOnInit() {
-        this.companyService.getAllCompanies().subscribe((data) => this.companies$ = data[0].records);
+        this.companyService.getAllCompanies();
     }
 }
