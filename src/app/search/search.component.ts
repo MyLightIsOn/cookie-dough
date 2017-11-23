@@ -8,10 +8,6 @@ import { FormsModule } from '@angular/forms';
     styleUrls: ['./search.component.css']
 })
 
-@NgModule({
-    imports: [ FormsModule ]
-})
-
 export class SearchComponent implements OnInit {
     public companies$;
 
