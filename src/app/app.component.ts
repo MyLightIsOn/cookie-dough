@@ -10,7 +10,6 @@ import { CompanyService } from './companies/company.service';
 
 
 export class AppComponent implements OnInit {
-    public companies$;
 
     constructor(private companyService: CompanyService) {}
 

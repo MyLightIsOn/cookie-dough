@@ -1,6 +1,5 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { CompanyService } from '../companies/company.service';
-import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-search',
@@ -10,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 
 export class SearchComponent implements OnInit {
     public companies$;
+    public company;
 
     constructor(private companyService: CompanyService) { }
 
