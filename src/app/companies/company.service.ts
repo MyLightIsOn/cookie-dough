@@ -21,7 +21,7 @@ export class CompanyService {
 
     // Returns an Observable after making an HTTP request to get the companies
     getAllCompanies() {
-        this.companyDataObservable = this.http.get(environment.apiUrl + '/companies').map((res: Response) => res);
+        return this.companyDataObservable = this.http.get(environment.apiUrl + '/companies').map((res: Response) => res);
     }
 
     getCompanies() { return Observable.of(COMPANIES); }
