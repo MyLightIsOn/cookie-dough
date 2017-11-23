@@ -4,9 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { SearchComponent } from '../search/search.component';
 import { RegisterComponent } from '../register/register.component';
 import { ComposeMessageComponent } from '../compose-message/compose-message.component';
-import { CanDeactivateGuard } from '../can-deactivate-guard.service';
+import { CanDeactivateGuard } from '../_guards/can-deactivate-guard.service';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
-import { AuthGuard } from '../auth-guard.service';
+import { AuthGuard } from '../_guards/auth-guard.service';
 
 const appRoutes: Routes = [
     {path: 'search', component: SearchComponent},

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
 import { Company } from '../company.service';
-import {DialogService} from '../../dialog.service';
+import {DialogService} from '../../dialogs/dialog.service';
 
 @Component({
     selector: 'app-company-detail',

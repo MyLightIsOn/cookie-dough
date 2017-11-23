@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { ManageCompanyComponent } from './manage-company.component';
 
-import { AuthGuard } from '../auth-guard.service';
+import { AuthGuard } from '../_guards/auth-guard.service';
 
 const adminRoutes: Routes = [
     {
