@@ -26,7 +26,7 @@ export class CompanyService {
             .set(environment['API_ID_HEADER'], environment['API_ID'])
             .set(environment['API_KEY_HEADER'], environment['API_KEY']);
 
-       return this.companyDataObservable = this.http.get(
+        return this.companyDataObservable = this.http.get(
            environment['BASEURL'] + 'v1/objects/object_1/records',
            {headers})
            .map((res: Response) => res);
