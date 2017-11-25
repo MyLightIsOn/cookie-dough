@@ -51,7 +51,7 @@ describe('SearchComponent', () => {
             declarations: [ SearchComponent, MockPipe, MockFilterPipe ],
             imports: [ RouterTestingModule, HttpClientTestingModule, FormsModule ],
             providers: [ CompanyService, MockPipe, MockFilterPipe,
-                { provide: environment.apiUrl, useValue: 'http://example.com'},
+                { provide: environment['BASEURL'], useValue: 'http://example.com'},
                 { provide: XHRBackend, useClass: MockBackend}
             ]
         }).compileComponents();
