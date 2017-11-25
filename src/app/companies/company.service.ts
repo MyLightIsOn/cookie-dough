@@ -22,15 +22,7 @@ export class CompanyService {
 
     // Returns an Observable after making an HTTP request to get the companies
     getAllCompanies() {
-        const headers = new HttpHeaders()
-            .set(environment['API_ID_HEADER'], environment['API_ID'])
-            .set(environment['API_KEY_HEADER'], environment['API_KEY']);
-
-        // Gets list of all of the companies
-        return this.companyDataObservable = this.http.get(
-           environment['BASEURL'] + 'v1/objects/object_1/records',
-           {headers})
-           .map((res: Response) => res);
+        return this.companyDataObservable = this.http.get(environment['BASEURL'] + '/companies').map((res: Response) => res);
     }
 
     getCompanies() { return Observable.of(COMPANIES); }
