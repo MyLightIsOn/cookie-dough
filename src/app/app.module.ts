@@ -18,6 +18,7 @@ import { ComposeMessageComponent } from './compose-message/compose-message.compo
 import { DialogService } from './dialogs/dialog.service';
 import { CompanyObjectPipe } from './_pipes/company-object.pipe';
 import { FilterCompaniesPipe } from './_pipes/filter-companies.pipe';
+import { SearchResultsComponent } from './search/search-results/search-results.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import { FilterCompaniesPipe } from './_pipes/filter-companies.pipe';
         ComposeMessageComponent,
         LoginComponent,
         CompanyObjectPipe,
-        FilterCompaniesPipe
+        FilterCompaniesPipe,
+        SearchResultsComponent
     ],
     imports: [
         BrowserAnimationsModule,
