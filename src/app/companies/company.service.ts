@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 
@@ -16,12 +16,20 @@ export class Company {
 @Injectable()
 export class CompanyService {
     constructor(private http: HttpClient) {}
+
     companyDataObservable: Observable<object>;
     companies: any[];
 
     // Returns an Observable after making an HTTP request to get the companies
     getAllCompanies() {
-        return this.companyDataObservable = this.http.get(environment.apiUrl + '/companies').map((res: Response) => res);
+        const headers = new HttpHeaders()
+            .set(environment['API_ID_HEADER'], environment['API_ID'])
+            .set(environment['API_KEY_HEADER'], environment['API_KEY']);
+
+       return this.companyDataObservable = this.http.get(
+           environment['BASEURL'] + 'v1/objects/object_1/records',
+           {headers})
+           .map((res: Response) => res);
     }
 
     getCompanies() { return Observable.of(COMPANIES); }
