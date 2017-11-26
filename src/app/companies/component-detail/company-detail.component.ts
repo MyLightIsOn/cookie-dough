@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
-import { Company } from '../company.service';
+import { MockCompany } from '../../mock-companies';
 import {DialogService} from '../../dialogs/dialog.service';
 
 @Component({
@@ -12,7 +12,7 @@ import {DialogService} from '../../dialogs/dialog.service';
     styleUrls: ['../companies.component.css']
 })
 export class CompanyDetailComponent implements OnInit {
-    company: Company;
+    company: MockCompany;
     editName: string;
 
     constructor(
@@ -23,7 +23,7 @@ export class CompanyDetailComponent implements OnInit {
 
     ngOnInit() {
         this.route.data
-            .subscribe((data: { company: Company }) => {
+            .subscribe((data: { company: MockCompany }) => {
                 this.editName = data.company.name;
                 this.company = data.company;
             });

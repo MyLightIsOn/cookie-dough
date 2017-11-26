@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyService } from '../companies/company.service';
 
+import { ICompany } from '../_interfaces/companies';
+
 @Component({
     selector: 'app-search',
     templateUrl: './search.component.html',
@@ -8,7 +10,7 @@ import { CompanyService } from '../companies/company.service';
 })
 
 export class SearchComponent implements OnInit {
-    public companies$;
+    public companies$: ICompany;
     public company;
 
     constructor(private companyService: CompanyService) { }

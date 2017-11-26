@@ -3,7 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 
-import { Company } from '../../_interfaces/companies';
+import { MockCompany } from '../../mock-companies';
 import { CompanyService } from '../company.service';
 
 @Component({
@@ -13,22 +13,21 @@ import { CompanyService } from '../company.service';
     providers: [CompanyService]
 })
 export class CompanyListComponent implements OnInit {
-    companies$: Observable<Company[]>;
+    companies$: Observable<MockCompany[]>;
 
     private selectedId: number;
 
     constructor(
-        private companyService: CompanyService,
         private route: ActivatedRoute
     ) { }
 
     ngOnInit(): void {
-        this.companyService.getCompanies();
+        CompanyService.getCompanies();
 
         this.companies$ = this.route.paramMap
             .switchMap((params: ParamMap) => {
                 this.selectedId = + params.get('id');
-                return this.companyService.getCompanies();
+                return CompanyService.getCompanies();
             });
     }
 }
