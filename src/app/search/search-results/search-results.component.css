@@ -1,3 +1,26 @@
-
+.search-result {
+  border: 1px solid #000;
+  width: 100%;
+  height: 55px;
+  position: relative; }
+  .search-result .company-name {
+    text-decoration: underline;
+    position: absolute;
+    left: 0; }
+  .search-result .company-country {
+    position: absolute;
+    right: 0; }
+  .search-result .reviews-avg {
+    position: absolute;
+    left: 0;
+    bottom: 0; }
+  .search-result .reviews-count {
+    position: absolute;
+    left: 30px;
+    bottom: 0; }
+  .search-result .verified {
+    position: absolute;
+    right: 0;
+    bottom: 0; }
 
 /*# sourceMappingURL=search-results.component.css.map */

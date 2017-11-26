@@ -1,8 +1,7 @@
 <div class="search-result">
-    <span class="company-image" [innerHTML]="company['field_5:thumb_1']"></span>
     <span class="company-name">{{company['field_3']}}</span>
     <span class="company-country">{{company['field_4_raw'].country}}</span>
-    <span class="reviews"></span>
-    <span class="reviews-count"></span>
-    <span class="verified"></span>
+    <span class="reviews-avg">{{company['field_32_raw']}}</span>
+    <span class="reviews-count">{{company['field_31']}} reviews</span>
+    <span class="verified">{{company['field_29']}}</span>
 </div>

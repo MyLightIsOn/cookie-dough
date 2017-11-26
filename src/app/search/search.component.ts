@@ -19,6 +19,7 @@ export class SearchComponent implements OnInit {
 
     // Subscribes to the Observable from Company Service to populate the view
     subscribeToCompanyData() {
-        this.companyService.companyDataObservable.subscribe((data) => this.companies$ = data['records']);
+        this.companyService.companyDataObservable.subscribe((data) =>
+            this.companies$ = CompanyService.createReviewStars(data['records']));
     }
 }
