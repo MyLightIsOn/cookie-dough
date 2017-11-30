@@ -5,5 +5,6 @@ export interface ICompany {
         field_4_raw: object;
         field_29: boolean;
         field_32_raw: number;
+        field_32_raw_image: string;
     };
 }

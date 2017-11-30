@@ -22,6 +22,7 @@ export class CompanyService {
 
         for (const company in companies$) {
             if (company) {
+                let reviewAvgParsed: string;
                 let reviewAvg: number = companies$[company]['field_32_raw'] % 1;
                 reviewAvg = parseFloat(reviewAvg.toFixed(1));
 
@@ -35,6 +36,10 @@ export class CompanyService {
                 } else if (reviewAvg % 1 >= 0.7) {
                     companies$[company]['field_32_raw'] = Math.ceil(companies$[company]['field_32_raw']);
                 }
+
+                // Turns the average into a string and replaces the decimal so it can be used for image urls
+                reviewAvgParsed = companies$[company]['field_32_raw'].toString();
+                companies$[company]['field_32_raw_image'] = reviewAvgParsed.replace('.', '-');
             }
 
         }
