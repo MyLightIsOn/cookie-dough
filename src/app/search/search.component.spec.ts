@@ -1,14 +1,16 @@
 import { async, inject, TestBed } from '@angular/core/testing';
-
-import { SearchComponent } from './search.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MockBackend } from '@angular/http/testing';
 import { FormsModule } from '@angular/forms';
+import { XHRBackend, Response, ResponseOptions } from '@angular/http';
+import { Component, Input } from '@angular/core';
 
+import { SearchComponent } from './search.component';
 import { CompanyService } from '../companies/company.service';
+import { ICompany } from '../_interfaces/companies';
 import { environment} from '../../environments/environment';
-import {XHRBackend, Response, ResponseOptions } from '@angular/http';
+
 
 import { Pipe, PipeTransform } from '@angular/core';
 
@@ -44,11 +46,20 @@ export class MockFilterPipe implements PipeTransform {
     }
 }
 
+@Component({
+    selector: 'app-search-results',
+    template: '<p>Mock App Search Results Component</p>'
+})
+class MockSearchResultsComponent {
+    @Input() companies$;
+    @Input() company: ICompany;
+}
+
 
 describe('SearchComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ SearchComponent, MockPipe, MockFilterPipe ],
+            declarations: [ SearchComponent, MockPipe, MockFilterPipe, MockSearchResultsComponent ],
             imports: [ RouterTestingModule, HttpClientTestingModule, FormsModule ],
             providers: [ CompanyService, MockPipe, MockFilterPipe,
                 { provide: environment['BASEURL'], useValue: 'http://example.com'},
@@ -58,6 +69,7 @@ describe('SearchComponent', () => {
     }));
     it('should create the app', async(() => {
         const fixture = TestBed.createComponent(SearchComponent);
+        const mockSearchResuls = TestBed.createComponent(MockSearchResultsComponent);
         const app = fixture.debugElement.componentInstance;
         expect(app).toBeTruthy();
     }));
