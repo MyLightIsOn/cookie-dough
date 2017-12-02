@@ -1,4 +1,8 @@
+.search-result.searchSubmitted {
+  display: block; }
+
 .search-result {
+  display: none;
   border: 1px solid #000;
   width: 100%;
   height: 85px;

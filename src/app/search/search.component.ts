@@ -12,6 +12,8 @@ import { ICompany } from '../_interfaces/companies';
 export class SearchComponent implements OnInit {
     public companies$: ICompany;
     public company;
+    public searchStarted = false;
+    public searchSubmitted = false;
 
     constructor(private companyService: CompaniesService) { }
 
@@ -23,5 +25,14 @@ export class SearchComponent implements OnInit {
     subscribeToCompanyData() {
         this.companyService.companyDataObservable.subscribe((data) =>
             this.companies$ = CompaniesService.createReviewStars(data['records']));
+    }
+
+    // Shifts search box;
+    searchStart() {
+        this.searchStarted = true;
+    }
+
+    searchSubmit() {
+        this.searchSubmitted = true;
     }
 }

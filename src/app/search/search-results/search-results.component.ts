@@ -10,6 +10,7 @@ import { ICompany } from '../../_interfaces/companies';
 export class SearchResultsComponent implements OnInit {
   @Input() companies$;
   @Input() company: ICompany;
+  @Input() searchSubmitted;
 
   constructor() { }
 

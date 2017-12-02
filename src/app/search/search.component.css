@@ -5,13 +5,38 @@
   width: 90%;
   margin: 15px auto 0;
   line-height: 26px; }
+  #search-component #homepage-title span {
+    transition: 0.5s; }
+  #search-component #homepage-title span.searchStarted {
+    opacity: 0; }
 #search-component #main-search {
   border: 1px solid #000000;
   display: block;
   margin: 30px auto 0;
   width: 90%;
-  height: 50px;
-  padding: 0 10px;
-  font-size: 17px; }
+  padding: 14px 10px;
+  font-size: 17px;
+  position: relative;
+  transition: 0.5s;
+  top: 0; }
+#search-component #main-search.searchStarted {
+  top: -60px; }
+#search-component .search-button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 14px 0;
+  width: 90%;
+  position: relative;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid #000;
+  background-color: lightgray;
+  transition: 0.5s;
+  top: 0;
+  opacity: 0; }
+#search-component .search-button.searchStarted {
+  display: block;
+  top: -60px;
+  opacity: 1; }
 
 /*# sourceMappingURL=search.component.css.map */
