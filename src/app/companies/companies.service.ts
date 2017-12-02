@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {HttpClient } from '@angular/common/http';
+
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 
@@ -12,7 +13,7 @@ import { ICompany } from '../_interfaces/companies';
 export class CompaniesService {
     constructor(private http: HttpClient) {}
 
-    public companyDataObservable: Observable<Response>;
+    public companyDataObservable: Observable<any>;
 
     /* Method below came from tutorial project. Will use it later.*/
     static getCompanies() { return Observable.of(COMPANIES); }
@@ -47,7 +48,7 @@ export class CompaniesService {
     }
 
     // Returns an Observable after making an HTTP request to get the companies
-    public getAllCompanies(): Observable<any> {
+    public getAllCompanies(): Observable<Response> {
         return this.companyDataObservable = this.http.get(environment['BASEURL'] + '/companies').map((res: Response) => res);
     }
 

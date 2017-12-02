@@ -24,6 +24,31 @@ describe('CompaniesService', () => {
             ) => {
                 const mockCompanies = [
                     { id: '0', field_3: 'company 1', field_4_raw: {}, field_29: true, field_32_raw: 0.1},
+                ];
+
+                companiesService.getAllCompanies();
+                companiesService.companyDataObservable.subscribe((data) => {
+                    expect(data).toBe(mockCompanies);
+                });
+                const mockReq = httpMock.expectOne(environment['BASEURL'] + '/companies');
+
+                expect(mockReq.cancelled).toBeFalsy();
+                expect(mockReq.request.responseType).toEqual('json');
+
+                mockReq.flush(mockCompanies);
+
+                httpMock.verify();
+            }
+        )
+    );
+
+    it(
+        'should format review stars',
+        inject(
+            [HttpTestingController, CompaniesService],
+            () => {
+                const mockCompanies = [
+                    { id: '0', field_3: 'company 1', field_4_raw: {}, field_29: true, field_32_raw: 0.1},
                     { id: '1', field_3: 'company 1', field_4_raw: {}, field_29: true, field_32_raw: 0.4},
                     { id: '2', field_3: 'company 2', field_4_raw: {}, field_29: true, field_32_raw: 0.5},
                     { id: '3', field_3: 'company 2', field_4_raw: {}, field_29: true, field_32_raw: 0.7},
@@ -36,28 +61,6 @@ describe('CompaniesService', () => {
                 expect(mockCompanies[2]['field_32_raw']).toEqual(0.5);
                 expect(mockCompanies[3]['field_32_raw']).toEqual(1);
                 expect(mockCompanies[4]['field_32_raw']).toEqual(1);
-                /*CompaniesService.createReviewStars(mockCompanies).subscribe((event: HttpEvent<any>) => {
-                    switch (event.type) {
-                        case HttpEventType.Response:
-                            expect(event.body).toEqual(mockCompanies);
-                    }
-                });*/
-
-                companiesService.getAllCompanies();
-                companiesService.companyDataObservable.subscribe((event: HttpEvent<any>) => {
-                    switch (event.type) {
-                        case HttpEventType.Response:
-                            expect(event.body).toEqual(mockCompanies);
-                    }
-                });
-                const mockReq = httpMock.expectOne(environment['BASEURL'] + '/companies');
-
-                expect(mockReq.cancelled).toBeFalsy();
-                expect(mockReq.request.responseType).toEqual('json');
-
-                mockReq.flush(mockCompanies);
-
-                httpMock.verify();
             }
         )
     );
