@@ -21,7 +21,7 @@ describe('SearchResultsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create search result component', () => {
     expect(component).toBeTruthy();
   });
 });

@@ -16,7 +16,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
 
 import { DialogService } from './dialogs/dialog.service';
-import { CompanyObjectPipe } from './_pipes/company-object.pipe';
 import { FilterCompaniesPipe } from './_pipes/filter-companies.pipe';
 import { SearchResultsComponent } from './search/search-results/search-results.component';
 
@@ -28,7 +27,6 @@ import { SearchResultsComponent } from './search/search-results/search-results.c
         PageNotFoundComponent,
         ComposeMessageComponent,
         LoginComponent,
-        CompanyObjectPipe,
         FilterCompaniesPipe,
         SearchResultsComponent
     ],
