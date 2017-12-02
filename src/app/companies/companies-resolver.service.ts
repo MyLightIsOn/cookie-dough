@@ -5,12 +5,12 @@ import { Observable } from 'rxjs/Observable';
 import { Router, Resolve, RouterStateSnapshot,
     ActivatedRouteSnapshot } from '@angular/router';
 
-import { CompanyService } from './company.service';
+import { CompaniesService } from './companies.service';
 import { MockCompany} from '../mock-companies';
 
 @Injectable()
 export class CompaniesResolverService implements Resolve<MockCompany> {
-    constructor(private cs: CompanyService, private router: Router) {}
+    constructor(private cs: CompaniesService, private router: Router) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<MockCompany> {
         let id = route.paramMap.get('id');

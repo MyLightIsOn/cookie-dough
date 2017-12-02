@@ -1,7 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { CompanyService} from './companies/company.service';
+import { CompaniesService} from './companies/companies.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
@@ -9,7 +9,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ AppComponent ],
         imports: [ RouterTestingModule, HttpClientTestingModule ],
-        providers: [ CompanyService ]
+        providers: [ CompaniesService ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {

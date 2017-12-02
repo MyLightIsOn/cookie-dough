@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 
 import { RoutingModule } from './routing/routing.module';
-import { CompanyModule } from './companies/company.module';
+import { CompanyModule } from './companies/companies.module';
 import { LoginComponent } from './login/login.component';
 import { LoginRoutingModule } from './login/login-routing.module';
 import { HttpClientModule } from '@angular/common/http';

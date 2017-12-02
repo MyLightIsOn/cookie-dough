@@ -1,6 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { CompanyListComponent } from './company-list.component';
-import { CompanyService } from '../company.service';
+import { CompaniesService } from '../companies.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import {HttpClient, HttpHandler} from '@angular/common/http';
 
@@ -12,7 +12,7 @@ describe('Company List Component', () => {
             ],
             imports: [ RouterTestingModule ],
             providers : [
-                CompanyService, HttpClient, HttpHandler
+                CompaniesService, HttpClient, HttpHandler
             ]
         }).compileComponents();
     }));

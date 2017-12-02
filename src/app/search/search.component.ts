@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CompanyService } from '../companies/company.service';
+import { CompaniesService } from '../companies/companies.service';
 
 import { ICompany } from '../_interfaces/companies';
 
@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
     public companies$: ICompany;
     public company;
 
-    constructor(private companyService: CompanyService) { }
+    constructor(private companyService: CompaniesService) { }
 
     ngOnInit() {
         this.subscribeToCompanyData();
@@ -22,6 +22,6 @@ export class SearchComponent implements OnInit {
     // Subscribes to the Observable from Company Service to populate the view
     subscribeToCompanyData() {
         this.companyService.companyDataObservable.subscribe((data) =>
-            this.companies$ = CompanyService.createReviewStars(data['records']));
+            this.companies$ = CompaniesService.createReviewStars(data['records']));
     }
 }

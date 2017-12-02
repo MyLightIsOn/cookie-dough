@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CompanyListComponent } from './component-list/company-list.component';
 import { CompanyDetailComponent } from './component-detail/company-detail.component';
 
-import { CompanyService } from './company.service';
+import { CompaniesService } from './companies.service';
 
 import { CompaniesRoutingModule } from './companies-routing.module';
 
@@ -19,6 +19,6 @@ import { CompaniesRoutingModule } from './companies-routing.module';
         CompanyListComponent,
         CompanyDetailComponent
     ],
-    providers: [ CompanyService ]
+    providers: [ CompaniesService ]
 })
 export class CompanyModule {}

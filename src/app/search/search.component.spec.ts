@@ -7,7 +7,7 @@ import { XHRBackend, Response, ResponseOptions } from '@angular/http';
 import { Component, Input } from '@angular/core';
 
 import { SearchComponent } from './search.component';
-import { CompanyService } from '../companies/company.service';
+import { CompaniesService } from '../companies/companies.service';
 import { ICompany } from '../_interfaces/companies';
 import { environment} from '../../environments/environment';
 
@@ -61,7 +61,7 @@ describe('SearchComponent', () => {
         TestBed.configureTestingModule({
             declarations: [ SearchComponent, MockPipe, MockFilterPipe, MockSearchResultsComponent ],
             imports: [ RouterTestingModule, HttpClientTestingModule, FormsModule ],
-            providers: [ CompanyService, MockPipe, MockFilterPipe,
+            providers: [ CompaniesService, MockPipe, MockFilterPipe,
                 { provide: environment['BASEURL'], useValue: 'http://example.com'},
                 { provide: XHRBackend, useClass: MockBackend}
             ]
@@ -74,7 +74,7 @@ describe('SearchComponent', () => {
         expect(app).toBeTruthy();
     }));
 
-    it('should return an Observable using a pipe', inject([CompanyService, XHRBackend, MockPipe,
+    it('should return an Observable using a pipe', inject([CompaniesService, XHRBackend, MockPipe,
         MockFilterPipe], (companySerivce, mockBackend) => {
         const mockResponse = {
             data: [

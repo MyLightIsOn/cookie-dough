@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { environment } from '../../environments/environment';
 import {HttpClient } from '@angular/common/http';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 
+import { environment } from '../../environments/environment';
 import { COMPANIES } from '../mock-companies';
 import { ICompany } from '../_interfaces/companies';
 
 @Injectable()
-export class CompanyService {
+export class CompaniesService {
     constructor(private http: HttpClient) {}
 
     public companyDataObservable: Observable<Response>;
@@ -47,13 +47,13 @@ export class CompanyService {
     }
 
     // Returns an Observable after making an HTTP request to get the companies
-    public getAllCompanies() {
+    public getAllCompanies(): Observable<any> {
         return this.companyDataObservable = this.http.get(environment['BASEURL'] + '/companies').map((res: Response) => res);
     }
 
     /* Method below came from tutorial project. Will use it later.*/
     getCompany(id: number | string) {
-        return CompanyService.getCompanies()
+        return CompaniesService.getCompanies()
         // (+) before `id` turns the string into a number
             .map(companies => companies.find(company => company.id === + id));
     }
