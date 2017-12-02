@@ -3,5 +3,5 @@
     <span class="company-country">{{company['field_4_raw'].country}}</span>
     <span class="reviews-avg reviews-avg-{{company['field_32_raw_image']}}"></span>
     <span class="reviews-count">{{company['field_31']}} reviews</span>
-    <span class="verified">{{company['field_29']}}</span>
+    <span class="verification" [ngClass]="{'verified': company['field_29']}"></span>
 </div>

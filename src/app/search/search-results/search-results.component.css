@@ -49,9 +49,17 @@
     left: 134px;
     bottom: 6px;
     font-weight: bold; }
-  .search-result .verified {
+  .search-result .verification {
     position: absolute;
     right: 8px;
     bottom: 6px; }
+  .search-result .verified:after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url("/assets/icons/ic_check_circle_black_24dp_2x.png");
+    background-size: contain;
+    position: relative; }
 
 /*# sourceMappingURL=search-results.component.css.map */
