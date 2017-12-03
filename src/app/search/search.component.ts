@@ -32,6 +32,7 @@ export class SearchComponent implements OnInit {
         this.searchStarted = true;
     }
 
+    // Submits search, unhides search results
     searchSubmit() {
         this.searchSubmitted = true;
     }

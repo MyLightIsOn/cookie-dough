@@ -1,69 +1,94 @@
-.search-result.searchSubmitted {
+#search-results-container.searchSubmitted {
   display: block; }
 
-.search-result {
+#search-results-container {
   display: none;
-  border: 1px solid #000;
+  position: absolute;
   width: 100%;
-  height: 85px;
-  position: relative; }
-  .search-result .company-name {
-    text-decoration: underline;
-    position: absolute;
-    left: 8px;
-    top: 8px; }
-  .search-result .company-country {
-    position: absolute;
-    right: 8px;
-    top: 8px; }
-  .search-result .reviews-avg {
-    position: absolute;
-    left: 5px;
-    bottom: 6px; }
-  .search-result .reviews-avg:after {
-    content: '';
-    display: block;
-    width: 122px;
-    height: 22px;
-    background: url("/assets/images/reviews.png") no-repeat; }
-  .search-result .reviews-avg-0:after {
-    background-position: 1px -244px; }
-  .search-result .reviews-avg-0-5:after {
-    background-position: 1px -219px; }
-  .search-result .reviews-avg-1:after {
-    background-position: 1px -194px; }
-  .search-result .reviews-avg-1-5:after {
-    background-position: 1px -170px; }
-  .search-result .reviews-avg-2:after {
-    background-position: 1px -146px; }
-  .search-result .reviews-avg-2-5:after {
-    background-position: 1px -121px; }
-  .search-result .reviews-avg-3:after {
-    background-position: 1px -97px; }
-  .search-result .reviews-avg-3-5:after {
-    background-position: 1px -72px; }
-  .search-result .reviews-avg-4:after {
-    background-position: 1px -48px; }
-  .search-result .reviews-avg-4-5:after {
-    background-position: 1px -24px; }
-  .search-result .reviews-avg-5:after {
-    background-position: 1px 0px; }
-  .search-result .reviews-count {
-    position: absolute;
-    left: 134px;
-    bottom: 6px;
-    font-weight: bold; }
-  .search-result .verification {
-    position: absolute;
-    right: 8px;
-    bottom: 6px; }
-  .search-result .verified:after {
-    content: '';
-    display: block;
-    width: 20px;
-    height: 20px;
-    background: url("/assets/icons/ic_check_circle_black_24dp_2x.png");
-    background-size: contain;
+  top: 65px;
+  background-color: white; }
+  #search-results-container .search-result {
+    border: 1px solid #000;
+    width: 100%;
+    height: 85px;
     position: relative; }
+    #search-results-container .search-result .company-name {
+      text-decoration: underline;
+      position: absolute;
+      left: 8px;
+      top: 8px; }
+    #search-results-container .search-result .company-country {
+      position: absolute;
+      right: 8px;
+      top: 8px; }
+    #search-results-container .search-result .reviews-avg {
+      position: absolute;
+      left: 5px;
+      bottom: 6px; }
+    #search-results-container .search-result .reviews-avg:after {
+      content: '';
+      display: block;
+      width: 122px;
+      height: 22px;
+      background: url("/assets/images/reviews.png") no-repeat; }
+    #search-results-container .search-result .reviews-avg-0:after {
+      background-position: 1px -244px; }
+    #search-results-container .search-result .reviews-avg-0-5:after {
+      background-position: 1px -219px; }
+    #search-results-container .search-result .reviews-avg-1:after {
+      background-position: 1px -194px; }
+    #search-results-container .search-result .reviews-avg-1-5:after {
+      background-position: 1px -170px; }
+    #search-results-container .search-result .reviews-avg-2:after {
+      background-position: 1px -146px; }
+    #search-results-container .search-result .reviews-avg-2-5:after {
+      background-position: 1px -121px; }
+    #search-results-container .search-result .reviews-avg-3:after {
+      background-position: 1px -97px; }
+    #search-results-container .search-result .reviews-avg-3-5:after {
+      background-position: 1px -72px; }
+    #search-results-container .search-result .reviews-avg-4:after {
+      background-position: 1px -48px; }
+    #search-results-container .search-result .reviews-avg-4-5:after {
+      background-position: 1px -24px; }
+    #search-results-container .search-result .reviews-avg-5:after {
+      background-position: 1px 0px; }
+    #search-results-container .search-result .reviews-count {
+      position: absolute;
+      left: 134px;
+      bottom: 6px;
+      font-weight: bold; }
+    #search-results-container .search-result .verification {
+      position: absolute;
+      right: 8px;
+      bottom: 6px; }
+    #search-results-container .search-result .verified:after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: url("/assets/icons/ic_check_circle_black_24dp_2x.png");
+      background-size: contain;
+      position: relative; }
+  #search-results-container .search-result-controls {
+    margin: auto;
+    width: 90%; }
+  #search-results-container .search-result-button-container {
+    display: flex; }
+  #search-results-container .searched-for {
+    display: block;
+    margin-bottom: 10px; }
+  #search-results-container .search-result-button {
+    display: block;
+    padding: 14px 0;
+    text-align: center;
+    border: 1px solid #000;
+    flex-grow: 1;
+    background-color: lightgray;
+    margin-bottom: 7px; }
+  #search-results-container .left {
+    margin-right: 7px; }
+  #search-results-container .right {
+    margin-left: 7px; }
 
 /*# sourceMappingURL=search-results.component.css.map */

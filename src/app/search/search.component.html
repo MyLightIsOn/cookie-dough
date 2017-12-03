@@ -3,10 +3,21 @@
     <span [ngClass]="{'searchStarted': searchStarted}">The internet's largest gemstone and jewerly database</span>
   </div>
 
-  <input type="text" id="main-search" placeholder="Begin Search Here"
-         (focus)="searchStart()"
-         [(ngModel)]="company"
-         [ngClass]="{'searchStarted': searchStarted}">
-  <span class="search-button" [ngClass]="{'searchStarted': searchStarted}" (click)="searchSubmit()">Search</span>
-  <app-search-results *ngFor="let company of companies$ | filter: company" [company]="company" [searchSubmitted]="searchSubmitted"></app-search-results>
+  <div id="main-search-container" [ngClass]="{'searchSubmitted': searchSubmitted}">
+    <span class="search-help" [ngClass]="{'searchStarted': searchStarted}">Keyword Search</span>
+    <input type="text" id="main-search" placeholder="Begin Search Here"
+          (focus)="searchStart()"
+          [(ngModel)]="company"
+          [ngClass]="{'searchStarted': searchStarted}">
+    <span class="search-button"
+          [ngClass]="{'searchStarted': searchStarted}"
+          (click)="searchSubmit()">Search</span>
+  </div>
+
+  <app-search-results
+          [companies$]="companies$"
+          [company]="company"
+          [searchSubmitted]="searchSubmitted">
+
+  </app-search-results>
 </div>

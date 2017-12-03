@@ -1,94 +1,136 @@
-.search-result.searchSubmitted {
+#search-results-container.searchSubmitted {
   display: block;
 }
-.search-result {
+
+#search-results-container {
   display: none;
-  border: 1px solid #000;
+  position: absolute;
   width: 100%;
-  height: 85px;
-  position: relative;
+  top: 65px;
+  background-color: white;
   
-  .company-name {
-    text-decoration: underline;
-    position: absolute;
-    left: 8px;
-    top: 8px;
-  }
-  .company-country {
-    position: absolute;
-    right: 8px;
-    top: 8px
-  }
-
-  .reviews-avg {
-    position: absolute;
-    left: 5px;
-    bottom: 6px;
-  }
-
-  .reviews-avg:after {
-    content: '';
-    display: block;
-    width: 122px;
-    height: 22px;
-    background: url("/assets/images/reviews.png") no-repeat;
-  }
-
-  .reviews-avg-0:after {
-    background-position: 1px -244px;
-  }
-  .reviews-avg-0-5:after {
-    background-position: 1px -219px;
-  }
-  .reviews-avg-1:after {
-    background-position: 1px -194px;
-  }
-  .reviews-avg-1-5:after {
-    background-position: 1px -170px;
-  }
-  .reviews-avg-2:after {
-    background-position: 1px -146px;
-  }
-  .reviews-avg-2-5:after {
-    background-position: 1px -121px;
-  }
-  .reviews-avg-3:after {
-    background-position: 1px -97px;
-  }
-  .reviews-avg-3-5:after {
-    background-position: 1px -72px;
-  }
-  .reviews-avg-4:after {
-    background-position: 1px -48px;
-  }
-  .reviews-avg-4-5:after {
-    background-position: 1px -24px;
-  }
-  .reviews-avg-5:after {
-    background-position: 1px 0px;
-  }
-
-
-  .reviews-count {
-    position: absolute;
-    left: 134px;
-    bottom: 6px;
-    font-weight: bold;
-  }
-
-  .verification {
-    position: absolute;
-    right: 8px;
-    bottom: 6px;
-  }
-
-  .verified:after {
-    content: '';
-    display: block;
-    width: 20px;
-    height: 20px;
-    background: url('/assets/icons/ic_check_circle_black_24dp_2x.png');
-    background-size: contain;
+  .search-result {
+    border: 1px solid #000;
+    width: 100%;
+    height: 85px;
     position: relative;
+
+    .company-name {
+      text-decoration: underline;
+      position: absolute;
+      left: 8px;
+      top: 8px;
+    }
+    .company-country {
+      position: absolute;
+      right: 8px;
+      top: 8px
+    }
+
+    .reviews-avg {
+      position: absolute;
+      left: 5px;
+      bottom: 6px;
+    }
+
+    .reviews-avg:after {
+      content: '';
+      display: block;
+      width: 122px;
+      height: 22px;
+      background: url("/assets/images/reviews.png") no-repeat;
+    }
+
+    .reviews-avg-0:after {
+      background-position: 1px -244px;
+    }
+    .reviews-avg-0-5:after {
+      background-position: 1px -219px;
+    }
+    .reviews-avg-1:after {
+      background-position: 1px -194px;
+    }
+    .reviews-avg-1-5:after {
+      background-position: 1px -170px;
+    }
+    .reviews-avg-2:after {
+      background-position: 1px -146px;
+    }
+    .reviews-avg-2-5:after {
+      background-position: 1px -121px;
+    }
+    .reviews-avg-3:after {
+      background-position: 1px -97px;
+    }
+    .reviews-avg-3-5:after {
+      background-position: 1px -72px;
+    }
+    .reviews-avg-4:after {
+      background-position: 1px -48px;
+    }
+    .reviews-avg-4-5:after {
+      background-position: 1px -24px;
+    }
+    .reviews-avg-5:after {
+      background-position: 1px 0px;
+    }
+
+
+    .reviews-count {
+      position: absolute;
+      left: 134px;
+      bottom: 6px;
+      font-weight: bold;
+    }
+
+    .verification {
+      position: absolute;
+      right: 8px;
+      bottom: 6px;
+    }
+
+    .verified:after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: url('/assets/icons/ic_check_circle_black_24dp_2x.png');
+      background-size: contain;
+      position: relative;
+    }
+  }
+
+  .search-result-controls {
+    margin: auto;
+    width: 90%;
+  }
+
+  .search-result-button-container {
+    display: flex;
+  }
+
+  .searched-for {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .search-result-button {
+    display: block;
+    padding: 14px 0;
+    text-align: center;
+    border: 1px solid #000;
+    flex-grow: 1;
+    background-color: lightgray;
+    margin-bottom: 7px;
+  }
+
+  .left {
+    margin-right: 7px;
+  }
+
+  .right {
+    margin-left: 7px;
   }
 }
+
+

@@ -54,7 +54,8 @@ nav {
 /************** Main App Container Styles **************/
 #app-container {
   position: relative;
-  min-height: 100%; }
+  min-height: 100%;
+  background-color: #ffffff; }
 
 #content-container {
   padding: 70px 0 20px; }
