@@ -6,26 +6,39 @@
             <span class="search-result-button right">Filter Search</span>
         </div>
         <hr />
-    </div>
 
-    <!-- pagination -->
-    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
-        <li [ngClass]="{disabled:pager.currentPage === 1}">
-            <a (click)="setPage(1)">First</a>
-        </li>
-        <li [ngClass]="{disabled:pager.currentPage === 1}">
-            <a (click)="setPage(pager.currentPage - 1)">Previous</a>
-        </li>
-        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-            <a (click)="setPage(page)">{{page}}</a>
-        </li>
-        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-            <a (click)="setPage(pager.currentPage + 1)">Next</a>
-        </li>
-        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-            <a (click)="setPage(pager.totalPages)">Last</a>
-        </li>
-    </ul>
+        <!-- Pagination: Commented out buttons are for future use when companies list becomes very large. -->
+        <div *ngIf="pager.pages && pager.pages.length" id="pagination">
+            <div class="left-pagination">
+                <span class="results-count" *ngIf="filteredCompanies">{{filteredCompanies.length}}<span class="not-bold"> Results</span></span>
+
+                <div class="page-navigation-container">
+               <span class="previous-page" [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(pager.currentPage - 1)"></a>
+            </span>
+                    <span class="page-position">Page {{pager.currentPage}} of {{pager.totalPages}}</span>
+                    <span class="next-page"[ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.currentPage + 1)"></a>
+            </span>
+                </div>
+
+            </div>
+            <div class="right-pagination">
+                <p>Sort Stuff Will Be Here</p>
+            </div>
+
+            <!--<li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(1)">First</a>
+            </li>-->
+            <!--<span *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                <a (click)="setPage(page)">{{page}}</a>
+            </span>-->
+            <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.totalPages)">Last</a>
+            </li>-->
+        </div>
+
+    </div>
 
     <div *ngFor="let company of companiesArray | filter: company"
          class="search-result">

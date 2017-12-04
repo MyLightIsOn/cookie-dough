@@ -1,6 +1,9 @@
 #search-results-container.searchSubmitted {
   display: block; }
 
+.not-bold {
+  font-weight: normal; }
+
 #search-results-container {
   display: none;
   position: absolute;
@@ -72,7 +75,13 @@
       position: relative; }
   #search-results-container .search-result-controls {
     margin: auto;
-    width: 90%; }
+    width: 100%;
+    padding: 10px 5% 0;
+    position: fixed;
+    top: 50px;
+    z-index: 5;
+    background-color: white;
+    border-bottom: 4px solid #000; }
   #search-results-container .search-result-button-container {
     display: flex; }
   #search-results-container .searched-for {
@@ -90,5 +99,55 @@
     margin-right: 7px; }
   #search-results-container .right {
     margin-left: 7px; }
+  #search-results-container #pagination {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px; }
+    #search-results-container #pagination .left-pagination, #search-results-container #pagination .right-pagination {
+      text-align: center;
+      width: 50%; }
+    #search-results-container #pagination .results-count, #search-results-container #pagination .page-position, #search-results-container #pagination .previous-page, #search-results-container #pagination .next-page {
+      display: block; }
+    #search-results-container #pagination .results-count {
+      font-weight: bold;
+      margin-bottom: 5px; }
+    #search-results-container #pagination .previous-page a, #search-results-container #pagination .next-page a {
+      display: block;
+      position: relative;
+      width: 30px;
+      height: 30px;
+      border: 3px solid #000;
+      border-radius: 6px; }
+    #search-results-container #pagination .previous-page a:active, #search-results-container #pagination .next-page a:active {
+      background-color: lightgray; }
+    #search-results-container #pagination .previous-page, #search-results-container #pagination .next-page {
+      flex-grow: 1;
+      display: block;
+      width: 30px;
+      height: 30px; }
+    #search-results-container #pagination .page-position {
+      flex-grow: 2;
+      font-weight: bold;
+      padding-top: 7px;
+      width: 97px;
+      font-size: 13px; }
+    #search-results-container #pagination .previous-page a:after, #search-results-container #pagination .next-page a:after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 30px;
+      height: 30px;
+      background-color: aqua; }
+    #search-results-container #pagination .previous-page a:after {
+      background: url("/assets/icons/ic_chevron_left_black_24dp_2x.png") -6px -6px no-repeat;
+      background-size: 35px; }
+    #search-results-container #pagination .next-page a:after {
+      background: url("/assets/icons/ic_chevron_right_black_24dp_2x.png") -6px -6px no-repeat;
+      background-size: 35px; }
+    #search-results-container #pagination .page-navigation-container {
+      display: flex;
+      justify-content: center; }
 
 /*# sourceMappingURL=search-results.component.css.map */

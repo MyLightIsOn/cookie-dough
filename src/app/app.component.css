@@ -9,7 +9,9 @@ nav {
   height: 50px;
   width: 100%;
   position: fixed;
-  top: 0; }
+  top: 0;
+  background-color: #ffffff;
+  z-index: 5; }
   nav .header-logo {
     position: absolute;
     left: 10px;

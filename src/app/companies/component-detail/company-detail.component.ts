@@ -9,7 +9,6 @@ import {DialogService} from '../../dialogs/dialog.service';
 @Component({
     selector: 'app-company-detail',
     templateUrl: './company-detail.component.html',
-    styleUrls: ['../companies.component.css']
 })
 export class CompanyDetailComponent implements OnInit {
     company: MockCompany;

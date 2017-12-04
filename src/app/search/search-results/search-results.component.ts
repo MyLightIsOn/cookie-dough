@@ -2,40 +2,43 @@ import { Component, Input, OnChanges } from '@angular/core';
 
 import { ICompany } from '../../_interfaces/companies';
 import { PaginationService } from '../../pagination/pagination.service';
+import { FilterCompaniesPipe } from '../../_pipes/filter-companies.pipe';
 
 @Component({
-  selector: 'app-search-results',
-  templateUrl: './search-results.component.html',
-  styleUrls: ['./search-results.component.scss'],
-  providers: [ PaginationService ]
+    selector: 'app-search-results',
+    templateUrl: './search-results.component.html',
+    styleUrls: ['./search-results.component.scss'],
+    providers: [ PaginationService, FilterCompaniesPipe ]
 })
 export class SearchResultsComponent implements OnChanges {
-  @Input() companies$;
-  @Input() company: ICompany;
-  @Input() searchSubmitted;
+    @Input() companies$;
+    @Input() company: ICompany;
+    @Input() searchSubmitted;
 
-  constructor(private paginationService: PaginationService) { }
+    constructor(private paginationService: PaginationService, private filterCompaniesPipe: FilterCompaniesPipe) { }
 
     private companiesArray;
     private pager: any = {};
+    public filteredCompanies;
 
-  ngOnChanges() {
-    this.setPage(1);
-  }
+    ngOnChanges() {
+        // Takes the companies returned from the filter and uses them to create the pagination if necessary.
+        this.filteredCompanies = this.filterCompaniesPipe.transform(this.companies$, this.company);
+        this.setPage(1);
+    }
 
-  // Create pagination based on the number of items in the array
-  setPage(page: number) {
-      if (this.companies$) {
-          /*this.allItems = this.companies$;*/
-          if (page < 1 || page > this.pager.totalPages) {
-              return;
-          }
+    // Create pagination based on the number of items in the array
+    setPage(page: number) {
+        if (this.filteredCompanies) {
+            if (page < 1 || page > this.pager.totalPages) {
+                return;
+            }
 
-          // get pager object from service
-          this.pager = this.paginationService.getPager(this.companies$.length, page);
+            // get pager object from service
+            this.pager = this.paginationService.getPager(this.filteredCompanies.length, page);
 
-          // get current page of items
-          this.companiesArray = this.companies$.slice(this.pager.startIndex, this.pager.endIndex + 1);
-      }
-  }
+            // get current page of items
+            this.companiesArray = this.filteredCompanies.slice(this.pager.startIndex, this.pager.endIndex + 1);
+        }
+    }
 }

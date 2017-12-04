@@ -9,7 +9,6 @@ import { CompaniesService } from '../companies.service';
 @Component({
     selector: 'app-companies',
     templateUrl: './company-list.component.html',
-    styleUrls: ['../companies.component.css'],
     providers: [CompaniesService]
 })
 export class CompanyListComponent implements OnInit {

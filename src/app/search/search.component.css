@@ -41,9 +41,12 @@
     font-weight: bold;
     border: 1px solid #000;
     background-color: lightgray;
-    transition: 0.5s;
+    transition: 0.5s opacity, top;
     top: 0;
     opacity: 0; }
+  #search-component #main-search-container .search-button:active {
+    background-color: black;
+    color: #fff; }
   #search-component #main-search-container .search-button.searchStarted {
     display: block;
     top: -60px;
