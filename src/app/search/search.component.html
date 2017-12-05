@@ -15,9 +15,9 @@
   </div>
 
   <app-search-results
+          (companiesReset)="companiesUpdated()"
           [companies$]="companies$"
           [company]="company"
           [searchSubmitted]="searchSubmitted">
-
   </app-search-results>
 </div>

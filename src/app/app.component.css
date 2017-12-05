@@ -27,6 +27,7 @@ nav {
 
 #menu-container {
   position: fixed;
+  z-index: 5;
   bottom: 0;
   transition: 0.3s;
   width: 100%;

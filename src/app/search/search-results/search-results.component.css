@@ -55,7 +55,7 @@
     #search-results-container .search-result .reviews-avg-4-5:after {
       background-position: 1px -24px; }
     #search-results-container .search-result .reviews-avg-5:after {
-      background-position: 1px 0px; }
+      background-position: 1px 0; }
     #search-results-container .search-result .reviews-count {
       position: absolute;
       left: 134px;
@@ -99,6 +99,9 @@
     margin-right: 7px; }
   #search-results-container .right {
     margin-left: 7px; }
+  #search-results-container #companies-list-container {
+    margin-top: 177px;
+    padding-bottom: 63px; }
   #search-results-container #pagination {
     width: 90%;
     margin: auto;

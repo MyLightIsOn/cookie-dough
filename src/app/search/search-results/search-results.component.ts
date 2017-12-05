@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core';
 
 import { ICompany } from '../../_interfaces/companies';
 import { PaginationService } from '../../pagination/pagination.service';
@@ -14,6 +14,7 @@ export class SearchResultsComponent implements OnChanges {
     @Input() companies$;
     @Input() company: ICompany;
     @Input() searchSubmitted;
+    @Output() companiesReset = new EventEmitter();
 
     constructor(private paginationService: PaginationService, private filterCompaniesPipe: FilterCompaniesPipe) { }
 
@@ -40,5 +41,10 @@ export class SearchResultsComponent implements OnChanges {
             // get current page of items
             this.companiesArray = this.filteredCompanies.slice(this.pager.startIndex, this.pager.endIndex + 1);
         }
+    }
+
+    // Sends a reset event up to the Search Component
+    newSearch() {
+        this.companiesReset.emit(this.searchSubmitted);
     }
 }

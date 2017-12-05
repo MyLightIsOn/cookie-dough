@@ -76,7 +76,7 @@
       background-position: 1px -24px;
     }
     .reviews-avg-5:after {
-      background-position: 1px 0px;
+      background-position: 1px 0;
     }
 
 
@@ -140,6 +140,11 @@
 
   .right {
     margin-left: 7px;
+  }
+
+  #companies-list-container {
+    margin-top: 177px;
+    padding-bottom: 63px;
   }
 
   #pagination {
