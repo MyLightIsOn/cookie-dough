@@ -38,7 +38,7 @@ export class SearchComponent implements OnInit {
     }
 
     // Resets the search UI and resubscribes
-    companiesUpdated() {
+    companiesReset() {
         const inputElement = <HTMLInputElement>document.getElementById('main-search');
         inputElement.value = '';
         this.searchSubmitted = false;
