@@ -18,8 +18,8 @@ export class SearchResultsComponent implements OnChanges {
 
     constructor(private paginationService: PaginationService, private filterCompaniesPipe: FilterCompaniesPipe) { }
 
-    private companiesArray;
-    private pager: any = {};
+    public companiesArray;
+    public pager: any = {};
     public filteredCompanies;
 
     ngOnChanges() {

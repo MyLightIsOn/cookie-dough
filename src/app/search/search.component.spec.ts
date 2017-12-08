@@ -2,34 +2,11 @@ import { async, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 import { SearchComponent } from './search.component';
 import { CompaniesService } from '../companies/companies.service';
 import { ICompany } from '../_interfaces/companies';
-
-
-import { Pipe, PipeTransform } from '@angular/core';
-
-@Pipe({
-    name: 'companyObject'
-})
-export class MockPipe implements PipeTransform {
-
-    transform(value: any, args?: any): any {
-        return value;
-    }
-}
-
-@Pipe({
-    name: 'filter'
-})
-export class MockFilterPipe implements PipeTransform {
-
-    transform(value: any, args?: any): any {
-        return value;
-    }
-}
 
 @Component({
     selector: 'app-search-results',
@@ -38,14 +15,16 @@ export class MockFilterPipe implements PipeTransform {
 class MockSearchResultsComponent {
     @Input() companies$;
     @Input() company: ICompany;
+    @Input() searchSubmitted;
+    @Output() companiesReset = new EventEmitter();
 }
 
 describe('SearchComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ SearchComponent, MockPipe, MockFilterPipe, MockSearchResultsComponent ],
+            declarations: [ SearchComponent, MockSearchResultsComponent ],
             imports: [ RouterTestingModule, HttpClientTestingModule, FormsModule ],
-            providers: [ CompaniesService, MockPipe, MockFilterPipe ]
+            providers: [ CompaniesService ]
         }).compileComponents();
     }));
     it('should create the app', async(() => {
