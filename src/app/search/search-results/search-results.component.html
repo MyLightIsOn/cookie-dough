@@ -40,8 +40,7 @@
 
     </div>
     <div id="companies-list-container">
-        <div *ngFor="let company of companiesArray | filter: company"
-             class="search-result">
+        <div *ngFor="let company of companiesArray" class="search-result">
             <span class="company-name">{{company['field_3']}}</span>
             <span class="company-country">{{company['field_4_raw'].country}}</span>
             <span class="reviews-avg reviews-avg-{{company['field_32_raw_image']}}"></span>

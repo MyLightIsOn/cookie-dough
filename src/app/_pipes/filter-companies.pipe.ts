@@ -8,6 +8,9 @@ import {Pipe, PipeTransform, Injectable} from '@angular/core';
 export class FilterCompaniesPipe implements PipeTransform {
 
     /**
+     * This doesn't neeed to be a pipe anymore, but I will
+     * leave it for now. LM 12/10/2017
+     *
      * @items = object from array
      * @term = term's search
      */

@@ -9,7 +9,6 @@ import { PageNotFoundComponent } from '../page-not-found/page-not-found.componen
 import { AuthGuard } from '../_guards/auth-guard.service';
 
 const appRoutes: Routes = [
-    {path: 'search', component: SearchComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'compose', component: ComposeMessageComponent, outlet: 'popup'},
     {path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule', canLoad: [AuthGuard]},
