@@ -14,11 +14,4 @@
           [ngClass]="{'searchStarted': searchStarted}"
           (click)="searchSubmit()">Search</span>
   </div>
-
-  <app-search-results
-          (companiesReset)="companiesReset()"
-          [companies$]="companies$"
-          [company]="company"
-          [searchSubmitted]="searchSubmitted">
-  </app-search-results>
 </div>

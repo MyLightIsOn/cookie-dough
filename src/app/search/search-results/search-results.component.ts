@@ -1,7 +1,8 @@
-import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 
 import { ICompany } from '../../_interfaces/companies';
 import { PaginationService } from '../../pagination/pagination.service';
+import { CompaniesService } from '../../companies/companies.service';
 import { FilterCompaniesPipe } from '../../_pipes/filter-companies.pipe';
 
 @Component({
@@ -10,21 +11,27 @@ import { FilterCompaniesPipe } from '../../_pipes/filter-companies.pipe';
     styleUrls: ['./search-results.component.scss'],
     providers: [ PaginationService, FilterCompaniesPipe ]
 })
-export class SearchResultsComponent implements OnChanges {
+export class SearchResultsComponent implements OnInit {
     @Input() companies$;
     @Input() company: ICompany;
     @Input() searchSubmitted;
     @Output() companiesReset = new EventEmitter();
 
-    constructor(private paginationService: PaginationService, private filterCompaniesPipe: FilterCompaniesPipe) { }
+    constructor(private paginationService: PaginationService,
+                private filterCompaniesPipe: FilterCompaniesPipe,
+                private companyService: CompaniesService
+    ) { }
 
     public companiesArray;
     public pager: any = {};
     public filteredCompanies;
+    private searchText;
+    private companyData;
 
-    ngOnChanges() {
-        // Takes the companies returned from the filter and uses them to create the pagination if necessary.
-        this.filteredCompanies = this.filterCompaniesPipe.transform(this.companies$, this.company);
+    ngOnInit() {
+        this.searchText = this.companyService.searchValueText;
+        this.companyData = this.companyService.companyData;
+        this.filteredCompanies = this.filterCompaniesPipe.transform(this.companyData, this.searchText);
         this.setPage(1);
     }
 
@@ -41,10 +48,5 @@ export class SearchResultsComponent implements OnChanges {
             // get current page of items
             this.companiesArray = this.filteredCompanies.slice(this.pager.startIndex, this.pager.endIndex + 1);
         }
-    }
-
-    // Sends a reset event up to the Search Component
-    newSearch() {
-        this.companiesReset.emit(this.searchSubmitted);
     }
 }

@@ -1,12 +1,10 @@
-#search-results-container.searchSubmitted {
+#search-results-container.active {
   display: block; }
 
 .not-bold {
   font-weight: normal; }
 
 #search-results-container {
-  display: none;
-  position: absolute;
   width: 100%;
   top: 65px;
   background-color: white; }

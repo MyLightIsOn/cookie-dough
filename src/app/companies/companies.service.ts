@@ -11,15 +11,19 @@ import { ICompany } from '../_interfaces/companies';
 
 @Injectable()
 export class CompaniesService {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {
+        this.serviceInit();
+    }
 
     public companyDataObservable: Observable<any>;
+    public searchValueText;
+    public companyData;
 
     /* Method below came from tutorial project. Will use it later.*/
     static getCompanies() { return Observable.of(COMPANIES); }
 
     // Uses the review average to create the appropriate number of stars
-    static createReviewStars(companies$: ICompany) {
+    private createReviewStars(companies$: ICompany) {
 
         for (const company in companies$) {
             if (company) {
@@ -45,6 +49,21 @@ export class CompaniesService {
 
         }
         return (companies$);
+    }
+
+    private serviceInit() {
+        this.getAllCompanies();
+        this.setCompanyData();
+    }
+
+    private setCompanyData() {
+        this.companyDataObservable.subscribe((data) => {
+            this.companyData = this.createReviewStars(data['records']);
+        });
+    }
+
+    public searchValue(text: string) {
+        this.searchValueText = text;
     }
 
     // Returns an Observable after making an HTTP request to get the companies

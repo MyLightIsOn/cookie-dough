@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { CompaniesService } from '../companies/companies.service';
 import { ICompany } from '../_interfaces/companies';
@@ -9,23 +9,13 @@ import { ICompany } from '../_interfaces/companies';
     styleUrls: ['./search.component.css']
 })
 
-export class SearchComponent implements OnInit {
+export class SearchComponent {
     public companies$: ICompany;
     public company;
     public searchStarted = false;
     public searchSubmitted = false;
 
-    constructor(private companyService: CompaniesService) { }
-
-    ngOnInit() {
-        this.subscribeToCompanyData();
-    }
-
-    // Subscribes to the Observable from Company Service to populate the view
-    subscribeToCompanyData() {
-        this.companyService.companyDataObservable.subscribe((data) =>
-            this.companies$ = CompaniesService.createReviewStars(data['records']));
-    }
+    constructor(private companyService: CompaniesService) {}
 
     // Shifts search box;
     searchStart() {
@@ -34,14 +24,7 @@ export class SearchComponent implements OnInit {
 
     // Submits search, unhides search results
     searchSubmit() {
-        this.searchSubmitted = true;
-    }
-
-    // Resets the search UI and resubscribes
-    companiesReset() {
         const inputElement = <HTMLInputElement>document.getElementById('main-search');
-        inputElement.value = '';
-        this.searchSubmitted = false;
-        this.subscribeToCompanyData();
+        this.companyService.searchValue(inputElement.value);
     }
 }
