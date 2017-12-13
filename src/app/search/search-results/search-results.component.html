@@ -26,21 +26,22 @@
             <div class="right-pagination">
                 <p>Sort Stuff Will Be Here</p>
             </div>
+            <!-- These might be useful later when search results get really long
 
-            <!--<li [ngClass]="{disabled:pager.currentPage === 1}">
+            <li [ngClass]="{disabled:pager.currentPage === 1}">
                 <a (click)="setPage(1)">First</a>
-            </li>-->
-            <!--<span *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+            </li>
+            <span *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
                 <a (click)="setPage(page)">{{page}}</a>
-            </span>-->
-            <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            </span>
+            <<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
                 <a (click)="setPage(pager.totalPages)">Last</a>
             </li>-->
         </div>
 
     </div>
     <div id="companies-list-container">
-        <div *ngFor="let company of companiesArray" class="search-result">
+        <div *ngFor="let company of companiesArray" class="search-result" routerLink="search-details">
             <span class="company-name">{{company['field_3']}}</span>
             <span class="company-country">{{company['field_4_raw'].country}}</span>
             <span class="reviews-avg reviews-avg-{{company['field_32_raw_image']}}"></span>
