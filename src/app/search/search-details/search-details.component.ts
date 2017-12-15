@@ -10,12 +10,11 @@ import { ICompany } from '../../_interfaces/companies';
   styleUrls: ['./search-details.component.css']
 })
 export class SearchDetailsComponent implements OnInit {
-  public company;
+  public company: ICompany;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
       this.company = this.route.snapshot.data['company'];
-      console.log(this.company);
   }
 }

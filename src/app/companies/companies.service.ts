@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import {HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 
 import { environment } from '../../environments/environment';
-import { COMPANIES } from '../mock-companies';
 import { ICompany } from '../_interfaces/companies';
 
 @Injectable()
@@ -16,11 +15,8 @@ export class CompaniesService {
     }
 
     public companyDataObservable: Observable<any>;
-    public searchValueText;
-    public companyData;
-
-    /* Method below came from tutorial project. Will use it later.*/
-    static getCompanies() { return Observable.of(COMPANIES); }
+    public searchValueText: string;
+    public companyData: any;
 
     // Uses the review average to create the appropriate number of stars
     private createReviewStars(companies$: ICompany) {
@@ -51,11 +47,12 @@ export class CompaniesService {
         return (companies$);
     }
 
+    // Sets the text entered into search
     public searchValue(text: string) {
         this.searchValueText = text;
     }
 
-    // Returns an Observable after making an HTTP request to get the companies
+    // Returns an Observable after making an HTTP request and creating review stars
     public getAllCompanies() {
         this.companyDataObservable = this.http.get(environment['BASEURL'] + '/companies').map((res) => {
             res = this.createReviewStars(res['records']);
@@ -64,8 +61,8 @@ export class CompaniesService {
         });
     }
 
-    /* Method below came from tutorial project. Will use it later.*/
-    getCompany(id: number | string) {
+    /* Used by the search resolver to find the selected company*/
+    getCompany(id: string) {
         return this.companyData.find(company => company.id === id);
     }
 }

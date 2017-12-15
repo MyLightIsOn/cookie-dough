@@ -1,6 +1,5 @@
-import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { ICompany } from '../../_interfaces/companies';
 import { PaginationService } from '../../pagination/pagination.service';
 import { CompaniesService } from '../../companies/companies.service';
 import { FilterCompaniesPipe } from '../../_pipes/filter-companies.pipe';
@@ -12,23 +11,21 @@ import { FilterCompaniesPipe } from '../../_pipes/filter-companies.pipe';
     providers: [ PaginationService, FilterCompaniesPipe ]
 })
 export class SearchResultsComponent implements OnInit {
-    @Input() companies$;
-    @Input() company: ICompany;
-    @Input() searchSubmitted;
-    @Output() companiesReset = new EventEmitter();
 
     constructor(private paginationService: PaginationService,
                 private filterCompaniesPipe: FilterCompaniesPipe,
                 private companyService: CompaniesService
     ) { }
 
-    public companiesArray;
+    public companiesArray: any;
     public pager: any = {};
-    public filteredCompanies;
-    private searchText;
-    private companyData;
+    public filteredCompanies: any;
+    public searchText: string;
+    private companyData: any;
 
     ngOnInit() {
+
+        // Uses the company service properties to set this components properties
         this.companyService.companyDataObservable.subscribe(value => {
             if (value) {
                 this.searchText = this.companyService.searchValueText;
