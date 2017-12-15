@@ -1,0 +1,9 @@
+
+<div *ngIf="company">
+    <span class="company-name">{{company['field_3']}}</span> <br />
+    <span class="company-country">{{company['field_4_raw'].country}}</span> <br />
+    <span class="reviews-avg reviews-avg-{{company['field_32_raw_image']}}"></span> <br />
+    <span class="reviews-count">{{company['field_31']}} reviews</span> <br />
+    <span class="verification" [ngClass]="{'verified': company['field_29']}"></span>  <br />
+</div>
+

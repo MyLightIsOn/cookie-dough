@@ -12,7 +12,7 @@ import { ICompany } from '../_interfaces/companies';
 @Injectable()
 export class CompaniesService {
     constructor(private http: HttpClient) {
-        this.serviceInit();
+        this.getAllCompanies();
     }
 
     public companyDataObservable: Observable<any>;
@@ -51,30 +51,21 @@ export class CompaniesService {
         return (companies$);
     }
 
-    private serviceInit() {
-        this.getAllCompanies();
-        this.setCompanyData();
-    }
-
-    private setCompanyData() {
-        this.companyDataObservable.subscribe((data) => {
-            this.companyData = this.createReviewStars(data['records']);
-        });
-    }
-
     public searchValue(text: string) {
         this.searchValueText = text;
     }
 
     // Returns an Observable after making an HTTP request to get the companies
-    public getAllCompanies(): Observable<Response> {
-        return this.companyDataObservable = this.http.get(environment['BASEURL'] + '/companies').map((res: Response) => res);
+    public getAllCompanies() {
+        this.companyDataObservable = this.http.get(environment['BASEURL'] + '/companies').map((res) => {
+            res = this.createReviewStars(res['records']);
+            this.companyData = res;
+            return res;
+        });
     }
 
     /* Method below came from tutorial project. Will use it later.*/
     getCompany(id: number | string) {
-        return CompaniesService.getCompanies()
-        // (+) before `id` turns the string into a number
-            .map(companies => companies.find(company => company.id === + id));
+        return this.companyData.find(company => company.id === id);
     }
 }

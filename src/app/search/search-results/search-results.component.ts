@@ -29,10 +29,16 @@ export class SearchResultsComponent implements OnInit {
     private companyData;
 
     ngOnInit() {
-        this.searchText = this.companyService.searchValueText;
-        this.companyData = this.companyService.companyData;
-        this.filteredCompanies = this.filterCompaniesPipe.transform(this.companyData, this.searchText);
-        this.setPage(1);
+        this.companyService.companyDataObservable.subscribe(value => {
+            if (value) {
+                this.searchText = this.companyService.searchValueText;
+                this.companyData = this.companyService.companyData;
+                this.filteredCompanies = this.filterCompaniesPipe.transform(this.companyData, this.searchText);
+                this.setPage(1);
+            } else {
+                console.log('loading animation');
+            }
+        });
     }
 
     // Create pagination based on the number of items in the array

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { SearchComponent } from './search.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchDetailsComponent } from './search-details/search-details.component';
 import { SearchRoutingModule } from './search-routing.module';
 
 import { FilterCompaniesPipe } from '../_pipes/filter-companies.pipe';
@@ -17,6 +18,7 @@ import { FilterCompaniesPipe } from '../_pipes/filter-companies.pipe';
     declarations: [
         SearchComponent,
         SearchResultsComponent,
+        SearchDetailsComponent,
     ],
     providers: [
         FilterCompaniesPipe
