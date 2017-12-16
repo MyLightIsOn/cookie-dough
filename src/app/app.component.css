@@ -30,7 +30,8 @@ nav {
   bottom: 0;
   transition: 0.3s;
   width: 100%;
-  background: #ffffff;
+  background-color: #ffffff;
+  z-index: 5;
   display: flex; }
   #menu-container a {
     text-align: center;

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { PaginationService } from '../../pagination/pagination.service';
 import { CompaniesService } from '../../companies/companies.service';
 import { FilterCompaniesPipe } from '../../_pipes/filter-companies.pipe';
+import {ICompany} from '../../_interfaces/companies';
 
 @Component({
     selector: 'app-search-results',
@@ -36,6 +37,15 @@ export class SearchResultsComponent implements OnInit {
                 console.log('loading animation');
             }
         });
+    }
+
+    // Checks to see if company URL is set. If not, then ID will be used.
+    setIdentifier(company: ICompany) {
+        if (company['field_33_raw'] !== undefined) {
+            return company['field_33_raw'];
+        } else {
+            return company['id'];
+        }
     }
 
     // Create pagination based on the number of items in the array

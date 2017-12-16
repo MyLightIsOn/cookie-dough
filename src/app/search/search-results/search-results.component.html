@@ -41,7 +41,7 @@
 
     </div>
     <div id="companies-list-container">
-        <div *ngFor="let company of companiesArray" class="search-result" [routerLink]="['/', company.id]">
+        <div *ngFor="let company of companiesArray" class="search-result" [routerLink]="['/', setIdentifier(company)]">
             <span class="company-name">{{company['field_3']}}</span>
             <span class="company-country">{{company['field_4_raw'].country}}</span>
             <span class="reviews-avg reviews-avg-{{company['field_32_raw_image']}}"></span>
