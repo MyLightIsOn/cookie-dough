@@ -61,6 +61,7 @@ nav {
   background-color: #ffffff; }
 
 #content-container {
+  position: relative;
   padding: 70px 0 20px; }
 
 /*# sourceMappingURL=styles.css.map */

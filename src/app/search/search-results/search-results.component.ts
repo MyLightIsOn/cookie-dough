@@ -1,18 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 
 import { PaginationService } from '../../pagination/pagination.service';
 import { CompaniesService } from '../../companies/companies.service';
 import { FilterCompaniesPipe } from '../../_pipes/filter-companies.pipe';
 import {ICompany} from '../../_interfaces/companies';
 
+import { slideInOutAnimation } from '../../_animations/slide-in-out.animation';
+
 @Component({
     selector: 'app-search-results',
     templateUrl: './search-results.component.html',
     styleUrls: ['./search-results.component.scss'],
-    providers: [ PaginationService, FilterCompaniesPipe ]
+    providers: [ PaginationService, FilterCompaniesPipe ],
+    animations: [slideInOutAnimation]
 })
 export class SearchResultsComponent implements OnInit {
-
+    @HostBinding('@slideInOutAnimation') slideInOutAnimation = true;
+    
     constructor(private paginationService: PaginationService,
                 private filterCompaniesPipe: FilterCompaniesPipe,
                 private companyService: CompaniesService
