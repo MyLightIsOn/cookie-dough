@@ -12,7 +12,7 @@ nav {
   position: fixed;
   top: 0;
   background-color: #ffffff;
-  z-index: 5;
+  z-index: 10;
 
   .header-logo {
     position: absolute;
@@ -40,7 +40,7 @@ nav {
   transition: 0.3s;
   width: 100%;
   background-color: #ffffff;
-  z-index: 5;
+  z-index: 10;
   display: flex;
 
   a {

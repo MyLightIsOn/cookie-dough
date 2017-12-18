@@ -1,17 +1,15 @@
 import { trigger, state, animate, transition, style } from '@angular/animations';
 
-// This animation makes the details slide in and out.
-export const slideInOutAnimation =
-    trigger('slideInOutAnimation', [
+
+// This animation holds the leaving view in place while the animated view will slide on top.
+export const stayPutAnimation =
+    trigger('stayPutAnimation', [
 
         // end state styles for route container (host)
         state('*', style({
-            // the view covers the whole screen with a semi tranparent background
-            position: 'fixed',
             width: '100%',
             top: 0,
-            bottom: 0,
-            zIndex: 5
+            zIndex: 3
         })),
 
         // route 'enter' transition
@@ -19,11 +17,8 @@ export const slideInOutAnimation =
 
             // styles at start of transition
             style({
-                position: 'fixed',
-                top: 0,
-                bottom: 0,
-                right: '-400%',
-                zIndex: 5
+                right: 0,
+                zIndex: 3
             }),
 
             // animation and styles at end of transition
@@ -34,17 +29,16 @@ export const slideInOutAnimation =
 
         // route 'leave' transition
         transition(':leave', [
+            // styles at start of transition
             style({
-                position: 'fixed',
-                top: 0,
-                bottom: 0,
                 right: 0,
-                zIndex: 5
+                zIndex: 3
             }),
 
             // animation and styles at end of transition
             animate('.5s ease-in-out', style({
-                right: '-400%',
+                right: 0,
             }))
         ])
     ]);
+

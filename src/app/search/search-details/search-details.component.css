@@ -1,4 +1,6 @@
 .search-details-container {
     position: relative;
     background-color: aqua;
+    min-height: 100%;
+    padding-top: 50px;
 }

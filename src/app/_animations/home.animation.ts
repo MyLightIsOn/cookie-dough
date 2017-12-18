@@ -1,17 +1,16 @@
 import { trigger, state, animate, transition, style } from '@angular/animations';
 
-// This animation makes the details slide in and out.
-export const slideInOutAnimation =
-    trigger('slideInOutAnimation', [
+
+// This animation holds the homepage in place while the animated view will slide on top. It is used for whe
+// the user goes from a search detail all the back home.
+export const homeAnimation =
+    trigger('homeAnimation', [
 
         // end state styles for route container (host)
         state('*', style({
-            // the view covers the whole screen with a semi tranparent background
-            position: 'fixed',
             width: '100%',
             top: 0,
-            bottom: 0,
-            zIndex: 5
+            zIndex: 0
         })),
 
         // route 'enter' transition
@@ -19,11 +18,8 @@ export const slideInOutAnimation =
 
             // styles at start of transition
             style({
-                position: 'fixed',
-                top: 0,
-                bottom: 0,
-                right: '-400%',
-                zIndex: 5
+                right: 0,
+                zIndex: 0
             }),
 
             // animation and styles at end of transition
@@ -34,17 +30,16 @@ export const slideInOutAnimation =
 
         // route 'leave' transition
         transition(':leave', [
+            // styles at start of transition
             style({
-                position: 'fixed',
-                top: 0,
-                bottom: 0,
                 right: 0,
-                zIndex: 5
+                zIndex: 0
             }),
 
             // animation and styles at end of transition
             animate('.5s ease-in-out', style({
-                right: '-400%',
+                right: 0,
             }))
         ])
     ]);
+

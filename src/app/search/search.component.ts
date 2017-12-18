@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
+import {Component, HostBinding} from '@angular/core';
 
 import { CompaniesService } from '../companies/companies.service';
-import { ICompany } from '../_interfaces/companies';
+
+import { homeAnimation } from '../_animations/home.animation';
 
 @Component({
     selector: 'app-search',
     templateUrl: './search.component.html',
-    styleUrls: ['./search.component.css']
+    styleUrls: ['./search.component.css'],
+    animations: [ homeAnimation ]
 })
 
 export class SearchComponent {
-    public companies$: ICompany;
+    @HostBinding('@homeAnimation') homeAnimation = true;
+
     public company;
     public searchStarted = false;
     public searchSubmitted = false;
