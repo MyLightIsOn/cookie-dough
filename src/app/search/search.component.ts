@@ -1,4 +1,4 @@
-import {Component, HostBinding} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 
 import { CompaniesService } from '../companies/companies.service';
 
@@ -11,7 +11,7 @@ import { homeAnimation } from '../_animations/home.animation';
     animations: [ homeAnimation ]
 })
 
-export class SearchComponent {
+export class SearchComponent implements OnInit{
     @HostBinding('@homeAnimation') homeAnimation = true;
 
     public company;
@@ -19,6 +19,10 @@ export class SearchComponent {
     public searchSubmitted = false;
 
     constructor(private companyService: CompaniesService) {}
+
+    ngOnInit() {
+        this.companyService.paginationPage = undefined;
+    }
 
     // Shifts search box;
     searchStart() {
