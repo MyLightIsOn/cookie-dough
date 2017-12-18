@@ -9,6 +9,8 @@
 #search-results-container {
   width: 100%;
   background-color: white;
+  position: relative;
+  z-index: 1;
   
   .search-result {
     border: 1px solid #000;
@@ -140,8 +142,8 @@
   }
 
   #companies-list-container {
-    margin-top: 177px;
-    padding-bottom: 63px;
+    margin-top: 227px;
+    padding-bottom: 42px;
   }
 
   #pagination {

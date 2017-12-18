@@ -9,7 +9,6 @@ export const stayPutAnimation =
         state('*', style({
             width: '100%',
             top: 0,
-            zIndex: 3
         })),
 
         // route 'enter' transition
@@ -17,13 +16,12 @@ export const stayPutAnimation =
 
             // styles at start of transition
             style({
-                right: 0,
-                zIndex: 3
+                right: 0
             }),
 
             // animation and styles at end of transition
             animate('.5s ease-in-out', style({
-                right: 0,
+                right: 0
             }))
         ]),
 
@@ -31,8 +29,7 @@ export const stayPutAnimation =
         transition(':leave', [
             // styles at start of transition
             style({
-                right: 0,
-                zIndex: 3
+                right: 0
             }),
 
             // animation and styles at end of transition

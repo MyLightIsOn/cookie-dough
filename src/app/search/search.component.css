@@ -1,5 +1,7 @@
 #search-component {
-  position: relative; }
+  position: fixed;
+  top: 0;
+  padding-top: 70px; }
   #search-component #homepage-title {
     text-align: center;
     font-weight: bold;

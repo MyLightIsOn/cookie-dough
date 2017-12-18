@@ -9,8 +9,7 @@ export const homeAnimation =
         // end state styles for route container (host)
         state('*', style({
             width: '100%',
-            top: 0,
-            zIndex: 0
+            top: 0
         })),
 
         // route 'enter' transition
@@ -18,13 +17,12 @@ export const homeAnimation =
 
             // styles at start of transition
             style({
-                right: 0,
-                zIndex: 0
+                right: 0
             }),
 
             // animation and styles at end of transition
             animate('.5s ease-in-out', style({
-                right: 0,
+                right: 0
             }))
         ]),
 
@@ -32,13 +30,12 @@ export const homeAnimation =
         transition(':leave', [
             // styles at start of transition
             style({
-                right: 0,
-                zIndex: 0
+                right: 0
             }),
 
             // animation and styles at end of transition
             animate('.5s ease-in-out', style({
-                right: 0,
+                right: 0
             }))
         ])
     ]);
