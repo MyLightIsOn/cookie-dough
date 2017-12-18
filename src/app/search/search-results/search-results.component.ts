@@ -26,17 +26,17 @@ export class SearchResultsComponent implements OnInit {
     public pager: any = {};
     public filteredCompanies: any;
     public searchText: string;
+    public currentPage: number;
     private companyData: any;
 
     ngOnInit() {
-
         // Uses the company service properties to set this components properties
         this.companyService.companyDataObservable.subscribe(value => {
             if (value) {
                 this.searchText = this.companyService.searchValueText;
                 this.companyData = this.companyService.companyData;
                 this.filteredCompanies = this.filterCompaniesPipe.transform(this.companyData, this.searchText);
-                this.setPage(1);
+                this.paginationCheck(this.companyService.paginationPage);
             } else {
                 console.log('loading animation');
             }
@@ -52,8 +52,19 @@ export class SearchResultsComponent implements OnInit {
         }
     }
 
+    paginationCheck(page: number) {
+        console.log('Page set to:' + page);
+        if (page !== undefined) {
+            this.setPage(page);
+        }  else {
+            this.setPage(1);
+        }
+    }
+
     // Create pagination based on the number of items in the array
     setPage(page: number) {
+        this.companyService.paginationPage = page;
+
         if (this.filteredCompanies) {
             if (page < 1 || page > this.pager.totalPages) {
                 return;

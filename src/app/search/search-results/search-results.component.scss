@@ -150,7 +150,12 @@
     display: flex;
     justify-content: center;
     padding-bottom: 10px;
-    
+
+    .disabled {
+      position: relative;
+      z-index: -10;
+    }
+
     .left-pagination, .right-pagination {
       text-align: center;
       width: 50%;

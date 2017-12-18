@@ -105,6 +105,9 @@
     display: flex;
     justify-content: center;
     padding-bottom: 10px; }
+    #search-results-container #pagination .disabled {
+      position: relative;
+      z-index: -10; }
     #search-results-container #pagination .left-pagination, #search-results-container #pagination .right-pagination {
       text-align: center;
       width: 50%; }
