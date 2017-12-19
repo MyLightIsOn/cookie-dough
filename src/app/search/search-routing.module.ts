@@ -8,15 +8,23 @@ import { SearchResolverService } from './search-resolver.service';
 
 
 const searchRoutes: Routes = [
-    { path: 'search',  component: SearchComponent },
-    { path: 'search-results',
-        component: SearchResultsComponent,
+    {
+        path: 'search',
+        component: SearchComponent,
+        data: { page: 'search' }
     },
-    { path: ':id',
+    {
+        path: 'search-results',
+        component: SearchResultsComponent,
+        data: { page: 'search-results' }
+    },
+    {
+        path: ':id',
         component: SearchDetailsComponent,
         resolve: {
             company: SearchResolverService
-        }
+        },
+        data: { page: 'search-detail' }
     }
 ];
 

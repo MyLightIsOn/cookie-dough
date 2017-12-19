@@ -1,18 +1,14 @@
-import {Component, HostBinding, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import { CompaniesService } from '../companies/companies.service';
-
-import { homeAnimation } from '../_animations/home.animation';
 
 @Component({
     selector: 'app-search',
     templateUrl: './search.component.html',
-    styleUrls: ['./search.component.css'],
-    animations: [ homeAnimation ]
+    styleUrls: ['./search.component.css']
 })
 
-export class SearchComponent implements OnInit{
-    @HostBinding('@homeAnimation') homeAnimation = true;
+export class SearchComponent implements OnInit {
 
     public company;
     public searchStarted = false;

@@ -11,8 +11,8 @@
         <a routerLink="/contact" routerLinkActive="active" class="contact-icon">Contact</a>
     </div>
 
-    <div id="content-container">
-        <router-outlet></router-outlet>
+    <div id="content-container" [@searchAnimations]="getPage(appOutlet)">
+        <router-outlet #appOutlet="outlet"></router-outlet>
     </div>
 </div>
 
