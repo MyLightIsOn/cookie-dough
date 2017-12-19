@@ -1,0 +1,90 @@
+:host {
+  min-height: 100%;
+}
+
+.search-details-container {
+  position: relative;
+  background-color: #ffffff;
+  min-height: 100%;
+  padding-top: 50px;
+
+  header {
+    position: relative;
+    padding: 10px;
+    border-bottom: 1px solid #000000;
+    display: flex;
+
+    .company-logo-thumb-container {
+      img {
+        display: block;
+        width: 90%;
+      }
+    }
+
+    .company-info-header-container {
+      padding: 0 10px;
+
+      h1 {
+        font-size: 22px;
+        margin: 0 0 7px;
+      }
+    }
+
+    .reviews-avg {
+      display: block;
+      margin-bottom: 7px;
+    }
+
+    .reviews-avg:after {
+      content: '';
+      display: block;
+      width: 122px;
+      height: 22px;
+      background: url("/assets/images/reviews.png") no-repeat;
+    }
+
+    .reviews-avg-0:after {
+      background-position: 1px -244px;
+    }
+    .reviews-avg-0-5:after {
+      background-position: 1px -219px;
+    }
+    .reviews-avg-1:after {
+      background-position: 1px -194px;
+    }
+    .reviews-avg-1-5:after {
+      background-position: 1px -170px;
+    }
+    .reviews-avg-2:after {
+      background-position: 1px -146px;
+    }
+    .reviews-avg-2-5:after {
+      background-position: 1px -121px;
+    }
+    .reviews-avg-3:after {
+      background-position: 1px -97px;
+    }
+    .reviews-avg-3-5:after {
+      background-position: 1px -72px;
+    }
+    .reviews-avg-4:after {
+      background-position: 1px -48px;
+    }
+    .reviews-avg-4-5:after {
+      background-position: 1px -24px;
+    }
+    .reviews-avg-5:after {
+      background-position: 1px 0;
+    }
+
+    .verified:after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: url('/assets/icons/ic_check_circle_black_24dp_2x.png');
+      background-size: contain;
+      position: relative;
+    }
+  }
+}

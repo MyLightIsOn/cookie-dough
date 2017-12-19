@@ -49,7 +49,6 @@ export class SearchResultsComponent implements OnInit {
     }
 
     paginationCheck(page: number) {
-        console.log(this.companyService.searchValueText);
         if (page !== undefined) {
             this.setPage(page);
         }  else {

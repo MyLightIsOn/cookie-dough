@@ -1,10 +1,62 @@
 :host {
-    min-height: 100%;
-}
+  min-height: 100%; }
 
 .search-details-container {
+  position: relative;
+  background-color: #ffffff;
+  min-height: 100%;
+  padding-top: 50px; }
+  .search-details-container header {
     position: relative;
-    background-color: aqua;
-    min-height: 100%;
-    padding-top: 50px;
-}
+    padding: 10px;
+    border-bottom: 1px solid #000000;
+    display: flex; }
+    .search-details-container header .company-logo-thumb-container img {
+      display: block;
+      width: 90%; }
+    .search-details-container header .company-info-header-container {
+      padding: 0 10px; }
+      .search-details-container header .company-info-header-container h1 {
+        font-size: 22px;
+        margin: 0 0 7px; }
+    .search-details-container header .reviews-avg {
+      display: block;
+      margin-bottom: 7px; }
+    .search-details-container header .reviews-avg:after {
+      content: '';
+      display: block;
+      width: 122px;
+      height: 22px;
+      background: url("/assets/images/reviews.png") no-repeat; }
+    .search-details-container header .reviews-avg-0:after {
+      background-position: 1px -244px; }
+    .search-details-container header .reviews-avg-0-5:after {
+      background-position: 1px -219px; }
+    .search-details-container header .reviews-avg-1:after {
+      background-position: 1px -194px; }
+    .search-details-container header .reviews-avg-1-5:after {
+      background-position: 1px -170px; }
+    .search-details-container header .reviews-avg-2:after {
+      background-position: 1px -146px; }
+    .search-details-container header .reviews-avg-2-5:after {
+      background-position: 1px -121px; }
+    .search-details-container header .reviews-avg-3:after {
+      background-position: 1px -97px; }
+    .search-details-container header .reviews-avg-3-5:after {
+      background-position: 1px -72px; }
+    .search-details-container header .reviews-avg-4:after {
+      background-position: 1px -48px; }
+    .search-details-container header .reviews-avg-4-5:after {
+      background-position: 1px -24px; }
+    .search-details-container header .reviews-avg-5:after {
+      background-position: 1px 0; }
+    .search-details-container header .verified:after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: url("/assets/icons/ic_check_circle_black_24dp_2x.png");
+      background-size: contain;
+      position: relative; }
+
+/*# sourceMappingURL=search-details.component.css.map */
