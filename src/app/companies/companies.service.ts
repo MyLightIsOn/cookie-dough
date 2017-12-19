@@ -63,7 +63,13 @@ export class CompaniesService {
     }
 
     /* Used by the search resolver to find the selected company*/
-    getCompany(id: string) {
-        return this.companyData.find(company => company.id === id);
+    getCompany(id) {
+        const selectedCompany = this.companyData.find(company => company.id === id);
+
+        if (selectedCompany === undefined){
+            return this.companyData.find(company => company['field_33_raw'] === id);
+        } else {
+            return selectedCompany;
+        }
     }
 }
