@@ -17,6 +17,7 @@ export class CompaniesService {
     public searchValueText: string;
     public companyData: any;
     public paginationPage: number;
+    public startAtDetails: boolean;
 
     // Uses the review average to create the appropriate number of stars
     private createReviewStars(companies$: ICompany) {

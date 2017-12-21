@@ -8,8 +8,28 @@
   min-height: 100%;
   padding-top: 50px;
 
+  .close-details {
+    display: block;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+  }
+
+  .close-details:after {
+    content: '';
+    display: block;
+    width: 31px;
+    height: 31px;
+    background: url(/assets/icons/ic_highlight_off_black_24dp_2x.png) no-repeat;
+    background-position: -2px -2px;
+    background-size: 35px;
+  }
+
   header {
-    position: relative;
+    position: fixed;
+    top: 50px;
+    height: 140px;
+    width: 100%;
     padding: 10px;
     border-bottom: 1px solid #000000;
     display: flex;
@@ -27,6 +47,7 @@
       h1 {
         font-size: 22px;
         margin: 0 0 7px;
+        width: 90%;
       }
     }
 
@@ -85,6 +106,41 @@
       background: url('/assets/icons/ic_check_circle_black_24dp_2x.png');
       background-size: contain;
       position: relative;
+    }
+  }
+
+  .verified-details {
+    display: flex;
+    position: absolute;
+    right: 14px;
+    bottom: 8px;
+  }
+
+  .detail-description {
+    margin-top: 140px;
+    padding: 10px;
+    border-bottom: 1px solid #000;
+
+    h2 {
+      margin: 0;
+      padding: 0;
+      font-size: 20px;
+    }
+
+    .showroom-button {
+      display: block;
+      text-align: center;
+      font-weight: bold;
+      width: 120px;
+      background-color: lightgray;
+      border: 1px solid #000;
+      padding: 12px 10px;
+      margin: 10px 0 0 0 ;
+    }
+
+    .truncate-toggle {
+      text-decoration: underline;
+      color: blue;
     }
   }
 }

@@ -22,6 +22,7 @@ export class SearchResolverService  implements Resolve<any> {
         } else {
             return this.companyService.companyDataObservable.map(companyArray => {
                 if (companyArray) {
+                    this.companyService.startAtDetails = true;
                     return this.companyService.getCompany(id);
                 } else {
                     this.router.navigate(['/search']);

@@ -1,6 +1,7 @@
 <div class="search-details-container">
     <div *ngIf="company">
         <header>
+            <span class="close-details" (click)="closeDetails()"></span>
             <div class="company-logo-thumb-container">
                 <img src="{{company['field_5_raw']['thumb_url']}}" alt="{{company['field_3']}} Thumbnail Logo">
             </div>
@@ -8,11 +9,21 @@
                 <h1>{{company['field_3']}}</h1>
                 <span class="reviews-avg reviews-avg-{{company['field_32_raw_image']}}"></span>
                 <span class="reviews-count">{{company['field_31']}} reviews</span>
-                <div *ngIf="company['field_29'] === 'True'">
-                    Trusted <span class="verification" [ngClass]="{'verified': company['field_29']}"></span>
+                <div *ngIf="company['field_29'] === 'True'" class="verified-details">
+                    <span>Trusted</span> <span class="verification" [ngClass]="{'verified': company['field_29']}"></span>
                 </div>
             </div>
         </header>
+        <section class="detail-description">
+            <h2>{{company['field_6']}}</h2>
+            <p>
+                <span *ngIf="truncatedText">{{company['field_7_truncated']}}</span>
+                <span *ngIf="!truncatedText">{{company['field_7']}}</span>
+                <span *ngIf="truncatedText" (click)="toggleDescription()" class="truncate-toggle">More</span>
+                <span *ngIf="!truncatedText && toggled" (click)="toggleDescription()" class="truncate-toggle">Less</span>
+            </p>
+            <span class="showroom-button">Showroom</span>
+        </section>
     </div>
 </div>
 
