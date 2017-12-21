@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/share';
 
 import { environment } from '../../environments/environment';
 import { ICompany } from '../_interfaces/companies';
@@ -16,7 +17,6 @@ export class CompaniesService {
     public searchValueText: string;
     public companyData: any;
     public paginationPage: number;
-    public testData;
 
     // Uses the review average to create the appropriate number of stars
     private createReviewStars(companies$: ICompany) {
@@ -57,18 +57,14 @@ export class CompaniesService {
         this.companyDataObservable = this.http.get(environment['BASEURL'] + '/companies').map((res) => {
             res = this.createReviewStars(res['records']);
             this.companyData = res;
-            this.setCompany(this.companyData);
             return res;
-        });
-    }
-
-    setCompany(data) {
-        this.testData = data;
+        }).share();
+        return this.companyDataObservable;
     }
 
     /* Used by the search resolver to find the selected company*/
     getCompany(id) {
-        const selectedCompany = this.testData.find(company => company.id === id);
+        const selectedCompany = this.companyData.find(company => company.id === id);
 
         if (selectedCompany === undefined) {
             return this.companyData.find(company => company['field_33_raw'] === id);

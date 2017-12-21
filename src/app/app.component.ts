@@ -14,15 +14,13 @@ export class AppComponent implements OnInit {
 
     constructor(private companyService: CompaniesService) {}
 
-    /*Uses service to get a company list as soon as the app loads*/
+    // Uses service to get a company list as soon as the app loads
     ngOnInit() {
-        this.companyService.getAllCompanies();
-        this.companyService.companyDataObservable.subscribe((data) => {
-            this.companyService.companyData = data;
-        });
+        this.companyService.getAllCompanies().subscribe();
     }
 
+    // returns the route for animations
     getPage(outlet) {
-        return outlet.activatedRouteData['page'] || 'one';
+        return outlet.activatedRouteData['page'];
     }
 }

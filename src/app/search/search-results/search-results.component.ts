@@ -27,7 +27,6 @@ export class SearchResultsComponent implements OnInit {
 
     ngOnInit() {
         // Uses the company service properties to set this components properties
-        this.companyData = this.companyService.testData;
         this.searchText = this.companyService.searchValueText;
         this.companyData = this.companyService.companyData;
         this.filteredCompanies = this.filterCompaniesPipe.transform(this.companyData, this.searchText);
@@ -43,6 +42,7 @@ export class SearchResultsComponent implements OnInit {
         }
     }
 
+    // Checks to see what page the search results were on if they user went to a company detail
     paginationCheck(page: number) {
         if (page !== undefined) {
             this.setPage(page);
@@ -60,10 +60,10 @@ export class SearchResultsComponent implements OnInit {
                 return;
             }
 
-            // get pager object from service
+            // Get pager object from service
             this.pager = this.paginationService.getPager(this.filteredCompanies.length, page);
 
-            // get current page of items
+            // Get current page of items
             this.companiesArray = this.filteredCompanies.slice(this.pager.startIndex, this.pager.endIndex + 1);
         }
     }

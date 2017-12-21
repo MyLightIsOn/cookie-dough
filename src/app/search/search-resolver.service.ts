@@ -6,7 +6,7 @@ import { Router, Resolve, RouterStateSnapshot,
 
 import { CompaniesService } from '../companies/companies.service';
 import { ICompany } from '../_interfaces/companies';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class SearchResolverService  implements Resolve<any> {
@@ -15,21 +15,19 @@ export class SearchResolverService  implements Resolve<any> {
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ICompany> {
         const id = route.paramMap.get('id');
 
-        // When the company data array is present, this will return the company that matches the id
+        // Resolves the company data before loading the route. If company data is not
+        // present, it uses the company service Observable.
         if (this.companyService.companyData) {
-            console.log('data here!');
             return this.companyService.getCompany(id);
         } else {
-            console.log('data not here');
             return this.companyService.companyDataObservable.map(companyArray => {
                 if (companyArray) {
                     return this.companyService.getCompany(id);
                 } else {
-                    this.router.navigate(['/register']);
+                    this.router.navigate(['/search']);
                     return null;
                 }
             });
         }
-
     }
 }
