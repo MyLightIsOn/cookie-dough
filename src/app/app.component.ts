@@ -6,7 +6,6 @@ import { searchAnimations } from './_animations/searchAnimations';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    providers: [ CompaniesService ],
     animations: [ searchAnimations ]
 })
 
@@ -18,6 +17,9 @@ export class AppComponent implements OnInit {
     /*Uses service to get a company list as soon as the app loads*/
     ngOnInit() {
         this.companyService.getAllCompanies();
+        this.companyService.companyDataObservable.subscribe((data) => {
+            this.companyService.companyData = data;
+        });
     }
 
     getPage(outlet) {

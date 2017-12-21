@@ -27,16 +27,11 @@ export class SearchResultsComponent implements OnInit {
 
     ngOnInit() {
         // Uses the company service properties to set this components properties
-        this.companyService.companyDataObservable.subscribe(value => {
-            if (value) {
-                this.searchText = this.companyService.searchValueText;
-                this.companyData = this.companyService.companyData;
-                this.filteredCompanies = this.filterCompaniesPipe.transform(this.companyData, this.searchText);
-                this.paginationCheck(this.companyService.paginationPage);
-            } else {
-                console.log('loading animation');
-            }
-        });
+        this.companyData = this.companyService.testData;
+        this.searchText = this.companyService.searchValueText;
+        this.companyData = this.companyService.companyData;
+        this.filteredCompanies = this.filterCompaniesPipe.transform(this.companyData, this.searchText);
+        this.paginationCheck(this.companyService.paginationPage);
     }
 
     // Checks to see if company URL is set. If not, then ID will be used.

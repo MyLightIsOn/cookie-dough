@@ -10,14 +10,13 @@ import { ICompany } from '../_interfaces/companies';
 
 @Injectable()
 export class CompaniesService {
-    constructor(private http: HttpClient) {
-        this.getAllCompanies();
-    }
+    constructor(private http: HttpClient) {}
 
-    public companyDataObservable: Observable<any>;
+    public companyDataObservable;
     public searchValueText: string;
     public companyData: any;
     public paginationPage: number;
+    public testData;
 
     // Uses the review average to create the appropriate number of stars
     private createReviewStars(companies$: ICompany) {
@@ -58,15 +57,20 @@ export class CompaniesService {
         this.companyDataObservable = this.http.get(environment['BASEURL'] + '/companies').map((res) => {
             res = this.createReviewStars(res['records']);
             this.companyData = res;
+            this.setCompany(this.companyData);
             return res;
         });
     }
 
+    setCompany(data) {
+        this.testData = data;
+    }
+
     /* Used by the search resolver to find the selected company*/
     getCompany(id) {
-        const selectedCompany = this.companyData.find(company => company.id === id);
+        const selectedCompany = this.testData.find(company => company.id === id);
 
-        if (selectedCompany === undefined){
+        if (selectedCompany === undefined) {
             return this.companyData.find(company => company['field_33_raw'] === id);
         } else {
             return selectedCompany;

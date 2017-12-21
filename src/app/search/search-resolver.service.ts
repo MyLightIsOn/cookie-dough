@@ -16,13 +16,20 @@ export class SearchResolverService  implements Resolve<any> {
         const id = route.paramMap.get('id');
 
         // When the company data array is present, this will return the company that matches the id
-        return this.companyService.companyDataObservable.map(companyArray => {
-            if (companyArray) {
-                return this.companyService.getCompany(id);
-            } else {
-                this.router.navigate(['/register']);
-                return null;
-            }
-        });
+        if (this.companyService.companyData) {
+            console.log('data here!');
+            return this.companyService.getCompany(id);
+        } else {
+            console.log('data not here');
+            return this.companyService.companyDataObservable.map(companyArray => {
+                if (companyArray) {
+                    return this.companyService.getCompany(id);
+                } else {
+                    this.router.navigate(['/register']);
+                    return null;
+                }
+            });
+        }
+
     }
 }
