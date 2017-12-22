@@ -10,6 +10,7 @@ export interface ICompany {
         field_7: string; // Description
         field_8: number; // Year Established
         field_9: string; // Website
+        field_9_raw: string; // Website object: url
         field_10_raw: string; // email 1
         field_11_raw: string; // email 2
         field_12_raw: string; // Phone Number 1

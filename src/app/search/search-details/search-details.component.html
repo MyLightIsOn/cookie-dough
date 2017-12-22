@@ -24,6 +24,26 @@
             </p>
             <span class="showroom-button">Showroom</span>
         </section>
+        <section class="detail-info">
+            <div>
+                <span>{{company['field_4_raw']['street']}}</span>
+            </div>
+            <div>
+                <span>{{company['field_4_raw']['street2']}}</span>
+            </div>
+            <div>
+                <span>{{company['field_4_raw']['city']}}</span>
+                <span>{{company['field_4_raw']['state']}}</span>
+            </div>
+            <span>{{company['field_4_raw']['country']}}</span>
+            <div class="country-flag">
+                <i class="f48_{{company['country_flag']}}"></i>
+            </div>
+            <span class="showroom-button">Map</span>
+            <span *ngIf="company['field_9']">
+                <a href="{{company['field_9_raw']['url']}}" target="_blank">{{company['field_9_raw']['url']}}</a>
+            </span>
+        </section>
     </div>
 </div>
 

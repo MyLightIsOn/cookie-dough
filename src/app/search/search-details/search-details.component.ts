@@ -24,6 +24,7 @@ export class SearchDetailsComponent implements OnInit {
     ngOnInit() {
         this.company = this.route.snapshot.data['company'];
         this.company['field_7_truncated'] = this.truncateDescription(this.company['field_7']);
+        this.company['country_flag'] = this.setFlag(this.company['field_4_raw']['country']);
     }
 
     // Checks to see if the details page was visited first.
@@ -53,5 +54,10 @@ export class SearchDetailsComponent implements OnInit {
     toggleDescription() {
         this.truncatedText = !this.truncatedText;
         this.toggled = !this.toggled;
+    }
+
+    // Sets the image for the company's country flag
+    setFlag(text) {
+        return text.replace(' ', '_').toLowerCase();
     }
 }
