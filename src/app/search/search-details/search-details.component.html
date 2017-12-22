@@ -2,47 +2,126 @@
     <div *ngIf="company">
         <header>
             <span class="close-details" (click)="closeDetails()"></span>
+
+            <!-- Company Logo -->
             <div class="company-logo-thumb-container">
                 <img src="{{company['field_5_raw']['thumb_url']}}" alt="{{company['field_3']}} Thumbnail Logo">
             </div>
             <div class="company-info-header-container">
+
+                <!-- Company Name -->
                 <h1>{{company['field_3']}}</h1>
+
+                <!-- Review Stars -->
                 <span class="reviews-avg reviews-avg-{{company['field_32_raw_image']}}"></span>
+
+                <!-- Number of Reviews -->
                 <span class="reviews-count">{{company['field_31']}} reviews</span>
+
+                <!-- Verified -->
                 <div *ngIf="company['field_29'] === 'True'" class="verified-details">
                     <span>Trusted</span> <span class="verification" [ngClass]="{'verified': company['field_29']}"></span>
                 </div>
             </div>
         </header>
         <section class="detail-description">
+
+            <!-- Tagline -->
             <h2>{{company['field_6']}}</h2>
-            <p>
-                <span *ngIf="truncatedText">{{company['field_7_truncated']}}</span>
-                <span *ngIf="!truncatedText">{{company['field_7']}}</span>
-                <span *ngIf="truncatedText" (click)="toggleDescription()" class="truncate-toggle">More</span>
-                <span *ngIf="!truncatedText && toggled" (click)="toggleDescription()" class="truncate-toggle">Less</span>
-            </p>
-            <span class="showroom-button">Showroom</span>
+
+            <!-- Truncated Description -->
+            <div *ngIf="truncatedText">
+                <p>{{company['field_7_truncated']}}
+                    <span (click)="toggleDescription()" class="truncate-toggle">More</span>
+                </p>
+            </div>
+
+            <!-- Long Description -->
+            <div *ngIf="!truncatedText" >
+                <p *ngIf="!truncatedText">{{company['field_7']}}</p>
+                <p>Established: {{company['field_8']}}</p>
+                <span *ngIf="!truncatedText">{{company['field_28_raw']}}</span>
+                <p *ngIf="!truncatedText && toggled" (click)="toggleDescription()" class="truncate-toggle">Less</p>
+            </div>
+
+            <!-- Gallery Toggle -->
+            <span class="gallery-button">Gallery</span>
         </section>
         <section class="detail-info">
+
             <div>
+                <!-- Address Street -->
                 <span>{{company['field_4_raw']['street']}}</span>
             </div>
+
             <div>
+                <!-- Address Street 2-->
                 <span>{{company['field_4_raw']['street2']}}</span>
             </div>
+
             <div>
+                <!-- Address City -->
                 <span>{{company['field_4_raw']['city']}}</span>
+
+                <!-- Address State/Province -->
                 <span>{{company['field_4_raw']['state']}}</span>
             </div>
+
+            <!-- Address Country -->
             <span>{{company['field_4_raw']['country']}}</span>
+
+            <!-- Country Flag -->
             <div class="country-flag">
                 <i class="f48_{{company['country_flag']}}"></i>
             </div>
-            <span class="showroom-button">Map</span>
-            <span *ngIf="company['field_9']">
+
+            <!--  Map Toggle -->
+            <span class="gallery-button">Map</span>
+
+            <!-- Company Website -->
+            <span *ngIf="company['field_9']" class="website-url">
                 <a href="{{company['field_9_raw']['url']}}" target="_blank">{{company['field_9_raw']['url']}}</a>
             </span>
+
+            <!-- Email Address 1 -->
+            <span *ngIf="company['field_10']" class="email-address">
+                <a href="{{company['field_10_raw']['email']}}" target="_blank">{{company['field_10_raw']['email']}}</a>
+            </span>
+
+            <!-- Email Address 2 -->
+            <span *ngIf="company['field_11']" class="email-address">
+                <a href="{{company['field_11_raw']['email']}}" target="_blank">{{company['field_11_raw']['email']}}</a>
+            </span>
+
+            <!-- Phone Number 1 -->
+            <span *ngIf="company['field_12']" class="phone-number">
+                <a href="{{company['field_12_raw']['formatted']}}" target="_blank">{{company['field_12_raw']['formatted']}}</a>
+            </span>
+
+            <!-- Phone Number 2 -->
+            <span *ngIf="company['field_13']" class="phone-number">
+                <a href="{{company['field_13_raw']['formatted']}}" target="_blank">{{company['field_13_raw']['formatted']}}</a>
+            </span>
+
+            <hr />
+
+            <!-- Social Media 1 -->
+            <span *ngIf="company['field_14']" class="social-media {{company['field_14_raw']['social-media-class']}}">
+                <a href="{{company['field_14_raw']['url']}}" target="_blank">{{company['field_14_raw']['url']}}</a>
+            </span>
+
+            <!-- Social Media 2 -->
+            <span *ngIf="company['field_15']" class="social-media {{company['field_15_raw']['social-media-class']}}">
+                <a href="{{company['field_15_raw']['url']}}" target="_blank">{{company['field_15_raw']['url']}}</a>
+            </span>
+
+            <!-- Social Media 3 -->
+            <span *ngIf="company['field_16']" class="social-media {{company['field_16_raw']['social-media-class']}}">
+                <a href="{{company['field_16_raw']['url']}}" target="_blank">{{company['field_16_raw']['url']}}</a>
+            </span>  <br />
+
+            <h4>Business Hours</h4>
+            <div>{{company['field_17_raw']}}</div>
         </section>
     </div>
 </div>

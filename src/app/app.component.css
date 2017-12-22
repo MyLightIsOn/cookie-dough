@@ -58,7 +58,8 @@ nav {
 #app-container {
   position: relative;
   height: 100%;
-  background-color: #ffffff; }
+  background-color: #ffffff;
+  overflow-x: hidden; }
 
 #content-container {
   position: relative;

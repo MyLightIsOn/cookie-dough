@@ -63,8 +63,8 @@ export class CompaniesService {
         return this.companyDataObservable;
     }
 
-    /* Used by the search resolver to find the selected company*/
-    getCompany(id) {
+    // Used by the search resolver to find the selected company
+    public getCompany(id) {
         const selectedCompany = this.companyData.find(company => company.id === id);
 
         if (selectedCompany === undefined) {
@@ -72,5 +72,37 @@ export class CompaniesService {
         } else {
             return selectedCompany;
         }
+    }
+
+    // Sets the class for images based on social media
+    public setSocialMedia(array) {
+        array.map( x => {
+            if (x['url'].indexOf('pinterest.com') !== -1) {
+                x['social-media-class'] = 'pinterest';
+            }
+
+            if (x['url'].indexOf('facebook.com') !== -1) {
+                x['social-media-class'] = 'facebook';
+            }
+
+            if (x['url'].indexOf('instagram.com') !== -1) {
+                x['social-media-class'] = 'instagram';
+            }
+
+            if (x['url'].indexOf('wechat') !== -1) {
+                x['social-media-class'] = 'wechat';
+            }
+
+            if (x['url'].indexOf('twitter.com') !== -1) {
+                x['social-media-class'] = 'twitter';
+            }
+        });
+
+        console.log(array);
+    }
+
+    // Sets the image for the company's country flag
+    public setFlag(text) {
+        return text.replace(' ', '_').toLowerCase();
     }
 }

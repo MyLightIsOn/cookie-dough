@@ -81,7 +81,7 @@
     position: absolute;
     right: 14px;
     bottom: 8px; }
-  .search-details-container .showroom-button {
+  .search-details-container .gallery-button {
     display: block;
     text-align: center;
     font-weight: bold;
@@ -108,5 +108,51 @@
     position: absolute;
     top: 10px;
     right: 10px; }
+
+.social-media {
+  position: relative;
+  margin-bottom: 10px;
+  display: block; }
+  .social-media a {
+    position: relative;
+    left: 30px;
+    top: 5px; }
+
+.social-media:after {
+  display: block;
+  content: '';
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.facebook:after {
+  background: url("/assets/icons/facebook.svg") no-repeat;
+  background-size: contain; }
+
+.instagram:after {
+  background: url("/assets/icons/instagram.svg") no-repeat;
+  background-size: contain; }
+
+.pinterest:after {
+  background: url("/assets/icons/pinterest.svg") no-repeat;
+  background-size: contain; }
+
+.twitter:after {
+  background: url("/assets/icons/twitter.svg") no-repeat;
+  background-size: contain; }
+
+.wechat:after {
+  background: url("/assets/icons/wechat.svg") no-repeat;
+  background-size: contain; }
+
+.line:after {
+  background: url("/assets/icons/icons8-line.svg") no-repeat;
+  background-size: contain; }
+
+.youtube:after {
+  background: url("/assets/icons/youtube-play.svg") no-repeat;
+  background-size: contain; }
 
 /*# sourceMappingURL=search-details.component.css.map */

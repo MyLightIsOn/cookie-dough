@@ -10,11 +10,11 @@ export interface ICompany {
         field_7: string; // Description
         field_8: number; // Year Established
         field_9: string; // Website
-        field_9_raw: string; // Website object: url
-        field_10_raw: string; // email 1
-        field_11_raw: string; // email 2
-        field_12_raw: string; // Phone Number 1
-        field_13_raw: string; // Phone Number 2
+        field_9_raw: string; // Website Object: url
+        field_10_raw: string; // Email Object 1: email
+        field_11_raw: string; // Email Object 2: email
+        field_12_raw: string; // Phone Number Object 1: area, country, formatted, full, numbers
+        field_13_raw: string; // Phone Number Object 2: area, country, formatted, full, numbers
         field_14_raw: string; // Social Media 1
         field_15_raw: string; // Social Media 2
         field_16_raw: string; // Social Media 3
