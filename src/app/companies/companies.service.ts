@@ -96,9 +96,11 @@ export class CompaniesService {
             if (x['url'].indexOf('twitter.com') !== -1) {
                 x['social-media-class'] = 'twitter';
             }
-        });
 
-        console.log(array);
+            if (x['url'].indexOf('youtube.com') !== -1) {
+                x['social-media-class'] = 'youtube';
+            }
+        });
     }
 
     // Sets the image for the company's country flag

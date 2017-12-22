@@ -19,6 +19,8 @@
     position: relative;
 
     .company-name {
+      display: block;
+      width: 230px;
       text-decoration: underline;
       position: absolute;
       left: 8px;
@@ -105,6 +107,7 @@
 
   .search-result-controls {
     margin: auto;
+    height: 185px;
     width: 100%;
     padding: 10px 5% 0;
     position: fixed;
@@ -142,7 +145,7 @@
   }
 
   #companies-list-container {
-    margin-top: 227px;
+    margin-top: 233px;
     padding-bottom: 63px;
   }
 

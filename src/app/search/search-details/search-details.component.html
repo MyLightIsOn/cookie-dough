@@ -120,8 +120,10 @@
                 <a href="{{company['field_16_raw']['url']}}" target="_blank">{{company['field_16_raw']['url']}}</a>
             </span>  <br />
 
-            <h4>Business Hours</h4>
-            <div>{{company['field_17_raw']}}</div>
+            <div *ngIf="company['field_17_raw']">
+                <h4>Business Hours</h4>
+                <div>{{company['field_17_raw']}}</div>
+            </div>
         </section>
     </div>
 </div>
