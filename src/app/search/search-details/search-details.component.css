@@ -6,6 +6,8 @@
   background-color: #ffffff;
   min-height: 100%;
   padding: 50px 0 62px; }
+  .search-details-container hr {
+    margin: 20px auto; }
   .search-details-container .close-details {
     display: block;
     position: absolute;
@@ -21,6 +23,7 @@
     background-size: 35px; }
   .search-details-container header {
     position: fixed;
+    z-index: 10;
     top: 50px;
     height: 140px;
     width: 100%;
@@ -109,16 +112,25 @@
     top: 10px;
     right: 10px; }
 
-.social-media {
+.social-media,
+.email-address,
+.website-url,
+.phone-number {
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   display: block; }
-  .social-media a {
+  .social-media a,
+  .email-address a,
+  .website-url a,
+  .phone-number a {
     position: relative;
     left: 30px;
     top: 5px; }
 
-.social-media:after {
+.social-media:after,
+.email-address:after,
+.website-url:after,
+.phone-number:after {
   display: block;
   content: '';
   width: 25px;
@@ -126,6 +138,18 @@
   position: absolute;
   top: 0;
   left: 0; }
+
+.phone-number:after {
+  background: url("/assets/icons/ic_call_black_24dp_2x.png") no-repeat;
+  background-size: contain; }
+
+.website-url:after {
+  background: url("/assets/icons/ic_public_black_24dp_2x.png") no-repeat;
+  background-size: contain; }
+
+.email-address:after {
+  background: url("/assets/icons/ic_email_black_24dp_2x.png") no-repeat;
+  background-size: contain; }
 
 .facebook:after {
   background: url("/assets/icons/facebook.svg") no-repeat;

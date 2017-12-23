@@ -4,7 +4,7 @@
             <span class="close-details" (click)="closeDetails()"></span>
 
             <!-- Company Logo -->
-            <div class="company-logo-thumb-container">
+            <div *ngIf="company['field_5_raw']" class="company-logo-thumb-container">
                 <img src="{{company['field_5_raw']['thumb_url']}}" alt="{{company['field_3']}} Thumbnail Logo">
             </div>
             <div class="company-info-header-container">
@@ -78,6 +78,8 @@
             <!--  Map Toggle -->
             <span class="gallery-button">Map</span>
 
+            <hr />
+
             <!-- Company Website -->
             <span *ngIf="company['field_9']" class="website-url">
                 <a href="{{company['field_9_raw']['url']}}" target="_blank">{{company['field_9_raw']['url']}}</a>
@@ -103,8 +105,6 @@
                 <a href="{{company['field_13_raw']['formatted']}}" target="_blank">{{company['field_13_raw']['formatted']}}</a>
             </span>
 
-            <hr />
-
             <!-- Social Media 1 -->
             <span *ngIf="company['field_14']" class="social-media {{company['field_14_raw']['social-media-class']}}">
                 <a href="{{company['field_14_raw']['url']}}" target="_blank">{{company['field_14_raw']['url']}}</a>
@@ -122,7 +122,7 @@
 
             <div *ngIf="company['field_17_raw']">
                 <h4>Business Hours</h4>
-                <div>{{company['field_17_raw']}}</div>
+                <div [innerHTML]="company['field_17_raw']"></div>
             </div>
         </section>
     </div>
