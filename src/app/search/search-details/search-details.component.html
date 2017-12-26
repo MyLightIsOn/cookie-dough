@@ -1,4 +1,7 @@
 <div class="search-details-container">
+    <div *ngIf="!company">
+        <p>We could not find this company. Make sure the URL is correct</p>
+    </div>
     <div *ngIf="company">
         <header>
             <span class="close-details" (click)="closeDetails()"></span>

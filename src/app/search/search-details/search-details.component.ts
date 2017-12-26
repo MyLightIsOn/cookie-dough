@@ -23,13 +23,15 @@ export class SearchDetailsComponent implements OnInit {
     // Takes the company data that was returned in the resolver and sets it to company.
     ngOnInit() {
         this.company = this.route.snapshot.data['company'];
-        this.company['field_7_truncated'] = this.truncateDescription(this.company['field_7']);
-        this.company['country_flag'] = this.companyService.setFlag(this.company['field_4_raw']['country']);
-        this.companyService.setSocialMedia([
-            this.company['field_14_raw'],
-            this.company['field_15_raw'],
-            this.company['field_16_raw']
-        ]);
+        if (this.company) {
+            this.company['field_7_truncated'] = this.truncateDescription(this.company['field_7']);
+            this.company['country_flag'] = this.companyService.setFlag(this.company['field_4_raw']['country']);
+            this.companyService.setSocialMedia([
+                this.company['field_14_raw'],
+                this.company['field_15_raw'],
+                this.company['field_16_raw']
+            ]);
+        }
     }
 
     // Checks to see if the details page was visited first.

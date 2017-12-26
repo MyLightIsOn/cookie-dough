@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 
 import 'rxjs/add/observable/of';
@@ -23,6 +22,7 @@ export class CompaniesService {
     private createReviewStars(companies$: ICompany) {
 
         for (const company in companies$) {
+
             if (company) {
                 let reviewAvgParsed: string;
                 let reviewAvg: number = companies$[company]['field_32_raw'] % 1;
@@ -66,9 +66,10 @@ export class CompaniesService {
     // Used by the search resolver to find the selected company
     public getCompany(id) {
         const selectedCompany = this.companyData.find(company => company.id === id);
+        const selectedCompanyUrl = this.companyData.find(company => company['field_33_raw'] === id);
 
-        if (selectedCompany === undefined) {
-            return this.companyData.find(company => company['field_33_raw'] === id);
+        if (selectedCompanyUrl) {
+            return selectedCompanyUrl;
         } else {
             return selectedCompany;
         }

@@ -72,19 +72,15 @@ describe('CompaniesService', () => {
             [CompaniesService],
             (companiesService: CompaniesService) => {
                 companiesService.companyData = [
-                    { id: '0', field_3: 'company 1', field_4_raw: {}, field_29: true, field_32_raw: 0.1},
-                    { id: '1', field_3: 'company 2', field_4_raw: {}, field_29: true, field_32_raw: 0.4},
-                    { id: '2', field_3: 'company 3', field_4_raw: {}, field_29: true, field_32_raw: 0.5},
-                    { id: '3', field_3: 'company 4', field_4_raw: {}, field_29: true, field_32_raw: 0.7},
-                    { id: '4', field_3: 'company 5', field_4_raw: {}, field_29: true, field_32_raw: 1},
-                    { id: '5', field_3: 'company 6', field_4_raw: {}, field_29: true, field_32_raw: undefined}
+                    { id: '0', field_3: 'company 1', field_4_raw: {}, field_29: true, field_32_raw: 1},
+                    { id: '1', field_3: 'company 2', field_33_raw: 'test-1'},
                 ];
 
-                let selectedCompany = companiesService.getCompany('1');
-                expect(selectedCompany).toBe(companiesService.companyData[1]);
+                let selectedCompany = companiesService.getCompany('0');
+                expect(selectedCompany).toBe(companiesService.companyData[0]);
 
-                selectedCompany = companiesService.getCompany(6);
-                expect(selectedCompany).toBe(undefined);
+                selectedCompany = companiesService.getCompany('test-1');
+                expect(selectedCompany).toBe(companiesService.companyData[1]);
             }
         )
     );

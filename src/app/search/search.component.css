@@ -1,5 +1,6 @@
 #search-component {
   position: fixed;
+  width: 100%;
   top: 0;
   padding-top: 70px; }
   #search-component #homepage-title {
