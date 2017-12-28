@@ -25,5 +25,6 @@ export interface ICompany {
         field_32_raw: number; // Review Stars
         field_32_raw_image?: string; // This field is created by the CreateReviewStars method in CompaniesServices
         field_33?: string; // Company URL
+        field_34?: string; // Country name for sorting
     };
 }

@@ -157,5 +157,21 @@
     #search-results-container #pagination .page-navigation-container {
       display: flex;
       justify-content: center; }
+  #search-results-container .sort-type-button {
+    display: block;
+    width: 100px;
+    padding: 7px 0;
+    text-align: center;
+    border: 1px solid #000;
+    background-color: lightgray; }
+  #search-results-container .sort-list {
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0; }
+    #search-results-container .sort-list li {
+      list-style: none;
+      display: block;
+      padding: 14px 0;
+      border: 1px solid #000000; }
 
 /*# sourceMappingURL=search-results.component.css.map */

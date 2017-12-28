@@ -3,18 +3,20 @@ import {Component, OnInit} from '@angular/core';
 import { PaginationService } from '../../pagination/pagination.service';
 import { CompaniesService } from '../../companies/companies.service';
 import { FilterCompaniesPipe } from '../../_pipes/filter-companies.pipe';
+import { SortingPipe } from '../../_pipes/sorting.pipe';
 import { ICompany } from '../../_interfaces/companies';
 
 @Component({
     selector: 'app-search-results',
     templateUrl: './search-results.component.html',
     styleUrls: ['./search-results.component.scss'],
-    providers: [ PaginationService, FilterCompaniesPipe ]
+    providers: [ PaginationService, FilterCompaniesPipe, SortingPipe ]
 })
 export class SearchResultsComponent implements OnInit {
 
     constructor(private paginationService: PaginationService,
                 private filterCompaniesPipe: FilterCompaniesPipe,
+                private sortingCompaniesPipe: SortingPipe,
                 private companyService: CompaniesService
     ) { }
 
@@ -34,7 +36,7 @@ export class SearchResultsComponent implements OnInit {
     }
 
     // Checks to see if company URL is set. If not, then ID will be used.
-    setIdentifier(company: ICompany) {
+    public setIdentifier(company: ICompany) {
         if (company['field_33_raw'] !== undefined) {
             return company['field_33_raw'];
         } else {
@@ -43,7 +45,7 @@ export class SearchResultsComponent implements OnInit {
     }
 
     // Checks to see what page the search results were on if they user went to a company detail
-    paginationCheck(page: number) {
+    public paginationCheck(page: number) {
         if (page !== undefined) {
             this.setPage(page);
         }  else {
@@ -52,7 +54,7 @@ export class SearchResultsComponent implements OnInit {
     }
 
     // Create pagination based on the number of items in the array
-    setPage(page: number) {
+    public setPage(page: number) {
         this.companyService.paginationPage = page;
 
         if (this.filteredCompanies) {
@@ -66,5 +68,12 @@ export class SearchResultsComponent implements OnInit {
             // Get current page of items
             this.companiesArray = this.filteredCompanies.slice(this.pager.startIndex, this.pager.endIndex + 1);
         }
+        document.getElementById('app-container').scrollTo(0, 0);
+    }
+
+    // Uses the sorting pipe to sort the companies and then reset the pagination
+    public sortBy(sortType) {
+        this.companiesArray = this.filteredCompanies.sort(this.sortingCompaniesPipe.transform(sortType));
+        this.setPage(1);
     }
 }

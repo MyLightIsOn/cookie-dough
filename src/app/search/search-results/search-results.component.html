@@ -24,7 +24,13 @@
 
             </div>
             <div class="right-pagination">
-                <p>Sort Stuff Will Be Here</p>
+                <span class="sort-type-button">Sort Type</span>
+                <ul class="sort-list">
+                    <li (click)="sortBy('field_3')">Name</li>
+                    <li (click)="sortBy('field_34')">Country</li>
+                    <li (click)="sortBy('field_32_raw')">Stars</li>
+                    <li (click)="sortBy('field_31')"># Reviews</li>
+                </ul>
             </div>
             <!-- These might be useful later when search results get really long
 

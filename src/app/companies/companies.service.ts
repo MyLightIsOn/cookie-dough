@@ -57,6 +57,7 @@ export class CompaniesService {
     public getAllCompanies() {
         this.companyDataObservable = this.http.get(environment['BASEURL'] + '/companies').map((res) => {
             res = this.createReviewStars(res['records']);
+            res = this.setCountrySortName(res);
             this.companyData = res;
             return res;
         }).share();
@@ -105,7 +106,18 @@ export class CompaniesService {
     }
 
     // Sets the image for the company's country flag
-    public setFlag(text) {
+    public setFlag(text: string) {
         return text.replace(' ', '_').toLowerCase();
+    }
+
+    private setCountrySortName(companyData) {
+
+        for (const index in companyData) {
+            if (companyData[index]) {
+                const company = companyData[index];
+                company['field_34'] = company['field_4_raw']['country'];
+            }
+        }
+        return companyData;
     }
 }

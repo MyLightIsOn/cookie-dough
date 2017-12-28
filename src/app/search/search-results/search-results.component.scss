@@ -227,6 +227,28 @@
       justify-content: center;
     }
   }
+
+  .sort-type-button {
+    display: block;
+    width: 100px;
+    padding: 7px 0;
+    text-align: center;
+    border: 1px solid #000;
+    background-color: lightgray;
+  }
+
+  .sort-list {
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      list-style: none;
+      display: block;
+      padding: 14px 0;
+      border: 1px solid #000000;
+    }
+  }
 }
 
 
