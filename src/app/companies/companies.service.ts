@@ -17,6 +17,8 @@ export class CompaniesService {
     public companyData: any;
     public paginationPage: number;
     public startAtDetails: boolean;
+    public sortType = 'field_3';
+    public sortOrder = 'asc';
 
     // Uses the review average to create the appropriate number of stars
     private createReviewStars(companies$: ICompany) {

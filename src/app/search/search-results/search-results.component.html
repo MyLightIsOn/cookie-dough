@@ -2,7 +2,7 @@
     <div class="search-result-controls">
         <span class="searched-for">Searched: {{searchText}}</span>
         <div class="search-result-button-container">
-            <span routerLink="/search" class="search-result-button left">New Search</span>
+            <span (click)="resetData()" routerLink="/search" class="search-result-button left">New Search</span>
             <span class="search-result-button right">Filter Search</span>
         </div>
         <hr />
@@ -24,13 +24,17 @@
 
             </div>
             <div class="right-pagination">
-                <span class="sort-type-button">Sort Type</span>
-                <ul class="sort-list">
-                    <li (click)="sortBy('field_3')">Name</li>
-                    <li (click)="sortBy('field_34')">Country</li>
-                    <li (click)="sortBy('field_32_raw')">Stars</li>
-                    <li (click)="sortBy('field_31')"># Reviews</li>
-                </ul>
+                <div class="sort-container">
+                    <span class="sort-type-button" (click)="openSort()">{{sortTypeText}}</span>
+                    <ul class="sort-list" [ngClass]="{'sort-open': sortOpen}">
+                        <li (click)="sortBy('field_3', null, 1)">Name</li>
+                        <li (click)="sortBy('field_34', null, 1)">Country</li>
+                        <li (click)="sortBy('field_32_raw', null, 1)">Stars</li>
+                        <li (click)="sortBy('field_31', null, 1)"># Reviews</li>
+                    </ul>
+                    <span class="order-button" [ngClass]="{'asc': asc, 'desc': desc}" (click)="changeSortOrder()"></span>
+                </div>
+
             </div>
             <!-- These might be useful later when search results get really long
 

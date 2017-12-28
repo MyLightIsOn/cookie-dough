@@ -25,6 +25,10 @@ export class SearchResultsComponent implements OnInit {
     public filteredCompanies: any;
     public searchText: string;
     public currentPage: number;
+    public asc = true;
+    public desc = false;
+    public sortOpen = true;
+    public sortTypeText;
     private companyData: any;
 
     ngOnInit() {
@@ -32,7 +36,10 @@ export class SearchResultsComponent implements OnInit {
         this.searchText = this.companyService.searchValueText;
         this.companyData = this.companyService.companyData;
         this.filteredCompanies = this.filterCompaniesPipe.transform(this.companyData, this.searchText);
+        this.sortTypeText = this.companyService.sortType;
         this.paginationCheck(this.companyService.paginationPage);
+        this.openSort();
+        this.sortCheck();
     }
 
     // Checks to see if company URL is set. If not, then ID will be used.
@@ -72,8 +79,47 @@ export class SearchResultsComponent implements OnInit {
     }
 
     // Uses the sorting pipe to sort the companies and then reset the pagination
-    public sortBy(sortType) {
-        this.companiesArray = this.filteredCompanies.sort(this.sortingCompaniesPipe.transform(sortType));
-        this.setPage(1);
+    public sortBy(sortType: string, order: string, page: number) {
+        if (this.filteredCompanies) {
+            this.companyService.sortType = sortType;
+            this.companiesArray = this.filteredCompanies.sort(this.sortingCompaniesPipe.transform(sortType, order));
+            this.sortTypeText = this.companyService.sortType;
+            this.sortOpen = false;
+            this.setPage(page);
+        }
     }
+
+    // Changes teh sorting order
+    public changeSortOrder() {
+        this.asc = !this.asc;
+        this.desc = !this.desc;
+
+        // Ascending
+        if (this.asc === true) {
+            this.companyService.sortOrder = 'asc';
+            this.sortBy(this.companyService.sortType, 'asc', this.companyService.paginationPage);
+
+        // Descending
+        } else {
+            this.companyService.sortOrder = 'desc';
+            this.sortBy(this.companyService.sortType, 'desc', this.companyService.paginationPage);
+        }
+    }
+
+
+    // Checks to see if the array was sorted
+    private sortCheck() {
+        this.sortBy(this.companyService.sortType, this.companyService.sortOrder, this.companyService.paginationPage);
+    }
+
+    public openSort() {
+        this.sortOpen = !this.sortOpen;
+    }
+
+    public resetData() {
+        this.sortOpen = false;
+        this.companyService.sortType = 'field_3';
+        this.companyService.sortOrder = 'asc';
+        this.companyService.paginationPage = 1;
+    };
 }

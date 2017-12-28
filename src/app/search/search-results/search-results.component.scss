@@ -150,7 +150,6 @@
   }
 
   #pagination {
-    width: 90%;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -228,9 +227,16 @@
     }
   }
 
+  .sort-container {
+    position: relative;
+    width: 139px;
+    margin: 20px auto 0;
+  }
+
   .sort-type-button {
     display: block;
     width: 100px;
+    height: 34px;
     padding: 7px 0;
     text-align: center;
     border: 1px solid #000;
@@ -238,16 +244,51 @@
   }
 
   .sort-list {
-    background-color: #ffffff;
+    display: none;
+  }
+
+  .sort-list.sort-open {
+    display: block;
     margin: 0;
     padding: 0;
+    width: 200px;
+    position: relative;
+    right: 62px;
     
     li {
       list-style: none;
       display: block;
       padding: 14px 0;
       border: 1px solid #000000;
+      background-color: #ffffff;
     }
+  }
+
+  .order-button {
+    display: block;
+    border: 1px solid #000;
+    width: 39px;
+    height: 34px;
+    position: absolute;
+    top: 0;
+    right: 1px;
+    background-color: #ffffff;
+  }
+
+  .order-button:after {
+    content: '';
+    width: 50px;
+    height: 50px;
+  }
+
+  .asc:after {
+    display: block;
+    background: url("/assets/icons/ic_arrow_drop_down_black_24dp_2x.png") -6px -8px  no-repeat;
+  }
+
+  .desc:after {
+    display: block;
+    background: url("/assets/icons/ic_arrow_drop_up_black_24dp_2x.png") -6px -8px  no-repeat;
   }
 }
 
