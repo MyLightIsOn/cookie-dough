@@ -55,18 +55,6 @@ describe('CompaniesService', () => {
     );
 
     it(
-        'should set text string',
-        inject(
-            [CompaniesService],
-            (companiesService: CompaniesService) => {
-
-                companiesService.searchValue('test');
-                expect(companiesService.searchValueText).toBe('test');
-            }
-        )
-    );
-
-    it(
         'should return the selected company',
         inject(
             [CompaniesService],
@@ -143,6 +131,25 @@ describe('CompaniesService', () => {
 
                 const noSpaces = companiesService.setFlag(countryName);
                 expect(noSpaces).toBe('hong_kong');
+            }
+        )
+    );
+
+    it(
+        'should return country data with new field',
+        inject(
+            [CompaniesService],
+            (companiesService: CompaniesService) => {
+                const mockCompanies = [
+                    {
+                        field_4_raw: {
+                            country: 'Hong Kong'
+                        }
+                    },
+                ];
+
+                companiesService.setCountrySortName(mockCompanies);
+                expect(mockCompanies[0]['field_34']).toBe('Hong Kong');
             }
         )
     );

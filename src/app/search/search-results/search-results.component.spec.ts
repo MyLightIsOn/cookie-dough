@@ -1,11 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { SearchResultsComponent } from './search-results.component';
 
 import { Pipe, PipeTransform } from '@angular/core';
 import { CompaniesService } from '../../companies/companies.service';
-import { PaginationService } from '../../pagination/pagination.service';
+import { SearchService } from '../search.service';
 
 @Pipe({
     name: 'filter'
@@ -17,29 +17,53 @@ export class MockFilterPipe implements PipeTransform {
     }
 }
 
+const dataArray = [
+    { id: '0', field_3: 'company 1', field_4_raw: {}, field_29: true, field_32_raw: 0.1},
+    { id: '1', field_3: 'company 2', field_4_raw: {}, field_29: true, field_32_raw: 0.4},
+    { id: '2', field_3: 'company 3', field_4_raw: {}, field_29: true, field_32_raw: 0.5},
+    { id: '3', field_3: 'company 4', field_4_raw: {}, field_29: true, field_32_raw: 0.7},
+    { id: '4', field_3: 'company 5', field_4_raw: {}, field_29: true, field_32_raw: 1},
+    { id: '5', field_3: 'company 6', field_4_raw: {}, field_29: true, field_32_raw: undefined},
+    { id: '0', field_3: 'company 1', field_4_raw: {}, field_29: true, field_32_raw: 0.1},
+    { id: '1', field_3: 'company 2', field_4_raw: {}, field_29: true, field_32_raw: 0.4},
+    { id: '2', field_3: 'company 3', field_4_raw: {}, field_29: true, field_32_raw: 0.5},
+    { id: '3', field_3: 'company 4', field_4_raw: {}, field_29: true, field_32_raw: 0.7},
+    { id: '4', field_3: 'company 5', field_4_raw: {}, field_29: true, field_32_raw: 1},
+    { id: '5', field_3: 'company 6', field_4_raw: {}, field_29: true, field_32_raw: undefined},
+    { id: '0', field_3: 'company 1', field_4_raw: {}, field_29: true, field_32_raw: 0.1},
+    { id: '1', field_3: 'company 2', field_4_raw: {}, field_29: true, field_32_raw: 0.4},
+    { id: '2', field_3: 'company 3', field_4_raw: {}, field_29: true, field_32_raw: 0.5},
+    { id: '3', field_3: 'company 4', field_4_raw: {}, field_29: true, field_32_raw: 0.7},
+    { id: '4', field_3: 'company 5', field_4_raw: {}, field_29: true, field_32_raw: 1},
+    { id: '5', field_3: 'company 6', field_4_raw: {}, field_29: true, field_32_raw: undefined}
+];
+
+
 const mockCompanyService = {
     startAtDetails: true,
-    companyDataObservable: {},
+    companyData: dataArray,
+    companyDataObservable: dataArray,
     setFlag: jasmine.createSpy('setFlag'),
-    setSocialMedia: jasmine.createSpy('setSocialMedia')
+    setSocialMedia: jasmine.createSpy('setSocialMedia'),
+    getCompany: jasmine.createSpy('getCompany')
 };
 
-const mockPaginationService = {
-    getPager: jasmine.createSpy('getPager'),
-};
-
-describe('SearchResultsComponent', () => {
+describe('SearchResultsComponent with two pages', () => {
     let component: SearchResultsComponent;
     let fixture: ComponentFixture<SearchResultsComponent>;
+
+    const appConatiner = '<div id="app-container"></div>';
+
+    document.body.insertAdjacentHTML(
+        'afterbegin',
+        appConatiner);
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [ RouterTestingModule ],
             declarations: [ SearchResultsComponent, MockFilterPipe ],
-            providers: [ CompaniesService,
+            providers: [ SearchService,
                 { provide: CompaniesService, useValue: mockCompanyService },
-                PaginationService,
-                { provide: PaginationService, useValue: mockPaginationService },
             ]
         })
             .compileComponents();
@@ -50,6 +74,7 @@ describe('SearchResultsComponent', () => {
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
+
 
     it('should create search result component', () => {
         expect(component).toBeTruthy();
@@ -79,14 +104,49 @@ describe('SearchResultsComponent', () => {
         expect(component.setPage).toHaveBeenCalledWith(1);
     });
 
-    it('will create pagination based on number of companies', () => {
-        component.filteredCompanies = [1, 2, 3];
-        component.pager['totalpages'] = -1;
+    it('will set the pagination page', () => {
         component.setPage(0);
+        expect(component.pager['currentPage']).toBe(1);
 
-        component.pager['totalpages'] = 2;
         component.setPage(2);
-
         expect(component.pager['currentPage']).toBe(2);
     });
+
+    it('should change the sort order', inject([SearchService], (mockSearchService: SearchService) => {
+        spyOn(component, 'sortBy');
+        mockSearchService.sortType = 'field_3';
+        mockSearchService.sortOrder = 'desc';
+        mockSearchService.paginationPage = 2;
+
+        component.asc = true;
+        component.desc = false;
+
+        component.changeSortOrder();
+        expect(component.asc).toBeFalsy();
+        expect(component.desc).toBeTruthy();
+        expect(component.sortBy).toHaveBeenCalledWith(
+            mockSearchService.sortType,
+            mockSearchService.sortOrder,
+            mockSearchService.paginationPage);
+
+        component.changeSortOrder();
+        expect(component.asc).toBeTruthy();
+        expect(component.desc).toBeFalsy();
+        expect(component.sortBy).toHaveBeenCalledWith(
+            mockSearchService.sortType,
+            mockSearchService.sortOrder,
+            mockSearchService.paginationPage);
+    }));
+
+    it('should reset all sort data', inject([SearchService], (mockSearchService: SearchService) => {
+        component.sortOpen = true;
+        mockSearchService.paginationPage = 2;
+
+        component.resetData();
+        expect(component.sortOpen).toBeFalsy();
+        expect(mockSearchService.sortType).toBe('field_3');
+        expect(mockSearchService.sortOrder).toBe('asc');
+        expect(mockSearchService.paginationPage).toBe(1);
+    }));
 });
+

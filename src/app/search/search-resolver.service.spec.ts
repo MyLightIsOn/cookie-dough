@@ -1,12 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { Router, Resolve, RouterStateSnapshot,
+import { Router, RouterStateSnapshot,
     ActivatedRouteSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+
 
 import { SearchResolverService } from './search-resolver.service';
 import { CompaniesService } from '../companies/companies.service';
+import { SearchService } from './search.service';
 
 
 const router = {
@@ -49,6 +50,10 @@ const mockCompanyService2 = {
     getCompany: jasmine.createSpy('getCompany')
 };
 
+const mockSearchService = {
+    startAtDetails: true,
+};
+
 const fakeRoute = new ActivatedRouteSnapshot();
 
 let mockSnapshot: RouterStateSnapshot;
@@ -57,7 +62,8 @@ describe('SearchResolverService with data', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [ RouterTestingModule, HttpClientModule ],
-            providers: [ SearchResolverService, CompaniesService,
+            providers: [ SearchResolverService, CompaniesService, SearchService,
+                { provide: SearchService, useValue: mockSearchService },
                 { provide: CompaniesService, useValue: mockCompanyService },
                 { provide: Router, useValue: router },
                 { provide: ActivatedRouteSnapshot, useValue: snapshot },
@@ -79,7 +85,8 @@ describe('SearchResolverService without data', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [ RouterTestingModule, HttpClientModule ],
-            providers: [ SearchResolverService, CompaniesService,
+            providers: [ SearchResolverService, CompaniesService, SearchService,
+                { provide: SearchService, useValue: mockSearchService },
                 { provide: CompaniesService, useValue: mockCompanyService2 },
                 { provide: Router, useValue: router },
                 { provide: ActivatedRouteSnapshot, useValue: snapshot },

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 import { PaginationService } from '../../pagination/pagination.service';
 import { CompaniesService } from '../../companies/companies.service';
+import { SearchService } from '../search.service';
 import { FilterCompaniesPipe } from '../../_pipes/filter-companies.pipe';
 import { SortingPipe } from '../../_pipes/sorting.pipe';
 import { ICompany } from '../../_interfaces/companies';
@@ -17,7 +18,8 @@ export class SearchResultsComponent implements OnInit {
     constructor(private paginationService: PaginationService,
                 private filterCompaniesPipe: FilterCompaniesPipe,
                 private sortingCompaniesPipe: SortingPipe,
-                private companyService: CompaniesService
+                private companyService: CompaniesService,
+                public searchService: SearchService
     ) { }
 
     public companiesArray: any;
@@ -33,11 +35,11 @@ export class SearchResultsComponent implements OnInit {
 
     ngOnInit() {
         // Uses the company service properties to set this components properties
-        this.searchText = this.companyService.searchValueText;
+        this.searchText = this.searchService.searchValueText;
         this.companyData = this.companyService.companyData;
         this.filteredCompanies = this.filterCompaniesPipe.transform(this.companyData, this.searchText);
-        this.sortTypeText = this.companyService.sortType;
-        this.paginationCheck(this.companyService.paginationPage);
+        this.sortTypeText = this.searchService.sortType;
+        this.paginationCheck(this.searchService.paginationPage);
         this.openSort();
         this.sortCheck();
     }
@@ -62,7 +64,7 @@ export class SearchResultsComponent implements OnInit {
 
     // Create pagination based on the number of items in the array
     public setPage(page: number) {
-        this.companyService.paginationPage = page;
+        this.searchService.paginationPage = page;
 
         if (this.filteredCompanies) {
             if (page < 1 || page > this.pager.totalPages) {
@@ -81,9 +83,9 @@ export class SearchResultsComponent implements OnInit {
     // Uses the sorting pipe to sort the companies and then reset the pagination
     public sortBy(sortType: string, order: string, page: number) {
         if (this.filteredCompanies) {
-            this.companyService.sortType = sortType;
+            this.searchService.sortType = sortType;
             this.companiesArray = this.filteredCompanies.sort(this.sortingCompaniesPipe.transform(sortType, order));
-            this.sortTypeText = this.companyService.sortType;
+            this.sortTypeText = this.searchService.sortType;
             this.sortOpen = false;
             this.setPage(page);
         }
@@ -96,30 +98,33 @@ export class SearchResultsComponent implements OnInit {
 
         // Ascending
         if (this.asc === true) {
-            this.companyService.sortOrder = 'asc';
-            this.sortBy(this.companyService.sortType, 'asc', this.companyService.paginationPage);
+            this.searchService.sortOrder = 'asc';
+            this.sortBy(this.searchService.sortType, 'asc', this.searchService.paginationPage);
 
         // Descending
         } else {
-            this.companyService.sortOrder = 'desc';
-            this.sortBy(this.companyService.sortType, 'desc', this.companyService.paginationPage);
+            this.searchService.sortOrder = 'desc';
+            this.sortBy(this.searchService.sortType, 'desc', this.searchService.paginationPage);
         }
     }
 
 
     // Checks to see if the array was sorted
     private sortCheck() {
-        this.sortBy(this.companyService.sortType, this.companyService.sortOrder, this.companyService.paginationPage);
+        this.sortBy(this.searchService.sortType, this.searchService.sortOrder, this.searchService.paginationPage);
     }
 
+
+    // Toggles the sorting list dropdown
     public openSort() {
         this.sortOpen = !this.sortOpen;
     }
 
+    // Clears the sorting data
     public resetData() {
         this.sortOpen = false;
-        this.companyService.sortType = 'field_3';
-        this.companyService.sortOrder = 'asc';
-        this.companyService.paginationPage = 1;
-    };
+        this.searchService.sortType = 'field_3';
+        this.searchService.sortOrder = 'asc';
+        this.searchService.paginationPage = 1;
+    }
 }

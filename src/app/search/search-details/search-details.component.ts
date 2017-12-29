@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { ICompany } from '../../_interfaces/companies';
 import { CompaniesService } from '../../companies/companies.service';
+import { SearchService } from '../search.service';
 
 @Component({
     selector: 'app-search-details',
@@ -17,7 +18,8 @@ export class SearchDetailsComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private companyService: CompaniesService,
-        private router: Router
+        private router: Router,
+        private searchService: SearchService
     ) { }
 
     // Takes the company data that was returned in the resolver and sets it to company.
@@ -38,8 +40,8 @@ export class SearchDetailsComponent implements OnInit {
     // If so, closing details takes the user to the homepage and if not
     // the user goes back to teh serach results.
     closeDetails() {
-        if (this.companyService.startAtDetails === true) {
-            this.companyService.startAtDetails = false;
+        if (this.searchService.startAtDetails === true) {
+            this.searchService.startAtDetails = false;
             this.router.navigate(['/']);
         } else {
             this.router.navigate(['/search-results']);

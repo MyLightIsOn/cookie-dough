@@ -15,6 +15,7 @@ export class PaginationService {
           startPage = 1;
           endPage = totalPages;
       } else {
+
           // more than 10 total pages so calculate start and end pages
           if (currentPage <= 6) {
               startPage = 1;

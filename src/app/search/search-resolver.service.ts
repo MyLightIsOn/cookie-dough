@@ -1,16 +1,17 @@
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import { Injectable } from '@angular/core';
-import { Router, Resolve, RouterStateSnapshot,
+import { Resolve, RouterStateSnapshot,
     ActivatedRouteSnapshot } from '@angular/router';
 
 import { CompaniesService } from '../companies/companies.service';
+import { SearchService } from './search.service';
 import { ICompany } from '../_interfaces/companies';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class SearchResolverService  implements Resolve<any> {
-    constructor(private companyService: CompaniesService, private router: Router) {}
+    constructor(private companyService: CompaniesService, private searchService: SearchService) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ICompany> {
 
@@ -22,7 +23,7 @@ export class SearchResolverService  implements Resolve<any> {
             return this.companyService.getCompany(id);
         } else {
             return this.companyService.companyDataObservable.map(companyArray => {
-                this.companyService.startAtDetails = true;
+                this.searchService.startAtDetails = true;
                 return this.companyService.getCompany(id);
             });
         }

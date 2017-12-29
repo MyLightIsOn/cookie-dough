@@ -6,6 +6,7 @@ import { SearchComponent } from './search.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchDetailsComponent } from './search-details/search-details.component';
 import { SearchRoutingModule } from './search-routing.module';
+import { SearchService } from './search.service';
 
 import { FilterCompaniesPipe } from '../_pipes/filter-companies.pipe';
 
@@ -21,7 +22,8 @@ import { FilterCompaniesPipe } from '../_pipes/filter-companies.pipe';
         SearchDetailsComponent,
     ],
     providers: [
-        FilterCompaniesPipe
+        FilterCompaniesPipe,
+        SearchService
     ]
 })
 export class SearchModule {}

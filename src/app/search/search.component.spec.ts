@@ -4,7 +4,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
 
 import { SearchComponent } from './search.component';
-import { CompaniesService } from '../companies/companies.service';
+import { SearchService } from './search.service';
 
 const mockCompanyService = {
     searchValue: jasmine.createSpy('searchValue')
@@ -18,8 +18,8 @@ describe('SearchComponent', () => {
         TestBed.configureTestingModule({
             declarations: [ SearchComponent ],
             imports: [ RouterTestingModule, HttpClientTestingModule, FormsModule ],
-            providers: [ CompaniesService,
-                { provide: CompaniesService, useValue: mockCompanyService }
+            providers: [ SearchService,
+                { provide: SearchService, useValue: mockCompanyService }
             ]
         }).compileComponents();
     }));
@@ -37,12 +37,12 @@ describe('SearchComponent', () => {
     it(
         'should set paginationPage to undefined',
         inject(
-            [CompaniesService],
-            (companiesService: CompaniesService) => {
+            [SearchService],
+            (searchService: SearchService) => {
 
-                companiesService.paginationPage = 1;
+                searchService.paginationPage = 1;
                 component.ngOnInit();
-                expect(companiesService.paginationPage).toBeUndefined();
+                expect(searchService.paginationPage).toBeUndefined();
             }
         )
     );

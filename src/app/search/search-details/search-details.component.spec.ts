@@ -5,14 +5,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { SearchDetailsComponent } from './search-details.component';
 import { CompaniesService } from '../../companies/companies.service';
-
+import { SearchService } from '../search.service';
 
 
 const mockCompanyService = {
-    startAtDetails: true,
     companyDataObservable: {},
     setFlag: jasmine.createSpy('setFlag'),
     setSocialMedia: jasmine.createSpy('setSocialMedia')
+};
+
+const mockSearchService = {
+    startAtDetails: true,
 };
 
 const company = {
@@ -53,6 +56,7 @@ describe('SearchDetailsComponent', () => {
             imports: [ RouterTestingModule, HttpClientModule ],
             declarations: [ SearchDetailsComponent ],
             providers: [ CompaniesService,
+                { provide: SearchService, useValue: mockSearchService },
                 { provide: CompaniesService, useValue: mockCompanyService },
                 { provide: ActivatedRoute, useValue: route },
                 { provide: Router, useValue: router }

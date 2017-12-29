@@ -13,12 +13,7 @@ export class CompaniesService {
     constructor(private http: HttpClient) {}
 
     public companyDataObservable;
-    public searchValueText: string;
     public companyData: any;
-    public paginationPage: number;
-    public startAtDetails: boolean;
-    public sortType = 'field_3';
-    public sortOrder = 'asc';
 
     // Uses the review average to create the appropriate number of stars
     private createReviewStars(companies$: ICompany) {
@@ -48,11 +43,6 @@ export class CompaniesService {
 
         }
         return (companies$);
-    }
-
-    // Sets the text entered into search
-    public searchValue(text: string) {
-        this.searchValueText = text;
     }
 
     // Returns an Observable after making an HTTP request and creating review stars
@@ -112,7 +102,7 @@ export class CompaniesService {
         return text.replace(' ', '_').toLowerCase();
     }
 
-    private setCountrySortName(companyData) {
+    public setCountrySortName(companyData) {
 
         for (const index in companyData) {
             if (companyData[index]) {

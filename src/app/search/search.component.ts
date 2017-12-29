@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import { CompaniesService } from '../companies/companies.service';
+import { SearchService } from './search.service';
 
 @Component({
     selector: 'app-search',
@@ -14,10 +14,10 @@ export class SearchComponent implements OnInit {
     public searchStarted = false;
     public searchSubmitted = false;
 
-    constructor(private companyService: CompaniesService) {}
+    constructor(private searchService: SearchService) {}
 
     ngOnInit() {
-        this.companyService.paginationPage = undefined;
+        this.searchService.paginationPage = undefined;
     }
 
     // Shifts search box;
@@ -28,6 +28,6 @@ export class SearchComponent implements OnInit {
     // Submits search, unhides search results
     searchSubmit() {
         const inputElement = <HTMLInputElement>document.getElementById('main-search');
-        this.companyService.searchValue(inputElement.value);
+        this.searchService.searchValue(inputElement.value);
     }
 }
