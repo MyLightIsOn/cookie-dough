@@ -148,5 +148,19 @@ describe('SearchResultsComponent with two pages', () => {
         expect(mockSearchService.sortOrder).toBe('asc');
         expect(mockSearchService.paginationPage).toBe(1);
     }));
+
+    it('will set the sort dropdown', () => {
+        component.sortTypeText = 'field_3';
+        expect(component.setSortName()).toBe('Name');
+
+        component.sortTypeText = 'field_34';
+        expect(component.setSortName()).toBe('Country');
+
+        component.sortTypeText = 'field_32_raw';
+        expect(component.setSortName()).toBe('Stars');
+
+        component.sortTypeText = 'field_31';
+        expect(component.setSortName()).toBe('Reviews');
+    });
 });
 

@@ -127,4 +127,22 @@ export class SearchResultsComponent implements OnInit {
         this.searchService.sortOrder = 'asc';
         this.searchService.paginationPage = 1;
     }
+
+    public setSortName() {
+        if (this.sortTypeText === 'field_3') {
+            return 'Name';
+        }
+
+        if (this.sortTypeText === 'field_34') {
+            return 'Country';
+        }
+
+        if (this.sortTypeText === 'field_32_raw') {
+            return 'Stars';
+        }
+
+        if (this.sortTypeText === 'field_31') {
+            return 'Reviews';
+        }
+    }
 }
