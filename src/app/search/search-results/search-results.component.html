@@ -27,12 +27,12 @@
                 <div class="sort-container">
                     <span class="sort-type-button" (click)="openSort()">{{setSortName()}}</span>
                     <ul class="sort-list" [ngClass]="{'sort-open': sortOpen}">
-                        <li (click)="sortBy('field_3', null, 1)">Name</li>
-                        <li (click)="sortBy('field_34', null, 1)">Country</li>
-                        <li (click)="sortBy('field_32_raw', null, 1)">Stars</li>
-                        <li (click)="sortBy('field_31', null, 1)"># Reviews</li>
+                        <li (click)="sortBy('field_3', this.searchService.sortOrder, 1)">Name</li>
+                        <li (click)="sortBy('field_34', this.searchService.sortOrder, 1)">Country</li>
+                        <li (click)="sortBy('field_32_raw', this.searchService.sortOrder, 1)">Stars</li>
+                        <li (click)="sortBy('field_31', this.searchService.sortOrder, 1)"># Reviews</li>
                     </ul>
-                    <span class="order-button" [ngClass]="{'asc': asc, 'desc': desc}" (click)="changeSortOrder()"></span>
+                    <span class="order-button" [ngClass]="{'desc': desc}" (click)="changeSortOrder()"></span>
                 </div>
 
             </div>

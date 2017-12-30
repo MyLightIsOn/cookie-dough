@@ -4,20 +4,20 @@ import { PaginationService } from '../../pagination/pagination.service';
 import { CompaniesService } from '../../companies/companies.service';
 import { SearchService } from '../search.service';
 import { FilterCompaniesPipe } from '../../_pipes/filter-companies.pipe';
-import { SortingPipe } from '../../_pipes/sorting.pipe';
 import { ICompany } from '../../_interfaces/companies';
+
+import * as _ from 'lodash';
 
 @Component({
     selector: 'app-search-results',
     templateUrl: './search-results.component.html',
     styleUrls: ['./search-results.component.scss'],
-    providers: [ PaginationService, FilterCompaniesPipe, SortingPipe ]
+    providers: [ PaginationService, FilterCompaniesPipe ]
 })
 export class SearchResultsComponent implements OnInit {
 
     constructor(private paginationService: PaginationService,
                 private filterCompaniesPipe: FilterCompaniesPipe,
-                private sortingCompaniesPipe: SortingPipe,
                 private companyService: CompaniesService,
                 public searchService: SearchService
     ) { }
@@ -25,10 +25,10 @@ export class SearchResultsComponent implements OnInit {
     public companiesArray: any;
     public pager: any = {};
     public filteredCompanies: any;
+    public sortedCompanies: any;
     public searchText: string;
     public currentPage: number;
-    public asc = true;
-    public desc = false;
+    public desc: boolean;
     public sortOpen = true;
     public sortTypeText;
     private companyData: any;
@@ -39,9 +39,9 @@ export class SearchResultsComponent implements OnInit {
         this.companyData = this.companyService.companyData;
         this.filteredCompanies = this.filterCompaniesPipe.transform(this.companyData, this.searchText);
         this.sortTypeText = this.searchService.sortType;
-        this.paginationCheck(this.searchService.paginationPage);
         this.openSort();
         this.sortCheck();
+        this.paginationCheck(this.searchService.paginationPage);
     }
 
     // Checks to see if company URL is set. If not, then ID will be used.
@@ -66,16 +66,16 @@ export class SearchResultsComponent implements OnInit {
     public setPage(page: number) {
         this.searchService.paginationPage = page;
 
-        if (this.filteredCompanies) {
+        if (this.sortedCompanies) {
             if (page < 1 || page > this.pager.totalPages) {
                 return;
             }
 
             // Get pager object from service
-            this.pager = this.paginationService.getPager(this.filteredCompanies.length, page);
+            this.pager = this.paginationService.getPager(this.sortedCompanies.length, page);
 
             // Get current page of items
-            this.companiesArray = this.filteredCompanies.slice(this.pager.startIndex, this.pager.endIndex + 1);
+            this.companiesArray = this.sortedCompanies.slice(this.pager.startIndex, this.pager.endIndex + 1);
         }
         document.getElementById('app-container').scrollTo(0, 0);
     }
@@ -84,33 +84,36 @@ export class SearchResultsComponent implements OnInit {
     public sortBy(sortType: string, order: string, page: number) {
         if (this.filteredCompanies) {
             this.searchService.sortType = sortType;
-            this.companiesArray = this.filteredCompanies.sort(this.sortingCompaniesPipe.transform(sortType, order));
+            this.sortedCompanies = _.orderBy(this.filteredCompanies, [function(o) {return o[sortType]; }], [order]);
             this.sortTypeText = this.searchService.sortType;
             this.sortOpen = false;
             this.setPage(page);
         }
     }
 
-    // Changes teh sorting order
+    // Changes the sorting order
     public changeSortOrder() {
-        this.asc = !this.asc;
         this.desc = !this.desc;
 
         // Ascending
-        if (this.asc === true) {
+        if (this.desc === false) {
             this.searchService.sortOrder = 'asc';
-            this.sortBy(this.searchService.sortType, 'asc', this.searchService.paginationPage);
+            this.sortBy(this.searchService.sortType, this.searchService.sortOrder, this.searchService.paginationPage);
 
         // Descending
         } else {
             this.searchService.sortOrder = 'desc';
-            this.sortBy(this.searchService.sortType, 'desc', this.searchService.paginationPage);
+            this.sortBy(this.searchService.sortType, this.searchService.sortOrder, this.searchService.paginationPage);
         }
     }
 
 
     // Checks to see if the array was sorted
     private sortCheck() {
+        if (this.searchService.sortOrder === 'desc') {
+            this.desc = true;
+        }
+
         this.sortBy(this.searchService.sortType, this.searchService.sortOrder, this.searchService.paginationPage);
     }
 

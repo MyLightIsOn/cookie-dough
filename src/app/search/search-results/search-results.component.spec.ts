@@ -118,11 +118,7 @@ describe('SearchResultsComponent with two pages', () => {
         mockSearchService.sortOrder = 'desc';
         mockSearchService.paginationPage = 2;
 
-        component.asc = true;
-        component.desc = false;
-
         component.changeSortOrder();
-        expect(component.asc).toBeFalsy();
         expect(component.desc).toBeTruthy();
         expect(component.sortBy).toHaveBeenCalledWith(
             mockSearchService.sortType,
@@ -130,7 +126,6 @@ describe('SearchResultsComponent with two pages', () => {
             mockSearchService.paginationPage);
 
         component.changeSortOrder();
-        expect(component.asc).toBeTruthy();
         expect(component.desc).toBeFalsy();
         expect(component.sortBy).toHaveBeenCalledWith(
             mockSearchService.sortType,

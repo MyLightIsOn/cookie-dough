@@ -16,7 +16,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { DialogService } from './dialogs/dialog.service';
 import { FilterCompaniesPipe } from './_pipes/filter-companies.pipe';
-import { SortingPipe } from './_pipes/sorting.pipe';
 
 
 @NgModule({
@@ -25,8 +24,7 @@ import { SortingPipe } from './_pipes/sorting.pipe';
         RegisterComponent,
         PageNotFoundComponent,
         LoginComponent,
-        FilterCompaniesPipe,
-        SortingPipe
+        FilterCompaniesPipe
     ],
     imports: [
         BrowserAnimationsModule,
