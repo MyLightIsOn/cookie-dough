@@ -8,8 +8,8 @@ const app = express();
 
 app.use(express.static(__dirname + '/dist'));
 app.use('/', express.static('app', { redirect: false }));
-app.get('*', function (req, res, next) {
-    res.sendFile(path.resolve('app/index.html'));
+app.get('*', function (req, res) {
+    res.sendfile('./dist/index.html'); // load our index.html file
 });
 
 // Start the app by listening on the default
