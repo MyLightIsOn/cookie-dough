@@ -1,3 +1,6 @@
+@import '../sass/variables';
+@import '../sass/mixins';
+
 /*
 The styles in this stylesheet are general styles that
 apply to the whole app. Specific component styles will
@@ -11,7 +14,7 @@ nav {
   width: 100%;
   position: fixed;
   top: 0;
-  background-color: #ffffff;
+  background-color: $dark-blue;
   z-index: 10;
 
   .header-logo {
@@ -19,15 +22,23 @@ nav {
     left: 10px;
     top: 10px;
     width: 30px;
-    height: 30px;
-    border: 1px solid #000000;
   }
 
   .header-logo-name {
+    color: $white;
+    font-family: $montserrat;
     position: absolute;
-    font-weight: bold;
-    left: 50px;
+    left: 45px;
     top: 17px;
+  }
+
+  .drop-shadow-effect {
+    display: block;
+    width: 100%;
+    position: absolute;
+    bottom: -8px;
+    height: 7px;
+    @include box-shadow;
   }
 }
 
