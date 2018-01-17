@@ -5,31 +5,43 @@
   padding-top: 70px; }
   #search-component #homepage-title {
     text-align: center;
-    font-weight: bold;
-    font-size: 20px;
+    color: #F9FCFE;
     width: 90%;
-    margin: 15px auto 0;
-    line-height: 26px; }
+    margin: 0 auto -10px; }
     #search-component #homepage-title span {
+      font-size: 17px;
+      line-height: 26px;
+      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
       transition: 0.5s; }
     #search-component #homepage-title span.searchStarted {
       opacity: 0; }
+    #search-component #homepage-title .search-logo-container {
+      color: #F9FCFE; }
+      #search-component #homepage-title .search-logo-container .search-logo {
+        width: 24%;
+        max-width: 102px; }
+      #search-component #homepage-title .search-logo-container h4 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 20px;
+        margin: -5px 0 15px;
+        padding: 0;
+        text-shadow: 0 4px 3px rgba(0, 0, 0, 0.4), 0 8px 13px rgba(0, 0, 0, 0.1), 0 18px 23px rgba(0, 0, 0, 0.1); }
   #search-component .search-help {
     display: block;
     margin: 30px auto 5px;
     width: 90%;
     position: relative;
     transition: 0.5s;
-    top: 0; }
+    top: 0;
+    color: #F9FCFE; }
   #search-component #main-search-container {
     position: relative;
     z-index: 0; }
     #search-component #main-search-container #main-search {
-      border: 1px solid #000000;
       display: block;
       margin: auto;
       width: 90%;
-      padding: 14px 10px;
+      padding: 13px 10px;
       font-size: 17px;
       position: relative;
       transition: 0.5s;
@@ -38,24 +50,26 @@
       top: -60px; }
     #search-component #main-search-container .search-button {
       display: block;
-      margin: 20px auto 0;
-      padding: 14px 0;
-      width: 90%;
-      position: relative;
-      text-align: center;
-      font-weight: bold;
-      border: 1px solid #000;
-      background-color: lightgray;
-      transition: 0.5s opacity, top;
-      top: 0;
-      opacity: 0; }
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      color: #F9FCFE;
+      background-color: #FF9018;
+      transition: 0.5s bottom;
+      bottom: 0;
+      right: 5%; }
+    #search-component #main-search-container .search-button:after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 50px;
+      background: url("../../assets/icons/search_icon.png") no-repeat 50%; }
     #search-component #main-search-container .search-button:active {
-      background-color: black;
+      background-color: #ffbb1f;
       color: #fff; }
     #search-component #main-search-container .search-button.searchStarted {
       display: block;
-      top: -60px;
-      opacity: 1; }
+      bottom: 60px; }
   #search-component #main-search-container.searchSubmitted {
     z-index: -10; }
 

@@ -1,6 +1,10 @@
 <div id="search-component">
   <div id="homepage-title">
-    <span [ngClass]="{'searchStarted': searchStarted}">The internet's largest gemstone and jewerly database</span>
+    <div class="search-logo-container">
+      <img src="../assets/images/gempathy_logo.png" class="search-logo">
+      <h4>Gempathy</h4>
+    </div>
+    <span [ngClass]="{'searchStarted': searchStarted}">The internet's largest gemstone<br /> and jewerly database</span>
   </div>
 
   <div id="main-search-container" [ngClass]="{'searchSubmitted': searchSubmitted}">
@@ -12,6 +16,6 @@
     <span class="search-button"
           routerLink="/search-results"
           [ngClass]="{'searchStarted': searchStarted}"
-          (click)="searchSubmit()">Search</span>
+          (click)="searchSubmit()"></span>
   </div>
 </div>

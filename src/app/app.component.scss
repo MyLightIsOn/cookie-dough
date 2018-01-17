@@ -1,5 +1,5 @@
-@import '../sass/variables';
-@import '../sass/mixins';
+@import "../sass/variables";
+@import "../sass/mixins";
 
 /*
 The styles in this stylesheet are general styles that
@@ -65,22 +65,22 @@ nav {
   }
   
   .search-icon {
-    background: url('../assets/icons/ic_search_black_24dp_2x.png') no-repeat 50% 3px;
+    background: url("../assets/icons/ic_search_black_24dp_2x.png") no-repeat 50% 3px;
     background-size: 35px;
   }
 
   .signup-icon {
-    background: url('../assets/icons/ic_person_add_black_24dp_2x.png') no-repeat 50% 3px;
+    background: url("../assets/icons/ic_person_add_black_24dp_2x.png") no-repeat 50% 3px;
     background-size: 35px;
   }
 
   .about-icon {
-    background: url('../assets/icons/ic_info_outline_black_24dp_2x.png') no-repeat 50% 3px;
+    background: url("../assets/icons/ic_info_outline_black_24dp_2x.png") no-repeat 50% 3px;
     background-size: 35px;
   }
 
   .contact-icon {
-    background: url('../assets/icons/ic_email_black_24dp_2x.png') no-repeat 50% 3px;
+    background: url("../assets/icons/ic_email_black_24dp_2x.png") no-repeat 50% 3px;
     background-size: 35px;
   }
 }
@@ -97,6 +97,7 @@ nav {
   position: relative;
   padding: 0 0 20px;
   height: 100%;
+  background: url("../assets/images/background_texture.png");
 }
 
 /*# sourceMappingURL=styles.css.map */
