@@ -50,7 +50,7 @@ nav {
   bottom: 0;
   transition: 0.3s;
   width: 100%;
-  background-color: #ffffff;
+  background-color: $dark-blue;
   z-index: 10;
   display: flex;
 
@@ -59,29 +59,33 @@ nav {
     flex-direction: row;
     flex-grow: 4;
     flex-basis: 0;
-    border: 1px solid #000;
     padding: 40px 0 3px;
     position: relative;
+    color: $white;
+  }
+
+  a:active {
+    background-color: $light-blue;
   }
   
   .search-icon {
-    background: url("../assets/icons/ic_search_black_24dp_2x.png") no-repeat 50% 3px;
-    background-size: 35px;
+    background: url("../assets/icons/search_icon.png") no-repeat 50% 7px;
+    background-size: 28px;
   }
 
   .signup-icon {
-    background: url("../assets/icons/ic_person_add_black_24dp_2x.png") no-repeat 50% 3px;
-    background-size: 35px;
+    background: url("../assets/icons/signup_icon.png") no-repeat 50% 7px;
+    background-size: 33px;
   }
 
   .about-icon {
-    background: url("../assets/icons/ic_info_outline_black_24dp_2x.png") no-repeat 50% 3px;
-    background-size: 35px;
+    background: url("../assets/icons/about_icon.png") no-repeat 50% 7px;
+    background-size: 28px;
   }
 
   .contact-icon {
-    background: url("../assets/icons/ic_email_black_24dp_2x.png") no-repeat 50% 3px;
-    background-size: 35px;
+    background: url("../assets/icons/contact_icon.png") no-repeat 50% 7px;
+    background-size: 28px;
   }
 }
 

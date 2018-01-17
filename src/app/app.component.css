@@ -38,7 +38,7 @@ nav {
   bottom: 0;
   transition: 0.3s;
   width: 100%;
-  background-color: #ffffff;
+  background-color: #191E50;
   z-index: 10;
   display: flex; }
   #menu-container a {
@@ -46,21 +46,23 @@ nav {
     flex-direction: row;
     flex-grow: 4;
     flex-basis: 0;
-    border: 1px solid #000;
     padding: 40px 0 3px;
-    position: relative; }
+    position: relative;
+    color: #F9FCFE; }
+  #menu-container a:active {
+    background-color: #CCD1EB; }
   #menu-container .search-icon {
-    background: url("../assets/icons/ic_search_black_24dp_2x.png") no-repeat 50% 3px;
-    background-size: 35px; }
+    background: url("../assets/icons/search_icon.png") no-repeat 50% 7px;
+    background-size: 28px; }
   #menu-container .signup-icon {
-    background: url("../assets/icons/ic_person_add_black_24dp_2x.png") no-repeat 50% 3px;
-    background-size: 35px; }
+    background: url("../assets/icons/signup_icon.png") no-repeat 50% 7px;
+    background-size: 33px; }
   #menu-container .about-icon {
-    background: url("../assets/icons/ic_info_outline_black_24dp_2x.png") no-repeat 50% 3px;
-    background-size: 35px; }
+    background: url("../assets/icons/about_icon.png") no-repeat 50% 7px;
+    background-size: 28px; }
   #menu-container .contact-icon {
-    background: url("../assets/icons/ic_email_black_24dp_2x.png") no-repeat 50% 3px;
-    background-size: 35px; }
+    background: url("../assets/icons/contact_icon.png") no-repeat 50% 7px;
+    background-size: 28px; }
 
 /************** Main App Container Styles **************/
 #app-container {
