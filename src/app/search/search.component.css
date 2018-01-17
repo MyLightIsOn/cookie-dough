@@ -13,7 +13,7 @@
       line-height: 26px;
       text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
       transition: 0.5s; }
-    #search-component #homepage-title span.searchStarted, #search-component #homepage-title .search-logo.searchStarted, #search-component #homepage-title h4 {
+    #search-component #homepage-title span.searchStarted, #search-component #homepage-title .search-logo.searchStarted, #search-component #homepage-title h4.searchStarted {
       opacity: 0; }
     #search-component #homepage-title .search-logo-container {
       color: #F9FCFE; }
