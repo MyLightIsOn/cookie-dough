@@ -1,7 +1,7 @@
 <div id="search-component">
   <div id="homepage-title">
     <div class="search-logo-container">
-      <img src="../assets/images/gempathy_logo.png" class="search-logo">
+      <img src="../assets/images/gempathy_logo.png" class="search-logo" [ngClass]="{'searchStarted': searchStarted}">
       <h4>Gempathy</h4>
     </div>
     <span [ngClass]="{'searchStarted': searchStarted}">The internet's largest gemstone<br /> and jewerly database</span>

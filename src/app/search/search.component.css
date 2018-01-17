@@ -13,7 +13,7 @@
       line-height: 26px;
       text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
       transition: 0.5s; }
-    #search-component #homepage-title span.searchStarted {
+    #search-component #homepage-title span.searchStarted, #search-component #homepage-title .search-logo.searchStarted, #search-component #homepage-title h4 {
       opacity: 0; }
     #search-component #homepage-title .search-logo-container {
       color: #F9FCFE; }
@@ -47,7 +47,7 @@
       transition: 0.5s;
       top: 0; }
     #search-component #main-search-container #main-search.searchStarted, #search-component #main-search-container .search-help.searchStarted {
-      top: -60px; }
+      top: -140px; }
     #search-component #main-search-container .search-button {
       display: block;
       width: 50px;
@@ -69,7 +69,7 @@
       color: #fff; }
     #search-component #main-search-container .search-button.searchStarted {
       display: block;
-      bottom: 60px; }
+      bottom: 140px; }
   #search-component #main-search-container.searchSubmitted {
     z-index: -10; }
 

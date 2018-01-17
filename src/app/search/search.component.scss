@@ -20,7 +20,7 @@
       transition: 0.5s;
     }
 
-    span.searchStarted {
+    span.searchStarted, .search-logo.searchStarted, h4 {
       opacity: 0;
     }
 
@@ -70,7 +70,7 @@
     }
 
     #main-search.searchStarted, .search-help.searchStarted {
-      top: -60px;
+      top: -140px;
     }
 
     .search-button {
@@ -100,7 +100,7 @@
 
     .search-button.searchStarted {
       display: block;
-      bottom: 60px;
+      bottom: 140px;
     }
   }
 
