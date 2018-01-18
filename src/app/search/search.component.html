@@ -1,21 +1,19 @@
 <div id="search-component">
-  <div id="homepage-title">
+  <div id="homepage-title" [ngClass]="{'searchStarted': searchStarted}">
     <div class="search-logo-container">
-      <img src="../assets/images/gempathy_logo.png" class="search-logo" [ngClass]="{'searchStarted': searchStarted}">
-      <h4 [ngClass]="{'searchStarted': searchStarted}">Gempathy</h4>
+      <img src="../assets/images/gempathy_logo.png" class="search-logo">
+      <h4>Gempathy</h4>
     </div>
-    <span [ngClass]="{'searchStarted': searchStarted}">The internet's largest gemstone<br /> and jewerly database</span>
+    <span>The internet's largest gemstone<br /> and jewerly database</span>
   </div>
 
-  <div id="main-search-container" [ngClass]="{'searchSubmitted': searchSubmitted}">
+  <div id="main-search-container" [ngClass]="{'searchSubmitted': searchSubmitted,'searchStarted': searchStarted}">
     <span class="search-help" [ngClass]="{'searchStarted': searchStarted}">Keyword Search</span>
     <input type="text" id="main-search" placeholder="Begin Search Here"
           (focus)="searchStart()"
-          [(ngModel)]="company"
-          [ngClass]="{'searchStarted': searchStarted}">
+          [(ngModel)]="company">
     <span class="search-button"
           routerLink="/search-results"
-          [ngClass]="{'searchStarted': searchStarted}"
           (click)="searchSubmit()"></span>
   </div>
 </div>
