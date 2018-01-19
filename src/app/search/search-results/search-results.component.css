@@ -6,7 +6,6 @@
 
 #search-results-container {
   width: 100%;
-  background-color: white;
   position: relative;
   z-index: 1; }
   #search-results-container .search-result {
@@ -82,21 +81,56 @@
     position: fixed;
     top: 50px;
     z-index: 1;
-    background-color: white;
-    border-bottom: 4px solid #000; }
+    background-color: #616697; }
+    #search-results-container .search-result-controls .drop-shadow-effect {
+      display: block;
+      width: 100%;
+      position: absolute;
+      bottom: -7px;
+      height: 7px;
+      left: 0;
+      -webkit-box-shadow: inset 0 10px 7px -8px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: inset 0 10px 7px -8px rgba(0, 0, 0, 0.75);
+      box-shadow: inset 0 10px 7px -8px rgba(0, 0, 0, 0.75); }
   #search-results-container .search-result-button-container {
     display: flex; }
   #search-results-container .searched-for {
     display: block;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    color: #F9FCFE;
+    font-size: 14px; }
+  #search-results-container .searched-for-text {
+    font-weight: bold;
+    font-size: 17px; }
   #search-results-container .search-result-button {
     display: block;
-    padding: 14px 0;
+    padding: 11px 0;
     text-align: center;
-    border: 1px solid #000;
     flex-grow: 1;
-    background-color: lightgray;
-    margin-bottom: 7px; }
+    background-color: #CCD1EB;
+    color: #191E50;
+    margin-bottom: 7px;
+    position: relative;
+    border-radius: 2px; }
+  #search-results-container .search-result-button:before {
+    content: "";
+    display: block;
+    background-color: #CCD1EB;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    bottom: -2px;
+    right: -2px;
+    z-index: -1;
+    border-radius: 2px;
+    background-image: linear-gradient(to bottom, #F9FCFE 0%, #9ea3db 40%);
+    box-shadow: 0px -1px 2px 0 #6d728C inset; }
+  #search-results-container .search-result-button:active {
+    background-color: #9ea3bd; }
+  #search-results-container .search-result-button:active:before {
+    background-color: #9ea3bd;
+    background-image: none;
+    box-shadow: 0 1px 2px 0 #444 inset; }
   #search-results-container .left {
     margin-right: 7px; }
   #search-results-container .right {
@@ -118,23 +152,25 @@
     #search-results-container #pagination .results-count, #search-results-container #pagination .page-position, #search-results-container #pagination .previous-page, #search-results-container #pagination .next-page {
       display: block; }
     #search-results-container #pagination .results-count {
+      color: #F9FCFE;
       font-weight: bold;
       margin-bottom: 5px; }
-    #search-results-container #pagination .previous-page a, #search-results-container #pagination .next-page a {
+    #search-results-container #pagination .pagination-button {
+      background-color: #191E50;
+      border-radius: 2px;
       display: block;
       position: relative;
       width: 30px;
-      height: 30px;
-      border: 3px solid #000;
-      border-radius: 6px; }
-    #search-results-container #pagination .previous-page a:active, #search-results-container #pagination .next-page a:active {
-      background-color: lightgray; }
+      height: 30px; }
+    #search-results-container #pagination .previous-page:active, #search-results-container #pagination .next-page:active {
+      background-color: #CCD1EB; }
     #search-results-container #pagination .previous-page, #search-results-container #pagination .next-page {
       flex-grow: 1;
       display: block;
       width: 30px;
       height: 30px; }
     #search-results-container #pagination .page-position {
+      color: #F9FCFE;
       flex-grow: 2;
       font-weight: bold;
       padding-top: 7px;
@@ -148,11 +184,11 @@
       height: 30px;
       background-color: aqua; }
     #search-results-container #pagination .previous-page a:after {
-      background: url("/assets/icons/ic_chevron_left_black_24dp_2x.png") -6px -6px no-repeat;
-      background-size: 35px; }
+      background: url("/assets/icons/prev_page.png") 4px 2px no-repeat;
+      background-size: 25px; }
     #search-results-container #pagination .next-page a:after {
-      background: url("/assets/icons/ic_chevron_right_black_24dp_2x.png") -6px -6px no-repeat;
-      background-size: 35px; }
+      background: url("/assets/icons/next_page.png") 4px 2px no-repeat;
+      background-size: 25px; }
     #search-results-container #pagination .page-navigation-container {
       display: flex;
       justify-content: center; }
@@ -166,8 +202,7 @@
     height: 34px;
     padding: 7px 0;
     text-align: center;
-    border: 1px solid #000;
-    background-color: lightgray; }
+    background-color: #F9FCFE; }
   #search-results-container .sort-list {
     display: none; }
   #search-results-container .sort-list.sort-open {
@@ -185,21 +220,44 @@
       background-color: #ffffff; }
   #search-results-container .order-button {
     display: block;
-    border: 1px solid #000;
-    width: 39px;
-    height: 34px;
+    width: 36px;
+    height: 30px;
     position: absolute;
-    top: 0;
-    right: 1px;
-    background-color: #ffffff; }
+    top: 2px;
+    right: 2px;
+    background-color: #FF9018;
+    z-index: 2; }
+  #search-results-container .order-button:before {
+    content: "";
+    display: block;
+    background-color: #FFF1A2;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    bottom: -2px;
+    right: -2px;
+    z-index: -1;
+    border-radius: 2px;
+    background-image: linear-gradient(to bottom, #FDDEA6 0%, #d34c16 40%);
+    box-shadow: 0px -1px 2px 0 #7A3D16 inset; }
   #search-results-container .order-button:after {
     content: '';
     width: 50px;
     height: 50px;
     display: block;
-    background: url("/assets/icons/ic_arrow_drop_down_black_24dp_2x.png") -6px -8px no-repeat; }
+    background: url("/assets/icons/up_sort_icon.png") 1px -1px no-repeat;
+    background-size: 31px; }
+  #search-results-container .order-button:active {
+    background-color: #d34c16;
+    background-image: none;
+    box-shadow: 0 1px 2px 0 #444 inset; }
+  #search-results-container .order-button:active:before {
+    background-color: #d34c16;
+    background-image: none;
+    box-shadow: 0 1px 2px 0 #444 inset; }
   #search-results-container .desc:after {
     display: block;
-    background: url("/assets/icons/ic_arrow_drop_up_black_24dp_2x.png") -6px -8px no-repeat; }
+    background: url("/assets/icons/down_sort_icon.png") 1px -1px no-repeat;
+    background-size: 31px; }
 
 /*# sourceMappingURL=search-results.component.css.map */

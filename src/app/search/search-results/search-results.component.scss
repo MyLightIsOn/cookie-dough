@@ -1,3 +1,6 @@
+@import "../../../sass/variables";
+@import "../../../sass/mixins";
+
 #search-results-container.active {
   display: block;
 }
@@ -8,7 +11,6 @@
 
 #search-results-container {
   width: 100%;
-  background-color: white;
   position: relative;
   z-index: 1;
   
@@ -113,8 +115,17 @@
     position: fixed;
     top: 50px;
     z-index: 1;
-    background-color: white;
-    border-bottom: 4px solid #000;
+    background-color: $medium-blue;
+
+    .drop-shadow-effect {
+      display: block;
+      width: 100%;
+      position: absolute;
+      bottom: -7px;
+      height: 7px;
+      left: 0;
+      @include box-shadow;
+    }
   }
 
   .search-result-button-container {
@@ -124,16 +135,39 @@
   .searched-for {
     display: block;
     margin-bottom: 10px;
+    color: $white;
+    font-size: $general-text;
+  }
+
+  .searched-for-text {
+    font-weight: bold;
+    font-size: $highlighted-text;
   }
 
   .search-result-button {
     display: block;
-    padding: 14px 0;
+    padding: 11px 0;
     text-align: center;
-    border: 1px solid #000;
     flex-grow: 1;
-    background-color: lightgray;
+    background-color: $light-blue;
+    color: $dark-blue;
     margin-bottom: 7px;
+    position: relative;
+    border-radius: 2px;
+  }
+
+  .search-result-button:before {
+    @include button-emboss($light-blue, $white, #9ea3db, #6d728C);
+  }
+
+  .search-result-button:active {
+    background-color: #9ea3bd;
+  }
+
+  .search-result-button:active:before {
+    background-color: #9ea3bd;
+    background-image: none;
+    box-shadow: 0 1px 2px 0 #444 inset;
   }
 
   .left {
@@ -170,21 +204,22 @@
     }
 
     .results-count {
-       font-weight: bold;
+      color: $white;
+      font-weight: bold;
       margin-bottom: 5px;
     }
 
-    .previous-page a, .next-page a {
+    .pagination-button {
+      background-color: $dark-blue;
+      border-radius: 2px;
       display: block;
       position: relative;
       width: 30px;
       height: 30px;
-      border: 3px solid #000;
-      border-radius: 6px;
     }
 
-    .previous-page a:active, .next-page a:active {
-      background-color: lightgray;
+    .previous-page:active, .next-page:active {
+      background-color: $light-blue;
     }
 
     .previous-page, .next-page {
@@ -195,6 +230,7 @@
     }
 
     .page-position {
+      color: $white;
       flex-grow: 2;
       font-weight: bold;
       padding-top: 7px;
@@ -212,13 +248,13 @@
     }
 
     .previous-page a:after {
-      background: url("/assets/icons/ic_chevron_left_black_24dp_2x.png") -6px -6px no-repeat;
-      background-size: 35px;
+      background: url("/assets/icons/prev_page.png") 4px 2px no-repeat;
+      background-size: 25px;
     }
 
     .next-page a:after {
-      background: url("/assets/icons/ic_chevron_right_black_24dp_2x.png") -6px -6px  no-repeat;
-      background-size: 35px;
+      background: url("/assets/icons/next_page.png") 4px 2px  no-repeat;
+      background-size: 25px;
     }
 
     .page-navigation-container {
@@ -239,8 +275,7 @@
     height: 34px;
     padding: 7px 0;
     text-align: center;
-    border: 1px solid #000;
-    background-color: lightgray;
+    background-color: $white;
   }
 
   .sort-list {
@@ -266,13 +301,17 @@
 
   .order-button {
     display: block;
-    border: 1px solid #000;
-    width: 39px;
-    height: 34px;
+    width: 36px;
+    height: 30px;
     position: absolute;
-    top: 0;
-    right: 1px;
-    background-color: #ffffff;
+    top: 2px;
+    right: 2px;
+    background-color: $orange;
+    z-index: 2;
+  }
+
+  .order-button:before {
+    @include button-emboss(#FFF1A2, #FDDEA6, #d34c16, #7A3D16);
   }
 
   .order-button:after {
@@ -280,12 +319,26 @@
     width: 50px;
     height: 50px;
     display: block;
-    background: url("/assets/icons/ic_arrow_drop_down_black_24dp_2x.png") -6px -8px  no-repeat;
+    background: url("/assets/icons/up_sort_icon.png") 1px -1px  no-repeat;
+    background-size: 31px;
+  }
+
+  .order-button:active {
+    background-color: #d34c16;
+    background-image: none;
+    box-shadow: 0 1px 2px 0 #444 inset;
+  }
+
+  .order-button:active:before {
+    background-color: #d34c16;
+    background-image: none;
+    box-shadow: 0 1px 2px 0 #444 inset;
   }
 
   .desc:after {
     display: block;
-    background: url("/assets/icons/ic_arrow_drop_up_black_24dp_2x.png") -6px -8px  no-repeat;
+    background: url("/assets/icons/down_sort_icon.png") 1px -1px  no-repeat;
+    background-size: 31px;
   }
 }
 

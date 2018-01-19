@@ -1,6 +1,6 @@
 <div id="search-results-container">
     <div class="search-result-controls">
-        <span class="searched-for">Searched: {{searchText}}</span>
+        <span class="searched-for">Searched: <span class="searched-for-text">{{searchText}}</span></span>
         <div class="search-result-button-container">
             <span (click)="resetData()" routerLink="/search" class="search-result-button left">New Search</span>
             <span class="search-result-button right">Filter Search</span>
@@ -13,15 +13,14 @@
                 <span class="results-count" *ngIf="filteredCompanies">{{filteredCompanies.length}}<span class="not-bold"> Results</span></span>
 
                 <div class="page-navigation-container">
-               <span class="previous-page" [ngClass]="{disabled:pager.currentPage === 1}">
-                <a (click)="setPage(pager.currentPage - 1)"></a>
-            </span>
+                    <span class="previous-page pagination-button" [ngClass]="{disabled:pager.currentPage === 1}">
+                        <a (click)="setPage(pager.currentPage - 1)"></a>
+                    </span>
                     <span class="page-position">Page {{pager.currentPage}} of {{pager.totalPages}}</span>
-                    <span class="next-page"[ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                <a (click)="setPage(pager.currentPage + 1)"></a>
-            </span>
+                    <span class="next-page pagination-button"[ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                        <a (click)="setPage(pager.currentPage + 1)"></a>
+                    </span>
                 </div>
-
             </div>
             <div class="right-pagination">
                 <div class="sort-container">
@@ -48,7 +47,7 @@
                 <a (click)="setPage(pager.totalPages)">Last</a>
             </li>-->
         </div>
-
+        <span class="drop-shadow-effect"></span>
     </div>
     <div id="companies-list-container">
         <div *ngFor="let company of companiesArray" class="search-result" [routerLink]="['/', setIdentifier(company)]">
