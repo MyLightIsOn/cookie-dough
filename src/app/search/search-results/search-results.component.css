@@ -9,17 +9,20 @@
   position: relative;
   z-index: 1; }
   #search-results-container .search-result {
-    border: 1px solid #000;
+    border: 1px solid #a4a9bc;
     width: 100%;
     height: 85px;
-    position: relative; }
+    position: relative;
+    background-color: #F9FCFE;
+    color: #191E50; }
     #search-results-container .search-result .company-name {
       display: block;
       width: 230px;
       text-decoration: underline;
       position: absolute;
       left: 8px;
-      top: 8px; }
+      top: 8px;
+      font-weight: bold; }
     #search-results-container .search-result .company-country {
       position: absolute;
       right: 8px;
@@ -32,35 +35,34 @@
       content: '';
       display: block;
       width: 122px;
-      height: 22px;
+      height: 20px;
       background: url("/assets/images/reviews.png") no-repeat; }
     #search-results-container .search-result .reviews-avg-0:after {
-      background-position: 1px -244px; }
+      background-position: 1px -247px; }
     #search-results-container .search-result .reviews-avg-0-5:after {
-      background-position: 1px -219px; }
+      background-position: 1px -222px; }
     #search-results-container .search-result .reviews-avg-1:after {
-      background-position: 1px -194px; }
+      background-position: 1px -198px; }
     #search-results-container .search-result .reviews-avg-1-5:after {
-      background-position: 1px -170px; }
+      background-position: 1px -172px; }
     #search-results-container .search-result .reviews-avg-2:after {
-      background-position: 1px -146px; }
+      background-position: 1px -147px; }
     #search-results-container .search-result .reviews-avg-2-5:after {
-      background-position: 1px -121px; }
+      background-position: 1px -123px; }
     #search-results-container .search-result .reviews-avg-3:after {
-      background-position: 1px -97px; }
+      background-position: 1px -98px; }
     #search-results-container .search-result .reviews-avg-3-5:after {
-      background-position: 1px -72px; }
+      background-position: 1px -73px; }
     #search-results-container .search-result .reviews-avg-4:after {
       background-position: 1px -48px; }
     #search-results-container .search-result .reviews-avg-4-5:after {
       background-position: 1px -24px; }
     #search-results-container .search-result .reviews-avg-5:after {
-      background-position: 1px 0; }
+      background-position: 1px -1; }
     #search-results-container .search-result .reviews-count {
       position: absolute;
       left: 134px;
-      bottom: 6px;
-      font-weight: bold; }
+      bottom: 6px; }
     #search-results-container .search-result .verification {
       position: absolute;
       right: 8px;
