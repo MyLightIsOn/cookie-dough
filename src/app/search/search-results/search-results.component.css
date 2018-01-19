@@ -211,13 +211,18 @@
     padding: 0;
     width: 200px;
     position: relative;
-    right: 62px; }
+    right: 62px;
+    z-index: 5; }
     #search-results-container .sort-list.sort-open li {
       list-style: none;
       display: block;
       padding: 14px 0;
-      border: 1px solid #000000;
-      background-color: #ffffff; }
+      background-color: #CCD1EB;
+      color: #191E50;
+      border: 1px solid #616697; }
+    #search-results-container .sort-list.sort-open li:active {
+      background-color: #191E50;
+      color: #F9FCFE; }
   #search-results-container .order-button {
     display: block;
     width: 36px;
