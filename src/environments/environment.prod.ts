@@ -4,6 +4,6 @@ export const environment = {
     'API_ID' : 'API_ID',
     'API_KEY' : 'API_KEY',
     'API_KEY_HEADER' : 'API_KEY_HEADER',
-    'BASEURL' : 'BASEURL'
+    'BASEURL' : 'https://secret-crag-55338.herokuapp.com'
 };
 
