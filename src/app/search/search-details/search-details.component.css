@@ -3,9 +3,10 @@
 
 .search-details-container {
   position: relative;
-  background-color: #ffffff;
+  background-color: #F9FCFE;
   min-height: 100%;
-  padding: 50px 0 62px; }
+  padding: 50px 0 62px;
+  color: #191E50; }
   .search-details-container hr {
     margin: 20px auto; }
   .search-details-container .close-details {
@@ -16,11 +17,11 @@
   .search-details-container .close-details:after {
     content: '';
     display: block;
-    width: 31px;
-    height: 31px;
+    width: 22px;
+    height: 22px;
     background: url(/assets/icons/ic_highlight_off_black_24dp_2x.png) no-repeat;
     background-position: -2px -2px;
-    background-size: 35px; }
+    background-size: 25px; }
   .search-details-container header {
     position: fixed;
     z-index: 10;
@@ -28,9 +29,19 @@
     height: 140px;
     width: 100%;
     padding: 10px;
-    border-bottom: 1px solid #000000;
     display: flex;
-    background-color: white; }
+    background-color: #616697;
+    color: #F9FCFE; }
+    .search-details-container header .drop-shadow-effect {
+      display: block;
+      width: 100%;
+      position: absolute;
+      bottom: -7px;
+      height: 7px;
+      left: 0;
+      -webkit-box-shadow: inset 0 10px 7px -8px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: inset 0 10px 7px -8px rgba(0, 0, 0, 0.75);
+      box-shadow: inset 0 10px 7px -8px rgba(0, 0, 0, 0.75); }
     .search-details-container header .company-logo-thumb-container img {
       display: block;
       width: 90%; }
@@ -86,13 +97,34 @@
     bottom: 8px; }
   .search-details-container .gallery-button {
     display: block;
-    text-align: center;
-    font-weight: bold;
     width: 120px;
-    background-color: lightgray;
-    border: 1px solid #000;
-    padding: 12px 10px;
-    margin: 10px 0 0 0; }
+    padding: 11px 0;
+    text-align: center;
+    flex-grow: 1;
+    background-color: #CCD1EB;
+    color: #191E50;
+    margin: 10px 0 0 0;
+    border-radius: 2px;
+    position: relative; }
+  .search-details-container .gallery-button:before {
+    content: "";
+    display: block;
+    background-color: #CCD1EB;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    bottom: -2px;
+    right: -2px;
+    z-index: -1;
+    border-radius: 2px;
+    background-image: linear-gradient(to bottom, #F9FCFE 0%, #9ea3db 40%);
+    box-shadow: 0px -1px 2px 0 #6d728C inset; }
+  .search-details-container .gallery-button:active {
+    background-color: #9ea3bd; }
+  .search-details-container .gallery-button:active:before {
+    background-color: #9ea3bd;
+    background-image: none;
+    box-shadow: 0 1px 2px 0 #444 inset; }
   .search-details-container .detail-description {
     margin-top: 140px;
     padding: 10px;
@@ -103,7 +135,7 @@
       font-size: 20px; }
     .search-details-container .detail-description .truncate-toggle {
       text-decoration: underline;
-      color: blue; }
+      color: #191E50; }
   .search-details-container .detail-info {
     padding: 10px;
     position: relative; }
@@ -125,7 +157,8 @@
   .phone-number a {
     position: relative;
     left: 30px;
-    top: 5px; }
+    top: 5px;
+    color: #191E50; }
 
 .social-media:after,
 .email-address:after,
@@ -140,43 +173,43 @@
   left: 0; }
 
 .phone-number:after {
-  background: url("/assets/icons/ic_call_black_24dp_2x.png") no-repeat;
+  background: url("/assets/icons/med_blue_phone_icon.png") no-repeat;
   background-size: contain; }
 
 .website-url:after {
-  background: url("/assets/icons/ic_public_black_24dp_2x.png") no-repeat;
+  background: url("/assets/icons/med_blue_globe_icon.png") no-repeat;
   background-size: contain; }
 
 .email-address:after {
-  background: url("/assets/icons/ic_email_black_24dp_2x.png") no-repeat;
+  background: url("/assets/icons/med_blue_mail_icon.png") no-repeat;
   background-size: contain; }
 
 .facebook:after {
-  background: url("/assets/icons/facebook.svg") no-repeat;
+  background: url("/assets/icons/med_blue_facebook_icon.png") no-repeat;
   background-size: contain; }
 
 .instagram:after {
-  background: url("/assets/icons/instagram.svg") no-repeat;
+  background: url("/assets/icons/med_blue_instagram_icon.png") no-repeat;
   background-size: contain; }
 
 .pinterest:after {
-  background: url("/assets/icons/pinterest.svg") no-repeat;
+  background: url("/assets/icons/med_blue_pinterest_icon.png") no-repeat;
   background-size: contain; }
 
 .twitter:after {
-  background: url("/assets/icons/twitter.svg") no-repeat;
+  background: url("/assets/icons/med_blue_twitter_icon.png") no-repeat;
   background-size: contain; }
 
 .wechat:after {
-  background: url("/assets/icons/wechat.svg") no-repeat;
+  background: url("/assets/icons/med_blue_wechat_icon.png") no-repeat;
   background-size: contain; }
 
 .line:after {
-  background: url("/assets/icons/icons8-line.svg") no-repeat;
+  background: url("/assets/icons/med_blue_line_icon.png") no-repeat;
   background-size: contain; }
 
 .youtube:after {
-  background: url("/assets/icons/youtube-play.svg") no-repeat;
+  background: url("/assets/icons/med_blue_youtube_icon.png") no-repeat;
   background-size: contain; }
 
 /*# sourceMappingURL=search-details.component.css.map */
