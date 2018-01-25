@@ -6,8 +6,7 @@ import { FormsModule} from '@angular/forms';
 import { RoutingModule } from './routing.module';
 import { CompanyModule } from './companies/companies.module';
 import { SearchModule } from './search/search.module';
-import { LoginComponent } from './login/login.component';
-import { LoginRoutingModule } from './login/login-routing.module';
+import { LoginModule } from './login/login.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -23,7 +22,6 @@ import { FilterCompaniesPipe } from './_pipes/filter-companies.pipe';
         AppComponent,
         RegisterComponent,
         PageNotFoundComponent,
-        LoginComponent,
         FilterCompaniesPipe
     ],
     imports: [
@@ -31,7 +29,7 @@ import { FilterCompaniesPipe } from './_pipes/filter-companies.pipe';
         BrowserModule,
         CompanyModule,
         SearchModule,
-        LoginRoutingModule,
+        LoginModule,
         RoutingModule,
         HttpClientModule,
         FormsModule

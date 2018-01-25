@@ -1,15 +1,11 @@
-import { Component }   from '@angular/core';
-import { Router, NavigationExtras }      from '@angular/router';
+import { Component } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
-    template: `
-    <h2>LOGIN</h2>
-    <p>{{message}}</p>
-    <p>
-      <button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
-      <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
-    </p>`
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
     message: string;
@@ -23,7 +19,7 @@ export class LoginComponent {
     }
 
     login() {
-        let navigationExtras: NavigationExtras = {
+        const navigationExtras: NavigationExtras = {
             queryParamsHandling: 'preserve',
             preserveFragment: true
         };
@@ -35,7 +31,7 @@ export class LoginComponent {
             if (this.authService.isLoggedIn) {
                 // Get the redirect URL from our auth service
                 // If no redirect has been set, use the default
-                let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/admin';
+                const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/admin';
 
                 // Redirect the user
                 this.router.navigate([redirect], navigationExtras);
