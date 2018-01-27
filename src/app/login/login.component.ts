@@ -18,6 +18,13 @@ export class LoginComponent {
         this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
     }
 
+    submitLogin() {
+        const email = <HTMLInputElement>document.getElementById('email');
+        const password = <HTMLInputElement>document.getElementById('password');
+
+        this.authService.testLogin(email.value, password.value);
+    }
+
     login() {
         const navigationExtras: NavigationExtras = {
             queryParamsHandling: 'preserve',

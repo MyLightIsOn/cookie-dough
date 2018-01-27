@@ -1,0 +1,23 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+
+#login-component {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding-top: 70px;
+
+  .input-form {
+    background-color: $white;
+    @include form-shadow;
+    border: 0;
+    display: block;
+    margin: auto;
+    max-height: 46px;
+    width: 90%;
+    padding: 13px 10px;
+    font-size: 17px;
+    position: relative;
+    top: 0;
+  }
+}
