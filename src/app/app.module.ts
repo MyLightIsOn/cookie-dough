@@ -7,6 +7,7 @@ import { RoutingModule } from './routing.module';
 import { CompanyModule } from './companies/companies.module';
 import { SearchModule } from './search/search.module';
 import { LoginModule } from './login/login.module';
+import { ProfileModule } from './profile/profile.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -30,6 +31,7 @@ import { FilterCompaniesPipe } from './_pipes/filter-companies.pipe';
         CompanyModule,
         SearchModule,
         LoginModule,
+        ProfileModule,
         RoutingModule,
         HttpClientModule,
         FormsModule
