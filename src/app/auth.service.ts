@@ -16,23 +16,22 @@ export class AuthService {
     // store the URL so we can redirect after logging in
     redirectUrl: string;
 
-    testLogin(email, password) {
+    login(email, password) {
         const body = ({'email': email, 'password': password});
-        this.http.post(environment['BASEURL'] + '/login', body)
-            .map(this.extractData).subscribe();
+        return this.http.post(environment['BASEURL'] + '/login', body);
     }
 
-    extractData(res: Response) {
-        console.log(res);
+    checkResponse(res) {
+        if (res['error']) {
+            console.log('error');
+            console.log(res);
+            this.isLoggedIn = false;
+        } else {
+            console.log('good to go');
+            console.log(res);
+            this.isLoggedIn = true;
+        }
         return res || {};
-    }
-    handleErrorObservable (error: Response | any) {
-        console.error(error.message || error);
-        return Observable.throw(error.message || error);
-    }
-
-    login(): Observable<boolean> {
-        return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
     }
 
     logout(): void {

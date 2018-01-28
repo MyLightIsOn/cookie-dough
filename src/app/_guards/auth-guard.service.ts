@@ -12,7 +12,7 @@ import {
 import { AuthService } from '../auth.service';
 
 @Injectable()
-export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
+export class AuthGuard implements CanActivate, CanActivateChild {
     constructor(private authService: AuthService, private router: Router) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
@@ -21,17 +21,8 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
         return this.checkLogin(url);
     }
 
-    canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        return this.canActivate(route, state);
-    }
-
-    canLoad(route: Route): boolean {
-        const url = `/${route.path}`;
-
-        return this.checkLogin(url);
-    }
-
     checkLogin(url: string): boolean {
+
         if (this.authService.isLoggedIn) { return true; }
 
         // Store the attempted URL for redirecting
@@ -50,5 +41,10 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
         // Navigate to the login page with extras
         this.router.navigate(['/login'], navigationExtras);
         return false;
+    }
+
+
+    canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+        return this.canActivate(route, state);
     }
 }

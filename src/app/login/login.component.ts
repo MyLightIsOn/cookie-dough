@@ -18,14 +18,9 @@ export class LoginComponent {
         this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
     }
 
-    submitLogin() {
+    login() {
         const email = <HTMLInputElement>document.getElementById('email');
         const password = <HTMLInputElement>document.getElementById('password');
-
-        this.authService.testLogin(email.value, password.value);
-    }
-
-    login() {
         const navigationExtras: NavigationExtras = {
             queryParamsHandling: 'preserve',
             preserveFragment: true
@@ -33,17 +28,18 @@ export class LoginComponent {
 
         this.message = 'Trying to log in ...';
 
-        this.authService.login().subscribe(() => {
+        this.authService.login(email.value, password.value).subscribe((res => {
             this.setMessage();
+            this.authService.checkResponse(res);
             if (this.authService.isLoggedIn) {
                 // Get the redirect URL from our auth service
                 // If no redirect has been set, use the default
-                const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/admin';
+                const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/profile';
 
                 // Redirect the user
                 this.router.navigate([redirect], navigationExtras);
             }
-        });
+        }));
     }
 
     logout() {

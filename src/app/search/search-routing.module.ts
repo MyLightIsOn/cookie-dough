@@ -7,6 +7,7 @@ import { SearchDetailsComponent } from './search-details/search-details.componen
 import { SearchResolverService } from './search-resolver.service';
 
 import { LoginModule } from '../login/login.module';
+import { ProfileModule } from '../profile/profile.module';
 
 const searchRoutes: Routes = [
     {
@@ -31,6 +32,7 @@ const searchRoutes: Routes = [
 
 @NgModule({
     imports: [
+        ProfileModule,
         LoginModule,
         RouterModule.forChild(searchRoutes)
     ],
