@@ -9,6 +9,8 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent {
     message: string;
+    email: string;
+    password: string;
 
     constructor(public authService: AuthService, public router: Router) {
         this.setMessage();
@@ -19,8 +21,6 @@ export class LoginComponent {
     }
 
     login() {
-        const email = <HTMLInputElement>document.getElementById('email');
-        const password = <HTMLInputElement>document.getElementById('password');
         const navigationExtras: NavigationExtras = {
             queryParamsHandling: 'preserve',
             preserveFragment: true
@@ -28,7 +28,7 @@ export class LoginComponent {
 
         this.message = 'Trying to log in ...';
 
-        this.authService.login(email.value, password.value).subscribe((res => {
+        this.authService.login(this.email, this.password).subscribe((res => {
             this.setMessage();
             this.authService.checkResponse(res);
             if (this.authService.isLoggedIn) {

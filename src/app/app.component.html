@@ -3,12 +3,16 @@
         <img src="../assets/images/gempathy_logo.png" class="header-logo" routerLink="/">
         <span class="header-logo-name">Gempathy</span>
         <span class="drop-shadow-effect"></span>
+        <div *ngIf="this.authService.isLoggedIn">
+            <span (click)="logout()">Logout</span>
+        </div>
+
     </nav>
     <div id="menu-container">
 
         <a routerLink="/search" routerLinkActive="active" class="search-icon">Search</a>
         <a routerLink="/login" routerLinkActive="active" class="signup-icon">Sign Up</a>
-        <a routerLink="/register" routerLinkActive="active" class="about-icon">About Us</a>
+        <a routerLink="/profile" routerLinkActive="active" class="about-icon">About Us</a>
         <a routerLink="/contact" routerLinkActive="active" class="contact-icon">Contact</a>
     </div>
 

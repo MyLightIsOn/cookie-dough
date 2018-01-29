@@ -22,19 +22,18 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     }
 
     checkLogin(url: string): boolean {
-
-        if (this.authService.isLoggedIn) { return true; }
+        if (localStorage.getItem('currentUser')) {
+            // logged in so return true
+            return true;
+        }
 
         // Store the attempted URL for redirecting
         this.authService.redirectUrl = url;
 
-        // Create a dummy session id
-        const sessionId = 123456789;
-
         // Set our navigation extras object
         // that contains our global query params and fragment
         const navigationExtras: NavigationExtras = {
-            queryParams: { 'session_id': sessionId },
+            queryParams: { 'session_id': this.authService.sessionID },
             fragment: 'anchor'
         };
 

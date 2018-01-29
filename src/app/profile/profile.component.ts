@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
     constructor(private route: ActivatedRoute) {}
 
     ngOnInit() {
-        // Capture the session ID if available
+        /*// Capture the session ID if available
         this.sessionId = this.route
             .queryParamMap
             .map(params => params.get('session_id') || 'None');
@@ -22,7 +22,7 @@ export class ProfileComponent implements OnInit {
         // Capture the fragment if available
         this.token = this.route
             .fragment
-            .map(fragment => fragment || 'None');
+            .map(fragment => fragment || 'None');*/
     }
 
 }
