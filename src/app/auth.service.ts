@@ -19,17 +19,14 @@ export class AuthService {
 
     login(email, password) {
         const body = ({'email': email, 'password': password});
-        return this.http.post(environment['BASEURL'] + '/login', body).map(res => res);
+        return this.http.post(environment['BASEURL'] + '/login', body);
     }
 
     checkResponse(res) {
         if (res['error']) {
-            console.log('error');
-            console.log(res);
             this.isLoggedIn = false;
         } else {
-            console.log('good to go');
-            this.setLocalStorage(res);
+            this.setLocalStorage(res['session']);
             this.sessionID = res;
             this.isLoggedIn = true;
         }
