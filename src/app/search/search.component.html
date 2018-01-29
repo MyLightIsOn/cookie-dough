@@ -11,7 +11,7 @@
     <span class="search-help" [ngClass]="{'searchStarted': searchStarted}">Keyword Search</span>
     <input type="text" id="main-search" placeholder="Begin Search Here"
           (focus)="searchStart()"
-          [(ngModel)]="company">
+          [(ngModel)]="searchText">
     <span class="search-button"
           routerLink="/search-results"
           (click)="searchSubmit()"></span>

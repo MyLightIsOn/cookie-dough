@@ -10,7 +10,7 @@ import { SearchService } from './search.service';
 
 export class SearchComponent implements OnInit {
 
-    public company;
+    public searchText;
     public searchStarted = false;
     public searchSubmitted = false;
 
@@ -27,7 +27,6 @@ export class SearchComponent implements OnInit {
 
     // Submits search, unhides search results
     searchSubmit() {
-        const inputElement = <HTMLInputElement>document.getElementById('main-search');
-        this.searchService.searchValue(inputElement.value);
+        this.searchService.searchValue(this.searchText);
     }
 }
