@@ -14,23 +14,22 @@
         </ng-template>
     </nav>
 
-    <div id="menu-container">
-
-        <div *ngIf="this.authService.isLoggedIn; else notLoggedInMenu">
+    <div *ngIf="this.authService.isLoggedIn; else notLoggedInMenu">
+        <div class="menu-container">
             <a routerLink="/search" routerLinkActive="active" class="search-icon">Search</a>
             <a routerLink="/profile" routerLinkActive="active" class="signup-icon">Profile</a>
             <a routerLink="/about" routerLinkActive="active" class="about-icon">About Us</a>
             <a routerLink="/contact" routerLinkActive="active" class="contact-icon">Contact</a>
         </div>
+    </div>
 
-        <ng-template #notLoggedInMenu>
+    <ng-template #notLoggedInMenu>
+        <div class="menu-container">
             <a routerLink="/search" routerLinkActive="active" class="search-icon">Search</a>
             <a routerLink="/profile" routerLinkActive="active" class="about-icon">About Us</a>
             <a routerLink="/contact" routerLinkActive="active" class="contact-icon">Contact</a>
-        </ng-template>
-
-    </div>
-
+        </div>
+    </ng-template>
 
     <div id="content-container" [@searchAnimations]="getPage(appOutlet)">
         <router-outlet #appOutlet="outlet"></router-outlet>

@@ -39,7 +39,7 @@ nav {
     top: 15px;
     text-decoration: underline; }
 
-#menu-container {
+.menu-container {
   position: fixed;
   bottom: 0;
   transition: 0.3s;
@@ -47,7 +47,7 @@ nav {
   background-color: #191E50;
   z-index: 10;
   display: flex; }
-  #menu-container a {
+  .menu-container a {
     text-align: center;
     flex-direction: row;
     flex-grow: 4;
@@ -55,18 +55,18 @@ nav {
     padding: 40px 0 3px;
     position: relative;
     color: #F9FCFE; }
-  #menu-container a:active {
+  .menu-container a:active {
     background-color: #CCD1EB; }
-  #menu-container .search-icon {
+  .menu-container .search-icon {
     background: url("../assets/icons/search_icon.png") no-repeat 50% 7px;
     background-size: 28px; }
-  #menu-container .signup-icon {
+  .menu-container .signup-icon {
     background: url("../assets/icons/signup_icon.png") no-repeat 50% 7px;
     background-size: 33px; }
-  #menu-container .about-icon {
+  .menu-container .about-icon {
     background: url("../assets/icons/about_icon.png") no-repeat 50% 7px;
     background-size: 28px; }
-  #menu-container .contact-icon {
+  .menu-container .contact-icon {
     background: url("../assets/icons/contact_icon.png") no-repeat 50% 7px;
     background-size: 28px; }
 

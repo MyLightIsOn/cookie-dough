@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGA,kBAAmB;EACjB,QAAQ,EAAE,KAAK;EACf,KAAK,EAAE,IAAI;EACX,UAAU,EAAE,IAAI;EAChB,GAAG,EAAE,CAAC;EACN,gBAAgB,ECLE,OAAO;EDMzB,OAAO,EAAE,QAAQ;EACjB,KAAK,ECLa,OAAO;EDMzB,WAAW,EAAE,IAAI",
+"sources": ["profile.component.scss","../../sass/variables.scss"],
+"names": [],
+"file": "profile.component.css"
+}

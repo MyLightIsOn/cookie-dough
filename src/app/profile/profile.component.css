@@ -1,0 +1,11 @@
+#profile-container {
+  position: fixed;
+  width: 100%;
+  min-height: 100%;
+  top: 0;
+  background-color: #616697;
+  padding: 70px 10%;
+  color: #F9FCFE;
+  font-weight: bold; }
+
+/*# sourceMappingURL=profile.component.css.map */
