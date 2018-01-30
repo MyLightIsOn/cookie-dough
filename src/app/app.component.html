@@ -3,18 +3,34 @@
         <img src="../assets/images/gempathy_logo.png" class="header-logo" routerLink="/">
         <span class="header-logo-name">Gempathy</span>
         <span class="drop-shadow-effect"></span>
-        <div *ngIf="this.authService.isLoggedIn">
-            <span (click)="logout()">Logout</span>
+
+
+        <div *ngIf="this.authService.isLoggedIn; else notLoggedIn">
+            <span class="login-link" (click)="logout()">Logout</span>
         </div>
 
+        <ng-template #notLoggedIn>
+            <span class="login-link" routerLink="/login">Sign Up/Login</span>
+        </ng-template>
     </nav>
+
     <div id="menu-container">
 
-        <a routerLink="/search" routerLinkActive="active" class="search-icon">Search</a>
-        <a routerLink="/login" routerLinkActive="active" class="signup-icon">Sign Up</a>
-        <a routerLink="/profile" routerLinkActive="active" class="about-icon">About Us</a>
-        <a routerLink="/contact" routerLinkActive="active" class="contact-icon">Contact</a>
+        <div *ngIf="this.authService.isLoggedIn; else notLoggedInMenu">
+            <a routerLink="/search" routerLinkActive="active" class="search-icon">Search</a>
+            <a routerLink="/profile" routerLinkActive="active" class="signup-icon">Profile</a>
+            <a routerLink="/about" routerLinkActive="active" class="about-icon">About Us</a>
+            <a routerLink="/contact" routerLinkActive="active" class="contact-icon">Contact</a>
+        </div>
+
+        <ng-template #notLoggedInMenu>
+            <a routerLink="/search" routerLinkActive="active" class="search-icon">Search</a>
+            <a routerLink="/profile" routerLinkActive="active" class="about-icon">About Us</a>
+            <a routerLink="/contact" routerLinkActive="active" class="contact-icon">Contact</a>
+        </ng-template>
+
     </div>
+
 
     <div id="content-container" [@searchAnimations]="getPage(appOutlet)">
         <router-outlet #appOutlet="outlet"></router-outlet>

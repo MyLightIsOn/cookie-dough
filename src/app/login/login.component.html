@@ -1,9 +1,24 @@
 <div id="login-component">
-    <span>email address</span>
-    <input type="text" id="email" [(ngModel)]="email" class="input-form">
-     <br />
-    <span>password</span>
-    <input type="text" id="password" [(ngModel)]="password" class="input-form">
+    <section class="login=section">
+        <h4>Log in to Gempathy</h4>
+        <span class="login-input-label">email address</span>
+        <input type="text" id="email" [(ngModel)]="email" class="login-input-form">
+        <br />
+        <span class="login-input-label">password</span>
+        <input type="text" id="password" [(ngModel)]="password" class="login-input-form">
 
-    <span class="button" (click)="login()">Submit</span>
+        <div class="submit-login-container">
+            <span class="submit-login-button" (click)="login()">Log in</span>
+            <input class="remember-check" type="checkbox"><label>Remember me</label>
+            <span class="forgot-password">Forgot Password</span>
+        </div>
+    </section>
+
+    <div class="horizontal-rule"></div>
+
+    <section class="signup-section">
+        <h4 class="divide">Or</h4>
+        <h4 class="sign-up-text">New to Gempathy? Sign up now!</h4>
+        <span class="signup-button">Sign up</span>
+    </section>
 </div>

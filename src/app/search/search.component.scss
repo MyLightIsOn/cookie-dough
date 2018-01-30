@@ -29,13 +29,7 @@
       }
 
       h4 {
-        font-family: $montserrat;
-        font-size: 20px;
-        margin: -5px 0 15px;
-        padding: 0;
-        text-shadow: 0 4px 3px rgba(0,0,0,0.4),
-        0 8px 13px rgba(0,0,0,0.1),
-        0 18px 23px rgba(0,0,0,0.1);
+        @include section-header;
       }
     }
   }
@@ -45,12 +39,9 @@
   }
 
   .search-help {
-    display: block;
-    margin: 30px auto 5px;
-    width: 90%;
-    position: relative;
-    top: 0;
+    @include form-label;
     color: $white;
+    margin: 30px auto 5px;
   }
 
   #main-search-container {
@@ -60,17 +51,7 @@
     top: 0px;
     
     #main-search {
-      background-color: $white;
-      @include form-shadow;
-      border: 0;
-      display: block;
-      margin: auto;
-      max-height: 46px;
-      width: 90%;
-      padding: 13px 10px;
-      font-size: 17px;
-      position: relative;
-      top: 0;
+      @include form-field;
     }
     
     .search-button {

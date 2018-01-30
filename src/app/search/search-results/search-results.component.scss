@@ -147,15 +147,8 @@
   }
 
   .search-result-button {
-    display: block;
-    padding: 11px 0;
-    text-align: center;
+    @include light-blue-button;
     flex-grow: 1;
-    background-color: $light-blue;
-    color: $dark-blue;
-    margin-bottom: 7px;
-    position: relative;
-    border-radius: 2px;
   }
 
   .search-result-button:before {

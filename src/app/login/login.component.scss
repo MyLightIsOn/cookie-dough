@@ -4,20 +4,108 @@
 #login-component {
   position: fixed;
   width: 100%;
+  min-height: 100%;
   top: 0;
   padding-top: 70px;
+  background-color: $medium-blue;
 
-  .input-form {
-    background-color: $white;
-    @include form-shadow;
-    border: 0;
-    display: block;
-    margin: auto;
-    max-height: 46px;
-    width: 90%;
-    padding: 13px 10px;
-    font-size: 17px;
+  h4 {
+    text-align: center;
+    color: $white;
+    @include section-header;
+    margin: 10px 0 27px;
+    font-size: 16px;
+  }
+  
+  .login-input-label {
+    @include form-label;
+    color: $white;
+  }
+
+  .login-input-form {
+    @include form-field;
+    padding: 10px 10px;
+  }
+
+  .submit-login-button {
+    @include light-blue-button;
+    width: 160px;
+    margin: 25px 0 0 5%;
+  }
+
+  .submit-login-button:before {
+    @include button-emboss($light-blue, $white, #9ea3db, #6d728C);
+  }
+
+  .submit-login-button:active {
+    background-color: #9ea3bd;
+  }
+
+  .submit-login-button:active:before {
+    background-color: #9ea3bd;
+    background-image: none;
+    box-shadow: 0 1px 2px 0 #444 inset;
+  }
+
+  .submit-login-container {
     position: relative;
-    top: 0;
+    
+    .forgot-password {
+      font-weight: bold;
+      text-decoration: underline;
+      position: absolute;
+      right: 8%;
+      top: 9px;
+      color: $white;
+    }
+
+    .remember-check {
+      margin: 16px 8px 0 5%;
+    }
+
+    label {
+      color: $white;
+    }
+  }
+
+  .horizontal-rule {
+    width: 90%;
+    height: 2px;
+    background-color: $white;
+    margin: 15px auto -11px;
+  }
+
+  .divide {
+    font-size: 16px;
+    background-color: $medium-blue;
+    width: 40px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .sign-up-text {
+    margin: 25px auto 20px;
+  }
+  
+  .signup-button {
+    @include orange-button;
+    width: 180px;
+    margin: 0 auto;
+  }
+
+  .signup-button:before {
+    @include button-emboss(#FFF1A2, #FDDEA6, #d34c16, #7A3D16);
+  }
+  
+  .signup-button:active {
+    background-color: #d34c16;
+    background-image: none;
+    box-shadow: 0 1px 2px 0 #444 inset;
+  }
+
+  .signup-button:active:before {
+    background-color: #d34c16;
+    background-image: none;
+    box-shadow: 0 1px 2px 0 #444 inset;
   }
 }

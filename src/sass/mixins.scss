@@ -24,3 +24,57 @@
   background-image: linear-gradient(to bottom, $high-gradient 0%, $low-gradient 40%);
   box-shadow: 0px -1px 2px 0 $shadow inset
 }
+
+@mixin form-field {
+  background-color: $white;
+  @include form-shadow;
+  border: 0;
+  display: block;
+  margin: auto;
+  max-height: 46px;
+  width: 90%;
+  padding: 13px 10px;
+  font-size: 17px;
+  position: relative;
+  top: 0;
+}
+
+@mixin form-label {
+  display: block;
+  margin: 0px auto 5px;
+  width: 90%;
+  position: relative;
+  top: 0;
+}
+
+@mixin section-header {
+  font-family: $montserrat;
+  font-size: 20px;
+  margin: -5px 0 15px;
+  padding: 0;
+  text-shadow: 0 4px 3px rgba(0,0,0,0.4),
+  0 8px 13px rgba(0,0,0,0.1),
+  0 18px 23px rgba(0,0,0,0.1);
+}
+
+@mixin light-blue-button {
+  display: block;
+  padding: 11px 0;
+  text-align: center;
+  background-color: $light-blue;
+  color: $dark-blue;
+  margin-bottom: 7px;
+  position: relative;
+  border-radius: 2px;
+}
+
+@mixin orange-button {
+  display: block;
+  padding: 11px 0;
+  text-align: center;
+  background-color: $orange;
+  color: $white;
+  margin-bottom: 7px;
+  position: relative;
+  border-radius: 2px;
+}

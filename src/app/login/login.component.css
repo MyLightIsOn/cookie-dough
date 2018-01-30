@@ -1,9 +1,28 @@
 #login-component {
   position: fixed;
   width: 100%;
+  min-height: 100%;
   top: 0;
-  padding-top: 70px; }
-  #login-component .input-form {
+  padding-top: 70px;
+  background-color: #616697; }
+  #login-component h4 {
+    text-align: center;
+    color: #F9FCFE;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    margin: -5px 0 15px;
+    padding: 0;
+    text-shadow: 0 4px 3px rgba(0, 0, 0, 0.4), 0 8px 13px rgba(0, 0, 0, 0.1), 0 18px 23px rgba(0, 0, 0, 0.1);
+    margin: 10px 0 27px;
+    font-size: 16px; }
+  #login-component .login-input-label {
+    display: block;
+    margin: 0px auto 5px;
+    width: 90%;
+    position: relative;
+    top: 0;
+    color: #F9FCFE; }
+  #login-component .login-input-form {
     background-color: #F9FCFE;
     -webkit-box-shadow: inset 10px 10px 5px -10.5px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: inset 10px 10px 5px -10.5px rgba(0, 0, 0, 0.75);
@@ -16,6 +35,95 @@
     padding: 13px 10px;
     font-size: 17px;
     position: relative;
-    top: 0; }
+    top: 0;
+    padding: 10px 10px; }
+  #login-component .submit-login-button {
+    display: block;
+    padding: 11px 0;
+    text-align: center;
+    background-color: #CCD1EB;
+    color: #191E50;
+    margin-bottom: 7px;
+    position: relative;
+    border-radius: 2px;
+    width: 160px;
+    margin: 25px 0 0 5%; }
+  #login-component .submit-login-button:before {
+    content: "";
+    display: block;
+    background-color: #CCD1EB;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    bottom: -2px;
+    right: -2px;
+    z-index: -1;
+    border-radius: 2px;
+    background-image: linear-gradient(to bottom, #F9FCFE 0%, #9ea3db 40%);
+    box-shadow: 0px -1px 2px 0 #6d728C inset; }
+  #login-component .submit-login-button:active {
+    background-color: #9ea3bd; }
+  #login-component .submit-login-button:active:before {
+    background-color: #9ea3bd;
+    background-image: none;
+    box-shadow: 0 1px 2px 0 #444 inset; }
+  #login-component .submit-login-container {
+    position: relative; }
+    #login-component .submit-login-container .forgot-password {
+      font-weight: bold;
+      text-decoration: underline;
+      position: absolute;
+      right: 8%;
+      top: 9px;
+      color: #F9FCFE; }
+    #login-component .submit-login-container .remember-check {
+      margin: 16px 8px 0 5%; }
+    #login-component .submit-login-container label {
+      color: #F9FCFE; }
+  #login-component .horizontal-rule {
+    width: 90%;
+    height: 2px;
+    background-color: #F9FCFE;
+    margin: 15px auto -11px; }
+  #login-component .divide {
+    font-size: 16px;
+    background-color: #616697;
+    width: 40px;
+    margin: 0 auto;
+    display: block; }
+  #login-component .sign-up-text {
+    margin: 25px auto 20px; }
+  #login-component .signup-button {
+    display: block;
+    padding: 11px 0;
+    text-align: center;
+    background-color: #FF9018;
+    color: #F9FCFE;
+    margin-bottom: 7px;
+    position: relative;
+    border-radius: 2px;
+    width: 180px;
+    margin: 0 auto; }
+  #login-component .signup-button:before {
+    content: "";
+    display: block;
+    background-color: #FFF1A2;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    bottom: -2px;
+    right: -2px;
+    z-index: -1;
+    border-radius: 2px;
+    background-image: linear-gradient(to bottom, #FDDEA6 0%, #d34c16 40%);
+    box-shadow: 0px -1px 2px 0 #7A3D16 inset; }
+  #login-component .signup-button:active {
+    background-color: #d34c16;
+    background-image: none;
+    box-shadow: 0 1px 2px 0 #444 inset; }
+  #login-component .signup-button:active:before {
+    background-color: #d34c16;
+    background-image: none;
+    box-shadow: 0 1px 2px 0 #444 inset; }
 
 /*# sourceMappingURL=login.component.css.map */

@@ -40,6 +40,14 @@ nav {
     height: 7px;
     @include box-shadow;
   }
+
+  .login-link {
+    color: $white;
+    position: absolute;
+    right: 16px;
+    top: 15px;
+    text-decoration: underline;
+  }
 }
 
 

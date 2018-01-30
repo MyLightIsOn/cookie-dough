@@ -32,6 +32,12 @@ nav {
     -webkit-box-shadow: inset 0 10px 7px -8px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: inset 0 10px 7px -8px rgba(0, 0, 0, 0.75);
     box-shadow: inset 0 10px 7px -8px rgba(0, 0, 0, 0.75); }
+  nav .login-link {
+    color: #F9FCFE;
+    position: absolute;
+    right: 16px;
+    top: 15px;
+    text-decoration: underline; }
 
 #menu-container {
   position: fixed;
