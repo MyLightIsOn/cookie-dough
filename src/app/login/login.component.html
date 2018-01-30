@@ -1,5 +1,8 @@
 <div id="login-component">
     <section class="login=section">
+        <span *ngIf="this.authService.errorResponse"class="error-container">
+            <span class="error-message">{{authService.errorMessage}}</span>
+        </span>
         <h4>Log in to Gempathy</h4>
         <span class="login-input-label">email address</span>
         <input type="text" id="email" [(ngModel)]="email" class="login-input-form">

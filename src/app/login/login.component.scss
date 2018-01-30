@@ -9,6 +9,31 @@
   padding-top: 70px;
   background-color: $medium-blue;
 
+  .error-container {
+    position: absolute;
+    background-color: $light-red;
+    color: $red;
+    width: 100%;
+    padding: 15px 20px;
+    top: 50px;
+    text-align: center;
+  }
+
+  .error-message {
+    position: relative;
+    width: 90%;
+  }
+
+  .error-message:before {
+    content: '';
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    background: url("/assets/icons/error_icon.png") no-repeat;
+    left: -22px;
+    top: 1px;
+  }
+
   h4 {
     text-align: center;
     color: $white;

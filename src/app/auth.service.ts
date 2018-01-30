@@ -13,6 +13,8 @@ export class AuthService {
 
     isLoggedIn = false;
     sessionID: object;
+    errorResponse = false;
+    errorMessage: string;
 
     // store the URL so we can redirect after logging in
     redirectUrl: string;
@@ -24,10 +26,13 @@ export class AuthService {
 
     checkResponse(res) {
         if (res['error']) {
+            this.errorMessage = res['error']['errors'][0]['message'];
+            this.errorResponse = true;
             this.isLoggedIn = false;
         } else {
             this.setLocalStorage(res['session']);
             this.sessionID = res;
+            this.errorResponse = false;
             this.isLoggedIn = true;
         }
         return res || {};
