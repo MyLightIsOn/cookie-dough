@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 
 import { SearchService } from './search.service';
 
@@ -14,7 +15,7 @@ export class SearchComponent implements OnInit {
     public searchStarted = false;
     public searchSubmitted = false;
 
-    constructor(private searchService: SearchService) {}
+    constructor(private searchService: SearchService, public router: Router) {}
 
     ngOnInit() {
         this.searchService.paginationPage = undefined;
@@ -28,5 +29,6 @@ export class SearchComponent implements OnInit {
     // Submits search, unhides search results
     searchSubmit() {
         this.searchService.searchValue(this.searchText);
+        this.router.navigate(['/search-results']);
     }
 }

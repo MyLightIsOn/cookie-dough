@@ -5,10 +5,16 @@
         </span>
         <h4>Log in to Gempathy</h4>
         <span class="login-input-label">email address</span>
-        <input type="text" id="email" [(ngModel)]="email" class="login-input-form">
+        <input type="text" id="email"
+               (keyup.enter)="login()"
+               [(ngModel)]="email"
+               class="login-input-form">
         <br />
         <span class="login-input-label">password</span>
-        <input type="text" id="password" [(ngModel)]="password" class="login-input-form">
+        <input type="text" id="password"
+               (keyup.enter)="login()"
+               [(ngModel)]="password"
+               class="login-input-form">
 
         <div class="submit-login-container">
             <span class="submit-login-button" (click)="login()">Log in</span>
