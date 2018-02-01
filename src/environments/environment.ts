@@ -5,9 +5,5 @@
 
 export const environment = {
     production: false,
-    'API_ID_HEADER' : 'API_ID_HEADER',
-    'API_ID' : 'API_ID',
-    'API_KEY' : 'API_KEY',
-    'API_KEY_HEADER' : 'API_KEY_HEADER',
-    'BASEURL' : 'http://localhost:3030'
+    'BASEURL' : 'http://localhost:8080'
 };
