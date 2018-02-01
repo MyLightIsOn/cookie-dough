@@ -12,7 +12,6 @@ const app = express();
 app.use(express.static(__dirname + '/dist'));
 app.use('/', express.static('app', { redirect: false }));
 app.get('*', function (req, res) {
-    console.log('help');
     res.sendFile(path.join(__dirname, 'dist/index.html')); // load our index.html file
 });
 
@@ -20,11 +19,13 @@ app.get('*', function (req, res) {
 // Heroku port                                                                              0
 
 app.headers = {};
+app.baseURL = process.env.BASEURL;
 app.headers[process.env.API_ID_HEADER] = process.env.API_ID;
 app.headers[process.env.API_KEY_HEADER] = process.env.API_KEY;
 
-app.get('/companies', function (req, res) {
-    var options = { method: 'GET',
+app.get('/api/companies', function (req, res) {
+    
+    const options = {
         url: process.env.BASEURL + 'v1/objects/object_1/records',
         qs: { rows_per_page: '1000' },
         headers: app.headers
@@ -32,10 +33,11 @@ app.get('/companies', function (req, res) {
 
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
-
-        console.log(body);
+        res.send(body)
     });
-    res.send(body)
 });
 
-app.listen(process.env.PORT || 8080);
+const server = app.listen(process.env.PORT || 8080, function () {
+    const port = server.address().port;
+    console.log("App now running on port", port);
+});
