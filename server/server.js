@@ -12,12 +12,12 @@ const app = express();
 // in the dist directory
 app.use('/', express.static(path.join(__dirname, '../dist')));
 
-/*app.use(function(req, res, next) {
+app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods','GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
-});*/
+});
 
 // Start the app by listening on the default
 // Heroku port                                                                              0
@@ -31,6 +31,8 @@ app.get('/api/companies', function (req, res) {
         qs: {'rows_per_page': '1000'}
     };
 
+    console.log(config.headers);
+    
     request(options, function (error, response, body) {
         if (error) {
             throw new Error(error);
