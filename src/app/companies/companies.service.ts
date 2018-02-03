@@ -47,7 +47,7 @@ export class CompaniesService {
 
     // Returns an Observable after making an HTTP request and creating review stars
     public getAllCompanies() {
-        this.companyDataObservable = this.http.get(environment['BASEURL'] + 'api/companies').map((res) => {
+        this.companyDataObservable = this.http.get(environment['BASEURL'] + '/api/companies').map((res) => {
             res = this.createReviewStars(res['records']);
             res = this.setCountrySortName(res);
             this.companyData = res;
