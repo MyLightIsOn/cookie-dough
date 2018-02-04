@@ -8,5 +8,6 @@ headers[apiKeyHeader] = apiKey;
 
 module.exports = {
     baseURL : process.env.BASEURL || 'http://localhost:3000',
-    headers: headers
+    headers: headers,
+    appId : apiId
 };

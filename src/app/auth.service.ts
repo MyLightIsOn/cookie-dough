@@ -21,7 +21,7 @@ export class AuthService {
 
     login(email, password) {
         const body = ({'email': email, 'password': password});
-        return this.http.post(environment['BASEURL'] + 'login', body);
+        return this.http.post(environment['BASEURL'] + '/api/login', body);
     }
 
     checkResponse(res) {
