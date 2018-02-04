@@ -1,10 +1,17 @@
 const express = require('express');
-const app = express();
-
-const path = require('path');
-const routes = require('./routes');
+const compress = require('compression');
+const helmet = require('helmet');
 const bodyParser = require('body-parser');
 
+const app = express();
+
+// My dependecies
+const path = require('path');
+const routes = require('./routes');
+
+// Enable compression and body parsing
+app.use(helmet());
+app.use(compress());
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
