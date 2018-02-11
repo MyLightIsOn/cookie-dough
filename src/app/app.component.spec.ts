@@ -2,6 +2,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CompaniesService} from './companies/companies.service';
+import { AuthService } from './auth.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
@@ -9,7 +10,7 @@ describe('AppComponent', () => {
         TestBed.configureTestingModule({
             declarations: [ AppComponent ],
             imports: [ RouterTestingModule, HttpClientTestingModule ],
-            providers: [ CompaniesService ]
+            providers: [ CompaniesService, AuthService ]
         }).compileComponents();
     }));
 

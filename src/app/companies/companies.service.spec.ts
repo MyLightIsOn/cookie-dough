@@ -23,7 +23,7 @@ describe('CompaniesService', () => {
 
             companiesService.getAllCompanies().subscribe();
 
-            const req = backend.expectOne(environment['BASEURL'] + '/companies');
+            const req = backend.expectOne({method: 'GET'}, environment['BASEURL'] + '/companies');
             expect(req.request.method).toEqual('GET');
             req.flush(mockCompanies);
         })
