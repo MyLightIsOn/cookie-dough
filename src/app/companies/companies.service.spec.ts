@@ -1,5 +1,4 @@
 import { TestBed, async, inject } from '@angular/core/testing';
-
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { CompaniesService } from './companies.service';
