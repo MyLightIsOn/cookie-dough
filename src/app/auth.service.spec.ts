@@ -8,7 +8,7 @@ const router = {
     navigate: jasmine.createSpy('navigate')
 };
 
-describe('SearchService', () => {
+describe('AuthService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [ HttpClientTestingModule ],
