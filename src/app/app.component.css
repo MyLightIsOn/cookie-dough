@@ -81,8 +81,17 @@ nav {
   position: relative;
   padding: 0 0 20px;
   height: 100%;
-  background: url("../assets/images/background_texture.png"); }
+  background: url("../assets/images/background_gradient.png");
+  background-size: 100% 100%; }
 
+#background-texture {
+  position: fixed;
+  padding: 0 0 20px;
+  height: 100%;
+  width: 100%;
+  background: url("../assets/images/background_texture.png") repeat; }
+
+/************** Main App Container Desktop Styles **************/
 /*# sourceMappingURL=styles.css.map */
 
 /*# sourceMappingURL=app.component.css.map */
