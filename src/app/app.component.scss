@@ -41,7 +41,7 @@ nav {
     @include box-shadow;
   }
 
-  .login-link {
+  .mobile-login-link {
     color: $white;
     position: absolute;
     right: 16px;
@@ -162,6 +162,43 @@ nav {
       top: 19px;
       font-size: 22px;
       left: 60px;
+    }
+
+    .mobile-login-link {
+      display: none;
+    }
+
+    #desktop-nav-login {
+      position: absolute;
+      right: 0;
+      top: 13px;
+      color: $white;
+      padding-right: 90px;
+    }
+
+    .form-container {
+      display: inline-block;
+      margin-left: 20px;
+
+      input {
+        padding: 6px;
+        position: relative;
+        top: 14px;
+      }
+    }
+
+    .nav-login-submit {
+      @include light-blue-button;
+      width: 80px;
+      position: absolute;
+      right: 0;
+      top: 14px;
+      padding: 5px;
+    }
+
+    .nav-form-label {
+      position: absolute;
+      top: -8px;
     }
   }
 

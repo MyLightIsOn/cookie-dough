@@ -12,11 +12,30 @@
             </div>
 
             <div *ngIf="this.authService.isLoggedIn; else notLoggedIn">
-                <span class="login-link" (click)="logout()">Logout</span>
+                <span class="mobile-login-link" (click)="logout()">Logout</span>
             </div>
 
             <ng-template #notLoggedIn>
-                <span class="login-link" routerLink="/login">Sign Up/Login</span>
+                <div id="desktop-nav-login">
+
+                    <div class="form-container">
+                        <span class="nav-form-label">email</span>
+                        <input type="email" id="email"
+                               [(ngModel)]="email"
+                               class="nav-login-form">
+                    </div>
+
+                    <div class="form-container">
+                        <span class="nav-form-label">password</span>
+                        <input type="password" id="password"
+                               [(ngModel)]="password"
+                               class="nav-login-form">
+                    </div>
+
+                    <span class="nav-login-submit">login</span>
+                </div>
+
+                <span class="mobile-login-link" routerLink="/login">Sign Up/Login</span>
             </ng-template>
         </div>
         <span class="drop-shadow-effect"></span>
