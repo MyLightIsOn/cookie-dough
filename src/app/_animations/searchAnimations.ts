@@ -12,7 +12,7 @@ export const searchAnimations =
             bottom: 0
         })),
 
-        transition('search => search-results', [
+        transition('search => mobile-search-results', [
             group([
                 query(
                     ':enter',
@@ -50,7 +50,7 @@ export const searchAnimations =
             ])
         ]),
 
-        transition('search-results => search-detail', [
+        transition('mobile-search-results => mobile-search-detail', [
             group([
                 query(
                     ':enter',
@@ -88,7 +88,7 @@ export const searchAnimations =
             ])
         ]),
 
-        transition('search-detail => search-results', [
+        transition('mobile-search-detail => mobile-search-results', [
             group([
                 query(
                     ':enter',
@@ -126,7 +126,7 @@ export const searchAnimations =
             ])
         ]),
 
-        transition('* => search', [
+        transition('* => mobile-search', [
             group([
                 query(
                     ':enter',

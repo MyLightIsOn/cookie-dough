@@ -25,13 +25,16 @@ export class AppComponent implements OnInit {
             this.authService.isLoggedIn = true;
         }
         this.companyService.getAllCompanies().subscribe();
-        console.log(window.innerWidth);
     }
 
-    // returns the route for animations
+    // Checks window width and returns the route for animations for mobile or desktop
     getPage(outlet) {
-        // console.log(outlet.activatedRouteData['page']);
-        return outlet.activatedRouteData['page'];
+        const screenWidth = window.innerWidth;
+        if (screenWidth > 1199) {
+            return outlet.activatedRouteData['page'];
+        } else {
+            return 'mobile-' + outlet.activatedRouteData['page'];
+        }
     }
 
     setMessage() {
