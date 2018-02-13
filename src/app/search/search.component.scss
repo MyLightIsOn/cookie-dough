@@ -17,7 +17,7 @@
     span {
       font-size: 17px;
       line-height: 26px;
-      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+      @include text-shadow;
     }
 
     .search-logo-container {
@@ -49,6 +49,8 @@
     z-index: 0;
     transition: 0.5s;
     top: 0px;
+    max-width: 800px;
+    margin: 0 auto;
     
     #main-search {
       @include form-field;
@@ -63,6 +65,7 @@
       background-color: $orange;
       bottom: 0;
       right: 5%;
+      cursor: pointer;
     }
 
     .search-button:before {
@@ -103,12 +106,16 @@
   #main-search-container.searchSubmitted {
     z-index: -10;
   }
+
+  .desktop-search-login {
+    display: none;
+  }
 }
 
 
 /************** Search Container Desktop Styles **************/
 
-@media (min-width: 900px) {
+@media (min-width: $desktop) {
   .search-logo-container {
     margin-top: 45px;
   }
@@ -126,6 +133,37 @@
     #main-search-container {
       width: 800px;
       margin: 0 auto;
+    }
+
+    .desktop-search-login {
+      display: block;
+      color: $white;
+      position: absolute;
+      left: 5%;
+      top: 80px;
+      font-family: $montserrat;
+
+      div {
+        margin-bottom: 7px;
+      }
+
+      .desktop-search-login-text {
+        font-weight: bold;
+        margin-right: 7px;
+        @include text-shadow;
+      }
+
+      .desktop-search-login-link {
+        font-family: $arial;
+        text-decoration: underline;
+        margin-bottom: 10px;
+        @include text-shadow;
+      }
+
+      .desktop-search-login-link:hover {
+        color: $orange;
+        cursor: pointer;
+      }
     }
   }
 }

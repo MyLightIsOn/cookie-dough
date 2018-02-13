@@ -38,6 +38,8 @@ nav {
     right: 16px;
     top: 15px;
     text-decoration: underline; }
+  nav #desktop-nav-login {
+    display: none; }
 
 .mobile-menu-container {
   position: fixed;
@@ -54,7 +56,8 @@ nav {
     flex-basis: 0;
     padding: 40px 0 3px;
     position: relative;
-    color: #F9FCFE; }
+    color: #F9FCFE;
+    cursor: pointer; }
   .mobile-menu-container a:active {
     background-color: #CCD1EB; }
   .mobile-menu-container .search-icon {
@@ -95,7 +98,7 @@ nav {
   display: none; }
 
 /************** Main App Container Desktop Styles **************/
-@media (min-width: 900px) {
+@media (min-width: 1200px) {
   #desktop-menu {
     display: block;
     position: relative;
@@ -127,6 +130,7 @@ nav {
     nav .mobile-login-link {
       display: none; }
     nav #desktop-nav-login {
+      display: block;
       position: absolute;
       right: 0;
       top: 13px;
@@ -148,6 +152,7 @@ nav {
       margin-bottom: 7px;
       position: relative;
       border-radius: 2px;
+      cursor: pointer;
       width: 80px;
       position: absolute;
       right: 0;

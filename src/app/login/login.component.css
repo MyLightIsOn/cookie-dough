@@ -65,6 +65,7 @@
     margin-bottom: 7px;
     position: relative;
     border-radius: 2px;
+    cursor: pointer;
     width: 160px;
     margin: 25px 0 0 5%; }
   #login-component .submit-login-button:before {
@@ -79,7 +80,8 @@
     z-index: -1;
     border-radius: 2px;
     background-image: linear-gradient(to bottom, #F9FCFE 0%, #9ea3db 40%);
-    box-shadow: 0px -1px 2px 0 #6d728C inset; }
+    box-shadow: 0px -1px 2px 0 #6d728C inset;
+    cursor: pointer; }
   #login-component .submit-login-button:active {
     background-color: #9ea3bd; }
   #login-component .submit-login-button:active:before {
@@ -121,6 +123,7 @@
     margin-bottom: 7px;
     position: relative;
     border-radius: 2px;
+    cursor: pointer;
     width: 180px;
     margin: 0 auto; }
   #login-component .signup-button:before {
@@ -135,7 +138,8 @@
     z-index: -1;
     border-radius: 2px;
     background-image: linear-gradient(to bottom, #FDDEA6 0%, #d34c16 40%);
-    box-shadow: 0px -1px 2px 0 #7A3D16 inset; }
+    box-shadow: 0px -1px 2px 0 #7A3D16 inset;
+    cursor: pointer; }
   #login-component .signup-button:active {
     background-color: #d34c16;
     background-image: none;

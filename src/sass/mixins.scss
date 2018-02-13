@@ -10,6 +10,10 @@
   box-shadow: inset 10px 10px 5px -10.5px rgba(0,0,0,0.75);
 }
 
+@mixin text-shadow {
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
 @mixin button-emboss($bgcolor, $high-gradient, $low-gradient, $shadow){
   content: "";
   display: block;
@@ -22,7 +26,8 @@
   z-index: -1;
   border-radius: 2px;
   background-image: linear-gradient(to bottom, $high-gradient 0%, $low-gradient 40%);
-  box-shadow: 0px -1px 2px 0 $shadow inset
+  box-shadow: 0px -1px 2px 0 $shadow inset;
+  cursor: pointer;
 }
 
 @mixin form-field {
@@ -66,6 +71,7 @@
   margin-bottom: 7px;
   position: relative;
   border-radius: 2px;
+  cursor: pointer;
 }
 
 @mixin orange-button {
@@ -77,4 +83,5 @@
   margin-bottom: 7px;
   position: relative;
   border-radius: 2px;
+  cursor: pointer;
 }

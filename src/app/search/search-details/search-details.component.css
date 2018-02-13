@@ -118,7 +118,8 @@
     z-index: -1;
     border-radius: 2px;
     background-image: linear-gradient(to bottom, #F9FCFE 0%, #9ea3db 40%);
-    box-shadow: 0px -1px 2px 0 #6d728C inset; }
+    box-shadow: 0px -1px 2px 0 #6d728C inset;
+    cursor: pointer; }
   .search-details-container .gallery-button:active {
     background-color: #9ea3bd; }
   .search-details-container .gallery-button:active:before {
