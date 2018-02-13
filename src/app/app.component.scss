@@ -50,7 +50,7 @@ nav {
   }
 }
 
-.menu-container {
+.mobile-menu-container {
   position: fixed;
   bottom: 0;
   transition: 0.3s;
@@ -118,9 +118,62 @@ nav {
   background: url("../assets/images/background_texture.png") repeat;
 }
 
+#desktop-menu {
+  display: none;
+}
+
 /************** Main App Container Desktop Styles **************/
 @media (min-width: 900px) {
+  #desktop-menu {
+    display: block;
+    position: relative;
+    top: 23px;
+    left: 240px;
+
+    a {
+      color: $white;
+      font-size: 16px;
+      text-decoration: none;
+      font-family: $montserrat;
+      margin-right: 37px;
+    }
+
+    a:hover {
+      color: $orange;
+      text-decoration: underline;
+    }
+  }
   
+  nav {
+    height: 64px;
+
+    .desktop-padding {
+      max-width: 1242px;
+      height: 62px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .header-logo {
+      width: 42px;
+    }
+
+    .header-logo-name {
+      top: 19px;
+      font-size: 22px;
+      left: 60px;
+    }
+  }
+
+  .mobile-menu-container {
+    display: none;
+  }
+
+  .search-logo-container {
+    margin-top: 45px;
+  }
 }
+
+
 
 /*# sourceMappingURL=styles.css.map */

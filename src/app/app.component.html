@@ -1,21 +1,29 @@
 <div id="app-container">
     <nav>
-        <img src="../assets/images/gempathy_logo.png" class="header-logo" routerLink="/">
-        <span class="header-logo-name">Gempathy</span>
-        <span class="drop-shadow-effect"></span>
+        <div class="desktop-padding">
+            <img src="../assets/images/gempathy_logo.png" class="header-logo" routerLink="/">
+            <span class="header-logo-name">Gempathy</span>
 
+            <div id="desktop-menu">
+                <a routerLink="/search" routerLinkActive="active" class="search-icon">Home</a>
+                <a routerLink="/about" routerLinkActive="active" class="about-icon">About Us</a>
+                <a routerLink="/contact" routerLinkActive="active" class="contact-icon">Contact</a>
+                <a routerLink="/profile" routerLinkActive="active" class="signup-icon">Sign Up</a>
+            </div>
 
-        <div *ngIf="this.authService.isLoggedIn; else notLoggedIn">
-            <span class="login-link" (click)="logout()">Logout</span>
+            <div *ngIf="this.authService.isLoggedIn; else notLoggedIn">
+                <span class="login-link" (click)="logout()">Logout</span>
+            </div>
+
+            <ng-template #notLoggedIn>
+                <span class="login-link" routerLink="/login">Sign Up/Login</span>
+            </ng-template>
         </div>
-
-        <ng-template #notLoggedIn>
-            <span class="login-link" routerLink="/login">Sign Up/Login</span>
-        </ng-template>
+        <span class="drop-shadow-effect"></span>
     </nav>
 
     <div *ngIf="this.authService.isLoggedIn; else notLoggedInMenu">
-        <div class="menu-container">
+        <div class="mobile-menu-container">
             <a routerLink="/search" routerLinkActive="active" class="search-icon">Search</a>
             <a routerLink="/profile" routerLinkActive="active" class="signup-icon">Profile</a>
             <a routerLink="/about" routerLinkActive="active" class="about-icon">About Us</a>
@@ -24,7 +32,7 @@
     </div>
 
     <ng-template #notLoggedInMenu>
-        <div class="menu-container">
+        <div class="mobile-menu-container">
             <a routerLink="/search" routerLinkActive="active" class="search-icon">Search</a>
             <a routerLink="/profile" routerLinkActive="active" class="about-icon">About Us</a>
             <a routerLink="/contact" routerLinkActive="active" class="contact-icon">Contact</a>

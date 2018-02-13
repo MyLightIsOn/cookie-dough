@@ -98,4 +98,17 @@
   #search-component #main-search-container.searchSubmitted {
     z-index: -10; }
 
+/************** Search Container Desktop Styles **************/
+@media (min-width: 900px) {
+  .search-logo-container {
+    margin-top: 45px; }
+
+  #homepage-title span {
+    font-weight: bold;
+    letter-spacing: 1.5px; }
+
+  #search-component #main-search-container {
+    width: 800px;
+    margin: 0 auto; } }
+
 /*# sourceMappingURL=search.component.css.map */
