@@ -12,7 +12,7 @@ export const searchAnimations =
             bottom: 0
         })),
 
-        transition('search => mobile-search-results', [
+        transition('mobile-search => mobile-search-results', [
             group([
                 query(
                     ':enter',
