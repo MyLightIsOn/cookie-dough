@@ -19,3 +19,12 @@ body, html {
   font-family: $arial;
 }
 
+.desktop {
+  display: none !important;
+}
+
+@media (min-width: $desktop) {
+  .mobile {
+    display: none !important;
+  }
+}

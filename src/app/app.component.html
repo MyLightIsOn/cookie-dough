@@ -4,7 +4,7 @@
             <img src="../assets/images/gempathy_logo.png" class="header-logo" routerLink="/">
             <span class="header-logo-name">Gempathy</span>
 
-            <div id="desktop-menu">
+            <div id="desktop-menu" class="desktop">
                 <a routerLink="/search" routerLinkActive="active" class="search-icon">Home</a>
                 <a routerLink="/about" routerLinkActive="active" class="about-icon">About Us</a>
                 <a routerLink="/contact" routerLinkActive="active" class="contact-icon">Contact</a>
@@ -12,7 +12,7 @@
             </div>
 
             <div *ngIf="this.authService.isLoggedIn; else notLoggedIn">
-                <span class="mobile-login-link" (click)="logout()">Logout</span>
+                <span class="mobile-login-link mobile" (click)="logout()">Logout</span>
             </div>
 
             <ng-template #notLoggedIn>
@@ -35,14 +35,14 @@
                     <span class="nav-login-submit" (click)="login()">login</span>
                 </div>
 
-                <span class="mobile-login-link" routerLink="/login">Sign Up/Login</span>
+                <span class="mobile-login-link mobile" routerLink="/login">Sign Up/Login</span>
             </ng-template>
         </div>
         <span class="drop-shadow-effect"></span>
     </nav>
 
     <div *ngIf="this.authService.isLoggedIn; else notLoggedInMenu">
-        <div class="mobile-menu-container">
+        <div class="mobile-menu-container mobile">
             <a routerLink="/search" routerLinkActive="active" class="search-icon">Search</a>
             <a routerLink="/profile" routerLinkActive="active" class="signup-icon">Profile</a>
             <a routerLink="/about" routerLinkActive="active" class="about-icon">About Us</a>
@@ -51,7 +51,7 @@
     </div>
 
     <ng-template #notLoggedInMenu>
-        <div class="mobile-menu-container">
+        <div class="mobile-menu-container mobile">
             <a routerLink="/search" routerLinkActive="active" class="search-icon">Search</a>
             <a routerLink="/profile" routerLinkActive="active" class="about-icon">About Us</a>
             <a routerLink="/contact" routerLinkActive="active" class="contact-icon">Contact</a>
@@ -61,6 +61,10 @@
     <div id="content-container" [@searchAnimations]="getPage(appOutlet)">
         <div id="background-texture"></div>
         <router-outlet #appOutlet="outlet"></router-outlet>
+    </div>
+
+    <div id="footer">
+        
     </div>
 </div>
 

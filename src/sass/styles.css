@@ -14,4 +14,11 @@ body, html {
   min-height: 100%;
   font-family: Arial, Helvetica Neue, Helvetica, sans-serif; }
 
+.desktop {
+  display: none !important; }
+
+@media (min-width: 1200px) {
+  .mobile {
+    display: none !important; } }
+
 /*# sourceMappingURL=styles.css.map */

@@ -123,10 +123,6 @@ nav {
   background: url("../assets/images/background_texture.png") repeat;
 }
 
-#desktop-menu {
-  display: none;
-}
-
 /************** Main App Container Desktop Styles **************/
 @media (min-width: $desktop) {
   #desktop-menu {
@@ -169,10 +165,6 @@ nav {
       left: 60px;
     }
 
-    .mobile-login-link {
-      display: none;
-    }
-
     #desktop-nav-login {
       display: block;
       position: absolute;
@@ -206,10 +198,6 @@ nav {
       position: absolute;
       top: -8px;
     }
-  }
-
-  .mobile-menu-container {
-    display: none;
   }
 
   .search-logo-container {

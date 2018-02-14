@@ -94,9 +94,6 @@ nav {
   width: 100%;
   background: url("../assets/images/background_texture.png") repeat; }
 
-#desktop-menu {
-  display: none; }
-
 /************** Main App Container Desktop Styles **************/
 @media (min-width: 1200px) {
   #desktop-menu {
@@ -127,8 +124,6 @@ nav {
       top: 19px;
       font-size: 22px;
       left: 60px; }
-    nav .mobile-login-link {
-      display: none; }
     nav #desktop-nav-login {
       display: block;
       position: absolute;
@@ -161,9 +156,6 @@ nav {
     nav .nav-form-label {
       position: absolute;
       top: -8px; }
-
-  .mobile-menu-container {
-    display: none; }
 
   .search-logo-container {
     margin-top: 45px; } }
