@@ -4,6 +4,8 @@
             <img src="../assets/images/gempathy_logo.png" class="header-logo" routerLink="/">
             <span class="header-logo-name">Gempathy</span>
 
+
+            <!-- Desktop Navigation -->
             <div id="desktop-menu" class="desktop">
                 <a routerLink="/search" routerLinkActive="active" class="search-icon">Home</a>
                 <a routerLink="/about" routerLinkActive="active" class="about-icon">About Us</a>
@@ -11,12 +13,16 @@
                 <a routerLink="/profile" routerLinkActive="active" class="signup-icon">Sign Up</a>
             </div>
 
+            <!-- Mobile Logout Button-->
             <div *ngIf="this.authService.isLoggedIn; else notLoggedIn">
                 <span class="mobile-login-link mobile" (click)="logout()">Logout</span>
             </div>
 
+            <!-- User Not Logged In-->
             <ng-template #notLoggedIn>
-                <div id="desktop-nav-login">
+
+                <!-- Desktop Login -->
+                <div id="desktop-nav-login" class="desktop">
 
                     <div class="form-container">
                         <span class="nav-form-label">email</span>
@@ -35,12 +41,14 @@
                     <span class="nav-login-submit" (click)="login()">login</span>
                 </div>
 
+                <!-- Mobile Login-->
                 <span class="mobile-login-link mobile" routerLink="/login">Sign Up/Login</span>
             </ng-template>
         </div>
         <span class="drop-shadow-effect"></span>
     </nav>
 
+    <!-- Mobile Menu Logged In -->
     <div *ngIf="this.authService.isLoggedIn; else notLoggedInMenu">
         <div class="mobile-menu-container mobile">
             <a routerLink="/search" routerLinkActive="active" class="search-icon">Search</a>
@@ -50,6 +58,7 @@
         </div>
     </div>
 
+    <!-- Mobile Menu Not Logged In-->
     <ng-template #notLoggedInMenu>
         <div class="mobile-menu-container mobile">
             <a routerLink="/search" routerLinkActive="active" class="search-icon">Search</a>
@@ -63,8 +72,29 @@
         <router-outlet #appOutlet="outlet"></router-outlet>
     </div>
 
-    <div id="footer">
-        
-    </div>
+    <footer class="desktop">
+        <div class="footer-content-container">
+            <div class="link-column">
+                <a routerLink="/">Home</a>
+                <a routerLink="/search">Search</a>
+                <a routerLink="/about">About</a>
+                <a routerLink="/contact">Contact</a>
+                <a routerLink="/signup">Sign Up</a>
+            </div>
+            <div class="link-column">
+                <a routerLink="/">Privacy Statement</a>
+                <a routerLink="/">FAQ</a>
+            </div>
+            <div class="link-column">
+                <a routerLink="/">Facebook</a>
+                <a routerLink="/">Instagram</a>
+                <a routerLink="/">Press</a>
+            </div>
+            <div class="copyright-container">
+                <img src="../assets/images/gempathy_logo.png" class="footer-logo">
+                <span>Gempathy &copy; 2018</span>
+            </div>
+        </div>
+    </footer>
 </div>
 

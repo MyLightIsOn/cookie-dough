@@ -125,6 +125,10 @@ nav {
 
 /************** Main App Container Desktop Styles **************/
 @media (min-width: $desktop) {
+  #app-container {
+    overflow-x: inherit;
+  }
+
   #desktop-menu {
     display: block;
     position: relative;
@@ -202,6 +206,57 @@ nav {
 
   .search-logo-container {
     margin-top: 45px;
+  }
+
+  footer {
+    background-color: $dark-blue;
+    width: 100%;
+    min-height: 200px;
+    position: relative;
+
+    .footer-content-container {
+      position: relative;
+      max-width: 1242px;
+      margin: auto;
+    }
+
+    .link-column {
+      padding: 30px;
+      display: inline-block;
+      vertical-align: top;
+
+      a {
+        color: white;
+        font-family: $montserrat;
+        display: block;
+        text-decoration: none;
+        margin-bottom: 10px;
+      }
+
+      a:hover {
+        color: $orange;
+        text-decoration: underline;
+      }
+    }
+
+    .copyright-container {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+
+      img {
+        width: 30px;
+        display: inline-block;
+      }
+
+      span {
+        display: inline-block;
+        color: $white;
+        font-family: $montserrat;
+        position: relative;
+        top: -12px;
+      }
+    }
   }
 }
 

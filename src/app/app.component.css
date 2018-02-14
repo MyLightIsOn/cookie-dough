@@ -96,6 +96,9 @@ nav {
 
 /************** Main App Container Desktop Styles **************/
 @media (min-width: 1200px) {
+  #app-container {
+    overflow-x: inherit; }
+
   #desktop-menu {
     display: block;
     position: relative;
@@ -158,7 +161,43 @@ nav {
       top: -8px; }
 
   .search-logo-container {
-    margin-top: 45px; } }
+    margin-top: 45px; }
+
+  footer {
+    background-color: #191E50;
+    width: 100%;
+    min-height: 200px;
+    position: relative; }
+    footer .footer-content-container {
+      position: relative;
+      max-width: 1242px;
+      margin: auto; }
+    footer .link-column {
+      padding: 30px;
+      display: inline-block;
+      vertical-align: top; }
+      footer .link-column a {
+        color: white;
+        font-family: "Montserrat", sans-serif;
+        display: block;
+        text-decoration: none;
+        margin-bottom: 10px; }
+      footer .link-column a:hover {
+        color: #FF9018;
+        text-decoration: underline; }
+    footer .copyright-container {
+      position: absolute;
+      right: 0;
+      bottom: 0; }
+      footer .copyright-container img {
+        width: 30px;
+        display: inline-block; }
+      footer .copyright-container span {
+        display: inline-block;
+        color: #F9FCFE;
+        font-family: "Montserrat", sans-serif;
+        position: relative;
+        top: -12px; } }
 /*# sourceMappingURL=styles.css.map */
 
 /*# sourceMappingURL=app.component.css.map */

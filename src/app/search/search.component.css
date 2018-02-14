@@ -111,29 +111,31 @@
     font-weight: bold;
     letter-spacing: 1.5px; }
 
-  #search-component #main-search-container {
-    width: 800px;
-    margin: 0 auto; }
-  #search-component .desktop-search-login {
-    display: block;
-    color: #F9FCFE;
-    position: absolute;
-    left: 5%;
-    top: 80px;
-    font-family: "Montserrat", sans-serif; }
-    #search-component .desktop-search-login div {
-      margin-bottom: 7px; }
-    #search-component .desktop-search-login .desktop-search-login-text {
-      font-weight: bold;
-      margin-right: 7px;
-      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3); }
-    #search-component .desktop-search-login .desktop-search-login-link {
-      font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-      text-decoration: underline;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3); }
-    #search-component .desktop-search-login .desktop-search-login-link:hover {
-      color: #FF9018;
-      cursor: pointer; } }
+  #search-component {
+    position: relative; }
+    #search-component #main-search-container {
+      width: 800px;
+      margin: 0 auto; }
+    #search-component .desktop-search-login {
+      display: block;
+      color: #F9FCFE;
+      position: absolute;
+      left: 5%;
+      top: 80px;
+      font-family: "Montserrat", sans-serif; }
+      #search-component .desktop-search-login div {
+        margin-bottom: 7px; }
+      #search-component .desktop-search-login .desktop-search-login-text {
+        font-weight: bold;
+        margin-right: 7px;
+        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3); }
+      #search-component .desktop-search-login .desktop-search-login-link {
+        font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+        text-decoration: underline;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3); }
+      #search-component .desktop-search-login .desktop-search-login-link:hover {
+        color: #FF9018;
+        cursor: pointer; } }
 
 /*# sourceMappingURL=search.component.css.map */

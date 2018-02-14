@@ -20,10 +20,14 @@ body, html {
 }
 
 .desktop {
-  display: none !important;
+  display: none;
 }
 
 @media (min-width: $desktop) {
+  .desktop {
+    display: block;
+  }
+
   .mobile {
     display: none !important;
   }
