@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 
 import { SearchService } from './search.service';
+import { AppService } from '../app.service';
 
 @Component({
     selector: 'app-search',
@@ -15,7 +16,10 @@ export class SearchComponent implements OnInit {
     public searchStarted = false;
     public searchSubmitted = false;
 
-    constructor(private searchService: SearchService, public router: Router) {}
+    constructor(
+        private searchService: SearchService,
+        public router: Router,
+        public appService: AppService) {}
 
     ngOnInit() {
         this.searchService.paginationPage = undefined;
@@ -23,7 +27,9 @@ export class SearchComponent implements OnInit {
 
     // Shifts search box;
     searchStart() {
-        this.searchStarted = true;
+        if (this.appService.device === 'mobile') {
+            this.searchStarted = true;
+        }
     }
 
     // Submits search, unhides search results

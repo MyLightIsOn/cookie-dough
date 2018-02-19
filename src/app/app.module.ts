@@ -15,6 +15,7 @@ import { RegisterComponent } from './register/register.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { DialogService } from './dialogs/dialog.service';
+import { AppService } from './app.service';
 import { FilterCompaniesPipe } from './_pipes/filter-companies.pipe';
 
 
@@ -37,7 +38,8 @@ import { FilterCompaniesPipe } from './_pipes/filter-companies.pipe';
         FormsModule
     ],
     providers: [
-        DialogService
+        DialogService,
+        AppService
     ],
     bootstrap: [AppComponent]
 })
