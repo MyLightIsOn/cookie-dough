@@ -48,6 +48,10 @@
         <span class="drop-shadow-effect"></span>
     </nav>
 
+    <span *ngIf="this.authService.errorResponse" class="error-container desktop">
+            <span class="error-message">{{authService.errorMessage}}</span>
+        </span>
+
     <!-- Mobile Menu Logged In -->
     <div *ngIf="this.authService.isLoggedIn; else notLoggedInMenu">
         <div class="mobile-menu-container mobile">

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
+
 import { AuthService } from '../auth.service';
+import { LoginService } from './login.service';
 
 @Component({
     selector: 'app-login',
@@ -12,38 +13,13 @@ export class LoginComponent {
     email: string;
     password: string;
 
-    constructor(public authService: AuthService, public router: Router) {
-        this.setMessage();
-    }
-
-    setMessage() {
-        this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
-    }
+    constructor(public authService: AuthService, public loginService: LoginService) {}
 
     login() {
-        const navigationExtras: NavigationExtras = {
-            queryParamsHandling: 'preserve',
-            preserveFragment: true
-        };
-
-        this.message = 'Trying to log in ...';
-
-        this.authService.login(this.email, this.password).subscribe((res => {
-            this.setMessage();
-            this.authService.checkResponse(res);
-            if (this.authService.isLoggedIn) {
-                // Get the redirect URL from our auth service
-                // If no redirect has been set, use the default
-                const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/profile';
-
-                // Redirect the user
-                this.router.navigate([redirect], navigationExtras);
-            }
-        }));
+        this.loginService.login(this.email, this.password);
     }
 
     logout() {
         this.authService.logout();
-        this.setMessage();
     }
 }
