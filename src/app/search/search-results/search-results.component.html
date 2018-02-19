@@ -1,64 +1,89 @@
 <div id="search-results-container">
-    <div class="search-result-controls">
-        <span class="searched-for">Searched: <span class="searched-for-text">{{searchText}}</span></span>
-        <div class="search-result-button-container">
-            <span (click)="resetData()" routerLink="/search" class="search-result-button left">New Search</span>
-            <span class="search-result-button right">Filter Search</span>
-        </div>
-        <hr />
+    <div id="left-container">
+        <div class="search-result-controls">
 
-        <!-- Pagination: Commented out buttons are for future use when companies list becomes very large. -->
-        <div *ngIf="pager.pages && pager.pages.length" id="pagination">
-            <div class="left-pagination">
-                <span class="results-count" *ngIf="filteredCompanies">{{filteredCompanies.length}}<span class="not-bold"> Results</span></span>
+            <!-- Desktop Ad-->
+            <a class="search-control-ad desktop" href="https://www.springdaletown.com/" target="_blank" alt="springdale">
+                <img src="../../../assets/images/fake_ad.png" height="105" width="728"/>
+            </a>
 
-                <div class="page-navigation-container">
+            <!--Desktop search bar-->
+            <div class="search-reuslts-search-container desktop">
+                <input type="text" class="search-results-search" [(ngModel)]="newSearchText" placeholder="company, location, service, etc.">
+                <span class="search-results-submit-button" (click)="searchAgain()">Search</span>
+            </div>
+
+
+            <!-- Mobile Search controls-->
+            <span class="searched-for mobile">Searched: <span class="searched-for-text">{{searchText}}</span></span>
+            <div class="search-result-button-container mobile">
+                <span (click)="resetData()" routerLink="/search" class="search-result-button left">New Search</span>
+                <span class="search-result-button right">Filter Search</span>
+            </div>
+            <hr class="mobile" />
+
+            <!-- Pagination: Commented out buttons are for future use when companies list becomes very large. -->
+            <div *ngIf="pager.pages && pager.pages.length" id="pagination">
+                <div class="left-pagination">
+                    <span class="results-count" *ngIf="filteredCompanies">{{filteredCompanies.length}}<span class="not-bold"> Results</span></span>
+
+                    <div class="page-navigation-container">
                     <span class="previous-page pagination-button" [ngClass]="{disabled:pager.currentPage === 1}">
                         <a (click)="setPage(pager.currentPage - 1)"></a>
                     </span>
-                    <span class="page-position">Page {{pager.currentPage}} of {{pager.totalPages}}</span>
-                    <span class="next-page pagination-button"[ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                        <span class="page-position">Page {{pager.currentPage}} of {{pager.totalPages}}</span>
+                        <span class="next-page pagination-button"[ngClass]="{disabled:pager.currentPage === pager.totalPages}">
                         <a (click)="setPage(pager.currentPage + 1)"></a>
                     </span>
+                    </div>
+                </div>
+                <div class="right-pagination">
+                    <div class="sort-container">
+                        <span class="sort-type-button" (click)="openSort()">{{setSortName()}}</span>
+                        <ul class="sort-list" [ngClass]="{'sort-open': sortOpen}">
+                            <li (click)="sortBy('field_3', this.searchService.sortOrder, 1)">Name</li>
+                            <li (click)="sortBy('field_34', this.searchService.sortOrder, 1)">Country</li>
+                            <li (click)="sortBy('field_32_raw', this.searchService.sortOrder, 1)">Stars</li>
+                            <li (click)="sortBy('field_31', this.searchService.sortOrder, 1)"># Reviews</li>
+                        </ul>
+                        <span class="order-button" [ngClass]="{'desc': desc}" (click)="changeSortOrder()"></span>
+                    </div>
+                    <span class="search-filter desktop">Search Filter</span>
+                    <div class="result-guide-container">
+                        <span>Featured Business</span>
+                        <span>Results 1 - 50</span>
+                    </div>
+                </div>
+                <!-- These might be useful later when search results get really long
+
+                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a (click)="setPage(1)">First</a>
+                </li>
+                <span *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                    <a (click)="setPage(page)">{{page}}</a>
+                </span>
+                <<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a (click)="setPage(pager.totalPages)">Last</a>
+                </li>-->
+            </div>
+            <span class="drop-shadow-effect"></span>
+        </div>
+        <div id="companies-list-container">
+            <div *ngFor="let company of companiesArray" class="search-result" [routerLink]="['/', setIdentifier(company)]">
+                <span class="company-name">{{company['field_3']}}</span>
+                <span class="company-country">{{company['field_4_raw'].country}}</span>
+                <span class="reviews-avg reviews-avg-{{company['field_32_raw_image']}}"></span>
+                <span class="reviews-count">{{company['field_31']}} reviews</span>
+                <div *ngIf="company['field_29'] === 'True'">
+                    <span class="verification" [ngClass]="{'verified': company['field_29']}"></span>
                 </div>
             </div>
-            <div class="right-pagination">
-                <div class="sort-container">
-                    <span class="sort-type-button" (click)="openSort()">{{setSortName()}}</span>
-                    <ul class="sort-list" [ngClass]="{'sort-open': sortOpen}">
-                        <li (click)="sortBy('field_3', this.searchService.sortOrder, 1)">Name</li>
-                        <li (click)="sortBy('field_34', this.searchService.sortOrder, 1)">Country</li>
-                        <li (click)="sortBy('field_32_raw', this.searchService.sortOrder, 1)">Stars</li>
-                        <li (click)="sortBy('field_31', this.searchService.sortOrder, 1)"># Reviews</li>
-                    </ul>
-                    <span class="order-button" [ngClass]="{'desc': desc}" (click)="changeSortOrder()"></span>
-                </div>
-
-            </div>
-            <!-- These might be useful later when search results get really long
-
-            <li [ngClass]="{disabled:pager.currentPage === 1}">
-                <a (click)="setPage(1)">First</a>
-            </li>
-            <span *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-                <a (click)="setPage(page)">{{page}}</a>
-            </span>
-            <<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                <a (click)="setPage(pager.totalPages)">Last</a>
-            </li>-->
-        </div>
-        <span class="drop-shadow-effect"></span>
-    </div>
-    <div id="companies-list-container">
-        <div *ngFor="let company of companiesArray" class="search-result" [routerLink]="['/', setIdentifier(company)]">
-            <span class="company-name">{{company['field_3']}}</span>
-            <span class="company-country">{{company['field_4_raw'].country}}</span>
-            <span class="reviews-avg reviews-avg-{{company['field_32_raw_image']}}"></span>
-            <span class="reviews-count">{{company['field_31']}} reviews</span>
-            <div *ngIf="company['field_29'] === 'True'">
-                <span class="verification" [ngClass]="{'verified': company['field_29']}"></span>
-            </div>
         </div>
     </div>
+
+    <div id="right-container">
+
+    </div>
+
 </div>
 

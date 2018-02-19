@@ -26,7 +26,8 @@ export class SearchResultsComponent implements OnInit {
     public pager: any = {};
     public filteredCompanies: any;
     public sortedCompanies: any;
-    public searchText: string;
+    public searchText = this.searchService.searchValueText;
+    public newSearchText: string;
     public currentPage: number;
     public desc: boolean;
     public sortOpen = true;
@@ -35,7 +36,6 @@ export class SearchResultsComponent implements OnInit {
 
     ngOnInit() {
         // Uses the company service properties to set this components properties
-        this.searchText = this.searchService.searchValueText;
         this.companyData = this.companyService.companyData;
         this.filteredCompanies = this.filterCompaniesPipe.transform(this.companyData, this.searchText);
         this.sortTypeText = this.searchService.sortType;
@@ -131,6 +131,7 @@ export class SearchResultsComponent implements OnInit {
         this.searchService.paginationPage = 1;
     }
 
+    // Sorts the search results by attribute
     public setSortName() {
         if (this.sortTypeText === 'field_3') {
             return 'Name';
@@ -147,5 +148,11 @@ export class SearchResultsComponent implements OnInit {
         if (this.sortTypeText === 'field_31') {
             return 'Reviews';
         }
+    }
+
+    // Let's the user search from the search results input in desktop mode.
+    public searchAgain() {
+        this.searchText = this.newSearchText;
+        this.ngOnInit();
     }
 }

@@ -57,8 +57,8 @@
       top: 0; }
     #search-component #main-search-container .search-button {
       display: block;
-      width: 44px;
-      height: 44px;
+      width: 45px;
+      height: 45px;
       position: absolute;
       color: #F9FCFE;
       background-color: #FF9018;
@@ -70,10 +70,10 @@
       display: block;
       background-color: #FFF1A2;
       position: absolute;
-      top: -2px;
-      left: -2px;
-      bottom: -2px;
-      right: -2px;
+      top: -1px;
+      left: -1px;
+      bottom: -1px;
+      right: -1px;
       z-index: -1;
       border-radius: 2px;
       background-image: linear-gradient(to bottom, #FDDEA6 0%, #d34c16 40%);

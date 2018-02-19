@@ -13,6 +13,20 @@
   width: 100%;
   position: relative;
   z-index: 1;
+
+  #left-container {
+    width: 100%;
+  }
+
+  #right-container {
+    width: 0;
+    background-color: $light-blue;
+  }
+
+  #left-container, #right-container {
+    display: inline-block;
+    position: relative;
+  }
   
   .search-result {
     border: 1px solid #a4a9bc;
@@ -156,13 +170,11 @@
   }
 
   .search-result-button:active {
-    background-color: #9ea3bd;
+    @include light-blue-button-active;
   }
 
   .search-result-button:active:before {
-    background-color: #9ea3bd;
-    background-image: none;
-    box-shadow: 0 1px 2px 0 #444 inset;
+    @include light-blue-button-before-active;
   }
 
   .left {
@@ -304,16 +316,12 @@
   .order-button {
     display: block;
     width: 36px;
-    height: 30px;
+    height: 34px;
     position: absolute;
-    top: 2px;
+    top: 0px;
     right: 2px;
-    background-color: $orange;
     z-index: 2;
-  }
-
-  .order-button:before {
-    @include button-emboss(#FFF1A2, #FDDEA6, #d34c16, #7A3D16);
+    background-color: $dark-blue;
   }
 
   .order-button:after {
@@ -321,22 +329,10 @@
     width: 50px;
     height: 50px;
     display: block;
-    background: url("/assets/icons/up_sort_icon.png") 1px -1px  no-repeat;
+    background: url("/assets/icons/up_sort_icon.png") 2px 2px  no-repeat;
     background-size: 31px;
   }
-
-  .order-button:active {
-    background-color: #d34c16;
-    background-image: none;
-    box-shadow: 0 1px 2px 0 #444 inset;
-  }
-
-  .order-button:active:before {
-    background-color: #d34c16;
-    background-image: none;
-    box-shadow: 0 1px 2px 0 #444 inset;
-  }
-
+  
   .desc:after {
     display: block;
     background: url("/assets/icons/down_sort_icon.png") 1px -1px  no-repeat;
@@ -347,17 +343,109 @@
 /************** Search Results Container Desktop Styles **************/
 @media (min-width: $desktop) {
   #search-results-container {
-
+    width: 1242px;
+    margin: auto;
+    display: flex;
+    
+    .sort-container {
+      margin: 0 30px 0;
+      display: inline-block;
+    }
     .search-result-controls {
-      width: 1242px;
-      left: 50%;
-      transform: translateX(-50%);
+      width: inherit;
+      margin: 0;
+      padding: 35px 25px 25px;
+      height: 310px;
+      position: relative;
     }
     
     #companies-list-container {
       margin-top: 0;
-      padding-bottom: 0;
-      padding-top: 233px;
+      padding: 49px 0 0 0;
+    }
+
+    #left-container {                               
+      width: 776px;
+    }
+
+    #right-container {
+      width: 467px;
+      min-height: 100%;
+    }
+
+    .search-control-ad {
+      margin-bottom: 30px;
+    }
+
+    .search-reuslts-search-container {
+      display: flex;
+    }
+
+    .search-results-search {
+      @include form-field;
+      margin: 0;
+      width: 450px;
+      height: 40px;
+    }
+
+    .search-results-submit-button {
+      @include orange-button;
+      width: 150px;
+      margin: 2px 0 0 30px;
+      height: 38px;
+    }
+
+    .search-results-submit-button:before {
+      @include orange-button-before;
+    }
+
+    .search-results-submit-button:active {
+      @include orange-button-active;
+    }
+
+    .search-results-submit-button:active:before {
+      @include orange-button-before-active;
+    }
+
+    #pagination {
+      display: block;
+      padding-top: 23px;
+
+      .left-pagination {
+        width: 210px;
+        display: inline-block;
+      }
+
+      .right-pagination {
+        width: 500px;
+        display: inline-block;
+        text-align: left;
+        vertical-align: top;
+        padding-top: 17px;
+      }
+      
+      .previous-page, .next-page {
+        width: 30px;
+        flex-grow: 0;
+      }
+
+      .search-filter {
+        @include light-blue-button;
+        width: 130px;
+        display: inline-block;
+      }
+
+      .search-filter:before {
+        @include button-emboss($light-blue, $white, #9ea3db, #6d728C);
+      }
+
+      .search-filter:active {
+        @include light-blue-button-active;
+      }
+
+      .search-filter:active:before {
+        @include light-blue-button-before-active;
+      }
     }
   }
 }
