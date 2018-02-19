@@ -270,4 +270,15 @@
     background: url("/assets/icons/down_sort_icon.png") 1px -1px no-repeat;
     background-size: 31px; }
 
+/************** Search Results Container Desktop Styles **************/
+@media (min-width: 1200px) {
+  #search-results-container .search-result-controls {
+    width: 1242px;
+    left: 50%;
+    transform: translateX(-50%); }
+  #search-results-container #companies-list-container {
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-top: 233px; } }
+
 /*# sourceMappingURL=search-results.component.css.map */
