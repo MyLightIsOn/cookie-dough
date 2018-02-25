@@ -412,7 +412,7 @@
       padding-top: 23px;
 
       .left-pagination {
-        width: 210px;
+        width: 180px;
         display: inline-block;
       }
 
@@ -433,6 +433,7 @@
         @include light-blue-button;
         width: 130px;
         display: inline-block;
+        padding: 8px 0;
       }
 
       .search-filter:before {
@@ -445,6 +446,31 @@
 
       .search-filter:active:before {
         @include light-blue-button-before-active;
+      }
+    }
+
+    .result-guide-container {
+      position: absolute;
+      right: 23px;
+      color: $white;
+      bottom: 13px;
+      text-align: right;
+      font-size: 13px;
+
+      span {
+        display: block;
+        margin: 0 0 7px 0;
+      }
+
+      .featured-biz-icon:before {
+        content: '';
+        display: block;
+        width: 13px;
+        height: 13px;
+        background-color: $yellow;
+        position: relative;
+        top: 13px;
+        left: -20px;
       }
     }
   }

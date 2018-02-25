@@ -339,7 +339,7 @@
       display: block;
       padding-top: 23px; }
       #search-results-container #pagination .left-pagination {
-        width: 210px;
+        width: 180px;
         display: inline-block; }
       #search-results-container #pagination .right-pagination {
         width: 500px;
@@ -361,7 +361,8 @@
         border-radius: 2px;
         cursor: pointer;
         width: 130px;
-        display: inline-block; }
+        display: inline-block;
+        padding: 8px 0; }
       #search-results-container #pagination .search-filter:before {
         content: "";
         display: block;
@@ -381,6 +382,25 @@
       #search-results-container #pagination .search-filter:active:before {
         background-color: #9ea3bd;
         background-image: none;
-        box-shadow: 0 1px 2px 0 #444 inset; } }
+        box-shadow: 0 1px 2px 0 #444 inset; }
+    #search-results-container .result-guide-container {
+      position: absolute;
+      right: 23px;
+      color: #F9FCFE;
+      bottom: 13px;
+      text-align: right;
+      font-size: 13px; }
+      #search-results-container .result-guide-container span {
+        display: block;
+        margin: 0 0 7px 0; }
+      #search-results-container .result-guide-container .featured-biz-icon:before {
+        content: '';
+        display: block;
+        width: 13px;
+        height: 13px;
+        background-color: #FFF8C0;
+        position: relative;
+        top: 13px;
+        left: -20px; } }
 
 /*# sourceMappingURL=search-results.component.css.map */
