@@ -70,13 +70,25 @@
         </div>
         <div id="companies-list-container">
             <div *ngFor="let company of companiesArray" class="search-result" [routerLink]="['/', setIdentifier(company)]">
+                <span class="company-logo desktop">
+                    <img *ngIf="company['field_5_raw']['thumb_url']; else genericIcon"
+                         src="{{company['field_5_raw']['thumb_url']}}"
+                         alt="{{company['field_3']}} Thumbnail Logo">
+                    <ng-template #genericIcon>
+                        <img src="/assets/icons/business.png">
+                    </ng-template>
+                </span>
                 <span class="company-name">{{company['field_3']}}</span>
                 <span class="company-country">{{company['field_4_raw'].country}}</span>
                 <span class="reviews-avg reviews-avg-{{company['field_32_raw_image']}}"></span>
                 <span class="reviews-count">{{company['field_31']}} reviews</span>
+                <!-- Tagline -->
+                <h2 class="desktop">{{company['field_6']}}</h2>
                 <div *ngIf="company['field_29'] === 'True'">
-                    <span class="verification" [ngClass]="{'verified': company['field_29']}"></span>
+                    <span class="verification" [ngClass]="{'verified': company['field_29']}"><span class="desktop">Verified</span></span>
                 </div>
+                <span class="open-search-details desktop">View Profile</span>
+                <span class="open-showroom desktop">Showroom</span>
             </div>
         </div>
     </div>

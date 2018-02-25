@@ -78,9 +78,9 @@
     #search-results-container .search-result .verified:after {
       content: '';
       display: block;
-      width: 20px;
-      height: 20px;
-      background: url("/assets/icons/ic_check_circle_black_24dp_2x.png");
+      width: 17px;
+      height: 17px;
+      background: url("/assets/icons/verified.png");
       background-size: contain;
       position: relative; }
   #search-results-container .search-result-controls {
@@ -401,6 +401,93 @@
         background-color: #FFF8C0;
         position: relative;
         top: 13px;
-        left: -20px; } }
+        left: -20px; }
+    #search-results-container .search-result {
+      height: 162px; }
+      #search-results-container .search-result h2 {
+        font-size: 14px;
+        display: block;
+        position: absolute;
+        left: 133px;
+        top: 85px;
+        width: 450px;
+        font-weight: normal; }
+      #search-results-container .search-result .company-country {
+        top: 15px;
+        right: 15px; }
+      #search-results-container .search-result .company-logo {
+        width: 105px;
+        height: 105px;
+        border: 1px solid #CCD1EB;
+        position: relative;
+        left: 15px;
+        top: 15px; }
+        #search-results-container .search-result .company-logo img {
+          width: 103px;
+          height: 103px; }
+      #search-results-container .search-result .verification {
+        right: inherit;
+        bottom: 13px;
+        left: 12px; }
+        #search-results-container .search-result .verification span {
+          position: absolute;
+          left: 21px;
+          top: 3px;
+          font-size: 13px; }
+      #search-results-container .search-result .company-name {
+        left: 135px;
+        top: 13px;
+        width: 450px; }
+      #search-results-container .search-result .reviews-avg {
+        left: 132px;
+        top: 37px;
+        bottom: inherit; }
+      #search-results-container .search-result .reviews-count {
+        top: 62px;
+        bottom: inherit;
+        font-size: 13px; }
+
+  .open-search-details, .open-showroom {
+    display: block;
+    padding: 11px 0;
+    text-align: center;
+    background-color: #CCD1EB;
+    color: #191E50;
+    margin-bottom: 7px;
+    position: relative;
+    border-radius: 2px;
+    cursor: pointer;
+    width: 130px;
+    position: absolute;
+    right: 15px; }
+
+  .open-search-details {
+    bottom: 60px; }
+
+  .open-showroom {
+    bottom: 7px; }
+
+  .open-search-details:before, .open-showroom:before {
+    content: "";
+    display: block;
+    background-color: #CCD1EB;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    bottom: -1px;
+    right: -1px;
+    z-index: -1;
+    border-radius: 2px;
+    background-image: linear-gradient(to bottom, #F9FCFE 0%, #9ea3db 40%);
+    box-shadow: 0px -1px 2px 0 #6d728C inset;
+    cursor: pointer; }
+
+  .open-search-details:active, .open-showroom:active {
+    background-color: #9ea3bd; }
+
+  .open-search-details:active:before, .open-showroom:active:before {
+    background-color: #9ea3bd;
+    background-image: none;
+    box-shadow: 0 1px 2px 0 #444 inset; } }
 
 /*# sourceMappingURL=search-results.component.css.map */
