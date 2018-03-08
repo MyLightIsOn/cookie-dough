@@ -14,12 +14,14 @@ export class SearchDetailsComponent implements OnInit {
     public company: ICompany;
     public truncatedText: boolean;
     public toggled: boolean;
+    public lat: number;
+    public lng: number;
 
     constructor(
         private route: ActivatedRoute,
         private companyService: CompaniesService,
         private router: Router,
-        private searchService: SearchService
+        private searchService: SearchService,
     ) { }
 
     // Takes the company data that was returned in the resolver and sets it to company.
@@ -33,6 +35,8 @@ export class SearchDetailsComponent implements OnInit {
                 this.company['field_15_raw'],
                 this.company['field_16_raw']
             ]);
+            this.lat = this.company['field_4_raw']['latitude'];
+            this.lng = this.company['field_4_raw']['longitude'];
         }
     }
 

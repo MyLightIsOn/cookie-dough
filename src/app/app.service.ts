@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class AppService {
     device = 'desktop';
+    searchStarted = false;
 
     getScreenSize() {
         const screenWidth = window.innerWidth;
@@ -12,6 +13,10 @@ export class AppService {
         }
 
         return this.device;
+    }
+
+    hideNav() {
+        this.searchStarted = !this.searchStarted;
     }
 }
 

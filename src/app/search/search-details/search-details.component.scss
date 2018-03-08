@@ -123,7 +123,7 @@
       display: block;
       width: 20px;
       height: 20px;
-      background: url('/assets/icons/ic_check_circle_black_24dp_2x.png');
+      background: url('/assets/icons/verified.png');
       background-size: contain;
       position: relative;
     }
@@ -132,8 +132,17 @@
   .verified-details {
     display: flex;
     position: absolute;
-    right: 14px;
+    right: 1px;
     bottom: 8px;
+
+    span {
+      margin-right: 6px;
+    }
+
+    .verification {
+      position: relative;
+      top: -2px;
+    }
   }
 
   .gallery-button {
@@ -269,4 +278,100 @@
 .youtube:after {
   background: url("/assets/icons/med_blue_youtube_icon.png") no-repeat;
   background-size: contain;
+}
+
+/************** Search Details Container Desktop Styles **************/
+@media (min-width: $desktop) {
+  .search-details-container {
+    width: 1242px;
+    min-height: 900px;
+    margin: auto;
+
+    header {
+      width: 1242px;
+      height: 202px;
+      top: 64px;
+      padding: 25px;
+
+      .company-logo-thumb-container {
+        margin: 0 15px 0 0;
+        background-color: $white;
+        
+        img {
+          display: block;
+          width: 150px;
+          height: 150px;
+        }
+      }
+
+      .company-info-header-container {
+        padding: 9px 10px 0;
+
+        h1 {
+          font-size: 30px;
+          margin: 0 0 7px;
+          width: 100%;
+        }
+      }
+    }
+
+    .country-flag {
+      position: relative;
+      left: 0px;
+      top: 8px;
+    }
+
+    .verified-details {
+      right: 13px;
+      bottom: 14px;
+
+      span {
+        margin-right: 6px;
+      }
+
+      .verification {
+        position: relative;
+        top: -2px;
+      }
+    }
+    
+    .detail-description {
+      width: 1195px;
+      margin: 215px auto 0;
+      padding: 25px 0;
+    }
+
+    .detail-info {
+      padding: 25px;
+      position: relative;
+    }
+
+    .address {
+      margin-bottom: 30px;
+    }
+
+    agm-map {
+      width: 398px;
+      height: 300px;
+      margin: auto;
+      display: block;
+      background-color: $yellow;
+    }
+
+    #map-container {
+      width: 400px;
+      border: 1px solid $dark-blue;
+      position: absolute;
+      right: 25px;
+      top: 25px;
+    }
+
+    hr {
+      border: 1px solid $white;
+    }
+
+    .address {
+      line-height: 22px;
+    }
+  }
 }

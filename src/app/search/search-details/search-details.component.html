@@ -23,7 +23,12 @@
 
                 <!-- Verified -->
                 <div *ngIf="company['field_29'] === 'True'" class="verified-details">
-                    <span>Trusted</span> <span class="verification" [ngClass]="{'verified': company['field_29']}"></span>
+                    <span>Verified</span> <span class="verification" [ngClass]="{'verified': company['field_29']}"></span>
+                </div>
+
+                <!-- Country Flag -->
+                <div class="country-flag desktop">
+                    <i class="f48_{{company['country_flag']}}"></i>
                 </div>
             </div>
             <span class="drop-shadow-effect"></span>
@@ -43,44 +48,52 @@
             <!-- Long Description -->
             <div *ngIf="!truncatedText" >
                 <p *ngIf="!truncatedText">{{company['field_7']}}</p>
-                <p>Established: {{company['field_8']}}</p>
-                <span *ngIf="!truncatedText">{{company['field_28_raw']}}</span>
+                <p><span class="bold-text">Established:</span> {{company['field_8']}}</p>
+                <span *ngIf="!truncatedText">
+                    <span class="bold-text">Categories:</span> {{company['field_28_raw']}}</span>
                 <p *ngIf="!truncatedText && toggled" (click)="toggleDescription()" class="truncate-toggle">Less</p>
             </div>
 
             <!-- Gallery Toggle -->
-            <span class="gallery-button">Gallery</span>
+            <span class="gallery-button">Showroom</span>
         </section>
         <section class="detail-info">
 
+            <span class="bold-text address">Address:</span>
             <div>
                 <!-- Address Street -->
-                <span>{{company['field_4_raw']['street']}}</span>
+                <span class="address">{{company['field_4_raw']['street']}}</span>
             </div>
 
             <div>
                 <!-- Address Street 2-->
-                <span>{{company['field_4_raw']['street2']}}</span>
+                <span class="address">{{company['field_4_raw']['street2']}}</span>
             </div>
 
             <div>
                 <!-- Address City -->
-                <span>{{company['field_4_raw']['city']}}</span>
-
+                <span class="address">{{company['field_4_raw']['city']}}</span>
+                
                 <!-- Address State/Province -->
-                <span>{{company['field_4_raw']['state']}}</span>
+                <span class="address">{{company['field_4_raw']['state']}}</span>
             </div>
 
             <!-- Address Country -->
-            <span>{{company['field_4_raw']['country']}}</span>
+            <span class="address">{{company['field_4_raw']['country']}}</span>
 
             <!-- Country Flag -->
-            <div class="country-flag">
+            <div class="country-flag mobile">
                 <i class="f48_{{company['country_flag']}}"></i>
             </div>
 
             <!--  Map Toggle -->
-            <span class="gallery-button">Map</span>
+            <span class="gallery-button mobile">Map</span>
+
+            <div id="map-container" class="desktop">
+                <agm-map [latitude]="lat" [longitude]="lng" [zoom]="16">
+                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                </agm-map>
+            </div>
 
             <hr />
 

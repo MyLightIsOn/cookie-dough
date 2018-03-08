@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 import { PaginationService } from '../../pagination/pagination.service';
 import { CompaniesService } from '../../companies/companies.service';
@@ -8,7 +7,6 @@ import { FilterCompaniesPipe } from '../../_pipes/filter-companies.pipe';
 import { ICompany } from '../../_interfaces/companies';
 
 import * as _ from 'lodash';
-import {environment} from '../../../environments/environment';
 
 @Component({
     selector: 'app-search-results',
@@ -22,7 +20,6 @@ export class SearchResultsComponent implements OnInit {
                 private filterCompaniesPipe: FilterCompaniesPipe,
                 private companyService: CompaniesService,
                 public searchService: SearchService,
-                private http: HttpClient
     ) { }
 
     public companiesArray: any;
@@ -39,7 +36,6 @@ export class SearchResultsComponent implements OnInit {
     public lat: number;
     public lng: number;
     public companyPreview;
-    public activePreview;
 
     ngOnInit() {
         // Uses the company service properties to set this components properties

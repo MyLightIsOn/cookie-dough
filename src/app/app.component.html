@@ -64,7 +64,7 @@
 
     <!-- Mobile Menu Not Logged In-->
     <ng-template #notLoggedInMenu>
-        <div class="mobile-menu-container mobile">
+        <div class="mobile-menu-container mobile" [ngClass]="{'searchStarted': appService.searchStarted}">
             <a routerLink="/search" routerLinkActive="active" class="search-icon">Search</a>
             <a routerLink="/profile" routerLinkActive="active" class="about-icon">About Us</a>
             <a routerLink="/contact" routerLinkActive="active" class="contact-icon">Contact</a>

@@ -156,14 +156,19 @@
       display: block;
       width: 20px;
       height: 20px;
-      background: url("/assets/icons/ic_check_circle_black_24dp_2x.png");
+      background: url("/assets/icons/verified.png");
       background-size: contain;
       position: relative; }
   .search-details-container .verified-details {
     display: flex;
     position: absolute;
-    right: 14px;
+    right: 1px;
     bottom: 8px; }
+    .search-details-container .verified-details span {
+      margin-right: 6px; }
+    .search-details-container .verified-details .verification {
+      position: relative;
+      top: -2px; }
   .search-details-container .gallery-button {
     display: block;
     width: 120px;
@@ -281,5 +286,67 @@
 .youtube:after {
   background: url("/assets/icons/med_blue_youtube_icon.png") no-repeat;
   background-size: contain; }
+
+/************** Search Details Container Desktop Styles **************/
+@media (min-width: 1200px) {
+  .search-details-container {
+    width: 1242px;
+    min-height: 900px;
+    margin: auto; }
+    .search-details-container header {
+      width: 1242px;
+      height: 202px;
+      top: 64px;
+      padding: 25px; }
+      .search-details-container header .company-logo-thumb-container {
+        margin: 0 15px 0 0;
+        background-color: #F9FCFE; }
+        .search-details-container header .company-logo-thumb-container img {
+          display: block;
+          width: 150px;
+          height: 150px; }
+      .search-details-container header .company-info-header-container {
+        padding: 9px 10px 0; }
+        .search-details-container header .company-info-header-container h1 {
+          font-size: 30px;
+          margin: 0 0 7px;
+          width: 100%; }
+    .search-details-container .country-flag {
+      position: relative;
+      left: 0px;
+      top: 8px; }
+    .search-details-container .verified-details {
+      right: 13px;
+      bottom: 14px; }
+      .search-details-container .verified-details span {
+        margin-right: 6px; }
+      .search-details-container .verified-details .verification {
+        position: relative;
+        top: -2px; }
+    .search-details-container .detail-description {
+      width: 1195px;
+      margin: 215px auto 0;
+      padding: 25px 0; }
+    .search-details-container .detail-info {
+      padding: 25px;
+      position: relative; }
+    .search-details-container .address {
+      margin-bottom: 30px; }
+    .search-details-container agm-map {
+      width: 398px;
+      height: 300px;
+      margin: auto;
+      display: block;
+      background-color: #FFF8C0; }
+    .search-details-container #map-container {
+      width: 400px;
+      border: 1px solid #191E50;
+      position: absolute;
+      right: 25px;
+      top: 25px; }
+    .search-details-container hr {
+      border: 1px solid #F9FCFE; }
+    .search-details-container .address {
+      line-height: 22px; } }
 
 /*# sourceMappingURL=search-details.component.css.map */

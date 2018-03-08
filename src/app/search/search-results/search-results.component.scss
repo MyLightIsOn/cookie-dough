@@ -1,6 +1,10 @@
 @import "../../../sass/variables";
 @import "../../../sass/mixins";
 
+:host {
+  min-height: 100%;
+}
+
 #search-results-container.active {
   display: block;
 }

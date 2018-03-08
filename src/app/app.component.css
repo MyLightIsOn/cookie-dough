@@ -142,6 +142,9 @@ nav {
     background: url("../assets/icons/contact_icon.png") no-repeat 50% 7px;
     background-size: 28px; }
 
+.mobile-menu-container.searchStarted {
+  display: none; }
+
 /************** Main App Container Styles **************/
 #app-container {
   position: relative;
