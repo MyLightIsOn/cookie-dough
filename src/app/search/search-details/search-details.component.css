@@ -361,6 +361,7 @@
       background-color: #FFF8C0; }
     .search-details-container #map-container {
       width: 400px;
+      height: 302px;
       border: 1px solid #191E50;
       position: absolute;
       right: 25px;
