@@ -302,8 +302,13 @@
     #search-results-container .active-preview {
       background-color: #e6e6e6;
       border: 1px solid #FF9018; }
+    #search-results-container #left-container {
+      width: 776px; }
     #search-results-container #right-container {
-      width: 0;
+      width: 467px;
+      min-height: 900px; }
+    #search-results-container #right-container {
+      min-height: 900px;
       background-color: #CCD1EB;
       padding-top: 85px; }
       #search-results-container #right-container .right-container-ad img {
@@ -324,11 +329,6 @@
     #search-results-container #companies-list-container {
       margin-top: 0;
       padding: 49px 0 0 0; }
-    #search-results-container #left-container {
-      width: 776px; }
-    #search-results-container #right-container {
-      width: 467px;
-      min-height: 100%; }
     #search-results-container .search-control-ad {
       margin-bottom: 30px; }
     #search-results-container .search-reuslts-search-container {
@@ -448,7 +448,6 @@
       border: 1px solid #191E50;
       margin: 0 auto 20px; }
     #search-results-container #preview-container {
-      position: fixed;
       width: 466px;
       top: 85px;
       color: #191E50; }
