@@ -18,16 +18,10 @@
     width: 100%;
   }
 
-  #right-container {
-    width: 0;
-    background-color: $light-blue;
+  .search-result:hover {
+    background-color: #dde8ef;
   }
 
-  #left-container, #right-container {
-    display: inline-block;
-    position: relative;
-  }
-  
   .search-result {
     border: 1px solid #a4a9bc;
     width: 100%;
@@ -35,6 +29,7 @@
     position: relative;
     background-color: $white;
     color: $dark-blue;
+    cursor: pointer;
 
     .company-name {
       display: block;
@@ -161,20 +156,7 @@
   }
 
   .search-result-button {
-    @include light-blue-button;
     flex-grow: 1;
-  }
-
-  .search-result-button:before {
-    @include button-emboss($light-blue, $white, #9ea3db, #6d728C);
-  }
-
-  .search-result-button:active {
-    @include light-blue-button-active;
-  }
-
-  .search-result-button:active:before {
-    @include light-blue-button-before-active;
   }
 
   .left {
@@ -346,6 +328,27 @@
     width: 1242px;
     margin: auto;
     display: flex;
+
+    .active-preview {
+      background-color: #e6e6e6;
+      border: 1px solid $orange;
+    }
+    
+    #right-container {
+      width: 0;
+      background-color: $light-blue;
+      padding-top: 85px;
+
+      .right-container-ad img {
+        display: block;
+        margin: 0 auto 30px;
+      }
+    }
+
+    #left-container, #right-container {
+      display: inline-block;
+      position: relative;
+    }
     
     .sort-container {
       margin: 0 30px 0;
@@ -389,22 +392,9 @@
     }
 
     .search-results-submit-button {
-      @include orange-button;
       width: 150px;
       margin: 2px 0 0 30px;
       height: 38px;
-    }
-
-    .search-results-submit-button:before {
-      @include orange-button-before;
-    }
-
-    .search-results-submit-button:active {
-      @include orange-button-active;
-    }
-
-    .search-results-submit-button:active:before {
-      @include orange-button-before-active;
     }
 
     #pagination {
@@ -430,22 +420,9 @@
       }
 
       .search-filter {
-        @include light-blue-button;
         width: 130px;
         display: inline-block;
         padding: 8px 0;
-      }
-
-      .search-filter:before {
-        @include button-emboss($light-blue, $white, #9ea3db, #6d728C);
-      }
-
-      .search-filter:active {
-        @include light-blue-button-active;
-      }
-
-      .search-filter:active:before {
-        @include light-blue-button-before-active;
       }
     }
 
@@ -493,6 +470,7 @@
       }
 
       .company-logo {
+        background: $white;
         width: 105px;
         height: 105px;
         border: 1px solid $light-blue;
@@ -537,10 +515,46 @@
         font-size: 13px;
       }
     }
+
+    agm-map {
+      width: 398px;
+      height: 300px;
+      margin: auto;
+      display: block;
+      background-color: $yellow;
+    }
+
+    #map-container {
+      width: 400px;
+      border: 1px solid $dark-blue;
+      margin: 0 auto 20px;
+    }
+
+    #preview-container {
+      position: fixed;
+      width: 466px;
+      top: 85px;
+      color: $dark-blue;
+
+      span {
+        display: block;
+        width: 400px;
+        margin: 0 auto 10px;
+      }
+
+      .preview-button {
+        @include light-blue-button;
+      }
+
+      .company-name {
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    }
   }
 
   .open-search-details, .open-showroom {
-    @include light-blue-button;
     width: 130px;
     position: absolute;
     right: 15px;
@@ -552,18 +566,6 @@
 
   .open-showroom {
     bottom: 7px;
-  }
-
-  .open-search-details:before, .open-showroom:before {
-    @include light-blue-button-before;
-  }
-
-  .open-search-details:active, .open-showroom:active {
-    @include light-blue-button-active;
-  }
-
-  .open-search-details:active:before, .open-showroom:active:before {
-    @include light-blue-button-before-active;
   }
 }
 

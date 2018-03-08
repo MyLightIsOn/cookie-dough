@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import { PaginationService } from '../../pagination/pagination.service';
 import { CompaniesService } from '../../companies/companies.service';
@@ -7,6 +8,7 @@ import { FilterCompaniesPipe } from '../../_pipes/filter-companies.pipe';
 import { ICompany } from '../../_interfaces/companies';
 
 import * as _ from 'lodash';
+import {environment} from '../../../environments/environment';
 
 @Component({
     selector: 'app-search-results',
@@ -19,7 +21,8 @@ export class SearchResultsComponent implements OnInit {
     constructor(private paginationService: PaginationService,
                 private filterCompaniesPipe: FilterCompaniesPipe,
                 private companyService: CompaniesService,
-                public searchService: SearchService
+                public searchService: SearchService,
+                private http: HttpClient
     ) { }
 
     public companiesArray: any;
@@ -33,6 +36,10 @@ export class SearchResultsComponent implements OnInit {
     public sortOpen = true;
     public sortTypeText;
     private companyData: any;
+    public lat: number;
+    public lng: number;
+    public companyPreview;
+    public activePreview;
 
     ngOnInit() {
         // Uses the company service properties to set this components properties
@@ -150,9 +157,15 @@ export class SearchResultsComponent implements OnInit {
         }
     }
 
-    // Let's the user search from the search results input in desktop mode.
+    // Lets the user search from the search results input in desktop mode.
     public searchAgain() {
         this.searchText = this.newSearchText;
         this.ngOnInit();
+    }
+
+    public previewCompany(company) {
+        this.companyPreview = company;
+        this.lat = company['field_4_raw']['latitude'];
+        this.lng = company['field_4_raw']['longitude'];
     }
 }

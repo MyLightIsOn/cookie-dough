@@ -1,3 +1,72 @@
+/* Buttons Styles */
+.light-blue-button {
+  padding: 11px 0;
+  text-align: center;
+  background-color: #CCD1EB;
+  color: #191E50;
+  margin-bottom: 7px;
+  position: relative;
+  border-radius: 2px;
+  cursor: pointer; }
+
+.light-blue-button:before {
+  content: "";
+  display: block;
+  background-color: #CCD1EB;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  bottom: -1px;
+  right: -1px;
+  z-index: -1;
+  border-radius: 2px;
+  background-image: linear-gradient(to bottom, #F9FCFE 0%, #9ea3db 40%);
+  box-shadow: 0px -1px 2px 0 #6d728C inset;
+  cursor: pointer; }
+
+.light-blue-button:active {
+  background-color: #9ea3bd; }
+
+.light-blue-button:active:before {
+  background-color: #9ea3bd;
+  background-image: none;
+  box-shadow: 0 1px 2px 0 #444 inset; }
+
+.orange-button {
+  padding: 11px 0;
+  text-align: center;
+  background-color: #FF9018;
+  color: #F9FCFE;
+  margin-bottom: 7px;
+  position: relative;
+  border-radius: 2px;
+  cursor: pointer; }
+
+.orange-button:before {
+  content: "";
+  display: block;
+  background-color: #FFF1A2;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  bottom: -1px;
+  right: -1px;
+  z-index: -1;
+  border-radius: 2px;
+  background-image: linear-gradient(to bottom, #FDDEA6 0%, #d34c16 40%);
+  box-shadow: 0px -1px 2px 0 #7A3D16 inset;
+  cursor: pointer; }
+
+.orange-button:active {
+  background-color: #d34c16;
+  background-image: none;
+  box-shadow: 0 1px 2px 0 #444 inset; }
+
+.orange-button:active:before {
+  background-color: #d34c16;
+  background-image: none;
+  box-shadow: 0 1px 1px 0 #444 inset; }
+
 #search-component {
   position: fixed;
   width: 100%;

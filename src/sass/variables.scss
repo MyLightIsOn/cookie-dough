@@ -1,3 +1,5 @@
+@import './mixins';
+
 // Colors
 
 $dark-blue:         #191E50;
@@ -23,4 +25,39 @@ $highlighted-text:  17px;
 
 // Media Queries
 $desktop:           1200px;
+
+
+/* Buttons Styles */
+
+.light-blue-button {
+  @include light-blue-button;
+}
+
+.light-blue-button:before {
+  @include light-blue-button-before;
+}
+
+.light-blue-button:active {
+  @include light-blue-button-active;
+}
+
+.light-blue-button:active:before {
+  @include light-blue-button-before-active;
+}
+
+.orange-button {
+  @include orange-button;
+}
+
+.orange-button:before {
+  @include orange-button-before;
+}
+
+.orange-button:active {
+  @include orange-button-active;
+}
+
+.orange-button:active:before {
+  @include orange-button-before-active;
+}
 

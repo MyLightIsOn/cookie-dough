@@ -10,15 +10,15 @@
             <!--Desktop search bar-->
             <div class="search-reuslts-search-container desktop">
                 <input type="text" class="search-results-search" [(ngModel)]="newSearchText" placeholder="company, location, service, etc.">
-                <span class="search-results-submit-button" (click)="searchAgain()">Search</span>
+                <span class="search-results-submit-button orange-button" (click)="searchAgain()">Search</span>
             </div>
 
 
             <!-- Mobile Search controls-->
             <span class="searched-for mobile">Searched: <span class="searched-for-text">{{searchText}}</span></span>
             <div class="search-result-button-container mobile">
-                <span (click)="resetData()" routerLink="/search" class="search-result-button left">New Search</span>
-                <span class="search-result-button right">Filter Search</span>
+                <span (click)="resetData()" routerLink="/search" class="search-result-button light-blue-button left">New Search</span>
+                <span class="search-result-button light-blue-button right">Filter Search</span>
             </div>
             <hr class="mobile" />
 
@@ -48,7 +48,7 @@
                         </ul>
                         <span class="order-button" [ngClass]="{'desc': desc}" (click)="changeSortOrder()"></span>
                     </div>
-                    <span class="search-filter desktop">Search Filter</span>
+                    <span class="search-filter light-blue-button desktop">Search Filter</span>
                     <div class="result-guide-container desktop">
                         <span class="featured-biz-icon">Featured Business</span>
                         <span class="showing-results">Results 1 - 50</span>
@@ -69,7 +69,9 @@
             <span class="drop-shadow-effect"></span>
         </div>
         <div id="companies-list-container">
-            <div *ngFor="let company of companiesArray" class="search-result" [routerLink]="['/', setIdentifier(company)]">
+            <div *ngFor="let company of companiesArray" class="search-result"
+                 [ngClass]="{'active-preview': companyPreview == company}"
+                 (click)="previewCompany(company)">
                 <span class="company-logo desktop">
                     <img *ngIf="company['field_5_raw']['thumb_url']; else genericIcon"
                          src="{{company['field_5_raw']['thumb_url']}}"
@@ -87,15 +89,30 @@
                 <div *ngIf="company['field_29'] === 'True'">
                     <span class="verification" [ngClass]="{'verified': company['field_29']}"><span class="desktop">Verified</span></span>
                 </div>
-                <span class="open-search-details desktop">View Profile</span>
-                <span class="open-showroom desktop">Showroom</span>
+                <span class="open-search-details light-blue-button desktop" [routerLink]="['/', setIdentifier(company)]">View Profile</span>
+                <span class="open-showroom light-blue-button desktop">Showroom</span>
             </div>
         </div>
     </div>
 
-    <div id="right-container">
+    <div id="right-container" class="desktop">
+        <div id="preview-container">
+            <a class="right-container-ad" href="https://www.springdaletown.com/" target="_blank" alt="springdale">
+                <img src="../../../assets/images/fake_ad_2.png"/>
+            </a>
 
+            <div *ngIf="companyPreview">
+                <div id="map-container">
+                    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="16">
+                        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                    </agm-map>
+                </div>
+
+                <span class="company-name">{{companyPreview['field_3']}}</span>
+                <span class="company-address" [innerHTML]="companyPreview['field_4']"></span>
+                <span class="company-description">{{companyPreview['field_6']}}</span>
+            </div>
+        </div>
     </div>
-
 </div>
 
