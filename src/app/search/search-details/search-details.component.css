@@ -113,7 +113,8 @@
       box-shadow: inset 0 10px 7px -8px rgba(0, 0, 0, 0.75); }
     .search-details-container header .company-logo-thumb-container img {
       display: block;
-      width: 90%; }
+      width: 90%;
+      background-color: #F9FCFE; }
     .search-details-container header .company-info-header-container {
       padding: 0 10px; }
       .search-details-container header .company-info-header-container h1 {

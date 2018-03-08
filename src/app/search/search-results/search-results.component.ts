@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 
 import { PaginationService } from '../../pagination/pagination.service';
 import { CompaniesService } from '../../companies/companies.service';
 import { SearchService } from '../search.service';
 import { FilterCompaniesPipe } from '../../_pipes/filter-companies.pipe';
 import { ICompany } from '../../_interfaces/companies';
+import { AppService } from '../../app.service';
 
 import * as _ from 'lodash';
 
@@ -20,6 +22,8 @@ export class SearchResultsComponent implements OnInit {
                 private filterCompaniesPipe: FilterCompaniesPipe,
                 private companyService: CompaniesService,
                 public searchService: SearchService,
+                public appService: AppService,
+                private router: Router
     ) { }
 
     public companiesArray: any;
@@ -160,8 +164,13 @@ export class SearchResultsComponent implements OnInit {
     }
 
     public previewCompany(company) {
-        this.companyPreview = company;
-        this.lat = company['field_4_raw']['latitude'];
-        this.lng = company['field_4_raw']['longitude'];
+        console.log(company);
+        if (this.appService.device === 'mobile') {
+            this.router.navigate(['/', this.setIdentifier(company)]);
+        } else {
+            this.companyPreview = company;
+            this.lat = company['field_4_raw']['latitude'];
+            this.lng = company['field_4_raw']['longitude'];
+        }
     }
 }
