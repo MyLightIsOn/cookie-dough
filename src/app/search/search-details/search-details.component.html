@@ -4,7 +4,7 @@
     </div>
     <div *ngIf="company">
         <header>
-            <span class="close-details" (click)="closeDetails()"></span>
+            <span class="close-details mobile" (click)="closeDetails()"></span>
 
             <!-- Company Logo -->
             <div *ngIf="company['field_5_raw']" class="company-logo-thumb-container">
@@ -87,9 +87,9 @@
             </div>
 
             <!--  Map Toggle -->
-            <span class="gallery-button mobile">Map</span>
+            <span class="gallery-button mobile" (click)="toggleMap()">{{mapButtonText}}</span>
 
-            <div id="map-container" class="desktop">
+            <div id="map-container" [ngClass]="{'hidden': mapOff}">
                 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="16">
                     <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
                 </agm-map>

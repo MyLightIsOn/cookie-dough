@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ICompany } from '../../_interfaces/companies';
 import { CompaniesService } from '../../companies/companies.service';
 import { SearchService } from '../search.service';
+import { AppService } from '../../app.service';
 
 @Component({
     selector: 'app-search-details',
@@ -16,12 +17,15 @@ export class SearchDetailsComponent implements OnInit {
     public toggled: boolean;
     public lat: number;
     public lng: number;
+    public mapOff: boolean;
+    public mapButtonText = 'Map';
 
     constructor(
         private route: ActivatedRoute,
         private companyService: CompaniesService,
         private router: Router,
         private searchService: SearchService,
+        private appService: AppService
     ) { }
 
     // Takes the company data that was returned in the resolver and sets it to company.
@@ -37,6 +41,11 @@ export class SearchDetailsComponent implements OnInit {
             ]);
             this.lat = this.company['field_4_raw']['latitude'];
             this.lng = this.company['field_4_raw']['longitude'];
+            if (this.appService.device === 'mobile') {
+                this.mapOff = true;
+            } else {
+                this.mapOff = false;
+            }
         }
     }
 
@@ -67,5 +76,14 @@ export class SearchDetailsComponent implements OnInit {
     toggleDescription() {
         this.truncatedText = !this.truncatedText;
         this.toggled = !this.toggled;
+    }
+
+    toggleMap() {
+        this.mapOff = !this.mapOff;
+        if (this.mapOff === true) {
+            this.mapButtonText = 'Map';
+        } else {
+            this.mapButtonText = 'Close Map';
+        }
     }
 }

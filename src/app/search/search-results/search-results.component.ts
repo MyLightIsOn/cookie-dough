@@ -164,7 +164,6 @@ export class SearchResultsComponent implements OnInit {
     }
 
     public previewCompany(company) {
-        console.log(company);
         if (this.appService.device === 'mobile') {
             this.router.navigate(['/', this.setIdentifier(company)]);
         } else {
