@@ -132,7 +132,7 @@ nav {
     overflow-x: inherit;
 
     .error-container {
-      position: absolute;
+      position: fixed;
       background-color: $light-red;
       color: $red;
       width: 100%;

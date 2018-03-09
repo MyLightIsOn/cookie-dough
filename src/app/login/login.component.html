@@ -1,33 +1,34 @@
 <div id="login-component">
-    <section class="login=section">
-        <span *ngIf="this.authService.errorResponse"class="error-container">
-            <span class="error-message">{{authService.errorMessage}}</span>
-        </span>
-        <h4>Log in to Gempathy</h4>
-        <span class="login-input-label">email address</span>
-        <input type="email" id="email"
-               (keyup.enter)="login()"
-               [(ngModel)]="email"
-               class="login-input-form">
-        <br />
-        <span class="login-input-label">password</span>
-        <input type="password" id="password"
-               (keyup.enter)="login()"
-               [(ngModel)]="password"
-               class="login-input-form">
+    <section class="login-section">
+        <div class="login-field-container">
+            <h4>Log in to Gempathy</h4>
+            <span class="login-input-label">email address</span>
+            <input type="email"
+                   (keyup.enter)="login()"
+                   [(ngModel)]="email"
+                   class="login-input-form">
+            <br />
+            <span class="login-input-label">password</span>
+            <input type="password"
+                   (keyup.enter)="login()"
+                   [(ngModel)]="password"
+                   class="login-input-form">
 
-        <div class="submit-login-container">
-            <span class="submit-login-button" (click)="login()">Log in</span>
-            <input class="remember-check" type="checkbox"><label>Remember me</label>
-            <span class="forgot-password">Forgot Password</span>
+            <div class="submit-login-container">
+                <span class="submit-login-button light-blue-button" (click)="login()">Log in</span>
+                <input class="remember-check" type="checkbox"><label>Remember me</label>
+                <span class="forgot-password">Forgot Password</span>
+            </div>
         </div>
     </section>
 
-    <div class="horizontal-rule"></div>
+    <div class="login-field-container">
+        <div class="horizontal-rule"></div>
 
-    <section class="signup-section">
-        <h4 class="divide">Or</h4>
-        <h4 class="sign-up-text">New to Gempathy? Sign up now!</h4>
-        <span class="signup-button">Sign up</span>
-    </section>
+        <section class="signup-section">
+            <h4 class="divide">Or</h4>
+            <h4 class="sign-up-text">New to Gempathy? Sign up now!</h4>
+            <span class="signup-button orange-button">Sign up</span>
+        </section>
+    </div>
 </div>

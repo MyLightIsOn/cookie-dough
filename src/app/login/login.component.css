@@ -72,8 +72,7 @@
   width: 100%;
   min-height: 100%;
   top: 0;
-  padding-top: 70px;
-  background-color: #616697; }
+  padding-top: 70px; }
   #login-component .error-container {
     position: absolute;
     background-color: #ffe0e0;
@@ -126,36 +125,9 @@
     top: 0;
     padding: 10px 10px; }
   #login-component .submit-login-button {
-    padding: 11px 0;
-    text-align: center;
-    background-color: #CCD1EB;
-    color: #191E50;
-    margin-bottom: 7px;
-    position: relative;
-    border-radius: 2px;
-    cursor: pointer;
+    display: block;
     width: 160px;
     margin: 25px 0 0 5%; }
-  #login-component .submit-login-button:before {
-    content: "";
-    display: block;
-    background-color: #CCD1EB;
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    bottom: -1px;
-    right: -1px;
-    z-index: -1;
-    border-radius: 2px;
-    background-image: linear-gradient(to bottom, #F9FCFE 0%, #9ea3db 40%);
-    box-shadow: 0px -1px 2px 0 #6d728C inset;
-    cursor: pointer; }
-  #login-component .submit-login-button:active {
-    background-color: #9ea3bd; }
-  #login-component .submit-login-button:active:before {
-    background-color: #9ea3bd;
-    background-image: none;
-    box-shadow: 0 1px 2px 0 #444 inset; }
   #login-component .submit-login-container {
     position: relative; }
     #login-component .submit-login-container .forgot-password {
@@ -176,44 +148,24 @@
     margin: 15px auto -11px; }
   #login-component .divide {
     font-size: 16px;
-    background-color: #616697;
+    background-color: #676c91;
     width: 40px;
     margin: 0 auto;
     display: block; }
   #login-component .sign-up-text {
     margin: 25px auto 20px; }
   #login-component .signup-button {
-    padding: 11px 0;
-    text-align: center;
-    background-color: #FF9018;
-    color: #F9FCFE;
-    margin-bottom: 7px;
-    position: relative;
-    border-radius: 2px;
-    cursor: pointer;
+    display: block;
     width: 180px;
     margin: 0 auto; }
-  #login-component .signup-button:before {
-    content: "";
-    display: block;
-    background-color: #FFF1A2;
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    bottom: -1px;
-    right: -1px;
-    z-index: -1;
-    border-radius: 2px;
-    background-image: linear-gradient(to bottom, #FDDEA6 0%, #d34c16 40%);
-    box-shadow: 0px -1px 2px 0 #7A3D16 inset;
-    cursor: pointer; }
-  #login-component .signup-button:active {
-    background-color: #d34c16;
-    background-image: none;
-    box-shadow: 0 1px 2px 0 #444 inset; }
-  #login-component .signup-button:active:before {
-    background-color: #d34c16;
-    background-image: none;
-    box-shadow: 0 1px 2px 0 #444 inset; }
+  #login-component .login-field-container {
+    width: 100%; }
+
+@media (min-width: 1200px) {
+  #login-component {
+    padding-top: 150px; }
+    #login-component .login-field-container {
+      width: 500px;
+      margin: auto; } }
 
 /*# sourceMappingURL=login.component.css.map */

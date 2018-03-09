@@ -170,7 +170,7 @@ nav {
   #app-container {
     overflow-x: inherit; }
     #app-container .error-container {
-      position: absolute;
+      position: fixed;
       background-color: #ffe0e0;
       color: #B64646;
       width: 100%;

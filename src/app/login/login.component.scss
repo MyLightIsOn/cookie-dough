@@ -7,7 +7,6 @@
   min-height: 100%;
   top: 0;
   padding-top: 70px;
-  background-color: $medium-blue;
 
   .error-container {
     position: absolute;
@@ -53,23 +52,9 @@
   }
 
   .submit-login-button {
-    @include light-blue-button;
+    display: block;
     width: 160px;
     margin: 25px 0 0 5%;
-  }
-
-  .submit-login-button:before {
-    @include button-emboss($light-blue, $white, #9ea3db, #6d728C);
-  }
-
-  .submit-login-button:active {
-    background-color: #9ea3bd;
-  }
-
-  .submit-login-button:active:before {
-    background-color: #9ea3bd;
-    background-image: none;
-    box-shadow: 0 1px 2px 0 #444 inset;
   }
 
   .submit-login-container {
@@ -102,7 +87,7 @@
 
   .divide {
     font-size: 16px;
-    background-color: $medium-blue;
+    background-color: #676c91;
     width: 40px;
     margin: 0 auto;
     display: block;
@@ -113,24 +98,23 @@
   }
   
   .signup-button {
-    @include orange-button;
+    display: block;
     width: 180px;
     margin: 0 auto;
   }
 
-  .signup-button:before {
-    @include button-emboss(#FFF1A2, #FDDEA6, #d34c16, #7A3D16);
+  .login-field-container {
+    width: 100%;
   }
-  
-  .signup-button:active {
-    background-color: #d34c16;
-    background-image: none;
-    box-shadow: 0 1px 2px 0 #444 inset;
-  }
+}
 
-  .signup-button:active:before {
-    background-color: #d34c16;
-    background-image: none;
-    box-shadow: 0 1px 2px 0 #444 inset;
+@media (min-width: $desktop) {
+  #login-component {
+    padding-top: 150px;
+    
+    .login-field-container {
+      width: 500px;
+      margin: auto;
+    }
   }
 }
