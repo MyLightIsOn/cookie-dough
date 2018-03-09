@@ -40,7 +40,7 @@
   .role-icon {
     background-color: $dark-blue;
     border-radius: 4px;
-    border: 3px solid $white;
+    /*border: 3px solid $white;*/
     width: 85px;
     height: 85px;
     margin: 0 auto 8px;
@@ -61,6 +61,13 @@
     display: block;
     width: 180px;
     margin: 0 auto;
+  }
+
+  .role-selected {
+    .role-icon{
+      outline-style: solid;
+      outline-color: $orange;
+    }
   }
 }
 

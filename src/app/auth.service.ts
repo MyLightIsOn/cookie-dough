@@ -35,7 +35,6 @@ export class AuthService {
             this.errorResponse = false;
             this.isLoggedIn = true;
         }
-        console.log(res);
         return res || {};
     }
 

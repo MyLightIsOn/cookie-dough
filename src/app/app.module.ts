@@ -8,10 +8,10 @@ import { CompanyModule } from './companies/companies.module';
 import { SearchModule } from './search/search.module';
 import { LoginModule } from './login/login.module';
 import { ProfileModule } from './profile/profile.module';
+import { RegisterModule } from './register/register.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './register/register.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { DialogService } from './dialogs/dialog.service';
@@ -22,7 +22,6 @@ import { FilterCompaniesPipe } from './_pipes/filter-companies.pipe';
 @NgModule({
     declarations: [
         AppComponent,
-        RegisterComponent,
         PageNotFoundComponent,
         FilterCompaniesPipe
     ],
@@ -35,6 +34,7 @@ import { FilterCompaniesPipe } from './_pipes/filter-companies.pipe';
         ProfileModule,
         RoutingModule,
         HttpClientModule,
+        RegisterModule,
         FormsModule
     ],
     providers: [
