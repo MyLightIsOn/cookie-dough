@@ -1,0 +1,80 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+
+#register-component {
+  width: 100%;
+  min-height: 100%;
+  top: 0;
+  padding-top: 70px;
+  color: $white;
+  position: relative;
+
+  h4 {
+    text-align: center;
+    color: $white;
+    @include section-header;
+    margin: 10px 0 27px;
+    font-size: 16px;
+  }
+
+  .role-selector-container {
+    display: flex;
+    width: 90%;
+    margin: auto;
+
+    h4 {
+      position: relative;
+      top: 23px;
+    }
+  }
+
+  .role-container {
+    width: 85px;
+    text-align: center;
+    font-size: 18px;
+    flex-grow: 1;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .role-icon {
+    background-color: $dark-blue;
+    border-radius: 4px;
+    border: 3px solid $white;
+    width: 85px;
+    height: 85px;
+    margin: 0 auto 8px;
+  }
+
+  .register-input-label {
+    @include form-label;
+    color: $white;
+  }
+
+  .register-input-form {
+    @include form-field;
+    padding: 10px 10px;
+    margin-bottom: 20px;
+  }
+
+  .submit-registration {
+    display: block;
+    width: 180px;
+    margin: 0 auto;
+  }
+}
+
+.register-field-container {
+  width: 100%;
+}
+
+@media (min-width: $desktop) {
+  #register-component {
+    padding-top: 150px;
+
+    .register-field-container {
+      width: 500px;
+      margin: auto;
+    }
+  }
+}
