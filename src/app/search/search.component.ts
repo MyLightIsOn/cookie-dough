@@ -28,8 +28,8 @@ export class SearchComponent implements OnInit {
     // Shifts search box;
     searchStart() {
         if (this.appService.device === 'mobile') {
-            this.appService.hideNav();
             this.searchStarted = true;
+            this.appService.fieldFocus();
         }
     }
 

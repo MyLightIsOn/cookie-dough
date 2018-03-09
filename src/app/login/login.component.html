@@ -4,12 +4,16 @@
             <h4>Log in to Gempathy</h4>
             <span class="login-input-label">email address</span>
             <input type="email"
+                   (focus)="appService.fieldFocus()"
+                   (focusout)="appService.showNav()"
                    (keyup.enter)="login()"
                    [(ngModel)]="email"
                    class="login-input-form">
             <br />
             <span class="login-input-label">password</span>
             <input type="password"
+                   (focus)="appService.fieldFocus()"
+                   (focusout)="appService.showNav()"
                    (keyup.enter)="login()"
                    [(ngModel)]="password"
                    class="login-input-form">

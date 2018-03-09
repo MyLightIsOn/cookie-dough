@@ -2,7 +2,7 @@
 @import "../../sass/mixins";
 
 #login-component {
-  position: fixed;
+  position: relative;
   width: 100%;
   min-height: 100%;
   top: 0;
@@ -105,6 +105,8 @@
 
   .login-field-container {
     width: 100%;
+    max-width: 500px;
+    margin: auto;
   }
 }
 

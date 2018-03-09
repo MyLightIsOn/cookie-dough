@@ -12,6 +12,7 @@
         <input type="text" id="main-search" placeholder="Begin Search Here"
                (keydown.enter)="searchSubmit()"
                (focus)="searchStart()"
+               (focusout)="appService.showNav()"
                [(ngModel)]="searchText">
         <span class="search-button"
               routerLink="/search-results"

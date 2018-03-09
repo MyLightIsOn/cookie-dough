@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { AuthService } from '../auth.service';
 import { LoginService } from './login.service';
+import { AppService } from '../app.service';
 
 @Component({
     selector: 'app-login',
@@ -13,7 +14,10 @@ export class LoginComponent {
     email: string;
     password: string;
 
-    constructor(public authService: AuthService, public loginService: LoginService) {}
+    constructor(
+        public authService: AuthService,
+        public loginService: LoginService,
+        public appService: AppService) {}
 
     login() {
         this.loginService.login(this.email, this.password);

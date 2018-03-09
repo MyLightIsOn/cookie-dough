@@ -16,7 +16,17 @@ export class AppService {
     }
 
     hideNav() {
-        this.searchStarted = !this.searchStarted;
+        this.searchStarted = true;
+    }
+
+    showNav() {
+        this.searchStarted = false;
+    }
+
+    fieldFocus() {
+        if (this.device === 'mobile') {
+            this.hideNav();
+        }
     }
 }
 

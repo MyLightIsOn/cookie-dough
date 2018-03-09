@@ -31,13 +31,22 @@
       <input type="text" class="register-input-form">-->
 
       <span class="register-input-label">email</span>
-      <input type="email" class="register-input-form" [(ngModel)]="email">
+      <input type="email" class="register-input-form"
+             (focus)="appService.fieldFocus()"
+             (focusout)="appService.showNav()"
+             [(ngModel)]="email">
 
       <span class="register-input-label">password</span>
-      <input type="password" class="register-input-form" [(ngModel)]="password">
+      <input type="password" class="register-input-form"
+             (focus)="appService.fieldFocus()"
+             (focusout)="appService.showNav()"
+             [(ngModel)]="password">
 
       <span class="register-input-label">confirm password</span>
-      <input type="password" class="register-input-form">
+      <input type="password"
+             (focus)="appService.fieldFocus()"
+             (focusout)="appService.showNav()"
+             class="register-input-form">
              <!--(keyup.enter)="login()"-->
              <!--[(ngModel)]="email"-->
       <br />

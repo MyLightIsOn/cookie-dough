@@ -137,7 +137,9 @@
     outline-color: #FF9018; }
 
 .register-field-container {
-  width: 100%; }
+  width: 100%;
+  max-width: 500px;
+  margin: auto; }
 
 @media (min-width: 1200px) {
   #register-component {

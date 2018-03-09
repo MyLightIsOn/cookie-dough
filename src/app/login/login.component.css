@@ -68,7 +68,7 @@
   box-shadow: 0 1px 1px 0 #444 inset; }
 
 #login-component {
-  position: fixed;
+  position: relative;
   width: 100%;
   min-height: 100%;
   top: 0;
@@ -159,7 +159,9 @@
     width: 180px;
     margin: 0 auto; }
   #login-component .login-field-container {
-    width: 100%; }
+    width: 100%;
+    max-width: 500px;
+    margin: auto; }
 
 @media (min-width: 1200px) {
   #login-component {

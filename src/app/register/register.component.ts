@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from './register.service';
+import { AppService } from '../app.service';
 
 @Component({
     selector: 'app-register',
@@ -12,7 +13,9 @@ export class RegisterComponent implements OnInit {
     public role = 'Individual';
     public individualRole: boolean;
 
-    constructor(private registerService: RegisterService) { }
+    constructor(
+        private registerService: RegisterService,
+        public appService: AppService) { }
 
     ngOnInit() {
       this.individualRole = true;
