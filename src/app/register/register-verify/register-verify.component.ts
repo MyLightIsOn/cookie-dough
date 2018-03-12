@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RegisterService } from '../register.service';
 import { LoginService } from '../../login/login.service';
 import { AppService } from '../../app.service';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-register-verify',
@@ -18,7 +19,8 @@ export class RegisterVerifyComponent implements OnInit {
       public registerService: RegisterService,
       public route: ActivatedRoute,
       public loginService: LoginService,
-      public appService: AppService) { }
+      public appService: AppService,
+      public authService: AuthService) { }
 
   ngOnInit() {
       this.route.params.subscribe(params => {
