@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from './register.service';
 import { AppService } from '../app.service';
-
+import { AuthService } from '../auth.service';
 
 @Component({
     selector: 'app-register',
@@ -11,12 +11,16 @@ import { AppService } from '../app.service';
 export class RegisterComponent implements OnInit {
     public email;
     public password;
+    public passwordMatch;
     public role = 'Individual';
     public individualRole: boolean;
+    public noEmail;
+    public passwordError;
 
     constructor(
         public registerService: RegisterService,
-        public appService: AppService) { }
+        public appService: AppService,
+        public authService: AuthService) { }
 
     ngOnInit() {
       this.individualRole = true;
@@ -33,6 +37,23 @@ export class RegisterComponent implements OnInit {
     }
 
     submitRegistration() {
+        if (!this.email) {
+            this.noEmail = true;
+        } else {
+            this.noEmail = false;
+        }
+
+        if (!this.password) {
+            this.passwordError = true;
+        }
+
+        if (this.password !== this.passwordMatch) {
+            this.passwordError = true;
+            this.authService.errorMessage = 'Passwords do not match';
+            this.authService.errorResponse = true;
+            return false;
+        }
+
         const user = {};
         const email = {};
         email['email'] = this.email;

@@ -52,6 +52,7 @@
                    (focus)="appService.fieldFocus()"
                    (focusout)="appService.showNav()"
                    (keyup.enter)="submitRegistration()"
+                   [ngClass]="{'error-highlight': noEmail}"
                    [(ngModel)]="email"
                    required>
 
@@ -61,7 +62,9 @@
                    (focus)="appService.fieldFocus()"
                    (focusout)="appService.showNav()"
                    (keyup.enter)="submitRegistration()"
+                   [ngClass]="{'error-highlight': passwordError}"
                    [(ngModel)]="password"
+                   minlength="6"
                    required>
 
             <span class="register-input-label">confirm password</span>
@@ -70,7 +73,9 @@
                    (focus)="appService.fieldFocus()"
                    (focusout)="appService.showNav()"
                    (keyup.enter)="submitRegistration()"
+                   [ngClass]="{'error-highlight': passwordError}"
                    class="register-input-form"
+                   [(ngModel)]="passwordMatch"
                    required>
             <br />
             <button type="submit" class="submit-registration orange-button">Submit</button>

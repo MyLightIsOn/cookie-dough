@@ -139,6 +139,7 @@
 
 .message {
   width: 90%;
+  max-width: 600px;
   margin: auto; }
   .message a {
     color: #FF9018; }
