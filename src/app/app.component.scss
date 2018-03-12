@@ -223,12 +223,11 @@ nav {
     }
 
     .nav-login-submit {
-      @include light-blue-button;
       width: 80px;
       position: absolute;
-      right: 0;
+      right: -100px;
       top: 14px;
-      padding: 5px;
+      padding: 6px;
     }
 
     .nav-form-label {

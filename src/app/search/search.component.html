@@ -15,6 +15,7 @@
         <form (ngSubmit)="searchSubmit()" #searchForm="ngForm">
             <input type="text" id="main-search" placeholder="Begin Search Here"
                    name="search"
+                   [ngClass]="{'error-highlight': searchError}"
                    (keydown.enter)="searchSubmit()"
                    (focus)="searchStart()"
                    (focusout)="appService.showNav()"

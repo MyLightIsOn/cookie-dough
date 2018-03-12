@@ -20,25 +20,28 @@
 
             <!-- User Not Logged In-->
             <ng-template #notLoggedIn>
-
+                
                 <!-- Desktop Login -->
                 <div id="desktop-nav-login" class="desktop">
-
-                    <div class="form-container">
-                        <span class="nav-form-label">email</span>
-                        <input type="email" id="email"
-                               [(ngModel)]="email"
-                               class="nav-login-form">
-                    </div>
-
-                    <div class="form-container">
-                        <span class="nav-form-label">password</span>
-                        <input type="password" id="password"
-                               [(ngModel)]="password"
-                               class="nav-login-form">
-                    </div>
-
-                    <span class="nav-login-submit" (click)="login()">login</span>
+                    <form (ngSubmit)="login()" #navLoginForm="ngForm">
+                        <div class="form-container">
+                            <span class="nav-form-label">email</span>
+                            <input type="email"
+                                   name="email"
+                                   [(ngModel)]="email"
+                                   [ngClass]="{'error-highlight': authService.errorHighlight}"
+                                   class="nav-login-form">
+                        </div>
+    
+                        <div class="form-container">
+                            <span class="nav-form-label">password</span>
+                            <input type="password" src="" name="password"
+                                   [ngClass]="{'error-highlight': authService.errorHighlight}"
+                                   [(ngModel)]="password"
+                                   class="nav-login-form">
+                        </div>
+                        <button type="submit" class="nav-login-submit light-blue-button">login</button>
+                    </form>
                 </div>
 
                 <!-- Mobile Login-->

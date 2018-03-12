@@ -91,7 +91,7 @@ body, html {
 .desktop {
   display: none; }
 
-input.ng-touched {
+input.error-highlight {
   border: solid 2px #B64646 !important;
   background-color: #ffe0e0 !important; }
 
@@ -111,14 +111,6 @@ form {
     padding: 15px;
     text-align: center; }
 
-/*input.ng-invalid.ng-dirty.ng-touched{
-  border: solid 2px $red !important;
-  background-color: $light-red !important;
-}
-
-input.ng-untouched.ng-pristine.ng-invalid {
-  border: 0 !important;
-}*/
 button, input[type="submit"], input[type="reset"] {
   background: none;
   color: inherit;
