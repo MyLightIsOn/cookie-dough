@@ -7,7 +7,8 @@
   margin-bottom: 7px;
   position: relative;
   border-radius: 2px;
-  cursor: pointer; }
+  cursor: pointer;
+  font-size: 14px; }
 
 .light-blue-button:before {
   content: "";
@@ -40,7 +41,8 @@
   margin-bottom: 7px;
   position: relative;
   border-radius: 2px;
-  cursor: pointer; }
+  cursor: pointer;
+  font-size: 14px; }
 
 .orange-button:before {
   content: "";

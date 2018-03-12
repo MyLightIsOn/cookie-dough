@@ -7,7 +7,8 @@
   margin-bottom: 7px;
   position: relative;
   border-radius: 2px;
-  cursor: pointer; }
+  cursor: pointer;
+  font-size: 14px; }
 
 .light-blue-button:before {
   content: "";
@@ -40,7 +41,8 @@
   margin-bottom: 7px;
   position: relative;
   border-radius: 2px;
-  cursor: pointer; }
+  cursor: pointer;
+  font-size: 14px; }
 
 .orange-button:before {
   content: "";
@@ -145,6 +147,29 @@ nav {
 .mobile-menu-container.searchStarted {
   display: none; }
 
+.error-container {
+  position: fixed;
+  background-color: #ffe0e0;
+  color: #B64646;
+  width: 100%;
+  padding: 15px 20px;
+  top: 50px;
+  text-align: center;
+  z-index: 1; }
+
+.error-message {
+  position: relative;
+  width: 90%; }
+
+.error-message:before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  background: url("/assets/icons/error_icon.png") no-repeat;
+  left: -22px;
+  top: 1px; }
+
 /************** Main App Container Styles **************/
 #app-container {
   position: relative;
@@ -169,26 +194,9 @@ nav {
 @media (min-width: 1200px) {
   #app-container {
     overflow-x: inherit; }
-    #app-container .error-container {
-      position: fixed;
-      background-color: #ffe0e0;
-      color: #B64646;
-      width: 100%;
-      padding: 15px 20px;
-      top: 65px;
-      text-align: center;
-      z-index: 1; }
-    #app-container .error-message {
-      position: relative;
-      width: 90%; }
-    #app-container .error-message:before {
-      content: '';
-      width: 15px;
-      height: 15px;
-      position: absolute;
-      background: url("/assets/icons/error_icon.png") no-repeat;
-      left: -22px;
-      top: 1px; }
+
+  .error-container {
+    top: 65px; }
 
   #desktop-menu {
     display: block;
@@ -241,6 +249,7 @@ nav {
       position: relative;
       border-radius: 2px;
       cursor: pointer;
+      font-size: 14px;
       width: 80px;
       position: absolute;
       right: 0;

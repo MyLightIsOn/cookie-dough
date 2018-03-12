@@ -7,7 +7,8 @@
   margin-bottom: 7px;
   position: relative;
   border-radius: 2px;
-  cursor: pointer; }
+  cursor: pointer;
+  font-size: 14px; }
 
 .light-blue-button:before {
   content: "";
@@ -40,7 +41,8 @@
   margin-bottom: 7px;
   position: relative;
   border-radius: 2px;
-  cursor: pointer; }
+  cursor: pointer;
+  font-size: 14px; }
 
 .orange-button:before {
   content: "";
@@ -88,6 +90,22 @@ body, html {
 
 .desktop {
   display: none; }
+
+input.ng-invalid.ng-dirty.ng-touched {
+  border: solid 2px #B64646 !important;
+  background-color: #ffe0e0 !important; }
+
+input.ng-untouched.ng-pristine.ng-invalid {
+  border: 0 !important; }
+
+button, input[type="submit"], input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit; }
 
 @media (min-width: 1200px) {
   .desktop {

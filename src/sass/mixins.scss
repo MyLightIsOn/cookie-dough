@@ -71,6 +71,7 @@
   position: relative;
   border-radius: 2px;
   cursor: pointer;
+  font-size: 14px;
 }
 
 @mixin light-blue-button-active {
@@ -96,6 +97,7 @@
   position: relative;
   border-radius: 2px;
   cursor: pointer;
+  font-size: 14px;
 }
 
 @mixin orange-button-active {

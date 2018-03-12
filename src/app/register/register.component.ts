@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterService } from './register.service';
 import { AppService } from '../app.service';
 
+
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
     public individualRole: boolean;
 
     constructor(
-        private registerService: RegisterService,
+        public registerService: RegisterService,
         public appService: AppService) { }
 
     ngOnInit() {

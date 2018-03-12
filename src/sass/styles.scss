@@ -28,6 +28,25 @@ body, html {
   display: none;
 }
 
+input.ng-invalid.ng-dirty.ng-touched{
+  border: solid 2px $red !important;
+  background-color: $light-red !important;
+}
+
+input.ng-untouched.ng-pristine.ng-invalid {
+  border: 0 !important;
+}
+
+button, input[type="submit"], input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
 @media (min-width: $desktop) {
   .desktop {
     display: block;

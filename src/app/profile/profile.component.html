@@ -5,7 +5,10 @@
   <!--<a routerLink="./" routerLinkActive="active"
      [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
   <a routerLink="./company-profile" routerLinkActive="active">Company Profile</a>-->
-  <p>Hi {{firstName}}</p>
+  <p *ngIf="firstName; else emailAddress">Hi {{firstName}}</p>
+  <ng-template #emailAddress>
+    <p>Hi {{email}}</p>
+  </ng-template>
   <p>You logged in successfully!</p>
   <!--<router-outlet></router-outlet>-->
 </div>

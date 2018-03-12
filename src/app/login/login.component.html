@@ -3,26 +3,32 @@
         <div class="login-field-container">
             <h4>Log in to Gempathy</h4>
             <span class="login-input-label">email address</span>
-            <input type="email"
-                   (focus)="appService.fieldFocus()"
-                   (focusout)="appService.showNav()"
-                   (keyup.enter)="login()"
-                   [(ngModel)]="email"
-                   class="login-input-form">
-            <br />
-            <span class="login-input-label">password</span>
-            <input type="password"
-                   (focus)="appService.fieldFocus()"
-                   (focusout)="appService.showNav()"
-                   (keyup.enter)="login()"
-                   [(ngModel)]="password"
-                   class="login-input-form">
+            <form (ngSubmit)="login()" #loginForm="ngForm">
+                <input type="email"
+                       name="email"
+                       (focus)="appService.fieldFocus()"
+                       (focusout)="appService.showNav()"
+                       (keyup.enter)="login()"
+                       [(ngModel)]="email"
+                       class="login-input-form"
+                       required>
+                <br />
+                <span class="login-input-label">password</span>
+                <input type="password"
+                       name="password"
+                       (focus)="appService.fieldFocus()"
+                       (focusout)="appService.showNav()"
+                       (keyup.enter)="login()"
+                       [(ngModel)]="password"
+                       class="login-input-form"
+                       required>
 
-            <div class="submit-login-container">
-                <span class="submit-login-button light-blue-button" (click)="login()">Log in</span>
-                <input class="remember-check" type="checkbox"><label>Remember me</label>
-                <span class="forgot-password">Forgot Password</span>
-            </div>
+                <div class="submit-login-container">
+                    <button type="submit" class="submit-login-button light-blue-button">Log in</button>
+                    <input class="remember-check" type="checkbox"><label>Remember me</label>
+                    <span class="forgot-password">Forgot Password</span>
+                </div>
+            </form>
         </div>
     </section>
 
@@ -32,7 +38,7 @@
         <section class="signup-section">
             <h4 class="divide">Or</h4>
             <h4 class="sign-up-text">New to Gempathy? Sign up now!</h4>
-            <span class="signup-button orange-button" [routerLink]="['/register']">Sign up</span>
+            <button class="signup-button orange-button" [routerLink]="['/register']">Sign up</button>
         </section>
     </div>
 </div>

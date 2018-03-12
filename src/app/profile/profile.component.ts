@@ -14,12 +14,13 @@ export class ProfileComponent implements OnInit {
     token: Observable<string>;
     user: object;
     firstName: string;
+    email: string;
 
     constructor(private route: ActivatedRoute, public authGuard: AuthGuard) {}
 
     ngOnInit() {
         this.user = this.authGuard.getSession();
-        this.firstName = this.user['user']['values']['name']['first'];
+        this.email = this.user['user']['values']['email']['email'];
         /*// Capture the session ID if available
         this.sessionId = this.route
             .queryParamMap

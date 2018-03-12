@@ -103,6 +103,32 @@ nav {
   display: none;
 }
 
+.error-container {
+  position: fixed;
+  background-color: $light-red;
+  color: $red;
+  width: 100%;
+  padding: 15px 20px;
+  top: 50px;
+  text-align: center;
+  z-index: 1;
+}
+
+.error-message {
+  position: relative;
+  width: 90%;
+}
+
+.error-message:before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  background: url("/assets/icons/error_icon.png") no-repeat;
+  left: -22px;
+  top: 1px;
+}
+
 /************** Main App Container Styles **************/
 #app-container {
   position: relative;
@@ -130,32 +156,10 @@ nav {
 @media (min-width: $desktop) {
   #app-container {
     overflow-x: inherit;
+  }
 
-    .error-container {
-      position: fixed;
-      background-color: $light-red;
-      color: $red;
-      width: 100%;
-      padding: 15px 20px;
-      top: 65px;
-      text-align: center;
-      z-index: 1;
-    }
-
-    .error-message {
-      position: relative;
-      width: 90%;
-    }
-
-    .error-message:before {
-      content: '';
-      width: 15px;
-      height: 15px;
-      position: absolute;
-      background: url("/assets/icons/error_icon.png") no-repeat;
-      left: -22px;
-      top: 1px;
-    }
+  .error-container {
+    top: 65px;
   }
 
   #desktop-menu {
