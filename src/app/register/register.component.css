@@ -75,7 +75,8 @@
   top: 0;
   padding-top: 70px;
   color: #F9FCFE;
-  position: relative; }
+  position: relative;
+  padding-bottom: 400px; }
   #register-component h4 {
     text-align: center;
     color: #F9FCFE;

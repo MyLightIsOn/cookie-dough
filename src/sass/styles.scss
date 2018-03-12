@@ -47,6 +47,11 @@ button, input[type="submit"], input[type="reset"] {
   outline: inherit;
 }
 
+.waiting-animation {
+  display: block;
+  margin: auto;
+}
+
 @media (min-width: $desktop) {
   .desktop {
     display: block;

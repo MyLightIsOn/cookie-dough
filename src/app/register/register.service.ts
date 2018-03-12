@@ -13,6 +13,7 @@ import { environment} from '../../environments/environment';
 export class RegisterService {
     public registrationSuccess: boolean;
     public accountVerified = false;
+    public waiting;
     public id;
 
     constructor(
@@ -22,12 +23,15 @@ export class RegisterService {
         public route: ActivatedRoute) {}
 
     registerUser(body) {
+        this.waiting = true;
         return this.http.post(environment['BASEURL'] + '/api/register', body).map((res) => {
             if (res['error']) {
                 this.authService.errorMessage = res['error']['errors'][0]['message'];
                 this.authService.errorResponse = true;
                 this.registrationSuccess = false;
+                this.waiting = false;
             } else {
+                this.waiting = false;
                 this.registrationSuccess = true;
                 this.authService.errorResponse = false;
             }
@@ -37,14 +41,16 @@ export class RegisterService {
     verifiyUser(id) {
         const activate = {};
         activate['field_21'] = 'active';
-
+        this.waiting = true;
         return this.http.put(environment['BASEURL'] + '/api/verify?id=' + id, activate).map((res) => {
             if (res['error']) {
                 this.authService.errorMessage = res['error']['errors'][0]['message'];
                 this.authService.errorResponse = true;
                 this.registrationSuccess = false;
                 this.accountVerified = false;
+                this.waiting = false;
             } else {
+                this.waiting = false;
                 this.accountVerified = true;
             }
         });

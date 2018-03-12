@@ -107,6 +107,10 @@ button, input[type="submit"], input[type="reset"] {
   cursor: pointer;
   outline: inherit; }
 
+.waiting-animation {
+  display: block;
+  margin: auto; }
+
 @media (min-width: 1200px) {
   .desktop {
     display: block; }
