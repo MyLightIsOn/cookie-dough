@@ -1,4 +1,7 @@
 <div id="search-component">
+    <div class="form-error" [hidden]="!searchError">
+        <p>Enter a search value</p>
+    </div>
     <div id="homepage-title" [ngClass]="{'searchStarted': searchStarted}">
         <div class="search-logo-container">
             <img src="../assets/images/gempathy_logo.png" class="search-logo">
@@ -9,23 +12,24 @@
 
     <div id="main-search-container" [ngClass]="{'searchSubmitted': searchSubmitted,'searchStarted': searchStarted}">
         <span class="search-help" [ngClass]="{'searchStarted': searchStarted}">Keyword Search</span>
-        <input type="text" id="main-search" placeholder="Begin Search Here"
-               (keydown.enter)="searchSubmit()"
-               (focus)="searchStart()"
-               (focusout)="appService.showNav()"
-               [(ngModel)]="searchText">
-        <span class="search-button"
-              routerLink="/search-results"
-              (click)="searchSubmit()"></span>
-        <div class="desktop-search-login desktop">
-            <div>
-                <span class="desktop-search-login-text">New to Gempathy?</span>
-                <span class="desktop-search-login-link" routerLink="/register" routerLinkActive="active">Sign Up</span>
+        <form (ngSubmit)="searchSubmit()" #searchForm="ngForm">
+            <input type="text" id="main-search" placeholder="Begin Search Here"
+                   name="search"
+                   (keydown.enter)="searchSubmit()"
+                   (focus)="searchStart()"
+                   (focusout)="appService.showNav()"
+                   [(ngModel)]="searchText">
+            <button type="submit" class="search-button"></button>
+            <div class="desktop-search-login desktop">
+                <div>
+                    <span class="desktop-search-login-text">New to Gempathy?</span>
+                    <span class="desktop-search-login-link" routerLink="/register" routerLinkActive="active">Sign Up</span>
+                </div>
+                <div>
+                    <span class="desktop-search-login-text">Have an Account?</span>
+                    <span class="desktop-search-login-link" routerLink="/login" routerLinkActive="active">Login</span>
+                </div>
             </div>
-            <div>
-                <span class="desktop-search-login-text">Have an Account?</span>
-                <span class="desktop-search-login-link" routerLink="/login" routerLinkActive="active">Login</span>
-            </div>
-        </div>
+        </form>
     </div>
 </div>

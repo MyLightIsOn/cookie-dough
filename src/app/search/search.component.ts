@@ -15,6 +15,8 @@ export class SearchComponent implements OnInit {
     public searchText;
     public searchStarted = false;
     public searchSubmitted = false;
+    public search;
+    public searchError;
 
     constructor(
         private searchService: SearchService,
@@ -35,7 +37,12 @@ export class SearchComponent implements OnInit {
 
     // Submits search, unhides search results
     searchSubmit() {
-        this.searchService.searchValue(this.searchText);
-        this.router.navigate(['/search-results']);
+        if (!this.searchText) {
+            this.searchError = true;
+        } else {
+            this.searchError = false;
+            this.searchService.searchValue(this.searchText);
+            this.router.navigate(['/search-results']);
+        }
     }
 }
