@@ -6,6 +6,7 @@ import { RegisterComponent } from './register.component';
 import { RegisterService } from './register.service';
 
 import { RegisterRoutingModule } from './register.routing.module';
+import { RegisterVerifyComponent } from './register-verify/register-verify.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { RegisterRoutingModule } from './register.routing.module';
     ],
     declarations: [
         RegisterComponent,
+        RegisterVerifyComponent,
     ],
     providers: [
         RegisterService

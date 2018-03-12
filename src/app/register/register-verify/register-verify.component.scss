@@ -1,0 +1,71 @@
+@import "../../../sass/variables";
+@import "../../../sass/mixins";
+
+#register-login-component {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  top: 0;
+  padding-top: 70px;
+
+  h4 {
+    text-align: center;
+    color: $white;
+    @include section-header;
+    margin: 10px 0 27px;
+    font-size: 16px;
+    line-height: 27px;
+
+    a {
+      color: $white;
+    }
+  }
+
+  .login-input-label {
+    @include form-label;
+    color: $white;
+  }
+
+  .login-input-form {
+    @include form-field;
+    padding: 10px 10px;
+  }
+
+  .submit-login-button {
+    display: block;
+    width: 160px;
+    margin: 25px 0 0 5%;
+  }
+
+  .submit-login-container {
+    position: relative;
+
+    .forgot-password {
+      font-weight: bold;
+      text-decoration: underline;
+      position: absolute;
+      right: 8%;
+      top: 9px;
+      color: $white;
+    }
+
+    .remember-check {
+      margin: 16px 8px 0 5%;
+    }
+
+    label {
+      color: $white;
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+  #register-login-component {
+    padding-top: 150px;
+
+    .register-login-field-container {
+      width: 500px;
+      margin: auto;
+    }
+  }
+}

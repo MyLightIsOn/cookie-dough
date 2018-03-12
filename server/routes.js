@@ -19,5 +19,6 @@ routes.post('/api/login', function(req, res){ return login.login(req, res)});
 
 // Register Routes
 routes.post('/api/register', function(req, res){ return register.register(req, res)});
+routes.put('/api/verify/:id?', function(req, res){ return register.verifyAccount(req, res)});
 
 module.exports = routes;

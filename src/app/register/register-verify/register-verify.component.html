@@ -1,0 +1,37 @@
+<div id="register-login-component">
+    <!--<div *ngIf="registerService.accountVerified; else notVerified">-->
+        <div class="register-login-field-container">
+            <h4>Your Account is verified! Log in below to continue.</h4>
+            <span class="login-input-label">email address</span>
+            <form (ngSubmit)="loginService.login()" #loginForm="ngForm">
+                <input type="email"
+                       name="email"
+                       (focus)="appService.fieldFocus()"
+                       (focusout)="appService.showNav()"
+                       (keyup.enter)="loginService.login()"
+                       [(ngModel)]="email"
+                       class="login-input-form"
+                       required>
+                <br />
+                <span class="login-input-label">password</span>
+                <input type="password"
+                       name="password"
+                       (focus)="appService.fieldFocus()"
+                       (focusout)="appService.showNav()"
+                       (keyup.enter)="loginService.login()"
+                       [(ngModel)]="password"
+                       class="login-input-form"
+                       required>
+
+                <div class="submit-login-container">
+                    <button type="submit" class="submit-login-button light-blue-button">Log in</button>
+                    <input class="remember-check" type="checkbox"><label>Remember me</label>
+                    <span class="forgot-password">Forgot Password</span>
+                </div>
+            </form>
+        </div>
+    <!--</div>
+    <ng-template #notVerified>
+        <h4>There seems to be a problem with your registration. Contact us at <a href="mailto:team@gempathy.com?Subject=Registration%20Problem" target="_top">team@gempathy.com</a> for help.</h4>
+    </ng-template>-->
+</div>

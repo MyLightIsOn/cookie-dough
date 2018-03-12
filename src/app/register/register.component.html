@@ -1,7 +1,15 @@
 <div id="register-component">
   <section class="register-section">
 
-    <p *ngIf="registerService.registrationSuccess; else notRegistered">Successful Registration</p>
+    <div *ngIf="registerService.registrationSuccess; else notRegistered">
+    <div class="message">
+      <h4>Thanks for signing up for Gempathy!</h4>
+      <p>Your status is pending and shortly, you will recieve an email instructions on how to activate this account.</p>
+      <p>If you do not recieve this email, please check your spam/junk mail folder.</p>
+      <p>If it is still not there, contact our team at <a href="mailto:team@gempathy.com?Subject=Registration%20Problem" target="_top">team@gempathy.com</a> for help.</p>
+      <br /><h4>Thanks again from the Gempathy team!</h4>
+    </div>
+    </div>
     <ng-template #notRegistered>
       <div class="register-field-container">
         <h4>Sign Up with Gempathy</h4>
