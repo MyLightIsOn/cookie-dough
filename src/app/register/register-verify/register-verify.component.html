@@ -9,6 +9,7 @@
                        (focus)="appService.fieldFocus()"
                        (focusout)="appService.showNav()"
                        (keyup.enter)="loginService.login(email, password)"
+                       [ngClass]="{'error-highlight': authService.errorHighlight}"
                        [(ngModel)]="email"
                        class="login-input-form"
                        required>
@@ -19,6 +20,7 @@
                        (focus)="appService.fieldFocus()"
                        (focusout)="appService.showNav()"
                        (keyup.enter)="loginService.login(email, password)"
+                       [ngClass]="{'error-highlight': authService.errorHighlight}"
                        [(ngModel)]="password"
                        class="login-input-form"
                        required>

@@ -38,13 +38,17 @@ export class RegisterComponent implements OnInit {
 
     submitRegistration() {
         if (!this.email) {
+            this.authService.errorMessage = 'Must include an email';
+            this.authService.errorResponse = true;
             this.noEmail = true;
-        } else {
-            this.noEmail = false;
+            return false;
         }
 
         if (!this.password) {
+            this.authService.errorMessage = 'Must include a password';
+            this.authService.errorResponse = true;
             this.passwordError = true;
+            return false;
         }
 
         if (this.password !== this.passwordMatch) {

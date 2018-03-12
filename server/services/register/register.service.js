@@ -16,7 +16,6 @@ module.exports = {
                 return res.send(parsedBody);
             })
             .catch(function (err) {
-                console.log(err);
                 return res.send(err)
             });
     },
