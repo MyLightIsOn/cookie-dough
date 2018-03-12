@@ -3,12 +3,12 @@
         <div class="register-login-field-container">
             <h4>Your Account is verified! Log in below to continue.</h4>
             <span class="login-input-label">email address</span>
-            <form (ngSubmit)="loginService.login()" #loginForm="ngForm">
+            <form (ngSubmit)="loginService.login(email, password)" #loginForm="ngForm">
                 <input type="email"
                        name="email"
                        (focus)="appService.fieldFocus()"
                        (focusout)="appService.showNav()"
-                       (keyup.enter)="loginService.login()"
+                       (keyup.enter)="loginService.login(email, password)"
                        [(ngModel)]="email"
                        class="login-input-form"
                        required>
@@ -18,7 +18,7 @@
                        name="password"
                        (focus)="appService.fieldFocus()"
                        (focusout)="appService.showNav()"
-                       (keyup.enter)="loginService.login()"
+                       (keyup.enter)="loginService.login(email, password)"
                        [(ngModel)]="password"
                        class="login-input-form"
                        required>
