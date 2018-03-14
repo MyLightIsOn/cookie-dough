@@ -12,6 +12,9 @@ const user = {
         values: {
             name: {
                 first: 'test'
+            },
+            email: {
+                email: 'hi@email.com'
             }
         }
     }
