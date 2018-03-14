@@ -1,11 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
+import { AgmCoreModule } from '@agm/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { SearchDetailsComponent } from './search-details.component';
 import { CompaniesService } from '../../companies/companies.service';
 import { SearchService } from '../search.service';
+import { AppService } from '../../app.service';
 
 
 const mockCompanyService = {
@@ -53,9 +55,11 @@ describe('SearchDetailsComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [ RouterTestingModule, HttpClientModule ],
+            imports: [ RouterTestingModule, HttpClientModule, AgmCoreModule.forRoot({
+                apiKey: 'AIzaSyBJMGzxIBJi65RT5yeMSlTbBXG46MHgocM'
+            }) ],
             declarations: [ SearchDetailsComponent ],
-            providers: [ CompaniesService,
+            providers: [ CompaniesService, AppService,
                 { provide: SearchService, useValue: mockSearchService },
                 { provide: CompaniesService, useValue: mockCompanyService },
                 { provide: ActivatedRoute, useValue: route },

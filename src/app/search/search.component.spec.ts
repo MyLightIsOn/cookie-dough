@@ -1,10 +1,12 @@
 import {async, TestBed, inject, ComponentFixture} from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { SearchComponent } from './search.component';
 import { SearchService } from './search.service';
-import { Router } from '@angular/router';
+import { AppService } from '../app.service';
+
 
 const mockCompanyService = {
     searchValue: jasmine.createSpy('searchValue')
@@ -22,7 +24,7 @@ describe('SearchComponent', () => {
         TestBed.configureTestingModule({
             declarations: [ SearchComponent ],
             imports: [ HttpClientTestingModule, FormsModule ],
-            providers: [ SearchService,
+            providers: [ AppService,
                 { provide: SearchService, useValue: mockCompanyService },
                 { provide: Router, useValue: router }
             ]
@@ -52,10 +54,20 @@ describe('SearchComponent', () => {
         )
     );
 
-    it('should set searchStarted prop to true', async(() => {
+    it('should set searchStarted prop to true for mobile', async(() => {
         component.searchStarted = false;
+        component.appService.device = 'mobile';
+
         component.searchStart();
         expect(component.searchStarted).toBeTruthy();
+    }));
+
+    it('should set searchStarted prop to false for desktop', async(() => {
+        component.searchStarted = false;
+        component.appService.device = 'desktop';
+
+        component.searchStart();
+        expect(component.searchStarted).toBeFalsy();
     }));
 
 

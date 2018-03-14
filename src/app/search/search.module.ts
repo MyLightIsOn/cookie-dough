@@ -16,9 +16,7 @@ import { FilterCompaniesPipe } from '../_pipes/filter-companies.pipe';
         CommonModule,
         FormsModule,
         SearchRoutingModule,
-        AgmCoreModule.forRoot({
-            apiKey: 'AIzaSyBJMGzxIBJi65RT5yeMSlTbBXG46MHgocM'
-        })
+        AgmCoreModule
     ],
     declarations: [
         SearchComponent,

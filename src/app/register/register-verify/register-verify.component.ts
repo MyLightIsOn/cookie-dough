@@ -24,7 +24,7 @@ export class RegisterVerifyComponent implements OnInit {
 
   ngOnInit() {
       this.route.params.subscribe(params => {
-         this.registerService.verifiyUser(params['id']).subscribe();
+         return this.registerService.verifiyUser(params['id']).subscribe();
       });
   }
 }

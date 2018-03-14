@@ -1,11 +1,14 @@
 import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
 
 import { SearchResultsComponent } from './search-results.component';
 
 import { Pipe, PipeTransform } from '@angular/core';
 import { CompaniesService } from '../../companies/companies.service';
 import { SearchService } from '../search.service';
+import { AppService } from '../../app.service';
 
 @Pipe({
     name: 'filter'
@@ -18,24 +21,24 @@ export class MockFilterPipe implements PipeTransform {
 }
 
 const dataArray = [
-    { id: '0', field_3: 'company 1', field_4_raw: {}, field_29: true, field_32_raw: 0.1},
-    { id: '1', field_3: 'company 2', field_4_raw: {}, field_29: true, field_32_raw: 0.4},
-    { id: '2', field_3: 'company 3', field_4_raw: {}, field_29: true, field_32_raw: 0.5},
-    { id: '3', field_3: 'company 4', field_4_raw: {}, field_29: true, field_32_raw: 0.7},
-    { id: '4', field_3: 'company 5', field_4_raw: {}, field_29: true, field_32_raw: 1},
-    { id: '5', field_3: 'company 6', field_4_raw: {}, field_29: true, field_32_raw: undefined},
-    { id: '0', field_3: 'company 1', field_4_raw: {}, field_29: true, field_32_raw: 0.1},
-    { id: '1', field_3: 'company 2', field_4_raw: {}, field_29: true, field_32_raw: 0.4},
-    { id: '2', field_3: 'company 3', field_4_raw: {}, field_29: true, field_32_raw: 0.5},
-    { id: '3', field_3: 'company 4', field_4_raw: {}, field_29: true, field_32_raw: 0.7},
-    { id: '4', field_3: 'company 5', field_4_raw: {}, field_29: true, field_32_raw: 1},
-    { id: '5', field_3: 'company 6', field_4_raw: {}, field_29: true, field_32_raw: undefined},
-    { id: '0', field_3: 'company 1', field_4_raw: {}, field_29: true, field_32_raw: 0.1},
-    { id: '1', field_3: 'company 2', field_4_raw: {}, field_29: true, field_32_raw: 0.4},
-    { id: '2', field_3: 'company 3', field_4_raw: {}, field_29: true, field_32_raw: 0.5},
-    { id: '3', field_3: 'company 4', field_4_raw: {}, field_29: true, field_32_raw: 0.7},
-    { id: '4', field_3: 'company 5', field_4_raw: {}, field_29: true, field_32_raw: 1},
-    { id: '5', field_3: 'company 6', field_4_raw: {}, field_29: true, field_32_raw: undefined}
+    { id: '0', field_3: 'company 1', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.1},
+    { id: '1', field_3: 'company 2', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.4},
+    { id: '2', field_3: 'company 3', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.5},
+    { id: '3', field_3: 'company 4', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.7},
+    { id: '4', field_3: 'company 5', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 1},
+    { id: '5', field_3: 'company 6', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: undefined},
+    { id: '0', field_3: 'company 1', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.1},
+    { id: '1', field_3: 'company 2', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.4},
+    { id: '2', field_3: 'company 3', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.5},
+    { id: '3', field_3: 'company 4', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.7},
+    { id: '4', field_3: 'company 5', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 1},
+    { id: '5', field_3: 'company 6', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: undefined},
+    { id: '0', field_3: 'company 1', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.1},
+    { id: '1', field_3: 'company 2', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.4},
+    { id: '2', field_3: 'company 3', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.5},
+    { id: '3', field_3: 'company 4', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.7},
+    { id: '4', field_3: 'company 5', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 1},
+    { id: '5', field_3: 'company 6', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: undefined}
 ];
 
 
@@ -60,9 +63,11 @@ describe('SearchResultsComponent with two pages', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [ RouterTestingModule ],
+            imports: [ RouterTestingModule, FormsModule, AgmCoreModule.forRoot({
+                apiKey: 'AIzaSyBJMGzxIBJi65RT5yeMSlTbBXG46MHgocM'
+            }) ],
             declarations: [ SearchResultsComponent, MockFilterPipe ],
-            providers: [ SearchService,
+            providers: [ SearchService, AppService,
                 { provide: CompaniesService, useValue: mockCompanyService },
             ]
         })

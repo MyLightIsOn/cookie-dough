@@ -9,12 +9,14 @@
 
             <!--Desktop search bar-->
             <div class="search-reuslts-search-container desktop">
+                <form (ngSubmit)="searchAgain()" #newSearchForm="ngForm">
                 <input type="text" class="search-results-search"
+                       name="search"
                        (keydown.enter)="searchAgain()"
                        [(ngModel)]="newSearchText"
                        placeholder="company, location, service, etc.">
-                <span class="search-results-submit-button orange-button"
-                      (click)="searchAgain() ">Search</span>
+                <span class="search-results-submit-button orange-button">Search</span>
+                </form>
             </div>
 
 
