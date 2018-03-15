@@ -8,6 +8,9 @@ import { CompaniesService} from './companies/companies.service';
 import { AuthService } from './auth.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
+const loginService = {
+
+}
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
@@ -30,7 +33,7 @@ describe('AppComponent', () => {
         const app = fixture.debugElement.componentInstance;
         const outlet = {activatedRouteData: { page: 1}};
         app.screenSize = 'desktop';
-        
+
         expect(app.getPage(outlet)).toBe(1);
     }));
 
@@ -57,6 +60,37 @@ describe('AppComponent', () => {
         spyOn(service, 'logout');
         app.logout();
         expect(service.logout).toHaveBeenCalled();
+    }));
+
+    it('should log the user in by passing in email and password to the login service', inject([LoginService], (service: LoginService) => {
+        const fixture = TestBed.createComponent(AppComponent);
+        const app = fixture.debugElement.componentInstance;
+        app.email = 'email';
+        app.password = 'password';
+
+        spyOn(service, 'login');
+        app.login();
+
+        expect(service.login).toHaveBeenCalledWith(app.email, app.password);
+    }));
+
+    it('should show and hide the nav accordingly', inject([AppService], (service: AppService) => {
+        const fixture = TestBed.createComponent(AppComponent);
+        const app = fixture.debugElement.componentInstance;
+        service.searchStarted = true;
+        service.showNav()
+
+        expect(service.searchStarted).toBeFalsy();
+    }));
+
+    it('should hide the nav when searching', inject([AppService], (service: AppService) => {
+        const fixture = TestBed.createComponent(AppComponent);
+        const app = fixture.debugElement.componentInstance;
+        service.device = 'mobile';
+        spyOn(service, 'hideNav');
+        service.fieldFocus();
+
+        expect(service.hideNav).toHaveBeenCalled();
     }));
 });
 
