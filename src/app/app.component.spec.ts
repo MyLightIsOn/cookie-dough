@@ -8,10 +8,6 @@ import { CompaniesService} from './companies/companies.service';
 import { AuthService } from './auth.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-const loginService = {
-
-}
-
 describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
