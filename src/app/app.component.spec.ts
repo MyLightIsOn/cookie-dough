@@ -74,9 +74,14 @@ describe('AppComponent', () => {
         const fixture = TestBed.createComponent(AppComponent);
         const app = fixture.debugElement.componentInstance;
         service.searchStarted = true;
-        service.showNav()
+        service.showNav();
 
         expect(service.searchStarted).toBeFalsy();
+
+        service.searchStarted = false;
+        service.hideNav();
+
+        expect(service.searchStarted).toBeTruthy();
     }));
 
     it('should hide the nav when searching', inject([AppService], (service: AppService) => {

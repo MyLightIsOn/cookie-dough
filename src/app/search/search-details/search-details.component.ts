@@ -46,6 +46,8 @@ export class SearchDetailsComponent implements OnInit {
             } else {
                 this.mapOff = false;
             }
+        } else {
+            this.router.navigate(['/not-found']);
         }
     }
 

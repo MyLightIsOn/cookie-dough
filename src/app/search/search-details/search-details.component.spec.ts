@@ -130,4 +130,17 @@ describe('SearchDetailsComponent', () => {
         expect(truncText.length).toEqual(text.length);
         expect(component.toggled).toBeFalsy();
     });
+
+    it('should toggle the map off and on', () => {
+        component.mapOff = true;
+
+        component.toggleMap();
+        expect(component.mapOff).toBeFalsy();
+        expect(component.mapButtonText).toBe('Close Map');
+
+        component.toggleMap();
+        expect(component.mapOff).toBeTruthy();
+        expect(component.mapButtonText).toBe('Map');
+
+    });
 });

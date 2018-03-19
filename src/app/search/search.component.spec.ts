@@ -78,4 +78,11 @@ describe('SearchComponent', () => {
         expect(mockCompanyService.searchValue).toHaveBeenCalledWith('test');
         expect(router.navigate).toHaveBeenCalledWith(['/search-results']);
     }));
+
+    it('should show an error with no search text', async(() => {
+        component.searchText = undefined;
+
+        component.searchSubmit();
+        expect(component.searchError).toBeTruthy();
+    }));
 });

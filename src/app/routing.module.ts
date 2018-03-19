@@ -5,6 +5,7 @@ import { CanDeactivateGuard } from './_guards/can-deactivate-guard.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
+    {path: 'not-found', component: PageNotFoundComponent},
     {path: '',   redirectTo: '/search', pathMatch: 'full'},
     {path: '**', component: PageNotFoundComponent}
 ];
