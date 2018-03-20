@@ -1,9 +1,10 @@
-import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
+import {async, inject, TestBed} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 
 import { SearchResultsComponent } from './search-results.component';
+import {SearchDetailsComponent} from '../search-details/search-details.component';
 
 import { Pipe, PipeTransform } from '@angular/core';
 import { CompaniesService } from '../../companies/companies.service';
@@ -48,12 +49,11 @@ const mockCompanyService = {
     companyDataObservable: dataArray,
     setFlag: jasmine.createSpy('setFlag'),
     setSocialMedia: jasmine.createSpy('setSocialMedia'),
-    getCompany: jasmine.createSpy('getCompany')
+    getCompany: jasmine.createSpy('getCompany'),
+    sortOrder: undefined
 };
 
-describe('SearchResultsComponent with two pages', () => {
-    let component: SearchResultsComponent;
-    let fixture: ComponentFixture<SearchResultsComponent>;
+describe('SearchResultsComponent', () => {
 
     const appConatiner = '<div id="app-container"></div>';
 
@@ -63,10 +63,12 @@ describe('SearchResultsComponent with two pages', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [ RouterTestingModule, FormsModule, AgmCoreModule.forRoot({
+            imports: [ FormsModule, AgmCoreModule.forRoot({
                 apiKey: 'AIzaSyBJMGzxIBJi65RT5yeMSlTbBXG46MHgocM'
-            }) ],
-            declarations: [ SearchResultsComponent, MockFilterPipe ],
+            }), RouterTestingModule.withRoutes([
+                { path: '123456', component: SearchDetailsComponent}
+            ]) ],
+            declarations: [ SearchResultsComponent, SearchDetailsComponent, MockFilterPipe ],
             providers: [ SearchService, AppService,
                 { provide: CompaniesService, useValue: mockCompanyService },
             ]
@@ -74,18 +76,30 @@ describe('SearchResultsComponent with two pages', () => {
             .compileComponents();
     }));
 
-    beforeEach(() => {
-        fixture = TestBed.createComponent(SearchResultsComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+    it('should create the component and set the desc property to true', inject([SearchService], (service: SearchService) => {
+        service.sortOrder = 'desc';
+        const fixture = TestBed.createComponent(SearchResultsComponent);
+        const component = fixture.debugElement.componentInstance;
 
-
-    it('should create search result component', () => {
+        component.ngOnInit();
+        expect(component.desc).toBeTruthy();
         expect(component).toBeTruthy();
-    });
+    }));
+
+    it('should create the component and set the desc property to false', inject([SearchService], (service: SearchService) => {
+        service.sortOrder = 'asc';
+        const fixture = TestBed.createComponent(SearchResultsComponent);
+        const component = fixture.debugElement.componentInstance;
+
+        component.ngOnInit();
+        expect(component.desc).toBeFalsy();
+        expect(component).toBeTruthy();
+    }));
 
     it('should set the identifier if a company url name exists', () => {
+        const fixture = TestBed.createComponent(SearchResultsComponent);
+        const component = fixture.debugElement.componentInstance;
+
         const company = {};
         company['id'] = '12345';
         company['field_33_raw'] = 'name';
@@ -97,6 +111,9 @@ describe('SearchResultsComponent with two pages', () => {
     });
 
     it('should check the pagination page', () => {
+        const fixture = TestBed.createComponent(SearchResultsComponent);
+        const component = fixture.debugElement.componentInstance;
+
         let page = 2;
 
         spyOn(component, 'setPage');
@@ -109,7 +126,11 @@ describe('SearchResultsComponent with two pages', () => {
         expect(component.setPage).toHaveBeenCalledWith(1);
     });
 
-    it('will set the pagination page', () => {
+    it('should set the pagination according to the number of companies', () => {
+        const fixture = TestBed.createComponent(SearchResultsComponent);
+        const component = fixture.debugElement.componentInstance;
+        component.ngOnInit();
+
         component.setPage(0);
         expect(component.pager['currentPage']).toBe(1);
 
@@ -117,7 +138,18 @@ describe('SearchResultsComponent with two pages', () => {
         expect(component.pager['currentPage']).toBe(2);
     });
 
+    it('should not set the pagination', () => {
+        const fixture = TestBed.createComponent(SearchResultsComponent);
+        const component = fixture.debugElement.componentInstance;
+
+        component.setPage(0);
+        expect(component.pager['currentPage']).toBeUndefined();
+    });
+
     it('should change the sort order', inject([SearchService], (mockSearchService: SearchService) => {
+        const fixture = TestBed.createComponent(SearchResultsComponent);
+        const component = fixture.debugElement.componentInstance;
+
         spyOn(component, 'sortBy');
         mockSearchService.sortType = 'field_3';
         mockSearchService.sortOrder = 'desc';
@@ -139,6 +171,9 @@ describe('SearchResultsComponent with two pages', () => {
     }));
 
     it('should reset all sort data', inject([SearchService], (mockSearchService: SearchService) => {
+        const fixture = TestBed.createComponent(SearchResultsComponent);
+        const component = fixture.debugElement.componentInstance;
+
         component.sortOpen = true;
         mockSearchService.paginationPage = 2;
 
@@ -150,6 +185,9 @@ describe('SearchResultsComponent with two pages', () => {
     }));
 
     it('will set the sort dropdown', () => {
+        const fixture = TestBed.createComponent(SearchResultsComponent);
+        const component = fixture.debugElement.componentInstance;
+
         component.sortTypeText = 'field_3';
         expect(component.setSortName()).toBe('Name');
 
@@ -161,6 +199,43 @@ describe('SearchResultsComponent with two pages', () => {
 
         component.sortTypeText = 'field_31';
         expect(component.setSortName()).toBe('Reviews');
+
+        component.sortTypeText = 'field_11';
+        expect(component.setSortName()).toBeUndefined();
     });
+
+
+    it('should start a new search', () => {
+        const fixture = TestBed.createComponent(SearchResultsComponent);
+        const component = fixture.debugElement.componentInstance;
+
+        component.searchAgain();
+        expect(component.searchText).toBe(component.newSearchText);
+    });
+
+    it('should hide the nav when searching', inject([AppService], (service: AppService) => {
+        service.device = 'mobile';
+        const company = {
+            field_4_raw: {
+                latitude: 1,
+                longitude: 2
+            },
+            field_33_raw: '123456'
+        };
+
+        const fixture = TestBed.createComponent(SearchResultsComponent);
+        const component = fixture.debugElement.componentInstance;
+
+        component.previewCompany(company);
+        expect(component.lat).toBeUndefined();
+        expect(component.lng).toBeUndefined();
+
+        service.device = 'desktop';
+
+        component.previewCompany(company);
+        expect(component.companyPreview).toBe(company);
+        expect(component.lat).toBe(1);
+        expect(component.lng).toBe(2);
+    }));
 });
 
