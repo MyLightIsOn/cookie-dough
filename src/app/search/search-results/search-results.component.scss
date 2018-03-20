@@ -199,7 +199,8 @@
     .results-count {
       color: $white;
       font-weight: bold;
-      margin-bottom: 5px;
+      margin: 0 auto 5px;
+      max-width: 200px;
     }
 
     .pagination-button {
@@ -253,6 +254,8 @@
     .page-navigation-container {
       display: flex;
       justify-content: center;
+      max-width: 200px;
+      margin: auto;
     }
   }
 
@@ -399,6 +402,9 @@
       width: 150px;
       margin: 2px 0 0 30px;
       height: 38px;
+      position: absolute;
+      top: -1px;
+      right: -175px;
     }
 
     #pagination {

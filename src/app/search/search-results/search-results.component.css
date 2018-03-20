@@ -208,7 +208,8 @@
     #search-results-container #pagination .results-count {
       color: #F9FCFE;
       font-weight: bold;
-      margin-bottom: 5px; }
+      margin: 0 auto 5px;
+      max-width: 200px; }
     #search-results-container #pagination .pagination-button {
       background-color: #191E50;
       border-radius: 2px;
@@ -245,7 +246,9 @@
       background-size: 25px; }
     #search-results-container #pagination .page-navigation-container {
       display: flex;
-      justify-content: center; }
+      justify-content: center;
+      max-width: 200px;
+      margin: auto; }
   #search-results-container .sort-container {
     position: relative;
     width: 139px;
@@ -358,7 +361,10 @@
     #search-results-container .search-results-submit-button {
       width: 150px;
       margin: 2px 0 0 30px;
-      height: 38px; }
+      height: 38px;
+      position: absolute;
+      top: -1px;
+      right: -175px; }
     #search-results-container #pagination {
       display: block;
       padding-top: 23px; }

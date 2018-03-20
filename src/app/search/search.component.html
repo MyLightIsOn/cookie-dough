@@ -14,9 +14,9 @@
         <span class="search-help" [ngClass]="{'searchStarted': searchStarted}">Keyword Search</span>
         <form (ngSubmit)="searchSubmit()" #searchForm="ngForm">
             <input type="text" id="main-search" placeholder="Begin Search Here"
-                   name="search"
+                   name="searchf"
                    [ngClass]="{'error-highlight': searchError}"
-                   (keydown.enter)="searchSubmit()"
+                   (keydown.enter)="searchSubmit(); false"
                    (focus)="searchStart()"
                    (focusout)="appService.showNav()"
                    [(ngModel)]="searchText">
