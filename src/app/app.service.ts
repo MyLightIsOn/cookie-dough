@@ -4,11 +4,11 @@ import {Injectable} from '@angular/core';
 export class AppService {
     device = 'desktop';
     searchStarted = false;
+    screenWidth = window.innerWidth;
 
     getScreenSize() {
-        const screenWidth = window.innerWidth;
 
-        if (screenWidth < 1199) {
+        if (this.screenWidth < 1199) {
             this.device = 'mobile';
         }
 

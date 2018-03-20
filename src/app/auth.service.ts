@@ -38,7 +38,7 @@ export class AuthService {
             this.errorHighlight = false;
             this.isLoggedIn = true;
         }
-        return res || {};
+        return res;
     }
 
     setLocalStorage(session) {

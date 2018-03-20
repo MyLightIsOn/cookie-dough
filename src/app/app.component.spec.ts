@@ -85,13 +85,31 @@ describe('AppComponent', () => {
     }));
 
     it('should hide the nav when searching', inject([AppService], (service: AppService) => {
-        const fixture = TestBed.createComponent(AppComponent);
-        const app = fixture.debugElement.componentInstance;
+
         service.device = 'mobile';
         spyOn(service, 'hideNav');
         service.fieldFocus();
 
         expect(service.hideNav).toHaveBeenCalled();
+    }));
+
+    it('should hide the nav when searching', inject([AppService], (service: AppService) => {
+        spyOn(service, 'hideNav');
+        service.device = 'desktop';
+        service.fieldFocus();
+        expect(service.hideNav).toHaveBeenCalledTimes(0);
+    }));
+
+    it('should set the device to mobile', inject([AppService], (service: AppService) => {
+        service.screenWidth = 1;
+        service.getScreenSize();
+        expect(service.device).toBe('mobile');
+    }));
+
+    it('should set the device to desktop', inject([AppService], (service: AppService) => {
+        service.screenWidth = 1200;
+        service.getScreenSize();
+        expect(service.device).toBe('desktop');
     }));
 });
 
