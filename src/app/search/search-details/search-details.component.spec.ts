@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { AgmCoreModule } from '@agm/core';
@@ -74,6 +74,21 @@ describe('SearchDetailsComponent', () => {
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
+
+    it('should create with no company and redirect',  inject([ActivatedRoute], (activatedRoute: ActivatedRoute) => {
+        activatedRoute.snapshot.data['company'] = undefined;
+        component.ngOnInit();
+        expect(component).toBeTruthy();
+        expect(router.navigate).toHaveBeenCalledWith(['/not-found']);
+    }));
+
+    it('should create with company on mobile and set the map',  inject(
+        [ActivatedRoute, AppService],
+        (activatedRoute: ActivatedRoute, appService: AppService) => {
+        appService.device = 'mobile';
+        component.ngOnInit();
+        expect(component.mapOff).toBeTruthy();
+    }));
 
     it('should create', () => {
         expect(component).toBeTruthy();

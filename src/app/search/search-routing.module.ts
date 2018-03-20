@@ -5,6 +5,7 @@ import { SearchComponent } from './search.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchDetailsComponent } from './search-details/search-details.component';
 import { SearchResolverService } from './search-resolver.service';
+import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 
 import { LoginModule } from '../login/login.module';
 import { ProfileModule } from '../profile/profile.module';
@@ -37,6 +38,9 @@ const searchRoutes: Routes = [
         LoginModule,
         RegisterModule,
         RouterModule.forChild(searchRoutes)
+    ],
+    declarations: [
+        PageNotFoundComponent
     ],
     exports: [
         RouterModule
