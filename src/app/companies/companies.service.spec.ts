@@ -13,7 +13,7 @@ describe('CompaniesService', () => {
         });
     });
 
-    it(`should send an expected login request`, async(inject([CompaniesService, HttpTestingController],
+    it('should get all of the companies', async(inject([CompaniesService, HttpTestingController],
         (companiesService: CompaniesService, backend: HttpTestingController) => {
 
             const mockCompanies = [

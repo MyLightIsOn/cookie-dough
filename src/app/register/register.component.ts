@@ -16,6 +16,8 @@ export class RegisterComponent implements OnInit {
     public individualRole: boolean;
     public noEmail;
     public passwordError;
+    public user = {};
+    public userEmail = {};
 
     constructor(
         public registerService: RegisterService,
@@ -58,13 +60,11 @@ export class RegisterComponent implements OnInit {
             return false;
         }
 
-        const user = {};
-        const email = {};
-        email['email'] = this.email;
+        this.userEmail['email'] = this.email;
 
-        user['field_19'] = email;
-        user['field_20'] = this.password;
-        user['field_22'] = this.role;
-        this.registerService.registerUser(user).subscribe();
+        this.user['field_19'] = this.userEmail;
+        this.user['field_20'] = this.password;
+        this.user['field_22'] = this.role;
+        this.registerService.registerUser(this.user).subscribe();
     }
 }

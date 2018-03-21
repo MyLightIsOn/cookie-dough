@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { AuthService } from '../auth.service';
@@ -19,8 +19,7 @@ export class RegisterService {
     constructor(
         private http: HttpClient,
         public router: Router,
-        public authService: AuthService,
-        public route: ActivatedRoute) {}
+        public authService: AuthService) {}
 
     registerUser(body) {
         this.waiting = true;
