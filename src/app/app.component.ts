@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
     password: string;
     message: string;
     screenSize: string;
+    public listOpen = false;
+    public session: object;
 
     constructor(
         private companyService: CompaniesService,
@@ -31,6 +33,7 @@ export class AppComponent implements OnInit {
     ngOnInit() {
         if (localStorage.getItem('currentUser')) {
             this.authService.isLoggedIn = true;
+            this.session = JSON.parse(localStorage.getItem('currentUser'));
         }
         this.screenSize = this.appService.getScreenSize();
         this.companyService.getAllCompanies().subscribe();
@@ -43,6 +46,11 @@ export class AppComponent implements OnInit {
         } else {
             return 'mobile-' + outlet.activatedRouteData['page'];
         }
+    }
+
+    // Toggles the sorting list dropdown
+    public toggleDropdown() {
+        this.listOpen = !this.listOpen;
     }
 
     login() {

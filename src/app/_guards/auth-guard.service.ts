@@ -36,7 +36,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
         // Set our navigation extras object
         // that contains our global query params and fragment
         const navigationExtras: NavigationExtras = {
-            queryParams: { 'session_id': this.authService.sessionID },
+            queryParams: { 'session_id': this.authService.session },
             fragment: 'anchor'
         };
 

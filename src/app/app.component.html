@@ -10,12 +10,17 @@
                 <a routerLink="/search" routerLinkActive="active" class="search-icon">Home</a>
                 <a routerLink="/about" routerLinkActive="active" class="about-icon">About Us</a>
                 <a routerLink="/contact" routerLinkActive="active" class="contact-icon">Contact</a>
-                <a routerLink="/register" routerLinkActive="active" class="signup-icon">Sign Up</a>
+                <a *ngIf="!this.authService.isLoggedIn;"
+                   routerLink="/register" routerLinkActive="active" class="signup-icon">Sign Up</a>
             </div>
 
-            <!-- Mobile Logout Button-->
-            <div *ngIf="this.authService.isLoggedIn; else notLoggedIn">
-                <span class="mobile-login-link mobile" (click)="logout()">Logout</span>
+            <!-- User Settings Dropdown -->
+            <div *ngIf="this.authService.isLoggedIn; else notLoggedIn" id="user-settings" class="dropdown-container">
+                <span (click)="toggleDropdown()">{{this.session['user']['values']['field_50']}}</span>
+                <ul class="dropdown-list" [ngClass]="{'list-open': listOpen}">
+                    <li routerLink="/profile">Profile</li>
+                    <li (click)="logout()">Logout</li>
+                </ul>
             </div>
 
             <!-- User Not Logged In-->
@@ -59,7 +64,7 @@
     <div *ngIf="this.authService.isLoggedIn; else notLoggedInMenu">
         <div class="mobile-menu-container mobile">
             <a routerLink="/search" routerLinkActive="active" class="search-icon">Search</a>
-            <a routerLink="/profile" routerLinkActive="active" class="signup-icon">Profile</a>
+            <a routerLink="/profile" routerLinkActive="active" class="profile-icon">Profile</a>
             <a routerLink="/about" routerLinkActive="active" class="about-icon">About Us</a>
             <a routerLink="/contact" routerLinkActive="active" class="contact-icon">Contact</a>
         </div>
@@ -69,6 +74,7 @@
     <ng-template #notLoggedInMenu>
         <div class="mobile-menu-container mobile" [ngClass]="{'searchStarted': appService.searchStarted}">
             <a routerLink="/search" routerLinkActive="active" class="search-icon">Search</a>
+            <a routerLink="/register" routerLinkActive="active" class="signup-icon">Sign Up</a>
             <a routerLink="/profile" routerLinkActive="active" class="about-icon">About Us</a>
             <a routerLink="/contact" routerLinkActive="active" class="contact-icon">Contact</a>
         </div>

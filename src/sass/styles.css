@@ -124,6 +124,38 @@ button, input[type="submit"], input[type="reset"] {
   display: block;
   margin: auto; }
 
+.dropdown-container {
+  position: relative; }
+  .dropdown-container span {
+    position: absolute;
+    right: 0;
+    cursor: pointer; }
+  .dropdown-container .dropdown-list {
+    display: none; }
+  .dropdown-container .dropdown-list.list-open {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    z-index: 5;
+    position: relative;
+    top: 40px; }
+    .dropdown-container .dropdown-list.list-open li {
+      list-style: none;
+      display: block;
+      padding: 14px 0 14px 14px;
+      background-color: #CCD1EB;
+      color: #191E50;
+      border: 1px solid #616697; }
+    .dropdown-container .dropdown-list.list-open li:hover {
+      background-color: #FF9018;
+      color: #F9FCFE;
+      cursor: pointer; }
+    .dropdown-container .dropdown-list.list-open li:active {
+      background-color: #191E50;
+      color: #F9FCFE;
+      cursor: pointer; }
+
 @media (min-width: 1200px) {
   .desktop {
     display: block; }

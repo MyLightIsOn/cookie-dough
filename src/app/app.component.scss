@@ -51,6 +51,37 @@ nav {
 
   #desktop-nav-login {
     display: none;
+  }                   
+
+  #user-settings {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+             
+    span:before {
+      content: '';
+      display: block;
+      background-color: red;
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      left: -37px;
+      top: -7px;
+      background: url("../assets/icons/profile.png") no-repeat;
+      background-size: 30px;
+    }
+
+    span {
+      color: $white;
+    }
+
+    span:hover {
+      text-decoration: underline;
+    }
+
+    .list-open {
+      top: 25px;
+    }
   }
 }
 
@@ -88,6 +119,11 @@ nav {
     background-size: 33px;
   }
 
+  .profile-icon {
+    background: url("../assets/icons/profile.png") no-repeat 50% 1px;
+    background-size: 40px;
+  }
+
   .about-icon {
     background: url("../assets/icons/about_icon.png") no-repeat 50% 7px;
     background-size: 28px;
@@ -98,6 +134,8 @@ nav {
     background-size: 28px;
   }
 }
+
+
 
 .mobile-menu-container.searchStarted {
   display: none;
@@ -233,6 +271,11 @@ nav {
     .nav-form-label {
       position: absolute;
       top: -8px;
+    }
+
+    #user-settings {
+      top: 24px;
+      right: 15px;
     }
   }
 

@@ -18,7 +18,7 @@ export class LoginService {
             if (this.authService.isLoggedIn) {
                 // Get the redirect URL from our auth service
                 // If no redirect has been set, use the default
-                const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/profile';
+                const redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/search';
 
                 // Redirect the user
                 this.router.navigate([redirect], navigationExtras);

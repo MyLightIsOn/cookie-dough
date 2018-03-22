@@ -111,6 +111,27 @@ nav {
     text-decoration: underline; }
   nav #desktop-nav-login {
     display: none; }
+  nav #user-settings {
+    position: absolute;
+    top: 16px;
+    right: 18px; }
+    nav #user-settings span:before {
+      content: '';
+      display: block;
+      background-color: red;
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      left: -37px;
+      top: -7px;
+      background: url("../assets/icons/profile.png") no-repeat;
+      background-size: 30px; }
+    nav #user-settings span {
+      color: #F9FCFE; }
+    nav #user-settings span:hover {
+      text-decoration: underline; }
+    nav #user-settings .list-open {
+      top: 25px; }
 
 .mobile-menu-container {
   position: fixed;
@@ -137,6 +158,9 @@ nav {
   .mobile-menu-container .signup-icon {
     background: url("../assets/icons/signup_icon.png") no-repeat 50% 7px;
     background-size: 33px; }
+  .mobile-menu-container .profile-icon {
+    background: url("../assets/icons/profile.png") no-repeat 50% 1px;
+    background-size: 40px; }
   .mobile-menu-container .about-icon {
     background: url("../assets/icons/about_icon.png") no-repeat 50% 7px;
     background-size: 28px; }
@@ -249,6 +273,9 @@ nav {
     nav .nav-form-label {
       position: absolute;
       top: -8px; }
+    nav #user-settings {
+      top: 24px;
+      right: 15px; }
 
   .search-logo-container {
     margin-top: 45px; }

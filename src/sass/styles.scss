@@ -68,6 +68,53 @@ button, input[type="submit"], input[type="reset"] {
   margin: auto;
 }
 
+.dropdown-container {
+  position: relative;
+
+  span {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+  }
+
+  .dropdown-list {
+    display: none;
+  }
+
+  .dropdown-list.list-open {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    z-index: 5;
+    position: relative;
+    top: 40px;
+
+    li {
+      list-style: none;
+      display: block;
+      padding: 14px 0 14px 14px;
+      background-color: $light-blue;
+      color: $dark-blue;
+      border: 1px solid $medium-blue;
+    }
+
+    li:hover {
+      background-color: $orange;
+      color: $white;
+      cursor: pointer;
+    }
+
+    li:active {
+      background-color: $dark-blue;
+      color: $white;
+      cursor: pointer;
+    }
+  }
+}
+
+
+
 @media (min-width: $desktop) {
   .desktop {
     display: block;

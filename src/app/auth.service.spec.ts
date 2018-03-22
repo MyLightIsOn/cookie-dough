@@ -45,7 +45,7 @@ describe('AuthService', () => {
         };
         service.checkResponse(response);
 
-        expect(service.sessionID).toBe(response);
+        expect(service.session).toBe(response);
         expect(service.isLoggedIn).toBeTruthy();
     }));
 

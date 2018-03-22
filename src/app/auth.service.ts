@@ -12,7 +12,7 @@ export class AuthService {
     constructor(private http: HttpClient, public router: Router) {}
 
     isLoggedIn = false;
-    sessionID: object;
+    session: object;
     errorResponse = false;
     errorMessage: string;
     errorHighlight;
@@ -32,8 +32,9 @@ export class AuthService {
             this.errorHighlight = true;
             this.isLoggedIn = false;
         } else {
+            console.log(res);
             this.setLocalStorage(res['session']);
-            this.sessionID = res;
+            this.session = res;
             this.errorResponse = false;
             this.errorHighlight = false;
             this.isLoggedIn = true;
