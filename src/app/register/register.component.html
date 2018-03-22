@@ -46,6 +46,16 @@
           <input type="text" class="register-input-form">-->
 
           <form (ngSubmit)="submitRegistration()" #registerForm="ngForm">
+            <span class="register-input-label">username</span>
+            <input type="username" class="register-input-form"
+                   name="username"
+                   (focus)="appService.fieldFocus()"
+                   (focusout)="appService.showNav()"
+                   (keyup.enter)="submitRegistration()"
+                   [ngClass]="{'error-highlight': noUsername}"
+                   [(ngModel)]="username"
+                   required>
+
             <span class="register-input-label">email</span>
             <input type="email" class="register-input-form"
                    name="email"
