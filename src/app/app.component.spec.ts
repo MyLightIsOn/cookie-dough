@@ -111,5 +111,17 @@ describe('AppComponent', () => {
         service.getScreenSize();
         expect(service.device).toBe('desktop');
     }));
+
+    it('should toggle the dropdown', async(() => {
+        const fixture = TestBed.createComponent(AppComponent);
+        const app = fixture.debugElement.componentInstance;
+
+        app.listOpen = true;
+        app.toggleDropdown();
+        expect(app.listOpen).toBeFalsy();
+
+        app.toggleDropdown();
+        expect(app.listOpen).toBeTruthy();
+    }));
 });
 

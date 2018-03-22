@@ -259,10 +259,14 @@
     }
   }
 
-  .sort-container {
+  .dropdown-container {
     position: relative;
     width: 139px;
     margin: 20px auto 0;
+
+    span {
+      position: relative;
+    }
   }
 
   .sort-type-button {
@@ -274,39 +278,16 @@
     background-color: $white;
   }
 
-  .sort-list {
-    display: none;
-  }
-
-  .sort-list.sort-open {
-    display: block;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    position: relative;
+  .list-open {
+    top: 0;
     right: 62px;
-    z-index: 5;
-
-    li {
-      list-style: none;
-      display: block;
-      padding: 14px 0;
-      background-color: $light-blue;
-      color: $dark-blue;
-      border: 1px solid $medium-blue;
-    }
-
-    li:active {
-      background-color: $dark-blue;
-      color: $white;
-    }
   }
 
   .order-button {
     display: block;
     width: 36px;
     height: 34px;
-    position: absolute;
+    position: absolute !important;
     top: 0px;
     right: 2px;
     z-index: 2;
@@ -336,6 +317,12 @@
     margin: auto;
     display: flex;
 
+    .dropdown-container {
+      position: absolute;
+      left: 0px;
+      top: -2px;
+    }
+    
     .active-preview {
       background-color: #e6e6e6;
       border: 1px solid $orange;
@@ -417,11 +404,13 @@
       }
 
       .right-pagination {
-        width: 500px;
+        width: 533px;
         display: inline-block;
         text-align: left;
         vertical-align: top;
         padding-top: 17px;
+        position: absolute;
+        right: 0;
       }
       
       .previous-page, .next-page {
@@ -433,6 +422,8 @@
         width: 130px;
         display: inline-block;
         padding: 8px 0;
+        left: 171px;
+        top: 2px;
       }
     }
 
@@ -443,6 +434,7 @@
       bottom: 13px;
       text-align: right;
       font-size: 13px;
+      top: 4px;
 
       span {
         display: block;

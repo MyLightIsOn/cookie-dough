@@ -32,7 +32,6 @@ export class AuthService {
             this.errorHighlight = true;
             this.isLoggedIn = false;
         } else {
-            console.log(res);
             this.setLocalStorage(res['session']);
             this.session = res;
             this.errorResponse = false;

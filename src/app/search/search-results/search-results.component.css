@@ -249,10 +249,12 @@
       justify-content: center;
       max-width: 200px;
       margin: auto; }
-  #search-results-container .sort-container {
+  #search-results-container .dropdown-container {
     position: relative;
     width: 139px;
     margin: 20px auto 0; }
+    #search-results-container .dropdown-container span {
+      position: relative; }
   #search-results-container .sort-type-button {
     display: block;
     width: 100px;
@@ -260,31 +262,14 @@
     padding: 7px 0;
     text-align: center;
     background-color: #F9FCFE; }
-  #search-results-container .sort-list {
-    display: none; }
-  #search-results-container .sort-list.sort-open {
-    display: block;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    position: relative;
-    right: 62px;
-    z-index: 5; }
-    #search-results-container .sort-list.sort-open li {
-      list-style: none;
-      display: block;
-      padding: 14px 0;
-      background-color: #CCD1EB;
-      color: #191E50;
-      border: 1px solid #616697; }
-    #search-results-container .sort-list.sort-open li:active {
-      background-color: #191E50;
-      color: #F9FCFE; }
+  #search-results-container .list-open {
+    top: 0;
+    right: 62px; }
   #search-results-container .order-button {
     display: block;
     width: 36px;
     height: 34px;
-    position: absolute;
+    position: absolute !important;
     top: 0px;
     right: 2px;
     z-index: 2;
@@ -307,6 +292,10 @@
     width: 1242px;
     margin: auto;
     display: flex; }
+    #search-results-container .dropdown-container {
+      position: absolute;
+      left: 0px;
+      top: -2px; }
     #search-results-container .active-preview {
       background-color: #e6e6e6;
       border: 1px solid #FF9018; }
@@ -372,25 +361,30 @@
         width: 180px;
         display: inline-block; }
       #search-results-container #pagination .right-pagination {
-        width: 500px;
+        width: 533px;
         display: inline-block;
         text-align: left;
         vertical-align: top;
-        padding-top: 17px; }
+        padding-top: 17px;
+        position: absolute;
+        right: 0; }
       #search-results-container #pagination .previous-page, #search-results-container #pagination .next-page {
         width: 30px;
         flex-grow: 0; }
       #search-results-container #pagination .search-filter {
         width: 130px;
         display: inline-block;
-        padding: 8px 0; }
+        padding: 8px 0;
+        left: 171px;
+        top: 2px; }
     #search-results-container .result-guide-container {
       position: absolute;
       right: 23px;
       color: #F9FCFE;
       bottom: 13px;
       text-align: right;
-      font-size: 13px; }
+      font-size: 13px;
+      top: 4px; }
       #search-results-container .result-guide-container span {
         display: block;
         margin: 0 0 7px 0; }
