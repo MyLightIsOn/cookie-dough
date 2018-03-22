@@ -18,7 +18,7 @@
             <div *ngIf="this.authService.isLoggedIn; else notLoggedIn" id="user-settings" class="dropdown-container">
                 <span (click)="toggleDropdown()">{{this.session['user']['values']['field_50']}}</span>
                 <ul class="dropdown-list" [ngClass]="{'list-open': listOpen}">
-                    <li routerLink="/profile">Profile</li>
+                    <li (click)="toggleDropdown()" routerLink="/profile">Profile Settings</li>
                     <li (click)="logout()">Logout</li>
                 </ul>
             </div>

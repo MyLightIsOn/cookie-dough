@@ -11,21 +11,23 @@ import {environment} from '../environments/environment';
 export class AuthService {
     constructor(private http: HttpClient, public router: Router) {}
 
-    isLoggedIn = false;
-    session: object;
-    errorResponse = false;
-    errorMessage: string;
-    errorHighlight;
+    public isLoggedIn = false;
+    public session: object;
+    public errorResponse = false;
+    public errorMessage: string;
+    public errorHighlight;
+    public redirectUrl: string;
 
-    // store the URL so we can redirect after logging in
-    redirectUrl: string;
+    public setLocalStorage(session) {
+        localStorage.setItem('currentUser', JSON.stringify(session));
+    }
 
-    login(email, password) {
+    public login(email, password) {
         const body = ({'email': email, 'password': password});
         return this.http.post(environment['BASEURL'] + '/api/login', body);
     }
 
-    checkResponse(res) {
+    public checkResponse(res) {
         if (res['error']) {
             this.errorMessage = res['error']['errors'][0]['message'];
             this.errorResponse = true;
@@ -33,16 +35,12 @@ export class AuthService {
             this.isLoggedIn = false;
         } else {
             this.setLocalStorage(res['session']);
-            this.session = res;
+            this.session = res['session'];
             this.errorResponse = false;
             this.errorHighlight = false;
             this.isLoggedIn = true;
         }
         return res;
-    }
-
-    setLocalStorage(session) {
-        localStorage.setItem('currentUser', JSON.stringify(session));
     }
 
     logout(): void {

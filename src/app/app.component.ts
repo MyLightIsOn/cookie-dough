@@ -16,12 +16,12 @@ import { searchAnimations } from './_animations/searchAnimations';
 
 
 export class AppComponent implements OnInit {
-    email: string;
-    password: string;
-    message: string;
-    screenSize: string;
+    public email: string;
+    public password: string;
+    public message: string;
+    public screenSize: string;
     public listOpen = false;
-    public session: object;
+    public session;
 
     constructor(
         private companyService: CompaniesService,
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
         public appService: AppService) {}
 
     // Uses service to get a company list as soon as the app loads
-    ngOnInit() {
+    public ngOnInit() {
         if (localStorage.getItem('currentUser')) {
             this.authService.isLoggedIn = true;
             this.session = JSON.parse(localStorage.getItem('currentUser'));
@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
     }
 
     // Checks window width and returns the route for animations for mobile or desktop
-    getPage(outlet) {
+    public getPage(outlet) {
         if (this.screenSize === 'desktop') {
             return outlet.activatedRouteData['page'];
         } else {
@@ -53,11 +53,13 @@ export class AppComponent implements OnInit {
         this.listOpen = !this.listOpen;
     }
 
-    login() {
+    // Passes the email and password to the login service
+    public login() {
         this.loginService.login(this.email, this.password);
     }
 
-    logout() {
+    // Logs the user out
+    public logout() {
         this.authService.logout();
     }
 }

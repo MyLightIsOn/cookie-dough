@@ -1,14 +1,6 @@
 <div id="profile-container">
-  <!--<p>Session ID: {{ sessionId | async }}</p>
-<a id="anchor"></a>
-<p>Token: {{ token | async }}</p>-->
-  <!--<a routerLink="./" routerLinkActive="active"
-     [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
-  <a routerLink="./company-profile" routerLinkActive="active">Company Profile</a>-->
-  <p *ngIf="firstName; else emailAddress">Hi {{firstName}}</p>
-  <ng-template #emailAddress>
+    <p>Hi {{userName}}</p>
     <p>Hi {{email}}</p>
-  </ng-template>
-  <p>You logged in successfully!</p>
-  <!--<router-outlet></router-outlet>-->
+    <p>Hi {{company}}</p>
+    <p>You logged in successfully!</p>
 </div>
