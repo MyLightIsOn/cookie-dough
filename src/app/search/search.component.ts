@@ -41,6 +41,7 @@ export class SearchComponent implements OnInit {
             this.searchError = true;
         } else {
             this.searchError = false;
+            this.appService.showNav();
             this.searchService.searchValue(this.searchText);
             this.router.navigate(['/search-results']);
         }

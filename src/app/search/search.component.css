@@ -69,6 +69,10 @@
   background-image: none;
   box-shadow: 0 1px 1px 0 #444 inset; }
 
+:host {
+  min-height: 100vh;
+  display: block; }
+
 #search-component {
   position: fixed;
   width: 100%;

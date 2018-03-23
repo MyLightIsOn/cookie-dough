@@ -1,13 +1,14 @@
 @import "../../sass/variables";
 @import "../../sass/mixins";
 
+:host {
+  height: 100%;
+  display: block;
+}
+
 #profile-container {
-  position: fixed;
   width: 100%;
+  z-index: 1;
+  background-color: $white;
   min-height: 100%;
-  top: 0;
-  background-color: $medium-blue;
-  padding: 70px 10%;
-  color: $white;
-  font-weight: bold;
 }

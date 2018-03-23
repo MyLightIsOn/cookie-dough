@@ -73,7 +73,8 @@
 The styles in this stylesheet are global element styles
 */
 html {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  min-height: 100%; }
 
 *, *:before, *:after {
   box-sizing: inherit; }
@@ -81,9 +82,12 @@ html {
 body, html {
   padding: 0;
   margin: 0;
-  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-  min-height: 100% !important;
-  height: 100%; }
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif; }
+
+body {
+  min-height: 100vh;
+  background: url("../assets/images/background_gradient.png") no-repeat;
+  background-size: 100% 100%; }
 
 .bold-text {
   font-weight: bold; }

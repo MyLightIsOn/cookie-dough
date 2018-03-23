@@ -2,7 +2,8 @@
 @import "../../../sass/mixins";
 
 :host {
-  min-height: 100%;
+  min-height: 100vh;
+  display: block;
 }
 
 #search-results-container.active {
