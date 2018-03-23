@@ -12,14 +12,25 @@ export class AuthService {
     constructor(private http: HttpClient, public router: Router) {}
 
     public isLoggedIn = false;
-    public session: object;
     public errorResponse = false;
     public errorMessage: string;
     public errorHighlight;
     public redirectUrl: string;
+    public session;
 
     public setLocalStorage(session) {
         localStorage.setItem('currentUser', JSON.stringify(session));
+    }
+
+    public getLocalStorage() {
+        if (localStorage.getItem('currentUser')) {
+            this.isLoggedIn = true;
+            this.session = JSON.parse(localStorage.getItem('currentUser'));
+            return this.session;
+        } else {
+            this.isLoggedIn = false;
+            return false;
+        }
     }
 
     public login(email, password) {
@@ -35,7 +46,7 @@ export class AuthService {
             this.isLoggedIn = false;
         } else {
             this.setLocalStorage(res['session']);
-            this.session = res['session'];
+            this.getLocalStorage();
             this.errorResponse = false;
             this.errorHighlight = false;
             this.isLoggedIn = true;

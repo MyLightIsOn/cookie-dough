@@ -31,10 +31,7 @@ export class AppComponent implements OnInit {
 
     // Uses service to get a company list as soon as the app loads
     public ngOnInit() {
-        if (localStorage.getItem('currentUser')) {
-            this.authService.isLoggedIn = true;
-            this.session = JSON.parse(localStorage.getItem('currentUser'));
-        }
+        this.authService.getLocalStorage();
         this.screenSize = this.appService.getScreenSize();
         this.companyService.getAllCompanies().subscribe();
     }

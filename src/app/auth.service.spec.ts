@@ -43,9 +43,12 @@ describe('AuthService', () => {
         const response = {
             session: 'test'
         };
+        spyOn(service, 'setLocalStorage');
+        spyOn(service, 'getLocalStorage');
         service.checkResponse(response);
 
-        expect(service.session).toBe(response['session']);
+        expect(service.setLocalStorage).toHaveBeenCalledWith(response['session']);
+        expect(service.getLocalStorage).toHaveBeenCalled();
         expect(service.isLoggedIn).toBeTruthy();
     }));
 
@@ -64,5 +67,16 @@ describe('AuthService', () => {
 
             const req = backend.expectOne({method: 'POST'}, environment['BASEURL'] + '/login');
             expect(req.request.method).toEqual('POST');
-        })));
+        }))
+    );
+
+    it('should set and get the local storage', inject([AuthService], (service: AuthService) => {
+        const session = {
+            session: 'test'
+        };
+        service.setLocalStorage(session);
+
+        expect(service.getLocalStorage()).toEqual({ session: 'test' });
+        expect(service.session).toEqual({ session: 'test' });
+    }));
 });
