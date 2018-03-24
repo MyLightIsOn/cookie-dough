@@ -55,7 +55,7 @@
             </div>
 
             <!-- Gallery Toggle -->
-            <span class="gallery-button">Showroom</span>
+            <span class="gallery-button medium-blue-button">Showroom</span>
         </section>
         <section class="detail-info">
 
@@ -87,7 +87,7 @@
             </div>
 
             <!--  Map Toggle -->
-            <span class="gallery-button mobile" (click)="toggleMap()">{{mapButtonText}}</span>
+            <span class="gallery-button medium-blue-button mobile" (click)="toggleMap()">{{mapButtonText}}</span>
 
             <div id="map-container" [ngClass]="{'hidden': mapOff}">
                 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="16">

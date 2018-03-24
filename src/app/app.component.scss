@@ -86,6 +86,7 @@ nav {
     }
 
     .list-open {
+      z-index: 100;
       top: 25px;
     }
   }
@@ -192,7 +193,7 @@ nav {
   min-height: 100%;
   top: 0;
   width: 100%;
-  background: url("../assets/images/background_texture.png")
+  background: url("../assets/images/background_texture.png");
 }
 
 /************** Main App Container Desktop Styles **************/

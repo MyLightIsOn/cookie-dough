@@ -13,7 +13,7 @@ const user = {
             name: {
                 first: 'test'
             },
-            email: {
+            field_19: {
                 email: 'hi@email.com'
             }
         }
@@ -51,6 +51,9 @@ describe('ProfileComponent', () => {
     });
 
     it('should create', () => {
+        component.email = 'test@email';
+        component.userName = 'testName';
+
         expect(component).toBeTruthy();
     });
 });

@@ -23,12 +23,17 @@ $general-text:      14px;
 $highlighted-text:  17px;
 
 
+// Layout
+
+$mobile-padding: 65px 15px;
+
 // Media Queries
 $desktop:           1200px;
 
+// Buttons Styles 
 
-/* Buttons Styles */
 
+// Light Blue Buttons
 .light-blue-button {
   @include light-blue-button;
 }
@@ -45,6 +50,7 @@ $desktop:           1200px;
   @include light-blue-button-before-active;
 }
 
+// Orange Buttons
 .orange-button {
   @include orange-button;
 }
@@ -61,3 +67,23 @@ $desktop:           1200px;
   @include orange-button-before-active;
 }
 
+// Medium Blue Buttons
+.medium-blue-button {
+  @include medium-blue-button;
+}
+
+.medium-blue-button:before {
+  @include medium-blue-button-before;
+}
+
+.medium-blue-button:active {
+  @include medium-blue-button-active;
+}
+
+.medium-blue-button:active:before {
+  @include orange-button-before-active;
+}
+
+.medium-blue-button:hover {
+  text-decoration: underline;
+}

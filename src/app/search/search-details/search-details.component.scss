@@ -9,6 +9,7 @@
 
 .search-details-container {
   position: relative;
+  z-index: 1;
   background-color: $white;
   min-height: 100%;
   padding: 50px 0 62px;
@@ -155,25 +156,9 @@
     padding: 11px 0;
     text-align: center;
     flex-grow: 1;
-    background-color: $light-blue;
-    color: $dark-blue;
     margin: 10px 0 0 0;
     border-radius: 2px;
     position: relative;
-  }
-
-  .gallery-button:before {
-    @include button-emboss($light-blue, $white, #9ea3db, #6d728C);
-  }
-
-  .gallery-button:active {
-    background-color: #9ea3bd;
-  }
-
-  .gallery-button:active:before {
-    background-color: #9ea3bd;
-    background-image: none;
-    box-shadow: 0 1px 2px 0 #444 inset;
   }
 
   .detail-description {
