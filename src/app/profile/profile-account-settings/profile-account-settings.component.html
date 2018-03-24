@@ -1,7 +1,22 @@
 <div id="account-settings-container">
-    <p>Dashboard</p>
-    <p>Dashboard</p>
-    <p>Dashboard</p><p>Dashboard</p><p>Dashboard</p><p>Dashboard</p><p>Dashboard</p><p>Dashboard</p><p>Dashboard</p><p>Dashboard</p>
+    <div class="settings-data-container">
+        <span class="settings-icon username"></span>
+        <span class="settings-value">{{userName}}</span>
+        <span class="edit"></span>
+    </div>
+
+    <div class="settings-data-container">
+        <span class="settings-icon email"></span>
+        <span class="settings-value">{{email}}</span>
+        <span class="edit"></span>
+    </div>
+
+    <div class="settings-data-container">
+        <span *ngIf="accountType === 'Business'" class="settings-icon business"></span>
+        <span *ngIf="accountType === 'Individual'" class="settings-icon username"></span>
+        <span class="settings-value">{{accountType}}</span>
+        <span class="edit"></span>
+    </div>
 </div>
 
 

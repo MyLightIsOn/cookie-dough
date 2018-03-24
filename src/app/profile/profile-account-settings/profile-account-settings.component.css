@@ -121,6 +121,60 @@
   width: 100%;
   position: relative;
   z-index: 1;
-  background-color: #616697; }
+  background-color: #CCD1EB;
+  padding: 65px 15px; }
+  #account-settings-container .settings-data-container {
+    position: relative;
+    background-color: #F9FCFE;
+    padding: 30px 30px 30px 55px;
+    margin-bottom: 1px; }
+    #account-settings-container .settings-data-container .edit {
+      display: block;
+      background-color: #616697;
+      height: 100%;
+      width: 40px;
+      position: absolute;
+      right: 0;
+      top: 0; }
+    #account-settings-container .settings-data-container .edit:before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+      background: url("/assets/icons/white_edit_icon.png") no-repeat;
+      background-size: 20px;
+      position: relative;
+      top: 26px;
+      left: 10px; }
+  #account-settings-container .settings-data-container:first-child {
+    border-radius: 6px 6px 0 0; }
+    #account-settings-container .settings-data-container:first-child .edit {
+      border-radius: 0 6px 0 0; }
+  #account-settings-container .settings-data-container:last-child {
+    border-radius: 0 0 6px 6px; }
+    #account-settings-container .settings-data-container:last-child .edit {
+      border-radius: 0 0 6px 0; }
+  #account-settings-container .settings-icon {
+    display: block;
+    width: 30px;
+    position: relative; }
+  #account-settings-container .settings-icon:before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute; }
+  #account-settings-container .username:before {
+    background: url("/assets/icons/dark_blue_user.png") no-repeat;
+    left: -40px;
+    top: -4px; }
+  #account-settings-container .email:before {
+    background: url("/assets/icons/dark_blue_email.png") no-repeat;
+    left: -40px;
+    top: -1px; }
+  #account-settings-container .business:before {
+    background: url("/assets/icons/dark_blue_business.png") no-repeat;
+    left: -40px;
+    top: -8px; }
 
 /*# sourceMappingURL=profile-account-settings.component.css.map */

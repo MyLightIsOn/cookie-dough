@@ -15,5 +15,83 @@
   width: 100%;
   position: relative;
   z-index: 1;
-  background-color: $medium-blue;
+  background-color: $light-blue;
+  padding: $mobile-padding;
+
+  .settings-data-container {
+    position: relative;
+    background-color: $white;
+    padding: 30px 30px 30px 55px;
+    margin-bottom: 1px;
+
+    .edit {
+      display: block;
+      background-color: $medium-blue;
+      height: 100%;
+      width: 40px;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    .edit:before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+      background: url("/assets/icons/white_edit_icon.png") no-repeat;
+      background-size: 20px;
+      position: relative;
+      top: 26px;
+      left: 10px;
+    }
+  }
+
+  .settings-data-container:first-child {
+    border-radius: 6px 6px 0 0;
+
+    .edit {
+      border-radius: 0 6px 0 0;
+    }
+  }
+
+  .settings-data-container:last-child {
+    border-radius: 0 0 6px 6px;
+
+    .edit {
+      border-radius: 0 0 6px 0;
+    }
+  }
+
+  .settings-icon {
+    display: block;
+    width: 30px;
+    position: relative;
+  }
+
+  .settings-icon:before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+  }
+
+  .username:before {
+    background: url("/assets/icons/dark_blue_user.png") no-repeat;
+    left: -40px;
+    top: -4px;
+  }
+
+  .email:before {
+    background: url("/assets/icons/dark_blue_email.png") no-repeat;
+    left: -40px;
+    top: -1px;
+  }
+
+  .business:before {
+    background: url("/assets/icons/dark_blue_business.png") no-repeat;
+    left: -40px;
+    top: -8px;
+  }
 }

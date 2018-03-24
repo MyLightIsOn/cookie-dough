@@ -169,7 +169,7 @@ nav {
       position: absolute;
       left: -37px;
       top: -7px;
-      background: url("../assets/icons/profile.png") no-repeat;
+      background: url("/assets/icons/profile.png") no-repeat;
       background-size: 30px; }
     nav #user-settings span {
       color: #F9FCFE; }
