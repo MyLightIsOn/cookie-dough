@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProfileComponent } from './profile.component';
 import { ProfileCompanyComponent } from './profile-company/profile-company.component';
-import { ProfileDashboardComponent } from './profile-dashboard/profile-dashboard.component';
+import { ProfileAccountSettingsComponent } from './profile-account-settings/profile-account-settings.component';
 
 import { ProfileRoutingModule } from './profile-routing.module';
 
@@ -15,7 +15,7 @@ import { ProfileRoutingModule } from './profile-routing.module';
     declarations: [
         ProfileComponent,
         ProfileCompanyComponent,
-        ProfileDashboardComponent
+        ProfileAccountSettingsComponent
     ]
 })
 export class ProfileModule { }

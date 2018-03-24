@@ -1,5 +1,5 @@
 <div id="profile-container">
-    <div class="settings-category medium-blue-button">
+    <div class="settings-category medium-blue-button" routerLink="/account-settings">
         <span class="category-name">Account Settings</span>
     </div>
     <div class="settings-category medium-blue-button">
@@ -8,7 +8,8 @@
     <div class="settings-category medium-blue-button">
         <span class="category-name">Terms of Service</span>
     </div>
-    <div class="settings-category medium-blue-button"
-    ><span class="category-name">Privacy Policy</span>
+    <div class="settings-category medium-blue-button">
+        <span class="category-name">Privacy Policy</span>
     </div>
+    <router-outlet></router-outlet>
 </div>
