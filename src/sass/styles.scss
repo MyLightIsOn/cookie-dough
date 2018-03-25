@@ -118,6 +118,26 @@ button, input[type="submit"], input[type="reset"] {
   }
 }
 
+.save-container {
+  border-top: 1px solid $dark-blue;
+  display: flex;
+  margin: 20px auto 0;
+  max-width: 400px;
+  padding-top: 20px;
+
+  .cancel-button {
+    display: block;
+    flex-grow: 1;
+    text-align: center;
+    padding: 17px 0;
+  }
+
+  button {
+    flex-grow: 1;
+    margin-bottom: 0 !important;
+  }
+}
+
 
 
 @media (min-width: $desktop) {

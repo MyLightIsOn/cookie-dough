@@ -200,6 +200,21 @@ button, input[type="submit"], input[type="reset"] {
       color: #F9FCFE;
       cursor: pointer; }
 
+.save-container {
+  border-top: 1px solid #191E50;
+  display: flex;
+  margin: 20px auto 0;
+  max-width: 400px;
+  padding-top: 20px; }
+  .save-container .cancel-button {
+    display: block;
+    flex-grow: 1;
+    text-align: center;
+    padding: 17px 0; }
+  .save-container button {
+    flex-grow: 1;
+    margin-bottom: 0 !important; }
+
 @media (min-width: 1200px) {
   .desktop {
     display: block; }

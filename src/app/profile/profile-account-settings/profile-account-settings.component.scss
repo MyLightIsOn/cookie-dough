@@ -22,19 +22,21 @@
     position: relative;
     background-color: $white;
     padding: 30px 30px 30px 55px;
-    margin-bottom: 1px;
+    margin-bottom: 5px;
+    height: 77px;
 
     .edit {
       display: block;
       background-color: $medium-blue;
-      height: 100%;
+      height: 75px;
       width: 40px;
       position: absolute;
       right: 0;
-      top: 0;
+      top: 1px;
+      z-index: 2;
     }
 
-    .edit:before {
+    .edit:after {
       content: '';
       display: block;
       width: 24px;
@@ -45,21 +47,25 @@
       top: 26px;
       left: 10px;
     }
+
+    .medium-blue-button:before {
+      border-radius: 0;
+    }
   }
 
   .settings-data-container:first-child {
     border-radius: 6px 6px 0 0;
 
-    .edit {
-      border-radius: 0 6px 0 0;
+    .edit, .medium-blue-button:before {
+      border-radius: 0 6px 0 0 !important;
     }
   }
 
   .settings-data-container:last-child {
     border-radius: 0 0 6px 6px;
 
-    .edit {
-      border-radius: 0 0 6px 0;
+    .edit, .medium-blue-button:before {
+      border-radius: 0 0 6px 0 !important;;
     }
   }
 
@@ -93,5 +99,12 @@
     background: url("/assets/icons/dark_blue_business.png") no-repeat;
     left: -40px;
     top: -8px;
+  }
+
+  .account-settings-input-form {
+    @include form-field;
+    border: 1px $dark-blue solid;
+    margin: 0;
+    top: -14px;
   }
 }
