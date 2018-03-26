@@ -12,6 +12,7 @@ export class AuthService {
     constructor(private http: HttpClient, public router: Router) {}
 
     public isLoggedIn = false;
+    public formSuccess = false;
     public errorResponse = false;
     public errorMessage: string;
     public errorHighlight;

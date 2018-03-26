@@ -15,7 +15,8 @@ export class ProfileAccountSettingsComponent implements OnInit{
     public updatedUser = {};
     public email: string;
     public company: string;
-    public accountType = 'Individual';
+    public accountType = 'individual';
+    public individualAccount: boolean;
     public userName: string;
     public editUserName: boolean;
     public editEmail: boolean;
@@ -38,7 +39,10 @@ export class ProfileAccountSettingsComponent implements OnInit{
         this.userName = this.user['user']['values']['field_50'];
         if (this.user['user']['values']['field_51']) {
             this.company = this.user['user']['values']['field_51'];
-            this.accountType = 'Business';
+            this.accountType = 'Business Admin';
+            this.individualAccount = false;
+        } else {
+            this.individualAccount = true;
         }
     }
 
@@ -48,11 +52,11 @@ export class ProfileAccountSettingsComponent implements OnInit{
         }
 
         if (field === 'email') {
-            this.editUserName = true;
+            this.editEmail = true;
         }
 
         if (field === 'accountType') {
-            this.editUserName = true;
+            this.editAccountType = true;
         }
 
         this.enableSave();
@@ -71,16 +75,34 @@ export class ProfileAccountSettingsComponent implements OnInit{
     }
 
     updateUser() {
-        //this.updatedUser['field_19'] = this.email;
+        this.updatedUser['field_19'] = {};
+        this.updatedUser['field_19']['email'] = this.email;
         this.updatedUser['field_50'] = this.userName;
-        //this.updatedUser['field_22'] = this.accountType;
+        if (this.individualAccount) {
+            this.updatedUser['field_22'] = 'individual';
+        } else {
+            this.updatedUser['field_22'] = 'admin';
+        }
     }
 
     submitUpdate() {
         this.updateUser();
-        this.profileService.updateAccountSettings(this.updatedUser, this.user['user']['token']).subscribe();
-        this.editUserName = false;
-        this.editEmail = false;
-        this.editAccountType = false;
+        this.profileService.updateAccountSettings(this.updatedUser, this.user['user']['token'], this.user['user']['id']).subscribe(() => {
+            if (!this.authService.errorResponse) {
+                this.editUserName = false;
+                this.editEmail = false;
+                this.editAccountType = false;
+                this.saveEnabled = false;
+                this.flashSuccess();
+            }
+        });
+    }
+
+    flashSuccess() {
+        const app = this;
+        app.authService.formSuccess = true;
+        setTimeout(function () {
+            app.authService.formSuccess = false;
+        }, 3000);
     }
 }

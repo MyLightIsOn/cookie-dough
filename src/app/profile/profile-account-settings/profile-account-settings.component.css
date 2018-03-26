@@ -148,15 +148,18 @@
       position: relative;
       top: 26px;
       left: 10px; }
+    #account-settings-container .settings-data-container .edit-field:before {
+      background-color: #FF9018;
+      background-image: none; }
     #account-settings-container .settings-data-container .medium-blue-button:before {
       border-radius: 0; }
   #account-settings-container .settings-data-container:first-child {
     border-radius: 6px 6px 0 0; }
     #account-settings-container .settings-data-container:first-child .edit, #account-settings-container .settings-data-container:first-child .medium-blue-button:before {
       border-radius: 0 6px 0 0 !important; }
-  #account-settings-container .settings-data-container:last-child {
+  #account-settings-container .settings-data-container:nth-child(3) {
     border-radius: 0 0 6px 6px; }
-    #account-settings-container .settings-data-container:last-child .edit, #account-settings-container .settings-data-container:last-child .medium-blue-button:before {
+    #account-settings-container .settings-data-container:nth-child(3) .edit, #account-settings-container .settings-data-container:nth-child(3) .medium-blue-button:before {
       border-radius: 0 0 6px 0 !important; }
   #account-settings-container .settings-icon {
     display: block;
@@ -180,6 +183,13 @@
     background: url("/assets/icons/dark_blue_business.png") no-repeat;
     left: -40px;
     top: -8px; }
+  #account-settings-container .account-type-open {
+    height: 130px; }
+    #account-settings-container .account-type-open .edit, #account-settings-container .account-type-open .medium-blue-button:before {
+      height: 130px;
+      border-radius: 0 0 6px 0 !important; }
+    #account-settings-container .account-type-open .edit:after {
+      top: 50px; }
   #account-settings-container .account-settings-input-form {
     background-color: #F9FCFE;
     -webkit-box-shadow: inset 10px 10px 5px -10.5px rgba(0, 0, 0, 0.75);
@@ -197,5 +207,26 @@
     border: 1px #191E50 solid;
     margin: 0;
     top: -14px; }
+  #account-settings-container .account-settings-type-select {
+    padding-left: 15px;
+    position: relative;
+    top: -8px; }
+    #account-settings-container .account-settings-type-select .account-type-select-button {
+      display: block;
+      position: relative;
+      padding: 10px 40px;
+      margin-bottom: 10px; }
+    #account-settings-container .account-settings-type-select .account-type-select-button:before {
+      content: '';
+      width: 30px;
+      height: 30px;
+      background-color: #F9FCFE;
+      border: 3px solid #191E50;
+      border-radius: 30px;
+      position: absolute;
+      left: 0px;
+      top: 3px; }
+    #account-settings-container .account-settings-type-select .account-type-select-button.type-selected:before {
+      background-color: #FF9018; }
 
 /*# sourceMappingURL=profile-account-settings.component.css.map */

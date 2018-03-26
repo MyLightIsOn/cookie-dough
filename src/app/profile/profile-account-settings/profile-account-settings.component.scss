@@ -48,6 +48,11 @@
       left: 10px;
     }
 
+    .edit-field:before {
+      background-color: $orange;
+      background-image: none;
+    }
+
     .medium-blue-button:before {
       border-radius: 0;
     }
@@ -61,7 +66,7 @@
     }
   }
 
-  .settings-data-container:last-child {
+  .settings-data-container:nth-child(3) {
     border-radius: 0 0 6px 6px;
 
     .edit, .medium-blue-button:before {
@@ -101,10 +106,52 @@
     top: -8px;
   }
 
+  .account-type-open {
+    height: 130px;
+
+    .edit, .medium-blue-button:before {
+      height: 130px;
+      border-radius: 0 0 6px 0 !important;;
+    }
+
+    .edit:after {
+      top: 50px;
+    }
+  }
+
   .account-settings-input-form {
     @include form-field;
     border: 1px $dark-blue solid;
     margin: 0;
     top: -14px;
+  }
+
+  .account-settings-type-select {
+    padding-left: 15px;
+    position: relative;
+    top: -8px;
+
+    .account-type-select-button {
+      display: block;
+      position: relative;
+      padding: 10px 40px;
+      margin-bottom: 10px;
+    }
+
+    .account-type-select-button:before {
+      content: '';
+      width: 30px;
+      height: 30px;
+      background-color: $white;
+      border: 3px solid $dark-blue;
+      border-radius: 30px;
+      position: absolute;
+      left: 0px;
+      top: 3px;
+    }
+
+    .account-type-select-button.type-selected:before {
+      background-color: $orange;
+    }
   }
 }

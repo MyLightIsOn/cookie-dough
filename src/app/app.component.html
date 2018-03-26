@@ -57,8 +57,12 @@
     </nav>
 
     <span *ngIf="this.authService.errorResponse" class="error-container">
-            <span class="error-message">{{authService.errorMessage}}</span>
-        </span>
+        <span class="error-message">{{authService.errorMessage}}</span>
+    </span>
+
+    <span *ngIf="this.authService.formSuccess" class="success-container">
+        <span class="success-message">Account Updated</span>
+    </span>
 
     <!-- Mobile Menu Logged In -->
     <div *ngIf="this.authService.isLoggedIn; else notLoggedInMenu">

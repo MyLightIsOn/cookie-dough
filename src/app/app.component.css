@@ -217,7 +217,7 @@ nav {
 .mobile-menu-container.searchStarted {
   display: none; }
 
-.error-container {
+.error-container, .success-container {
   position: fixed;
   background-color: #ffe0e0;
   color: #B64646;
@@ -225,19 +225,23 @@ nav {
   padding: 15px 20px;
   top: 50px;
   text-align: center;
-  z-index: 1; }
+  z-index: 2; }
 
-.error-message {
+.success-container {
+  background-color: #c7e0ca;
+  color: #206b3a; }
+
+.error-message, .success-message {
   position: relative;
   width: 90%; }
 
-.error-message:before {
+.error-container:before, .success-container:before {
   content: '';
   width: 15px;
   height: 15px;
   position: absolute;
-  background: url("/assets/icons/error_icon.png") no-repeat;
-  left: -22px;
+  background: url("/assets/icons/white_close_icon.png") no-repeat;
+  right: 0;
   top: 1px; }
 
 /************** Main App Container Styles **************/

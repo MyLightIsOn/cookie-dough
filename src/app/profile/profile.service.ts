@@ -13,8 +13,8 @@ export class ProfileService {
 
     constructor(public authService: AuthService, public http: HttpClient) {}
 
-    public updateAccountSettings(updatedUser, token) {
-        return this.http.put(environment['BASEURL'] + '/api/update-account', [updatedUser, token]).map((res) => {
+    public updateAccountSettings(updatedUser, token, id) {
+        return this.http.put(environment['BASEURL'] + '/api/update-account', [updatedUser, token, id]).map((res) => {
             if (res['error']) {
                 this.authService.errorMessage = res['error']['errors'][0]['message'];
                 this.authService.errorResponse = true;

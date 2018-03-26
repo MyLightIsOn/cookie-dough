@@ -13,20 +13,41 @@
                        class="account-settings-input-form"
                        required>
             </ng-template>
-            <span class="edit medium-blue-button" (click)="editField('userName')"></span>
+            <span class="edit medium-blue-button" [ngClass]="{'edit-field': editUserName}" (click)="editField('userName')"></span>
         </div>
 
         <div class="settings-data-container">
             <span class="settings-icon email"></span>
-            <span class="settings-value">{{email}}</span>
-            <span class="edit medium-blue-button"></span>
+            <span  *ngIf="!editEmail; else editEmailField" class="settings-value">{{email}}</span>
+            <ng-template #editEmailField>
+                <input type="text"
+                       name="email"
+                       (focus)="appService.fieldFocus()"
+                       (focusout)="appService.showNav()"
+                       [(ngModel)]="email"
+                       [ngClass]="{'error-highlight': authService.errorHighlight}"
+                       class="account-settings-input-form"
+                       required>
+            </ng-template>
+            <span class="edit medium-blue-button" [ngClass]="{'edit-field': editEmail}"  (click)="editField('email')"></span>
         </div>
 
-        <div class="settings-data-container">
-            <span *ngIf="accountType === 'Business'" class="settings-icon business"></span>
-            <span *ngIf="accountType === 'Individual'" class="settings-icon username"></span>
-            <span class="settings-value">{{accountType}}</span>
-            <span class="edit medium-blue-button"></span>
+        <div class="settings-data-container" [ngClass]="{'account-type-open': editAccountType}">
+            <span *ngIf="!individualAccount" class="settings-icon business"></span>
+            <span *ngIf="individualAccount" class="settings-icon username"></span>
+            <span *ngIf="!editAccountType; else editAccountField" class="settings-value">{{accountType}}</span>
+            <ng-template #editAccountField>
+                <div class="account-settings-type-select">
+                    <button class="account-type-select-button"
+                            (click)="individualAccount = true; false"
+                            [ngClass]="{'type-selected': individualAccount}">Individual</button>
+
+                    <button class="account-type-select-button"
+                            (click)="individualAccount = false; false"
+                            [ngClass]="{'type-selected': !individualAccount}">Business Admin</button>
+                </div>
+            </ng-template>
+            <span class="edit medium-blue-button" [ngClass]="{'edit-field': editAccountType}" (click)="editField('accountType')"></span>
         </div>
         <div  *ngIf="saveEnabled" class="save-container">
             <button class="cancel-button"><span (click)="cancel(); false">Cancel</span></button>
