@@ -13,8 +13,9 @@ export class LoginService {
             preserveFragment: true
         };
 
-        this.authService.login(email, password).subscribe((res => {
-            this.authService.checkResponse(res);
+        this.authService.login(email, password).subscribe();
+
+        /*((res => {
             if (this.authService.isLoggedIn) {
                 // Get the redirect URL from our auth service
                 // If no redirect has been set, use the default
@@ -23,6 +24,6 @@ export class LoginService {
                 // Redirect the user
                 this.router.navigate([redirect], navigationExtras);
             }
-        }));
+        }))*/;
     }
 }

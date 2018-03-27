@@ -19,6 +19,10 @@ export class ProfileService {
                 this.authService.errorMessage = res['error']['errors'][0]['message'];
                 this.authService.errorResponse = true;
             } else {
+                const updatedProps = this.authService.session['user']['values'];
+                updatedProps['field_50'] = res['record']['field_50'];
+                updatedProps['field_19']['email'] =  res['record']['field_19'];
+                updatedProps['field_22'] = res['record']['profile_keys'];
                 this.authService.errorResponse = false;
             }
         });
