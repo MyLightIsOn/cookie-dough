@@ -55,6 +55,10 @@ export class AuthService {
         return res;
     }
 
+    public closeError() {
+        this.errorResponse = false;
+    }
+
     logout(): void {
         this.isLoggedIn = false;
         localStorage.clear();

@@ -235,14 +235,14 @@ nav {
   position: relative;
   width: 90%; }
 
-.error-container:before, .success-container:before {
+.error-container:before {
   content: '';
   width: 15px;
   height: 15px;
   position: absolute;
-  background: url("/assets/icons/white_close_icon.png") no-repeat;
-  right: 0;
-  top: 1px; }
+  background: url("/assets/icons/error_icon.png") no-repeat;
+  right: 13px;
+  top: 15px; }
 
 /************** Main App Container Styles **************/
 #app-container {

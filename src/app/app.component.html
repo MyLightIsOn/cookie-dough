@@ -56,7 +56,7 @@
         <span class="drop-shadow-effect"></span>
     </nav>
 
-    <span *ngIf="this.authService.errorResponse" class="error-container">
+    <span *ngIf="this.authService.errorResponse" class="error-container" (click)="authService.closeError()">
         <span class="error-message">{{authService.errorMessage}}</span>
     </span>
 
