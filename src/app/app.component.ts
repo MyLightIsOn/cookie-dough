@@ -18,26 +18,30 @@ import { searchAnimations } from './_animations/searchAnimations';
 export class AppComponent implements OnInit {
     public email: string;
     public password: string;
-    public message: string;
     public screenSize: string;
     public listOpen = false;
-    public session;
+    public user;
 
     constructor(
         private companyService: CompaniesService,
         public authService: AuthService,
-        public loginService: LoginService,
-        public appService: AppService) {}
+        private loginService: LoginService,
+        private appService: AppService) {}
 
-    // Uses service to get a company list as soon as the app loads
-    public ngOnInit() {
-        this.authService.getLocalStorage();
+    // Gets the screensize for animations, retrieves all of the companies,
+    // subscribes to the auth service session and sets it as the user property
+    // and then gets the user stored in local storage and uses that for the user property.
+    public ngOnInit(): void {
         this.screenSize = this.appService.getScreenSize();
         this.companyService.getAllCompanies().subscribe();
+        this.authService.subject.subscribe(res => {
+            this.user =  res['session']['user'];
+        });
+        this.authService.getLocalStorage();
     }
 
     // Checks window width and returns the route for animations for mobile or desktop
-    public getPage(outlet) {
+    public getPage(outlet): string {
         if (this.screenSize === 'desktop') {
             return outlet.activatedRouteData['page'];
         } else {
@@ -46,17 +50,18 @@ export class AppComponent implements OnInit {
     }
 
     // Toggles the sorting list dropdown
-    public toggleDropdown() {
+    public toggleDropdown(): void {
         this.listOpen = !this.listOpen;
     }
 
     // Passes the email and password to the login service
-    public login() {
+    public login(): void {
         this.loginService.login(this.email, this.password);
     }
 
     // Logs the user out
-    public logout() {
+    public logout(): void {
+        this.toggleDropdown();
         this.authService.logout();
     }
 }
