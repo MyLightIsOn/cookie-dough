@@ -79,10 +79,11 @@ nav {
 
     span {
       color: $white;
+      text-decoration: underline;  
     }
 
     span:hover {
-      text-decoration: underline;
+      color: $orange;
     }
 
     .list-open {
@@ -90,6 +91,122 @@ nav {
       top: 25px;
     }
   }
+  
+  #mobile-user-settings {
+    height: 50px;
+
+    .mobile-user-name {
+      color: $white;
+      position: absolute;
+      right: 60px;
+      top: 16px;
+      text-decoration: underline;
+    }
+
+    .menu-icon,.menu-close-icon {
+      position: absolute;
+      right: 0;
+      cursor: pointer;
+      width: 60px;
+      height: 50px;
+    }
+
+    .menu-icon:after, .menu-close-icon:after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 40px;
+      position: relative;
+      background: url("/assets/icons/profile.png") no-repeat;
+      background-size: 40px;
+      top: 6px;
+      left: 4px;
+    }
+
+    .menu-close-icon:after {
+      background: url("/assets/icons/white_close_icon.png") no-repeat;
+      background-size: 40px;
+      top: 4px;
+      left: 4px;
+    }
+
+    .nav-dropdown-list.mobile-menu-open {
+      left: 0;
+    }
+
+    .nav-dropdown-list {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: $medium-blue;
+      padding: 0;
+      left: 120%;
+      transition: left 0.5s;
+
+      li {
+        width: 100%;
+        display: block;
+        background-color: $medium-blue;
+        border: 1px solid $dark-blue;
+        border-bottom: 0;
+        padding: 20px 30px 20px 90px;
+        color: $white;
+        font-size: 20px;
+        position: relative;
+      }
+
+      li:active {
+        background-color: $orange;
+      }
+
+      li:last-of-type {
+        border: 1px solid $dark-blue;
+      }
+
+      li:before {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+      }
+
+      .account-setting-link:before {
+        background: url("/assets/icons/profile.png") no-repeat;
+        background-size: 40px;
+        left: 20px;
+        top: 10px;
+      }
+
+      .security-setting-link:before {
+        background: url("/assets/icons/white_security_icon.png") no-repeat;
+        left: 20px;
+        top: 11px;
+      }
+
+      .terms-setting-link:before {
+        background: url("/assets/icons/white_terms_icon.png") no-repeat;
+        left: 26px;
+        top: 21px;
+      }
+
+      .privacy-setting-link:before {
+        background: url("/assets/icons/white_privacy_icon.png") no-repeat;
+        left: 18px;
+        top: 10px;
+        background-size: 45px;
+      }
+
+      .logout-link:before {
+        background: url("/assets/icons/white_logout.png") no-repeat;
+        left: 20px;
+        top: 10px;
+      }
+    }
+  }
+
 }
 
 .mobile-menu-container {
@@ -284,7 +401,7 @@ nav {
       top: -8px;
     }
 
-    #user-settings {
+    #desktop-user-settings {
       top: 24px;
       right: 15px;
     }

@@ -157,4 +157,8 @@ button, input[type="submit"], input[type="reset"] {
   .form-error {
     top: 65px;
   }
+
+  .dropdown-list, .dropdown-list.list-open.desktop {
+    display: block;
+  }
 }

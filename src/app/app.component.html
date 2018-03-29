@@ -14,12 +14,36 @@
                    routerLink="/register" routerLinkActive="active" class="signup-icon">Sign Up</a>
             </div>
 
-            <!-- User Settings Dropdown -->
-            <div *ngIf="this.authService.isLoggedIn; else notLoggedIn" id="user-settings" class="dropdown-container">
+            <!-- User Settings Dropdown Desktop -->
+            <div *ngIf="this.authService.isLoggedIn; else notLoggedIn" id="user-settings" class="dropdown-container desktop">
                 <span *ngIf="user" (click)="toggleDropdown()">{{user?.values.field_50}}</span>
                 <ul class="dropdown-list" [ngClass]="{'list-open': listOpen}">
-                    <li (click)="toggleDropdown()" routerLink="/profile">Profile Settings</li>
+                    <li (click)="toggleDropdown()" class="account-setting-link" routerLink="/account-settings">Account Settings</li>
+                    <li (click)="toggleDropdown()" class="security-setting-link" routerLink="/">Security Settings</li>
+                    <li (click)="toggleDropdown()" class="terms-setting-link" routerLink="/">Terms of Settings</li>
+                    <li (click)="toggleDropdown()" class="privacy-setting-link" routerLink="/">Privacy Policy</li>
                     <li (click)="logout()">Logout</li>
+                </ul>
+            </div>
+
+            <!-- User Settings Dropdown Mobile -->
+            <div *ngIf="this.authService.isLoggedIn; else notLoggedIn" id="mobile-user-settings" class="mobile">
+
+                <!-- Opens mobile menu-->
+                <span class="mobile-user-name" *ngIf="user && !mobileMenuOpen">{{user?.values.field_50}}</span>
+                <span class="mobile menu-icon" (click)="openMobileMenu()" *ngIf="user && !mobileMenuOpen"></span>
+
+                <!-- Close mobile menu -->
+                <span class="mobile-user-name" *ngIf="user && mobileMenuOpen">close settings</span>
+                <span class="mobile menu-close-icon" (click)="openMobileMenu()" *ngIf="user && mobileMenuOpen"></span>
+                
+                <br /><br />
+                <ul class="nav-dropdown-list mobile" [ngClass]="{'mobile-menu-open': mobileMenuOpen}">
+                    <li (click)="openMobileMenu()" class="account-setting-link" routerLink="/account-settings">Account Settings</li>
+                    <li (click)="openMobileMenu()" class="security-setting-link" routerLink="/">Security Settings</li>
+                    <li (click)="openMobileMenu()" class="terms-setting-link" routerLink="/">Terms of Settings</li>
+                    <li (click)="openMobileMenu()" class="privacy-setting-link" routerLink="/">Privacy Policy</li>
+                    <li (click)="logout()" class="logout-link" >Logout</li>
                 </ul>
             </div>
 

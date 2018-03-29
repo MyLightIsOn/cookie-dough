@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
     public password: string;
     public screenSize: string;
     public listOpen = false;
+    public mobileMenuOpen = false;
     public user;
 
     constructor(
@@ -54,6 +55,11 @@ export class AppComponent implements OnInit {
         this.listOpen = !this.listOpen;
     }
 
+    // Toggles the mobile menu
+    public openMobileMenu(): void {
+        this.mobileMenuOpen = !this.mobileMenuOpen;
+    }
+
     // Passes the email and password to the login service
     public login(): void {
         this.loginService.login(this.email, this.password);
@@ -61,7 +67,8 @@ export class AppComponent implements OnInit {
 
     // Logs the user out
     public logout(): void {
-        this.toggleDropdown();
+        this.listOpen = false;
+        this.mobileMenuOpen = false;
         this.authService.logout();
     }
 }

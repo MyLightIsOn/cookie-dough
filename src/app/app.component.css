@@ -172,12 +172,96 @@ nav {
       background: url("/assets/icons/profile.png") no-repeat;
       background-size: 30px; }
     nav #user-settings span {
-      color: #F9FCFE; }
-    nav #user-settings span:hover {
+      color: #F9FCFE;
       text-decoration: underline; }
+    nav #user-settings span:hover {
+      color: #FF9018; }
     nav #user-settings .list-open {
       z-index: 100;
       top: 25px; }
+  nav #mobile-user-settings {
+    height: 50px; }
+    nav #mobile-user-settings .mobile-user-name {
+      color: #F9FCFE;
+      position: absolute;
+      right: 60px;
+      top: 16px;
+      text-decoration: underline; }
+    nav #mobile-user-settings .menu-icon, nav #mobile-user-settings .menu-close-icon {
+      position: absolute;
+      right: 0;
+      cursor: pointer;
+      width: 60px;
+      height: 50px; }
+    nav #mobile-user-settings .menu-icon:after, nav #mobile-user-settings .menu-close-icon:after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 40px;
+      position: relative;
+      background: url("/assets/icons/profile.png") no-repeat;
+      background-size: 40px;
+      top: 6px;
+      left: 4px; }
+    nav #mobile-user-settings .menu-close-icon:after {
+      background: url("/assets/icons/white_close_icon.png") no-repeat;
+      background-size: 40px;
+      top: 4px;
+      left: 4px; }
+    nav #mobile-user-settings .nav-dropdown-list.mobile-menu-open {
+      left: 0; }
+    nav #mobile-user-settings .nav-dropdown-list {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: #616697;
+      padding: 0;
+      left: 120%;
+      transition: left 0.5s; }
+      nav #mobile-user-settings .nav-dropdown-list li {
+        width: 100%;
+        display: block;
+        background-color: #616697;
+        border: 1px solid #191E50;
+        border-bottom: 0;
+        padding: 20px 30px 20px 90px;
+        color: #F9FCFE;
+        font-size: 20px;
+        position: relative; }
+      nav #mobile-user-settings .nav-dropdown-list li:active {
+        background-color: #FF9018; }
+      nav #mobile-user-settings .nav-dropdown-list li:last-of-type {
+        border: 1px solid #191E50; }
+      nav #mobile-user-settings .nav-dropdown-list li:before {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 50px;
+        position: absolute; }
+      nav #mobile-user-settings .nav-dropdown-list .account-setting-link:before {
+        background: url("/assets/icons/profile.png") no-repeat;
+        background-size: 40px;
+        left: 20px;
+        top: 10px; }
+      nav #mobile-user-settings .nav-dropdown-list .security-setting-link:before {
+        background: url("/assets/icons/white_security_icon.png") no-repeat;
+        left: 20px;
+        top: 11px; }
+      nav #mobile-user-settings .nav-dropdown-list .terms-setting-link:before {
+        background: url("/assets/icons/white_terms_icon.png") no-repeat;
+        left: 26px;
+        top: 21px; }
+      nav #mobile-user-settings .nav-dropdown-list .privacy-setting-link:before {
+        background: url("/assets/icons/white_privacy_icon.png") no-repeat;
+        left: 18px;
+        top: 10px;
+        background-size: 45px; }
+      nav #mobile-user-settings .nav-dropdown-list .logout-link:before {
+        background: url("/assets/icons/white_logout.png") no-repeat;
+        left: 20px;
+        top: 10px; }
 
 .mobile-menu-container {
   position: fixed;
@@ -322,7 +406,7 @@ nav {
     nav .nav-form-label {
       position: absolute;
       top: -8px; }
-    nav #user-settings {
+    nav #desktop-user-settings {
       top: 24px;
       right: 15px; }
 
