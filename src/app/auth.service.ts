@@ -42,8 +42,32 @@ export class AuthService {
         }
     }
 
+    // Updates the local storage by iterating through the update and the current user
+    // looking for matches in properties. If there's is a match, an update is made.
+    public updateLocalStorage(update: object): void {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        const currentUserValues = currentUser['session']['user']['values'];
+
+        // Iterate through the current user properties
+        for (const prop in currentUserValues) {
+            if (currentUserValues.hasOwnProperty(prop)) {
+
+                // Looking for a match in the updated properties
+                for (const updatedProp in update) {
+                    if (update.hasOwnProperty(updatedProp)) {
+                        if (prop === updatedProp) {
+                            currentUserValues[prop] = update[updatedProp];
+                        }
+                    }
+                }
+            }
+        }
+        this.subject.next(currentUser);
+        AuthService.setLocalStorage(currentUser);
+    }
+
     // Logs the user in and checks the response for an error
-    public login(email, password): Observable<void> {
+    public login(email: string, password: string): Observable<void> {
         const body = ({'email': email, 'password': password});
         return this.http.post(environment['BASEURL'] + '/api/login', body).map(res => {
             this.session = res;
@@ -71,7 +95,7 @@ export class AuthService {
     // Checks the response and displays the appropriate error if need be. Otherwise
     // it will set the local storage, turn off errors, and log the user in then
     // redirect.
-    public checkResponse(res): object {
+    public checkResponse(res: ISession): object {
         if (res['error']) {
             this.errorMessage = res['error']['errors'][0]['message'];
             this.errorResponse = true;

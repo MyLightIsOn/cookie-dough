@@ -7,22 +7,20 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/share';
 
 import { environment } from '../../environments/environment';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class ProfileService {
 
     constructor(public authService: AuthService, public http: HttpClient) {}
 
-    public updateAccountSettings(updatedUser, token, id) {
+    public updateAccountSettings(updatedUser: object, token: string, id: string): Observable<void> {
         return this.http.put(environment['BASEURL'] + '/api/update-account', [updatedUser, token, id]).map((res) => {
             if (res['error']) {
                 this.authService.errorMessage = res['error']['errors'][0]['message'];
                 this.authService.errorResponse = true;
             } else {
-                const updatedProps = this.authService.session['user']['values'];
-                updatedProps['field_50'] = res['record']['field_50'];
-                updatedProps['field_19']['email'] =  res['record']['field_19'];
-                updatedProps['field_22'] = res['record']['profile_keys'];
+                this.authService.updateLocalStorage(updatedUser);
                 this.authService.errorResponse = false;
             }
         });

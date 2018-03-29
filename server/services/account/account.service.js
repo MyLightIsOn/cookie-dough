@@ -7,7 +7,7 @@ module.exports = {
             if(config.baseURL === 'http://localhost:3000'){
                 return 'GET'
             } else {
-                return 'POST'
+                return 'PUT'
             }
         }
         config.updatedHeaders['Authorization'] = req.body[1];

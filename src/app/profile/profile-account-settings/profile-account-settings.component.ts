@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 
 import {ProfileService} from '../profile.service';
 import {AuthService} from '../../auth.service';
-import {AuthGuard} from '../../_guards/auth-guard.service';
 import {AppService} from '../../app.service';
 
 @Component({
@@ -10,43 +9,47 @@ import {AppService} from '../../app.service';
     templateUrl: './profile-account-settings.component.html',
     styleUrls: ['./profile-account-settings.component.css']
 })
-export class ProfileAccountSettingsComponent implements OnInit{
-    public user: object;
+export class ProfileAccountSettingsComponent implements OnInit {
+    public user;
     public updatedUser = {};
     public email: string;
     public company: string;
-    public accountType = 'individual';
+    public accountType;
     public individualAccount: boolean;
-    public userName: string;
     public editUserName: boolean;
     public editEmail: boolean;
     public editAccountType: boolean;
     public saveEnabled = false;
+    private token: string;
+    private userId: string;
 
     constructor(
-        public authGuard: AuthGuard,
         public authService: AuthService,
         public appService: AppService,
         public profileService: ProfileService) {}
 
-    ngOnInit() {
-        this.user = this.authGuard.getSession();
-        this.setInfo();
+    ngOnInit(): void {
+        this.authService.subject.subscribe(res => {
+            this.user =  res['session']['user']['values'];
+            this.token = res['session']['user']['token'];
+            this.userId = res['session']['user']['id'];
+            this.checkAccountType(this.user);
+            this.updateUser();
+        });
+        this.authService.getLocalStorage();
     }
 
-    setInfo() {
-        this.email = this.user['user']['values']['field_19']['email'];
-        this.userName = this.user['user']['values']['field_50'];
-        if (this.user['user']['values']['field_51']) {
-            this.company = this.user['user']['values']['field_51'];
+    checkAccountType(user: object): void {
+        if (user['field_22'] === 'admin') {
             this.accountType = 'Business Admin';
             this.individualAccount = false;
         } else {
+            this.accountType = 'Individual';
             this.individualAccount = true;
         }
     }
 
-    editField(field) {
+    editField(field: string): void {
         if (field === 'userName') {
             this.editUserName = true;
         }
@@ -62,22 +65,21 @@ export class ProfileAccountSettingsComponent implements OnInit{
         this.enableSave();
     }
 
-    enableSave() {
+    enableSave(): void {
         this.saveEnabled = true;
     }
 
-    cancel() {
+    cancel(): void {
         this.saveEnabled = true;
         this.editUserName = false;
         this.editEmail = false;
         this.editAccountType = false;
-        this.setInfo();
     }
 
-    updateUser() {
+    updateUser(): void {
         this.updatedUser['field_19'] = {};
-        this.updatedUser['field_19']['email'] = this.email;
-        this.updatedUser['field_50'] = this.userName;
+        this.updatedUser['field_19']['email'] = this.user['field_19']['email'];
+        this.updatedUser['field_50'] = this.user['field_50'];
         if (this.individualAccount) {
             this.updatedUser['field_22'] = 'individual';
         } else {
@@ -85,20 +87,25 @@ export class ProfileAccountSettingsComponent implements OnInit{
         }
     }
 
-    submitUpdate() {
-        this.updateUser();
-        this.profileService.updateAccountSettings(this.updatedUser, this.user['user']['token'], this.user['user']['id']).subscribe(() => {
+    submitUpdate(): void {
+        if (this.individualAccount) {
+            this.updatedUser['field_22'] = 'individual';
+        } else {
+            this.updatedUser['field_22'] = 'admin';
+        }
+        this.profileService.updateAccountSettings(this.updatedUser, this.token, this.userId).subscribe(() => {
             if (!this.authService.errorResponse) {
                 this.editUserName = false;
                 this.editEmail = false;
                 this.editAccountType = false;
                 this.saveEnabled = false;
+                this.checkAccountType(this.user);
                 this.flashSuccess();
             }
         });
     }
 
-    flashSuccess() {
+    flashSuccess(): void {
         const app = this;
         app.authService.formSuccess = true;
         setTimeout(function () {

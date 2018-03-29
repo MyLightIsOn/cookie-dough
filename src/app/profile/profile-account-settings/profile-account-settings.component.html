@@ -3,13 +3,13 @@
     <form (ngSubmit)="submitUpdate(); false" #updateInfoForm="ngForm">
         <div class="settings-data-container">
             <span class="settings-icon username"></span>
-            <span *ngIf="!editUserName; else editUserNameField" class="settings-value">{{userName}}</span>
+            <span *ngIf="!editUserName; else editUserNameField" class="settings-value">{{user?.field_50}}</span>
             <ng-template #editUserNameField>
                 <input type="text"
                        name="userName"
                        (focus)="appService.fieldFocus()"
                        (focusout)="appService.showNav()"
-                       [(ngModel)]="userName"
+                       [(ngModel)]="updatedUser['field_50']"
                        [ngClass]="{'error-highlight': authService.errorHighlight}"
                        class="account-settings-input-form"
                        required>
@@ -19,13 +19,13 @@
 
         <div class="settings-data-container">
             <span class="settings-icon email"></span>
-            <span  *ngIf="!editEmail; else editEmailField" class="settings-value">{{email}}</span>
+            <span  *ngIf="!editEmail; else editEmailField" class="settings-value">{{user?.field_19.email}}</span>
             <ng-template #editEmailField>
                 <input type="text"
                        name="email"
                        (focus)="appService.fieldFocus()"
                        (focusout)="appService.showNav()"
-                       [(ngModel)]="email"
+                       [(ngModel)]="updatedUser['field_19']['email']"
                        [ngClass]="{'error-highlight': authService.errorHighlight}"
                        class="account-settings-input-form"
                        required>
