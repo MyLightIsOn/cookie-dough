@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
     private userEmail = {};
 
     constructor(
-        private registerService: RegisterService,
+        public registerService: RegisterService,
         public appService: AppService,
         private authService: AuthService) { }
 
