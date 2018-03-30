@@ -4,7 +4,7 @@ import { AuthService } from '../auth.service';
 
 @Injectable()
 export class LoginService {
-    constructor(public authService: AuthService) {}
+    constructor(private authService: AuthService) {}
 
     login(email: string, password: string): void {
         this.authService.login(email, password).subscribe();
