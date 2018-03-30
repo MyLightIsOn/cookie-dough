@@ -2,12 +2,9 @@ import { TestBed, async, inject } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { Router } from '@angular/router';
 
-import { Response, ResponseOptions, ResponseType, Request } from '@angular/http';
-import { MockConnection } from '@angular/http/testing';
-
-import { RegisterService } from '../register.service';
-import { AuthService } from '../../auth.service';
-import { environment } from '../../../environments/environment';
+import { RegisterService } from './register.service';
+import { AuthService } from '../auth.service';
+import { environment } from '../../environments/environment';
 
 const router = {
     navigate: jasmine.createSpy('navigate')
