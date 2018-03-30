@@ -14,7 +14,8 @@ const fakeAuthService = {
     login: () => {},
     checkResponse: {},
     setLocalStorage: {},
-    logout: jasmine.createSpy('logout')
+    logout: jasmine.createSpy('logout'),
+    postLogin: jasmine.createSpy('logout')
 };
 
 describe('AppComponent', () => {
@@ -30,7 +31,9 @@ describe('AppComponent', () => {
     it('should create the app', async(() => {
         const fixture = TestBed.createComponent(LoginComponent);
         const app = fixture.debugElement.componentInstance;
+        app.ngOnInit();
         expect(app).toBeTruthy();
+        expect(fakeAuthService.postLogin).toHaveBeenCalled();
     }));
 
     it('should call the login method from login service', inject([LoginService], (service: LoginService) => {

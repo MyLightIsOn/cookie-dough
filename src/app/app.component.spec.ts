@@ -8,19 +8,37 @@ import { CompaniesService} from './companies/companies.service';
 import { AuthService } from './auth.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
+const mockSession = {
+    session: {
+        user: {
+            id: '1234',
+            token: '4321',
+            values: {
+                field_19: {
+                    email: 'lawrence2978@email.com'
+                },
+                field_34: ['111111111'],
+                field_50: 'lawrence',
+                field_51: 'company'
+            }
+        }
+    }
+};
+
 describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [ AppComponent ],
             imports: [ RouterTestingModule, HttpClientTestingModule, FormsModule ],
-            providers: [ CompaniesService, AuthService, LoginService, AppService ]
+            providers: [ CompaniesService, LoginService, AppService, AuthService ]
         }).compileComponents();
     }));
 
-    it('should create the app', async(() => {
+    it('should create the component', async(() => {
         const fixture = TestBed.createComponent(AppComponent);
         const app = fixture.debugElement.componentInstance;
         app.ngOnInit();
+
         expect(app).toBeTruthy();
     }));
 
@@ -41,14 +59,15 @@ describe('AppComponent', () => {
         expect(app.getPage(outlet)).toBe('mobile-1');
     }));
 
-    it('set the isLoggedIn service prop to true', inject([AuthService], (service: AuthService) => {
+    it('set the isLoggedIn service prop to true', async(inject([AuthService], (service: AuthService) => {
         const fixture = TestBed.createComponent(AppComponent);
         const app = fixture.debugElement.componentInstance;
-        const session = {};
-        service.setLocalStorage(session);
+        service.isLoggedIn = false;
+
+        service.setLocalStorage(mockSession);
         app.ngOnInit();
         expect(service.isLoggedIn).toBe(true);
-    }));
+    })));
 
     it('should log the user out with the auth service', inject([AuthService], (service: AuthService) => {
         const fixture = TestBed.createComponent(AppComponent);
@@ -71,8 +90,6 @@ describe('AppComponent', () => {
     }));
 
     it('should show and hide the nav accordingly', inject([AppService], (service: AppService) => {
-        const fixture = TestBed.createComponent(AppComponent);
-        const app = fixture.debugElement.componentInstance;
         service.searchStarted = true;
         service.showNav();
 
@@ -122,6 +139,19 @@ describe('AppComponent', () => {
 
         app.toggleDropdown();
         expect(app.listOpen).toBeTruthy();
+    }));
+
+    it('should toggle the mobile menu', async(() => {
+        const fixture = TestBed.createComponent(AppComponent);
+        const app = fixture.debugElement.componentInstance;
+
+        app.mobileMenuOpen = false;
+
+        app.openMobileMenu();
+        expect(app.mobileMenuOpen).toBeTruthy();
+
+        app.openMobileMenu();
+        expect(app.mobileMenuOpen).toBeFalsy();
     }));
 });
 

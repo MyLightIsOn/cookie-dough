@@ -26,7 +26,7 @@ export class AuthService {
     public session;
 
     // Sets the local storage for this session
-    static setLocalStorage(session: ISession): void {
+    public setLocalStorage(session: ISession): void {
         localStorage.setItem('currentUser', JSON.stringify(session));
     }
 
@@ -63,7 +63,7 @@ export class AuthService {
             }
         }
         this.subject.next(currentUser);
-        AuthService.setLocalStorage(currentUser);
+        this.setLocalStorage(currentUser);
     }
 
     // Logs the user in and checks the response for an error
@@ -95,7 +95,7 @@ export class AuthService {
     // Checks the response and displays the appropriate error if need be. Otherwise
     // it will set the local storage, turn off errors, and log the user in then
     // redirect.
-    public checkResponse(res: ISession): object {
+    public checkResponse(res: any): object {
         if (res['error']) {
             this.errorMessage = res['error']['errors'][0]['message'];
             this.errorResponse = true;
@@ -103,7 +103,7 @@ export class AuthService {
             this.isLoggedIn = false;
             return res;
         } else {
-            AuthService.setLocalStorage(res);
+            this.setLocalStorage(res);
             this.subject.next(res);
             this.errorResponse = false;
             this.errorHighlight = false;

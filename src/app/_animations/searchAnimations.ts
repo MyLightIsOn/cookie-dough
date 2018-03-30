@@ -164,7 +164,7 @@ export const searchAnimations =
             ])
         ]),
 
-        transition('mobile-profile => mobile-account-settings', [
+        transition('* => mobile-account-settings', [
             group([
                 query(
                     ':enter',
@@ -202,7 +202,7 @@ export const searchAnimations =
             ])
         ]),
 
-        transition('mobile-account-settings => mobile-profile', [
+        transition('mobile-account-settings => *', [
             group([
                 query(
                     ':enter',

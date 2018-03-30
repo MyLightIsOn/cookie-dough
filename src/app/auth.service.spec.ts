@@ -8,6 +8,31 @@ const router = {
     navigate: jasmine.createSpy('navigate')
 };
 
+const mockSession = {
+    session: {
+        user: {
+            id: '1234',
+            token: '4321',
+            values: {
+                field_19: {
+                    email: 'old@email.com'
+                },
+                field_34: ['111111111'],
+                field_50: 'lawrence',
+                field_51: 'company'
+            }
+        }
+    }
+};
+
+const userUpdate = {
+    field_19: {
+        email: 'new@email.com'
+    },
+    field_22: 'individual',
+    field_50: 'test',
+};
+
 describe('AuthService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
@@ -47,8 +72,7 @@ describe('AuthService', () => {
         spyOn(service, 'getLocalStorage');
         service.checkResponse(response);
 
-        expect(service.setLocalStorage).toHaveBeenCalledWith(response['session']);
-        expect(service.getLocalStorage).toHaveBeenCalled();
+        expect(service.setLocalStorage).toHaveBeenCalledWith(response);
         expect(service.isLoggedIn).toBeTruthy();
     }));
 
@@ -63,20 +87,51 @@ describe('AuthService', () => {
 
     it(`should send an expected login request`, async(inject([AuthService, HttpTestingController],
         (service: AuthService, backend: HttpTestingController) => {
-            service.login('foo', 'bar').subscribe();
+            spyOn(service, 'checkResponse');
+
+            service.login('foo', 'bar').subscribe(res => {
+                expect(service.session).toBe(mockSession);
+                expect(service.checkResponse).toHaveBeenCalledWith(mockSession);
+            });
 
             const req = backend.expectOne({method: 'POST'}, environment['BASEURL'] + '/login');
             expect(req.request.method).toEqual('POST');
+            req.flush(mockSession);
+
+            afterEach(() => {
+                backend.verify();
+            });
         }))
     );
 
     it('should set and get the local storage', inject([AuthService], (service: AuthService) => {
-        const session = {
-            session: 'test'
-        };
-        service.setLocalStorage(session);
+        service.setLocalStorage(mockSession);
 
-        expect(service.getLocalStorage()).toEqual({ session: 'test' });
-        expect(service.session).toEqual({ session: 'test' });
+        spyOn(service.subject, 'next');
+
+        service.getLocalStorage();
+        expect(service.isLoggedIn).toBeTruthy();
+        expect(service.subject.next).toHaveBeenCalled();
+    }));
+
+    it('should update the local storage', inject([AuthService], (service: AuthService) => {
+        service.setLocalStorage(mockSession);
+
+        service.updateLocalStorage(userUpdate);
+        const updatedUser = JSON.parse(localStorage.getItem('currentUser'));
+
+
+        const oldUserName = mockSession['session']['user']['values']['field_50'];
+        const newUserName = updatedUser['session']['user']['values']['field_50'];
+
+        expect(oldUserName).not.toBe(newUserName);
+        expect(newUserName).toBe('test');
+    }));
+
+    it('should close the error message', inject([AuthService], (service: AuthService) => {
+        service.errorResponse = true;
+
+        service.closeError();
+        expect(service.errorResponse).toBeFalsy();
     }));
 });
