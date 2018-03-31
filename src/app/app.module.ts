@@ -17,6 +17,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { DialogService } from './dialogs/dialog.service';
 import { AppService } from './app.service';
+import { FlashMessagesService } from './flash-messages.service';
 import { FilterCompaniesPipe } from './_pipes/filter-companies.pipe';
 
 
@@ -43,6 +44,7 @@ import { FilterCompaniesPipe } from './_pipes/filter-companies.pipe';
     ],
     providers: [
         DialogService,
+        FlashMessagesService,
         AppService
     ],
     bootstrap: [AppComponent]

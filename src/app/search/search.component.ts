@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { SearchService } from './search.service';
 import { AppService } from '../app.service';
+import { FlashMessagesService } from '../flash-messages.service';
 
 @Component({
     selector: 'app-search',
@@ -21,7 +22,8 @@ export class SearchComponent implements OnInit {
     constructor(
         private searchService: SearchService,
         public router: Router,
-        public appService: AppService) {}
+        public appService: AppService,
+        public flashMessageService: FlashMessagesService) {}
 
     ngOnInit() {
         this.searchService.paginationPage = undefined;
@@ -39,8 +41,11 @@ export class SearchComponent implements OnInit {
     searchSubmit() {
         if (!this.searchText) {
             this.searchError = true;
+            this.flashMessageService.error = true;
+            this.flashMessageService.createErrorMessage('blank search');
         } else {
             this.searchError = false;
+            this.flashMessageService.error = false;
             this.appService.showNav();
             this.searchService.searchValue(this.searchText);
             this.router.navigate(['/search-results']);

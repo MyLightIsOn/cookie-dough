@@ -80,12 +80,12 @@
         <span class="drop-shadow-effect"></span>
     </nav>
 
-    <span *ngIf="this.authService.errorResponse" class="error-container" (click)="authService.closeError()">
-        <span class="error-message">{{authService.errorMessage}}</span>
+    <span *ngIf="this.flashMessageService.error" class="error-container" (click)="flashMessageService.closeError()">
+        <span class="error-message">{{flashMessageService.message}}</span>
     </span>
 
-    <span *ngIf="this.authService.formSuccess" class="success-container">
-        <span class="success-message">Account Updated</span>
+    <span *ngIf="this.flashMessageService.success" class="success-container">
+        <span class="success-message">{{flashMessageService.message}}</span>
     </span>
 
     <!-- Mobile Menu Logged In -->

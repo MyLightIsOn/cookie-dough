@@ -4,6 +4,7 @@ import { CompaniesService } from './companies/companies.service';
 import { AuthService } from './auth.service';
 import { LoginService } from './login/login.service';
 import { AppService } from './app.service';
+import { FlashMessagesService } from './flash-messages.service';
 
 import { searchAnimations } from './_animations/searchAnimations';
 
@@ -27,7 +28,8 @@ export class AppComponent implements OnInit {
         private companyService: CompaniesService,
         public authService: AuthService,
         private loginService: LoginService,
-        private appService: AppService) {}
+        private appService: AppService,
+        public  flashMessageService: FlashMessagesService) {}
 
     // Gets the screensize for animations, retrieves all of the companies,
     // subscribes to the auth service session and sets it as the user property
