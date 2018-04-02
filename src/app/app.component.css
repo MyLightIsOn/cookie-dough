@@ -177,7 +177,7 @@ nav {
     nav #user-settings span:hover {
       color: #FF9018; }
     nav #user-settings .list-open {
-      z-index: 100;
+      z-index: 11;
       top: 25px; }
   nav #mobile-user-settings {
     height: 50px; }
@@ -316,8 +316,13 @@ nav {
   color: #206b3a; }
 
 .error-message, .success-message {
+  display: block;
   position: relative;
-  width: 90%; }
+  width: 90%;
+  margin: 0 auto 10px; }
+
+.error-message:last-of-type, .success-message:last-of-type {
+  margin-bottom: 0; }
 
 .error-container:before {
   content: '';

@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { FlashMessagesService } from './flash-messages.service';
 
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/delay';
 import {environment} from '../environments/environment';
 import {Subject} from 'rxjs/Subject';
 import {ISession} from './_interfaces/session';
@@ -14,7 +12,9 @@ import {Observable} from 'rxjs/Observable';
 export class AuthService {
     constructor(
         private http: HttpClient,
-        private router: Router) {}
+        private router: Router,
+        public flashMessageService: FlashMessagesService
+    ) {}
 
     public isLoggedIn = true;
     public formSuccess = false;
@@ -69,6 +69,7 @@ export class AuthService {
     // Logs the user in and checks the response for an error
     public login(email: string, password: string): Observable<void> {
         const body = ({'email': email, 'password': password});
+        this.flashMessageService.waiting = true;
         return this.http.post(environment['BASEURL'] + '/api/login', body).map(res => {
             this.session = res;
             this.checkResponse(this.session);
@@ -96,8 +97,8 @@ export class AuthService {
     // it will set the local storage, turn off errors, and log the user in then
     // redirect.
     public checkResponse(res: any): object {
-        if (res['error']) {
-            this.errorMessage = res['error']['errors'][0]['message'];
+        if (res['errors']) {
+            this.flashMessageService.createErrorMessage(res['errors']);
             this.errorResponse = true;
             this.errorHighlight = true;
             this.isLoggedIn = false;
@@ -108,12 +109,9 @@ export class AuthService {
             this.errorResponse = false;
             this.errorHighlight = false;
             this.isLoggedIn = true;
+            this.flashMessageService.waiting = false;
             this.postLogin();
         }
-    }
-
-    public closeError(): void {
-        this.errorResponse = false;
     }
 
     // Logs the user out and clears the local storage.

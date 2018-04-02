@@ -41,7 +41,6 @@ export class SearchComponent implements OnInit {
     searchSubmit() {
         if (!this.searchText) {
             this.searchError = true;
-            this.flashMessageService.error = true;
             this.flashMessageService.createErrorMessage('blank search');
         } else {
             this.searchError = false;

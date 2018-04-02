@@ -80,13 +80,20 @@
         <span class="drop-shadow-effect"></span>
     </nav>
 
+    <!-- Error Messages -->
     <span *ngIf="this.flashMessageService.error" class="error-container" (click)="flashMessageService.closeError()">
-        <span class="error-message">{{flashMessageService.message}}</span>
+        <span *ngFor="let message of flashMessageService.messages" class="error-message">{{message}}</span>
     </span>
 
+    <!-- Success Messages -->
     <span *ngIf="this.flashMessageService.success" class="success-container">
-        <span class="success-message">{{flashMessageService.message}}</span>
+        <span *ngFor="let message of flashMessageService.messages" class="success-message">{{message}}</span>
     </span>
+
+    <!-- Loading Animation -->
+    <div *ngIf="this.flashMessageService.waiting" class="waiting-container">
+        <img src="../../assets/images/loading.gif"/>
+    </div>
 
     <!-- Mobile Menu Logged In -->
     <div *ngIf="this.authService.isLoggedIn; else notLoggedInMenu">

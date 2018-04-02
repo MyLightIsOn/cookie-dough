@@ -1,97 +1,83 @@
 <div id="register-component">
   <section class="register-section">
-    <div *ngIf="registerService.waiting; else notWaiting">
-      <h4>One moment while we register your info!</h4>
-      <img class="waiting-animation" src="../../assets/images/loading.gif" height="250" width="250"/>
-    </div>
-    <ng-template #notWaiting>
-      <div *ngIf="registerService.registrationSuccess; else notRegistered">
-        <div class="message">
-          <h4>Thanks for signing up for Gempathy!</h4>
-          <p>Your status is pending and shortly, you will recieve an email instructions on how to activate this account.</p>
-          <p>If you do not recieve this email, please check your spam/junk mail folder.</p>
-          <p>If it is still not there, contact our team at <a href="mailto:team@gempathy.com?Subject=Registration%20Problem" target="_top">team@gempathy.com</a> for help.</p>
-          <br /><h4>Thanks again from the Gempathy team!</h4>
+    <div class="register-field-container">
+      <h4>Sign Up with Gempathy</h4>
+
+      <div class="role-selector-container">
+        <div class="role-container"
+             [ngClass]="{'role-selected': individualRole == true}"
+             (click)="roleSelect('individual')">
+          <div class="individual-icon role-icon">
+            <img src="../../assets/icons/individual_icon.png" height="75" width="75"/>
+          </div>
+          <span>Individual</span>
+        </div>
+        <h4>Or</h4>
+        <div class="role-container"
+             [ngClass]="{'role-selected': individualRole == false}"
+             (click)="roleSelect('business')">
+          <div class="business-icon role-icon">
+            <img src="../../assets/icons/business.png" height="75" width="75"/>
+          </div>
+          <span>Business</span>
         </div>
       </div>
-      <ng-template #notRegistered>
-        <div class="register-field-container">
-          <h4>Sign Up with Gempathy</h4>
 
-          <div class="role-selector-container">
-            <div class="role-container"
-                 [ngClass]="{'role-selected': individualRole == true}"
-                 (click)="roleSelect('individual')">
-              <div class="individual-icon role-icon">
-                <img src="../../assets/icons/individual_icon.png" height="75" width="75"/>
-              </div>
-              <span>Individual</span>
-            </div>
-            <h4>Or</h4>
-            <div class="role-container"
-                 [ngClass]="{'role-selected': individualRole == false}"
-                 (click)="roleSelect('business')">
-              <div class="business-icon role-icon">
-                <img src="../../assets/icons/business.png" height="75" width="75"/>
-              </div>
-              <span>Business</span>
-            </div>
-          </div>
+      <form (ngSubmit)="submitRegistration()" #registerForm="ngForm">
+        <span class="register-input-label">username</span>
+        <input type="username" class="register-input-form"
+               name="username"
+               (focus)="appService.fieldFocus()"
+               (focusout)="appService.showNav()"
+               (keyup.enter)="submitRegistration()"
+               [ngClass]="{'error-highlight': this.flashMessageService.field_50}"
+               [(ngModel)]="username"
+               required>
 
-          <!-- These aren't required so maybe we will go without them for now-->
-          <!--<span class="register-input-label">first name</span>
-          <input type="text" class="register-input-form">
+        <span class="register-input-label">email</span>
+        <input type="email" class="register-input-form"
+               name="email"
+               (focus)="appService.fieldFocus()"
+               (focusout)="appService.showNav()"
+               (keyup.enter)="submitRegistration()"
+               [ngClass]="{'error-highlight': this.flashMessageService.field_19}"
+               [(ngModel)]="email"
+               required>
 
-          <span class="register-input-label">last name</span>
-          <input type="text" class="register-input-form">-->
+        <span class="register-input-label">password</span>
+        <input type="password" class="register-input-form"
+               name="password"
+               (focus)="appService.fieldFocus()"
+               (focusout)="appService.showNav()"
+               (keyup.enter)="submitRegistration()"
+               [ngClass]="{'error-highlight': this.flashMessageService.field_20}"
+               [(ngModel)]="password"
+               minlength="6"
+               required>
 
-          <form (ngSubmit)="submitRegistration()" #registerForm="ngForm">
-            <span class="register-input-label">username</span>
-            <input type="username" class="register-input-form"
-                   name="username"
-                   (focus)="appService.fieldFocus()"
-                   (focusout)="appService.showNav()"
-                   (keyup.enter)="submitRegistration()"
-                   [ngClass]="{'error-highlight': noUsername}"
-                   [(ngModel)]="username"
-                   required>
+        <span class="register-input-label">confirm password</span>
+        <input type="password"
+               name="password-confirm"
+               (focus)="appService.fieldFocus()"
+               (focusout)="appService.showNav()"
+               (keyup.enter)="submitRegistration()"
+               [ngClass]="{'error-highlight': confirmFieldError}"
+               class="register-input-form"
+               [(ngModel)]="passwordMatch"
+               required>
+        <br />
+        <button type="submit" class="submit-registration orange-button">Submit</button>
+      </form>
+    </div>
 
-            <span class="register-input-label">email</span>
-            <input type="email" class="register-input-form"
-                   name="email"
-                   (focus)="appService.fieldFocus()"
-                   (focusout)="appService.showNav()"
-                   (keyup.enter)="submitRegistration()"
-                   [ngClass]="{'error-highlight': noEmail}"
-                   [(ngModel)]="email"
-                   required>
-
-            <span class="register-input-label">password</span>
-            <input type="password" class="register-input-form"
-                   name="password"
-                   (focus)="appService.fieldFocus()"
-                   (focusout)="appService.showNav()"
-                   (keyup.enter)="submitRegistration()"
-                   [ngClass]="{'error-highlight': passwordError}"
-                   [(ngModel)]="password"
-                   minlength="6"
-                   required>
-
-            <span class="register-input-label">confirm password</span>
-            <input type="password"
-                   name="password-confirm"
-                   (focus)="appService.fieldFocus()"
-                   (focusout)="appService.showNav()"
-                   (keyup.enter)="submitRegistration()"
-                   [ngClass]="{'error-highlight': passwordError}"
-                   class="register-input-form"
-                   [(ngModel)]="passwordMatch"
-                   required>
-            <br />
-            <button type="submit" class="submit-registration orange-button">Submit</button>
-          </form>
-        </div>
-      </ng-template>
-    </ng-template>
+    <!--<div *ngIf="registerService.registrationSuccess; else notRegistered">
+      <div class="message">
+        <h4>Thanks for signing up for Gempathy!</h4>
+        <p>Your status is pending and shortly, you will recieve an email instructions on how to activate this account.</p>
+        <p>If you do not recieve this email, please check your spam/junk mail folder.</p>
+        <p>If it is still not there, contact our team at <a href="mailto:team@gempathy.com?Subject=Registration%20Problem" target="_top">team@gempathy.com</a> for help.</p>
+        <br /><h4>Thanks again from the Gempathy team!</h4>
+      </div>
+    </div>-->
   </section>
 </div>
