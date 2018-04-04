@@ -1,6 +1,6 @@
 <div id="register-component">
   <section class="register-section">
-    <div class="register-field-container">
+    <div *ngIf="!registerService.registrationSuccess; else successfulRegistration" class="register-field-container">
       <h4>Sign Up with Gempathy</h4>
 
       <div class="role-selector-container">
@@ -61,7 +61,7 @@
                (focus)="appService.fieldFocus()"
                (focusout)="appService.showNav()"
                (keyup.enter)="submitRegistration()"
-               [ngClass]="{'error-highlight': confirmFieldError}"
+               [ngClass]="{'error-highlight': this.flashMessageService.passwordConfirm}"
                class="register-input-form"
                [(ngModel)]="passwordMatch"
                required>
@@ -69,8 +69,7 @@
         <button type="submit" class="submit-registration orange-button">Submit</button>
       </form>
     </div>
-
-    <!--<div *ngIf="registerService.registrationSuccess; else notRegistered">
+    <ng-template #successfulRegistration>
       <div class="message">
         <h4>Thanks for signing up for Gempathy!</h4>
         <p>Your status is pending and shortly, you will recieve an email instructions on how to activate this account.</p>
@@ -78,6 +77,6 @@
         <p>If it is still not there, contact our team at <a href="mailto:team@gempathy.com?Subject=Registration%20Problem" target="_top">team@gempathy.com</a> for help.</p>
         <br /><h4>Thanks again from the Gempathy team!</h4>
       </div>
-    </div>-->
+    </ng-template>
   </section>
 </div>

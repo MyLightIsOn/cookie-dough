@@ -13,14 +13,10 @@ export class RegisterComponent implements OnInit {
     public email: string;
     public password: string;
     public passwordMatch: string;
-    private role = 'Individual';
+    private accountType = 'Individual';
     private individualRole: boolean;
     private user = {};
     private userEmail = {};
-    public field_50 = false; // username
-    public field_19 = false; // email
-    public field_20 = false; // password
-    public confirmFieldError = false;
 
     constructor(
         public registerService: RegisterService,
@@ -38,25 +34,26 @@ export class RegisterComponent implements OnInit {
     roleSelect(role: string): void {
         if (role === 'individual') {
             this.individualRole = true;
-            this.role = 'Individual';
+            this.accountType = 'Individual';
         } else {
             this.individualRole = false;
-            this.role = 'Business Owner';
+            this.accountType = 'Business Owner';
         }
     }
 
     // Validates if the fields are correct and if so, builds the email object and submits the registration.
     submitRegistration(): void {
-        if (this.password === this.passwordMatch) {
+        if (this.password !== this.passwordMatch) {
+            this.flashMessageService.createErrorMessage('confirm passwords');
+            this.flashMessageService.field_20 = true;
+            this.flashMessageService.passwordConfirm = true;
+        } else {
             this.user['field_50'] = this.username;
             this.userEmail['email'] = this.email;
             this.user['field_19'] = this.userEmail;
             this.user['field_20'] = this.password;
-            this.user['field_22'] = this.role;
+            this.user['field_22'] = this.accountType;
             this.registerService.registerUser(this.user).subscribe();
-        } else {
-            this.flashMessageService.createErrorMessage('confirm passwords');
-            this.confirmFieldError = true;
         }
     }
 }

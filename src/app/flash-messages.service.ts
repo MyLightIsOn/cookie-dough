@@ -9,7 +9,14 @@ export class FlashMessagesService {
     public success: boolean;
     public messages: string[];
     public field: string;
-    public waiting: boolean;
+    public waiting: boolean
+
+    // fields errors
+    public field_50: boolean; // username
+    public field_19: boolean; // email
+    public field_20: boolean; // password
+    public field_22: boolean; // account type
+    public passwordConfirm: boolean; // password confirm
 
     // Allows the user to close the error
     public closeError(): void {
