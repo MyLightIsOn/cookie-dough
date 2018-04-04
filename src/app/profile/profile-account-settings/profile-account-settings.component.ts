@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {ProfileService} from '../profile.service';
 import {AuthService} from '../../auth.service';
 import {AppService} from '../../app.service';
+import {FlashMessagesService} from '../../flash-messages.service';
 
 @Component({
     selector: 'app-profile-dashboard',
@@ -26,7 +27,8 @@ export class ProfileAccountSettingsComponent implements OnInit {
     constructor(
         public authService: AuthService,
         public appService: AppService,
-        public profileService: ProfileService) {}
+        public profileService: ProfileService,
+        public flashMessageService: FlashMessagesService) {}
 
     ngOnInit(): void {
         this.authService.subject.subscribe(res => {
@@ -94,22 +96,13 @@ export class ProfileAccountSettingsComponent implements OnInit {
             this.updatedUser['field_22'] = 'admin';
         }
         this.profileService.updateAccountSettings(this.updatedUser, this.token, this.userId).subscribe(() => {
-            if (!this.authService.errorResponse) {
+            if (!this.flashMessageService.error) {
                 this.editUserName = false;
                 this.editEmail = false;
                 this.editAccountType = false;
                 this.saveEnabled = false;
                 this.checkAccountType(this.user);
-                this.flashSuccess();
             }
         });
-    }
-
-    flashSuccess(): void {
-        const app = this;
-        app.authService.formSuccess = true;
-        setTimeout(function () {
-            app.authService.formSuccess = false;
-        }, 3000);
     }
 }

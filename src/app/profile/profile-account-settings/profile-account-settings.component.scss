@@ -17,23 +17,34 @@
   z-index: 1;
   background-color: $light-blue;
   padding: $mobile-padding;
+  color: $dark-blue;
 
+  .settings-data-container.edit-field {
+    max-height: 500px;
+
+    .settings-icon:after {
+      top: -20px;
+    }
+  }
+  
   .settings-data-container {
     position: relative;
     background-color: $white;
     padding: 30px 30px 30px 55px;
     margin-bottom: 5px;
-    height: 77px;
+    transition: max-height 1s;
+    max-height: 77px;
 
     .edit {
       display: block;
       background-color: $medium-blue;
-      height: 75px;
+      height: 100%;
       width: 40px;
       position: absolute;
       right: 0;
       top: 1px;
       z-index: 2;
+      transition: max-height 1s;
     }
 
     .edit:after {
@@ -44,7 +55,7 @@
       background: url("/assets/icons/white_edit_icon.png") no-repeat;
       background-size: 20px;
       position: relative;
-      top: 26px;
+      top: 35%;   
       left: 10px;
     }
 
@@ -88,6 +99,16 @@
     position: absolute;
   }
 
+  .settings-icon:after {
+    position: absolute;
+    font-size: 13px;
+    top: -12px;
+    color: $medium-blue;
+    display: block;
+    width: 300px;
+    transition: top 0.5s;
+  }
+
   .username:before {
     background: url("/assets/icons/dark_blue_user.png") no-repeat;
     left: -40px;
@@ -100,10 +121,32 @@
     top: -1px;
   }
 
+  .individual:before {
+    background: url("/assets/icons/dark_blue_user.png") no-repeat;
+    left: -40px;
+    top: -4px;
+  }
+
   .business:before {
     background: url("/assets/icons/dark_blue_business.png") no-repeat;
     left: -40px;
     top: -8px;
+  }
+
+  .username:after {
+    content: 'username';
+  }
+
+  .email:after {
+    content: 'email address';
+  }
+
+  .business:after {
+    content: 'account type';
+  }
+
+  .individual:after {
+    content: 'account type';
   }
 
   .account-type-open {
@@ -119,17 +162,22 @@
     }
   }
 
+  .settings-value {
+    position: relative;
+    top: 10px;
+  }
+
   .account-settings-input-form {
     @include form-field;
     border: 1px $dark-blue solid;
     margin: 0;
-    top: -14px;
+    top: 5px;
   }
 
   .account-settings-type-select {
     padding-left: 15px;
     position: relative;
-    top: -8px;
+    top: 8px;
 
     .account-type-select-button {
       display: block;

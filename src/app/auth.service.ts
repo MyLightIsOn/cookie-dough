@@ -17,10 +17,6 @@ export class AuthService {
     ) {}
 
     public isLoggedIn = true;
-    public formSuccess = false;
-    public errorResponse = false;
-    public errorMessage: string;
-    public errorHighlight;
     public redirectUrl: string;
     public subject = new Subject();
     public session;
@@ -99,16 +95,13 @@ export class AuthService {
     public checkResponse(res: any): object {
         if (res['errors']) {
             this.flashMessageService.createErrorMessage(res['errors']);
-            this.errorResponse = true;
-            this.errorHighlight = true;
             this.isLoggedIn = false;
             return res;
         } else {
             this.setLocalStorage(res);
             this.subject.next(res);
-            this.errorResponse = false;
-            this.errorHighlight = false;
             this.isLoggedIn = true;
+            this.flashMessageService.error = false;
             this.flashMessageService.waiting = false;
             this.postLogin();
         }

@@ -122,22 +122,29 @@
   position: relative;
   z-index: 1;
   background-color: #CCD1EB;
-  padding: 65px 15px; }
+  padding: 65px 15px;
+  color: #191E50; }
+  #account-settings-container .settings-data-container.edit-field {
+    max-height: 500px; }
+    #account-settings-container .settings-data-container.edit-field .settings-icon:after {
+      top: -20px; }
   #account-settings-container .settings-data-container {
     position: relative;
     background-color: #F9FCFE;
     padding: 30px 30px 30px 55px;
     margin-bottom: 5px;
-    height: 77px; }
+    transition: max-height 1s;
+    max-height: 77px; }
     #account-settings-container .settings-data-container .edit {
       display: block;
       background-color: #616697;
-      height: 75px;
+      height: 100%;
       width: 40px;
       position: absolute;
       right: 0;
       top: 1px;
-      z-index: 2; }
+      z-index: 2;
+      transition: max-height 1s; }
     #account-settings-container .settings-data-container .edit:after {
       content: '';
       display: block;
@@ -146,7 +153,7 @@
       background: url("/assets/icons/white_edit_icon.png") no-repeat;
       background-size: 20px;
       position: relative;
-      top: 26px;
+      top: 35%;
       left: 10px; }
     #account-settings-container .settings-data-container .edit-field:before {
       background-color: #FF9018;
@@ -171,6 +178,14 @@
     width: 30px;
     height: 30px;
     position: absolute; }
+  #account-settings-container .settings-icon:after {
+    position: absolute;
+    font-size: 13px;
+    top: -12px;
+    color: #616697;
+    display: block;
+    width: 300px;
+    transition: top 0.5s; }
   #account-settings-container .username:before {
     background: url("/assets/icons/dark_blue_user.png") no-repeat;
     left: -40px;
@@ -179,10 +194,22 @@
     background: url("/assets/icons/dark_blue_email.png") no-repeat;
     left: -40px;
     top: -1px; }
+  #account-settings-container .individual:before {
+    background: url("/assets/icons/dark_blue_user.png") no-repeat;
+    left: -40px;
+    top: -4px; }
   #account-settings-container .business:before {
     background: url("/assets/icons/dark_blue_business.png") no-repeat;
     left: -40px;
     top: -8px; }
+  #account-settings-container .username:after {
+    content: 'username'; }
+  #account-settings-container .email:after {
+    content: 'email address'; }
+  #account-settings-container .business:after {
+    content: 'account type'; }
+  #account-settings-container .individual:after {
+    content: 'account type'; }
   #account-settings-container .account-type-open {
     height: 130px; }
     #account-settings-container .account-type-open .edit, #account-settings-container .account-type-open .medium-blue-button:before {
@@ -190,6 +217,9 @@
       border-radius: 0 0 6px 0 !important; }
     #account-settings-container .account-type-open .edit:after {
       top: 50px; }
+  #account-settings-container .settings-value {
+    position: relative;
+    top: 10px; }
   #account-settings-container .account-settings-input-form {
     background-color: #F9FCFE;
     -webkit-box-shadow: inset 10px 10px 5px -10.5px rgba(0, 0, 0, 0.75);
@@ -206,11 +236,11 @@
     top: 0;
     border: 1px #191E50 solid;
     margin: 0;
-    top: -14px; }
+    top: 5px; }
   #account-settings-container .account-settings-type-select {
     padding-left: 15px;
     position: relative;
-    top: -8px; }
+    top: 8px; }
     #account-settings-container .account-settings-type-select .account-type-select-button {
       display: block;
       position: relative;

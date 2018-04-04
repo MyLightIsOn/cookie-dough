@@ -30,12 +30,18 @@
             <div *ngIf="this.authService.isLoggedIn; else notLoggedIn" id="mobile-user-settings" class="mobile">
 
                 <!-- Opens mobile menu-->
-                <span class="mobile-user-name" *ngIf="user && !mobileMenuOpen">{{user?.values.field_50}}</span>
-                <span class="mobile menu-icon" (click)="openMobileMenu()" *ngIf="user && !mobileMenuOpen"></span>
+                <div (click)="openMobileMenu()">
+                    <span class="mobile-user-name" *ngIf="user && !mobileMenuOpen">{{user?.values.field_50}}</span>
+                    <span class="mobile menu-icon" *ngIf="user && !mobileMenuOpen"></span>
+                </div>
 
                 <!-- Close mobile menu -->
-                <span class="mobile-user-name" *ngIf="user && mobileMenuOpen">close settings</span>
-                <span class="mobile menu-close-icon" (click)="openMobileMenu()" *ngIf="user && mobileMenuOpen"></span>
+                 <div (click)="openMobileMenu()">
+                     <span class="mobile-user-name" *ngIf="user && mobileMenuOpen">close settings</span>
+                     <span class="mobile menu-close-icon" *ngIf="user && mobileMenuOpen"></span>
+                 </div>
+
+
                 
                 <br /><br />
                 <ul class="nav-dropdown-list mobile" [ngClass]="{'mobile-menu-open': mobileMenuOpen}">

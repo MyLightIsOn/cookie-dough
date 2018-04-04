@@ -11,7 +11,7 @@ export class FlashMessagesService {
     public field: string;
     public waiting: boolean
 
-    // fields errors
+    // field errors
     public field_50: boolean; // username
     public field_19: boolean; // email
     public field_20: boolean; // password
@@ -70,6 +70,10 @@ export class FlashMessagesService {
             // Successful registration.
             case 'registration':
                 this.messages.push('Registration is successful');
+                break;
+
+            case 'account update':
+                this.messages.push('Account update is successful');
                 break;
         }
 

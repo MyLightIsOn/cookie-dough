@@ -1,7 +1,7 @@
 <div id="account-settings-container">
     <h5 class="page-title">Account Settings</h5>
     <form (ngSubmit)="submitUpdate(); false" #updateInfoForm="ngForm">
-        <div class="settings-data-container">
+        <div class="settings-data-container" [ngClass]="{'edit-field': editUserName}">
             <span class="settings-icon username"></span>
             <span *ngIf="!editUserName; else editUserNameField" class="settings-value">{{user?.field_50}}</span>
             <ng-template #editUserNameField>
@@ -10,14 +10,14 @@
                        (focus)="appService.fieldFocus()"
                        (focusout)="appService.showNav()"
                        [(ngModel)]="updatedUser['field_50']"
-                       [ngClass]="{'error-highlight': authService.errorHighlight}"
+                       [ngClass]="{'error-highlight': this.flashMessageService.field_50}"
                        class="account-settings-input-form"
                        required>
             </ng-template>
             <span class="edit medium-blue-button" [ngClass]="{'edit-field': editUserName}" (click)="editField('userName')"></span>
         </div>
 
-        <div class="settings-data-container">
+        <div class="settings-data-container" [ngClass]="{'edit-field': editEmail}">
             <span class="settings-icon email"></span>
             <span  *ngIf="!editEmail; else editEmailField" class="settings-value">{{user?.field_19.email}}</span>
             <ng-template #editEmailField>
@@ -26,16 +26,16 @@
                        (focus)="appService.fieldFocus()"
                        (focusout)="appService.showNav()"
                        [(ngModel)]="updatedUser['field_19']['email']"
-                       [ngClass]="{'error-highlight': authService.errorHighlight}"
+                       [ngClass]="{'error-highlight': this.flashMessageService.field_19}"
                        class="account-settings-input-form"
                        required>
             </ng-template>
             <span class="edit medium-blue-button" [ngClass]="{'edit-field': editEmail}"  (click)="editField('email')"></span>
         </div>
 
-        <div class="settings-data-container" [ngClass]="{'account-type-open': editAccountType}">
+        <div class="settings-data-container" [ngClass]="{'edit-field': editAccountType}">
             <span *ngIf="!individualAccount" class="settings-icon business"></span>
-            <span *ngIf="individualAccount" class="settings-icon username"></span>
+            <span *ngIf="individualAccount" class="settings-icon individual"></span>
             <span *ngIf="!editAccountType; else editAccountField" class="settings-value">{{accountType}}</span>
             <ng-template #editAccountField>
                 <div class="account-settings-type-select">
