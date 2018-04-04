@@ -11,7 +11,7 @@ import { AppService } from '../../app.service';
 
 
 import { Observable } from 'rxjs/Observable';
-import {FlashMessagesService} from '../../flash-messages.service';
+import { FlashMessagesService } from '../../flash-messages.service';
 
 const fakeActivatedRoute = {
     params: Observable.of({id: '123'})
