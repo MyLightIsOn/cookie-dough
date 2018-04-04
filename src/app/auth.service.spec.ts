@@ -1,5 +1,6 @@
 import { TestBed, inject, async } from '@angular/core/testing';
 import { Router } from '@angular/router';
+import { FlashMessagesService } from './flash-messages.service';
 import { AuthService } from './auth.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import {environment} from '../environments/environment';
@@ -37,7 +38,7 @@ describe('AuthService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [ HttpClientTestingModule ],
-            providers: [ AuthService,
+            providers: [ FlashMessagesService, AuthService,
                 { provide: Router, useValue: router }
                 ]
         });
@@ -47,20 +48,19 @@ describe('AuthService', () => {
         expect(service).toBeTruthy();
     }));
 
-    it('should be return an error response', inject([AuthService], (service: AuthService) => {
+    it('should be return an error response', inject([AuthService, FlashMessagesService], (service: AuthService, flashMessageService: FlashMessagesService) => {
         const response = {
-            error : {
-                errors: [
-                    {
-                        message: 'test'
-                    }
-                ]
-            }
+            errors: [
+                {
+                    message: 'test'
+                }
+            ]
         };
+        spyOn(flashMessageService, 'createErrorMessage');
+
         service.checkResponse(response);
 
-        expect(service.errorResponse).toBeTruthy();
-        expect(service.errorMessage).toBe('test');
+        expect(flashMessageService.createErrorMessage).toHaveBeenCalledWith(response['errors']);
         expect(service.isLoggedIn).toBeFalsy();
     }));
 
@@ -128,10 +128,11 @@ describe('AuthService', () => {
         expect(newUserName).toBe('test');
     }));
 
-    it('should close the error message', inject([AuthService], (service: AuthService) => {
-        service.errorResponse = true;
+    it('should remained logged out', inject([AuthService], (service: AuthService) => {
+        service.setLocalStorage(mockSession);
+        localStorage.clear();
 
-        service.closeError();
-        expect(service.errorResponse).toBeFalsy();
+        service.getLocalStorage();
+        expect(service.isLoggedIn).toBeFalsy();
     }));
 });

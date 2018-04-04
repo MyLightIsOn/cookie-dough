@@ -1,10 +1,11 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import {ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router'
+import {ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import {FlashMessagesService} from '../flash-messages.service';
 
 const router = {
     navigate: jasmine.createSpy('navigate')
@@ -29,11 +30,11 @@ const mockLocalStorage = {
 const fakeRoute = new ActivatedRouteSnapshot();
 const mockSnapshot = jasmine.createSpyObj<RouterStateSnapshot>('RouterStateSnapshot', ['toString']);
 
-describe('AuthService', () => {
+describe('AuthGuard', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [ HttpClientTestingModule ],
-            providers: [ AuthGuard, AuthService,
+            providers: [ AuthGuard, AuthService, FlashMessagesService,
                 { provide: Router, useValue: router },
                 {provide: RouterStateSnapshot, useValue: mockSnapshot}
                 ]
