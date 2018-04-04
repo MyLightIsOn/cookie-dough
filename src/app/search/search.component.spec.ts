@@ -1,12 +1,12 @@
 import {async, TestBed, inject, ComponentFixture} from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { SearchComponent } from './search.component';
 import { SearchService } from './search.service';
 import { AppService } from '../app.service';
-
+import { FlashMessagesService } from '../flash-messages.service';
 
 const mockCompanyService = {
     searchValue: jasmine.createSpy('searchValue')
@@ -24,7 +24,7 @@ describe('SearchComponent', () => {
         TestBed.configureTestingModule({
             declarations: [ SearchComponent ],
             imports: [ HttpClientTestingModule, FormsModule ],
-            providers: [ AppService,
+            providers: [ AppService, FlashMessagesService,
                 { provide: SearchService, useValue: mockCompanyService },
                 { provide: Router, useValue: router }
             ]
@@ -85,4 +85,13 @@ describe('SearchComponent', () => {
         component.searchSubmit();
         expect(component.searchError).toBeTruthy();
     }));
+
+    it('should show an error with no search text', async(inject([FlashMessagesService],
+        (flashService: FlashMessagesService) => {
+            spyOn(flashService, 'createErrorMessage');
+
+            component.searchSubmit();
+            expect(flashService.createErrorMessage).toHaveBeenCalledWith('blank search');
+        }))
+    );
 });

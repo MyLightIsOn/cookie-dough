@@ -11,6 +11,7 @@ import { AppService } from '../../app.service';
 
 
 import { Observable } from 'rxjs/Observable';
+import {FlashMessagesService} from '../../flash-messages.service';
 
 const fakeActivatedRoute = {
     params: Observable.of({id: '123'})
@@ -26,7 +27,7 @@ describe('RegisterVerifyComponent', () => {
         TestBed.configureTestingModule({
             declarations: [ RegisterVerifyComponent ],
             imports: [ FormsModule, HttpClientTestingModule ],
-            providers: [ RegisterService, AuthService, LoginService, AppService,
+            providers: [ RegisterService, AuthService, LoginService, AppService, FlashMessagesService,
                 { provide: ActivatedRoute, useValue: fakeActivatedRoute },
                 { provide: Router, useValue: fakeRoute}
                 ]

@@ -39,12 +39,12 @@ export class RegisterService {
         const activate = {};
         activate['field_21'] = 'active';
         return this.http.put(environment['BASEURL'] + '/api/verify?id=' + id, activate).map((res) => {
-            if (res['error']) {
+            if (res['errors']) {
                 this.flashMessageService.createErrorMessage(res['errors']);
                 this.registrationSuccess = false;
                 this.accountVerified = false;
             } else {
-                this.accountVerified = false;
+                this.accountVerified = true;
             }
         });
     }

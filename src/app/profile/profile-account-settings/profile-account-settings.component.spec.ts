@@ -8,6 +8,7 @@ import { AuthService } from '../../auth.service';
 import { AppService } from '../../app.service';
 import {ProfileAccountSettingsComponent} from './profile-account-settings.component';
 import { Observable } from 'rxjs/Observable';
+import { FlashMessagesService } from '../../flash-messages.service';
 
 const fakeRoute = {};
 
@@ -19,7 +20,7 @@ describe('ProfileAccountSettingsComponent', () => {
         TestBed.configureTestingModule({
             declarations: [ ProfileAccountSettingsComponent ],
             imports: [ FormsModule, HttpClientTestingModule ],
-            providers: [ ProfileService, AuthService, AppService,
+            providers: [ ProfileService, AuthService, AppService, FlashMessagesService,
                 { provide: Router, useValue: fakeRoute },
                 { provide: ActivatedRoute, useValue: fakeRoute }
             ]
@@ -121,37 +122,29 @@ describe('ProfileAccountSettingsComponent', () => {
         expect(component.updatedUser['field_22']).toEqual('individual');
     });
 
-    it('should flash the success message', inject([AuthService], (service: AuthService) => {
-        component.flashSuccess();
-
-        expect(service.formSuccess).toBeTruthy();
-    }));
-
     it('should make fields not editable after success', async(inject(
-        [ProfileService, AuthService], (service: ProfileService, authService: AuthService) => {
-            authService.errorResponse = false;
-            spyOn(service, 'updateAccountSettings').and.returnValue(Observable.of('some value'));
+        [ProfileService], (service: ProfileService) => {
+            const user = {
+                field_19: {
+                    email: 'test@email.com'
+                },
+                field_50: 'test',
+                field_22: 'individual'
+            };
+
+            component.user = user;
+            component.individualAccount = false;
             component.editUserName = true;
             component.editEmail = true;
             component.editAccountType = true;
+            component.individualAccount = true;
+
+            spyOn(service, 'updateAccountSettings').and.returnValue(Observable.of('some value'));
 
             component.submitUpdate();
             expect(component.editUserName).toBeFalsy();
             expect(component.editEmail).toBeFalsy();
             expect(component.editAccountType).toBeFalsy();
-        })));
-
-    it('should keep fields editable after an error', async(inject(
-        [ProfileService, AuthService], (service: ProfileService, authService: AuthService) => {
-            authService.errorResponse = true;
-            spyOn(service, 'updateAccountSettings').and.returnValue(Observable.of('some value'));
-            component.editUserName = true;
-            component.editEmail = true;
-            component.editAccountType = true;
-
-            component.submitUpdate();
-            expect(component.editUserName).toBeTruthy();
-            expect(component.editEmail).toBeTruthy();
-            expect(component.editAccountType).toBeTruthy();
-        })));
+        })
+    ));
 });

@@ -7,6 +7,7 @@ import { RegisterComponent } from './register.component';
 import { RegisterService } from './register.service';
 import { AuthService } from '../auth.service';
 import { AppService } from '../app.service';
+import {FlashMessagesService} from '../flash-messages.service';
 
 const fakeRoute = {};
 
@@ -18,7 +19,7 @@ describe('RegisterComponent', () => {
         TestBed.configureTestingModule({
             declarations: [ RegisterComponent ],
             imports: [ FormsModule, HttpClientTestingModule ],
-            providers: [ RegisterService, AuthService, AppService,
+            providers: [ RegisterService, AuthService, AppService, FlashMessagesService,
                 { provide: Router, useValue: fakeRoute },
                 { provide: ActivatedRoute, useValue: fakeRoute }
                 ]
@@ -41,53 +42,25 @@ describe('RegisterComponent', () => {
         component.roleSelect('individual');
 
         expect(component['individualRole']).toBeTruthy();
-        expect(component['role']).toBe('Individual');
+        expect(component['accountType']).toBe('Individual');
 
         component.roleSelect('business');
         expect(component['individualRole']).toBeFalsy();
-        expect(component['role']).toBe('Business Owner');
+        expect(component['accountType']).toBe('Business Owner');
     });
 
-    it('should tell the user to choose an username',  inject([AuthService], (authService: AuthService) => {
-        component.username = undefined;
-
-        component.submitRegistration();
-        expect(authService.errorMessage).toBe('Must choose a username');
-        expect(authService.errorResponse).toBeTruthy();
-        expect(component['noUsername']).toBeTruthy();
-    }));
-
-    it('should tell the user to include an email',  inject([AuthService], (authService: AuthService) => {
-        component.username = 'test user';
-        component.email = undefined;
-
-        component.submitRegistration();
-        expect(authService.errorMessage).toBe('Must include an email');
-        expect(authService.errorResponse).toBeTruthy();
-        expect(component['noEmail']).toBeTruthy();
-    }));
-
-    it('should tell the user to include a password',  inject([AuthService], (authService: AuthService) => {
-        component.username = 'test user';
-        component.email = 'test';
-        component.password = undefined;
-
-        component.submitRegistration();
-        expect(authService.errorMessage).toBe('Must include a password');
-        expect(authService.errorResponse).toBeTruthy();
-        expect(component['passwordError']).toBeTruthy();
-    }));
-
-    it('should tell the user that passwords need to match',  inject([AuthService], (authService: AuthService) => {
+    it('should tell the user that passwords need to match',  inject([FlashMessagesService], (flashService: FlashMessagesService) => {
         component.username = 'test user';
         component.email = 'test';
         component.password = '123';
         component.passwordMatch = '456';
 
+        spyOn(flashService, 'createErrorMessage');
+
         component.submitRegistration();
-        expect(authService.errorMessage).toBe('Passwords do not match');
-        expect(authService.errorResponse).toBeTruthy();
-        expect(component['passwordError']).toBeTruthy();
+        expect(flashService.passwordConfirm).toBeTruthy();
+        expect(flashService.field_20).toBeTruthy();
+        expect(flashService.createErrorMessage).toHaveBeenCalledWith('confirm passwords');
     }));
 
     it('should set the user object',  inject([AuthService], (authService: AuthService) => {
@@ -103,6 +76,6 @@ describe('RegisterComponent', () => {
         expect(component['user']['field_19']['email']).toBe('test');
         expect(component['user']['field_20']).toBe('123');
         expect(component['user']['field_22']).toBe('Individual');
-        expect(component['role']).toBe('Individual');
+        expect(component['accountType']).toBe('Individual');
     }));
 });

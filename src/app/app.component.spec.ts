@@ -7,6 +7,7 @@ import { LoginService } from './login/login.service';
 import { CompaniesService} from './companies/companies.service';
 import { AuthService } from './auth.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FlashMessagesService } from './flash-messages.service';
 
 const mockSession = {
     session: {
@@ -30,7 +31,7 @@ describe('AppComponent', () => {
         TestBed.configureTestingModule({
             declarations: [ AppComponent ],
             imports: [ RouterTestingModule, HttpClientTestingModule, FormsModule ],
-            providers: [ CompaniesService, LoginService, AppService, AuthService ]
+            providers: [ CompaniesService, LoginService, AppService, AuthService, FlashMessagesService ]
         }).compileComponents();
     }));
 

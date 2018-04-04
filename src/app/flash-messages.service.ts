@@ -9,7 +9,7 @@ export class FlashMessagesService {
     public success: boolean;
     public messages: string[];
     public field: string;
-    public waiting: boolean
+    public waiting: boolean;
 
     // field errors
     public field_50: boolean; // username

@@ -4,6 +4,7 @@ import { ProfileService } from './profile.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { AuthService } from '../auth.service';
 import { environment } from '../../environments/environment';
+import {FlashMessagesService} from '../flash-messages.service';
 
 const router = {
     navigate: jasmine.createSpy('navigate')
@@ -35,18 +36,16 @@ const userUpdate = {
 };
 
 const mockError = {
-    error: {
-        errors: [
-            {message: 'error'}
-        ]
-    }
+    errors: [
+        { message: 'error' }
+    ]
 };
 
 describe('ProfileService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [ HttpClientTestingModule ],
-            providers: [ ProfileService, AuthService,
+            providers: [ ProfileService, AuthService, FlashMessagesService,
                 { provide: Router, useValue: router }
             ]
         });
@@ -56,13 +55,19 @@ describe('ProfileService', () => {
         expect(service).toBeTruthy();
     }));
 
-    it(`should send a put request to the backend`, async(inject([ProfileService, HttpTestingController, AuthService],
-        (service: ProfileService, backend: HttpTestingController, authService: AuthService) => {
+    it(`should send a put request to the backend`, async(inject([ProfileService, HttpTestingController, AuthService, FlashMessagesService],
+        (
+            service: ProfileService,
+            backend: HttpTestingController,
+            authService: AuthService,
+            flashService: FlashMessagesService
+        ) => {
             spyOn(authService, 'updateLocalStorage');
+            spyOn(flashService, 'createSuccessMessage');
 
             service.updateAccountSettings(userUpdate, '1234', '5678').subscribe(res => {
                 expect(authService.updateLocalStorage).toHaveBeenCalledWith(userUpdate);
-                expect(authService.errorResponse).toBeFalsy();
+                expect(flashService.createSuccessMessage).toHaveBeenCalledWith('account update');
             });
 
             const req = backend.expectOne({method: 'PUT'}, environment['BASEURL'] + '/login');
@@ -75,13 +80,16 @@ describe('ProfileService', () => {
         }))
     );
 
-    it(`should return an error`, async(inject([ProfileService, HttpTestingController, AuthService],
-        (service: ProfileService, backend: HttpTestingController, authService: AuthService) => {
-            spyOn(authService, 'updateLocalStorage');
+    it(`should return an error`, async(inject([ProfileService, HttpTestingController, FlashMessagesService],
+        (
+            service: ProfileService,
+            backend: HttpTestingController,
+            flashService: FlashMessagesService) => {
+
+            spyOn(flashService, 'createErrorMessage');
 
             service.updateAccountSettings(userUpdate, '1234', '5678').subscribe(res => {
-                expect(authService.errorResponse).toBeTruthy();
-                expect(authService.errorMessage).toBe('error');
+                expect(flashService.createErrorMessage).toHaveBeenCalledWith(mockError['errors']);
             });
 
             const req = backend.expectOne({method: 'PUT'}, environment['BASEURL'] + '/login');

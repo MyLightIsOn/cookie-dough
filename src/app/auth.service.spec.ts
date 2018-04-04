@@ -48,7 +48,8 @@ describe('AuthService', () => {
         expect(service).toBeTruthy();
     }));
 
-    it('should be return an error response', inject([AuthService, FlashMessagesService], (service: AuthService, flashMessageService: FlashMessagesService) => {
+    it('should be return an error response',
+        inject([AuthService, FlashMessagesService], (service: AuthService, flashMessageService: FlashMessagesService) => {
         const response = {
             errors: [
                 {
@@ -85,7 +86,7 @@ describe('AuthService', () => {
         expect(router.navigate).toHaveBeenCalledWith(['/']);
     }));
 
-    it(`should send an expected login request`, async(inject([AuthService, HttpTestingController],
+    it('should send an expected login request', async(inject([AuthService, HttpTestingController],
         (service: AuthService, backend: HttpTestingController) => {
             spyOn(service, 'checkResponse');
 

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { RegisterService } from './register.service';
 import { AuthService } from '../auth.service';
 import { environment } from '../../environments/environment';
+import { FlashMessagesService } from '../flash-messages.service';
 
 const router = {
     navigate: jasmine.createSpy('navigate')
@@ -15,25 +16,25 @@ describe('RegisterService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [ HttpClientTestingModule ],
-            providers: [ RegisterService, AuthService,
+            providers: [ RegisterService, AuthService, FlashMessagesService,
                 { provide: Router, useValue: router }
                 ]
         });
     });
 
     it('should register a user', async(inject([
-        RegisterService, HttpTestingController, AuthService],
-        (registerService: RegisterService, backend: HttpTestingController, authService: AuthService) => {
+        RegisterService, HttpTestingController, FlashMessagesService],
+        (registerService: RegisterService, backend: HttpTestingController, flashService: FlashMessagesService) => {
 
             const body = {
                 email: 'test@email.com',
                 password: '123'
             };
+            spyOn(flashService, 'createSuccessMessage');
 
-            registerService.registerUser(body).subscribe(res => {
-                expect(registerService.waiting).toBeFalsy();
+            registerService.registerUser(body).subscribe(() => {
                 expect(registerService.registrationSuccess).toBeTruthy();
-                expect(authService.errorResponse).toBeFalsy();
+                expect(flashService.createSuccessMessage).toHaveBeenCalledWith('registration');
             });
 
             const req = backend.expectOne({method: 'POST'}, environment['BASEURL'] + '/api/register');
@@ -47,28 +48,25 @@ describe('RegisterService', () => {
     ));
 
     it('should set an error when registering', async(inject([
-            RegisterService, HttpTestingController, AuthService],
-        (registerService: RegisterService, backend: HttpTestingController, authService: AuthService) => {
+            RegisterService, HttpTestingController, FlashMessagesService],
+        (registerService: RegisterService, backend: HttpTestingController, flashService: FlashMessagesService) => {
             const body = {
                 email: 'test@email.com',
                 password: '123'
             };
 
             const mockErrorResponse = {
-                error: {
-                    errors: [
-                        {
-                            message: 'error message'
-                        }
-                    ]
-                }
+                errors: [
+                    {
+                        message: 'error message'
+                    }
+                ]
             };
 
-            registerService.registerUser(body).subscribe(res => {
-                expect(authService.errorMessage).toBe('error message');
-                expect(authService.errorResponse).toBeTruthy();
+            spyOn(flashService, 'createErrorMessage');
+            registerService.registerUser(body).subscribe(() => {
                 expect(registerService.registrationSuccess).toBeFalsy();
-                expect(registerService.waiting).toBeFalsy();
+                expect(flashService.createErrorMessage).toHaveBeenCalledWith(mockErrorResponse['errors']);
             });
 
             const req = backend.expectOne({method: 'POST'}, environment['BASEURL'] + '/api/register');
@@ -87,7 +85,6 @@ describe('RegisterService', () => {
 
             registerService.verifiyUser(id).subscribe(res => {
                 expect(registerService.accountVerified).toBeTruthy();
-                expect(registerService.waiting).toBeFalsy();
             });
 
             const req = backend.expectOne({method: 'PUT'},
@@ -101,25 +98,23 @@ describe('RegisterService', () => {
     ));
 
     it('should set an error when verifying', async(inject([
-            RegisterService, HttpTestingController, AuthService],
-        (registerService: RegisterService, backend: HttpTestingController, authService: AuthService) => {
+            RegisterService, HttpTestingController, FlashMessagesService],
+        (registerService: RegisterService, backend: HttpTestingController, flashService: FlashMessagesService) => {
             const id = '123';
 
             const mockErrorResponse = {
-                error: {
-                    errors: [
-                        {
-                            message: 'error message'
-                        }
-                    ]
-                }
+                errors: [
+                    {
+                        message: 'error message'
+                    }
+                ]
             };
 
+            spyOn(flashService, 'createErrorMessage');
+
             registerService.verifiyUser(id).subscribe(res => {
-                expect(authService.errorMessage).toBe('error message');
-                expect(authService.errorResponse).toBeTruthy();
                 expect(registerService.accountVerified).toBeFalsy();
-                expect(registerService.waiting).toBeFalsy();
+                expect(flashService.createErrorMessage).toHaveBeenCalledWith(mockErrorResponse['errors']);
             });
 
             const req = backend.expectOne({method: 'PUT'},
