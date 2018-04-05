@@ -103,7 +103,7 @@
 
     <!-- Mobile Menu Logged In -->
     <div *ngIf="this.authService.isLoggedIn; else notLoggedInMenu">
-        <div class="mobile-menu-container mobile">
+        <div class="mobile-menu-container mobile" [ngClass]="{'searchStarted': appService.searchStarted}">
             <a routerLink="/search" routerLinkActive="active" class="search-icon">Search</a>
             <a routerLink="/profile" routerLinkActive="active" class="profile-icon">Profile</a>
             <a routerLink="/about" routerLinkActive="active" class="about-icon">About Us</a>
