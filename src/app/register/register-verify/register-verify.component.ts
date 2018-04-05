@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RegisterService } from '../register.service';
 import { LoginService } from '../../login/login.service';
 import { AppService } from '../../app.service';
-import { AuthService } from '../../auth.service';
+import { FlashMessagesService } from '../../flash-messages.service';
 
 @Component({
   selector: 'app-register-verify',
@@ -20,7 +20,7 @@ export class RegisterVerifyComponent implements OnInit {
       public route: ActivatedRoute,
       public loginService: LoginService,
       public appService: AppService,
-      public authService: AuthService) { }
+      public flashMessageService: FlashMessagesService) { }
 
   ngOnInit() {
       this.route.params.subscribe(params => {
