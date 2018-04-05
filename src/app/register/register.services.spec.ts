@@ -56,17 +56,19 @@ describe('RegisterService', () => {
             };
 
             const mockErrorResponse = {
-                errors: [
-                    {
-                        message: 'error message'
-                    }
-                ]
+                error: {
+                    errors: [
+                        {
+                            message: 'error message'
+                        }
+                    ]
+                }
             };
 
             spyOn(flashService, 'createErrorMessage');
             registerService.registerUser(body).subscribe(() => {
                 expect(registerService.registrationSuccess).toBeFalsy();
-                expect(flashService.createErrorMessage).toHaveBeenCalledWith(mockErrorResponse['errors']);
+                expect(flashService.createErrorMessage).toHaveBeenCalledWith(mockErrorResponse['error']['errors']);
             });
 
             const req = backend.expectOne({method: 'POST'}, environment['BASEURL'] + '/api/register');
@@ -103,18 +105,20 @@ describe('RegisterService', () => {
             const id = '123';
 
             const mockErrorResponse = {
-                errors: [
-                    {
-                        message: 'error message'
-                    }
-                ]
+                error: {
+                    errors: [
+                        {
+                            message: 'error message'
+                        }
+                    ]
+                }
             };
 
             spyOn(flashService, 'createErrorMessage');
 
             registerService.verifiyUser(id).subscribe(res => {
                 expect(registerService.accountVerified).toBeFalsy();
-                expect(flashService.createErrorMessage).toHaveBeenCalledWith(mockErrorResponse['errors']);
+                expect(flashService.createErrorMessage).toHaveBeenCalledWith(mockErrorResponse['error']['errors']);
             });
 
             const req = backend.expectOne({method: 'PUT'},

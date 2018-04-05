@@ -25,9 +25,9 @@ export class RegisterService {
 
     registerUser(body: object): Observable<void> {
         return this.http.post(environment['BASEURL'] + '/api/register', body).map((res) => {
-            if (res['errors']) {
+            if (res['error']) {
                 this.registrationSuccess = false;
-                this.flashMessageService.createErrorMessage(res['errors']);
+                this.flashMessageService.createErrorMessage(res['error']['errors']);
             } else {
                 this.registrationSuccess = true;
                 this.flashMessageService.createSuccessMessage('registration');
@@ -39,8 +39,8 @@ export class RegisterService {
         const activate = {};
         activate['field_21'] = 'active';
         return this.http.put(environment['BASEURL'] + '/api/verify?id=' + id, activate).map((res) => {
-            if (res['errors']) {
-                this.flashMessageService.createErrorMessage(res['errors']);
+            if (res['error']) {
+                this.flashMessageService.createErrorMessage(res['error']['errors']);
                 this.registrationSuccess = false;
                 this.accountVerified = false;
             } else {

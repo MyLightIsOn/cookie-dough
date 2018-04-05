@@ -36,9 +36,11 @@ const userUpdate = {
 };
 
 const mockError = {
-    errors: [
-        { message: 'error' }
-    ]
+    error: {
+        errors: [
+            { message: 'error' }
+        ]
+    }
 };
 
 describe('ProfileService', () => {
@@ -89,7 +91,7 @@ describe('ProfileService', () => {
             spyOn(flashService, 'createErrorMessage');
 
             service.updateAccountSettings(userUpdate, '1234', '5678').subscribe(res => {
-                expect(flashService.createErrorMessage).toHaveBeenCalledWith(mockError['errors']);
+                expect(flashService.createErrorMessage).toHaveBeenCalledWith(mockError['error']['errors']);
             });
 
             const req = backend.expectOne({method: 'PUT'}, environment['BASEURL'] + '/login');

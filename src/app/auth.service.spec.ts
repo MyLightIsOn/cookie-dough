@@ -51,17 +51,19 @@ describe('AuthService', () => {
     it('should be return an error response',
         inject([AuthService, FlashMessagesService], (service: AuthService, flashMessageService: FlashMessagesService) => {
         const response = {
-            errors: [
-                {
-                    message: 'test'
-                }
-            ]
+            error: {
+                errors: [
+                    {
+                        message: 'test'
+                    }
+                ]
+            }
         };
         spyOn(flashMessageService, 'createErrorMessage');
 
         service.checkResponse(response);
 
-        expect(flashMessageService.createErrorMessage).toHaveBeenCalledWith(response['errors']);
+        expect(flashMessageService.createErrorMessage).toHaveBeenCalledWith(response['error']['errors']);
         expect(service.isLoggedIn).toBeFalsy();
     }));
 

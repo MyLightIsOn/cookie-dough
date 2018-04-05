@@ -93,8 +93,9 @@ export class AuthService {
     // it will set the local storage, turn off errors, and log the user in then
     // redirect.
     public checkResponse(res: any): object {
-        if (res['errors']) {
-            this.flashMessageService.createErrorMessage(res['errors']);
+
+        if (res['error']) {
+            this.flashMessageService.createErrorMessage(res['error']['errors']);
             this.flashMessageService.generalField = true;
             this.isLoggedIn = false;
             return res;

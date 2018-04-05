@@ -20,8 +20,8 @@ export class ProfileService {
 
     public updateAccountSettings(updatedUser: object, token: string, id: string): Observable<void> {
         return this.http.put(environment['BASEURL'] + '/api/update-account', [updatedUser, token, id]).map((res) => {
-            if (res['errors']) {
-                this.flashMessageService.createErrorMessage(res['errors']);
+            if (res['error']) {
+                this.flashMessageService.createErrorMessage(res['error']['errors']);
             } else {
                 this.flashMessageService.createSuccessMessage('account update');
                 this.authService.updateLocalStorage(updatedUser);
