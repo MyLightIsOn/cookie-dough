@@ -10,7 +10,7 @@
                        (focusout)="appService.showNav()"
                        (keyup.enter)="login()"
                        [(ngModel)]="email"
-                       [ngClass]="{'error-highlight': authService.errorHighlight}"
+                       [ngClass]="{'error-highlight': this.flashMessageService.generalField}"
                        class="login-input-form"
                        required>
                 <br />
@@ -21,7 +21,7 @@
                        (focusout)="appService.showNav()"
                        (keyup.enter)="login()"
                        [(ngModel)]="password"
-                       [ngClass]="{'error-highlight': authService.errorHighlight}"
+                       [ngClass]="{'error-highlight': this.flashMessageService.generalField}"
                        class="login-input-form"
                        required>
 

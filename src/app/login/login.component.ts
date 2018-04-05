@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import { AuthService } from '../auth.service';
 import { LoginService } from './login.service';
 import { AppService } from '../app.service';
+import { FlashMessagesService } from '../flash-messages.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
     constructor(
         public authService: AuthService,
         private loginService: LoginService,
-        public appService: AppService) {}
+        public appService: AppService,
+        public flashMessageService: FlashMessagesService) {}
 
     ngOnInit(): void {
         this.authService.postLogin();

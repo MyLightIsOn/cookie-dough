@@ -7,8 +7,8 @@ import { LoginComponent } from './login.component';
 import { AppService } from '../app.service';
 import { LoginService } from '../login/login.service';
 import { AuthService } from '../auth.service';
-import {AppComponent} from '../app.component';
-import {Observable} from 'rxjs/Observable';
+import { FlashMessagesService } from '../flash-messages.service';
+
 
 const fakeAuthService = {
     login: () => {},
@@ -18,12 +18,12 @@ const fakeAuthService = {
     postLogin: jasmine.createSpy('logout')
 };
 
-describe('AppComponent', () => {
+describe('LoginComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [ FormsModule, RouterTestingModule, HttpClientTestingModule ],
             declarations: [ LoginComponent ],
-            providers: [ LoginService, AppService,
+            providers: [ LoginService, AppService, FlashMessagesService,
                 { provide: AuthService, useValue: fakeAuthService }]
         }).compileComponents();
     }));

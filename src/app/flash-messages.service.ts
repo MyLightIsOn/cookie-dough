@@ -17,6 +17,7 @@ export class FlashMessagesService {
     public field_20: boolean; // password
     public field_22: boolean; // account type
     public passwordConfirm: boolean; // password confirm
+    public generalField: boolean; // general field errors
 
     // Allows the user to close the error
     public closeError(): void {

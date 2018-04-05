@@ -95,12 +95,14 @@ export class AuthService {
     public checkResponse(res: any): object {
         if (res['errors']) {
             this.flashMessageService.createErrorMessage(res['errors']);
+            this.flashMessageService.generalField = true;
             this.isLoggedIn = false;
             return res;
         } else {
             this.setLocalStorage(res);
             this.subject.next(res);
             this.isLoggedIn = true;
+            this.flashMessageService.generalField = false;
             this.flashMessageService.error = false;
             this.flashMessageService.waiting = false;
             this.postLogin();
