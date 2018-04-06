@@ -11,6 +11,7 @@ routes.get('/', function(req, res) {
 
 // Company Routes
 routes.get('/api/companies', companies.getAll);
+routes.get('/api/company/:id?', companies.getOne);
 
 // Review Routes
 routes.get('/api/reviews', reviews.getAll);

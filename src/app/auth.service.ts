@@ -3,10 +3,11 @@ import { Router, NavigationExtras } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FlashMessagesService } from './flash-messages.service';
 
-import {environment} from '../environments/environment';
-import {Subject} from 'rxjs/Subject';
-import {ISession} from './_interfaces/session';
-import {Observable} from 'rxjs/Observable';
+import { environment } from '../environments/environment';
+import { Subject } from 'rxjs/Subject';
+import { ISession } from './_interfaces/session';
+import { Observable } from 'rxjs/Observable';
+import { ICompany } from './_interfaces/companies';
 
 @Injectable()
 export class AuthService {
@@ -26,7 +27,7 @@ export class AuthService {
         localStorage.setItem('currentUser', JSON.stringify(session));
     }
 
-    // Checks to see if the is already a user in local storage. If it is
+    // Checks to see if there is already a user in local storage. If there is
     // this user is set as the subject. If not, the user remains logged out.
     public getLocalStorage(): any {
         if (localStorage.getItem('currentUser')) {
@@ -67,8 +68,7 @@ export class AuthService {
         const body = ({'email': email, 'password': password});
         this.flashMessageService.waiting = true;
         return this.http.post(environment['BASEURL'] + '/api/login', body).map(res => {
-            this.session = res;
-            this.checkResponse(this.session);
+            this.checkResponse(res);
         }).share();
     }
 
@@ -100,13 +100,31 @@ export class AuthService {
             this.isLoggedIn = false;
             return res;
         } else {
-            this.setLocalStorage(res);
-            this.subject.next(res);
+            this.accountAdminCheck(res).subscribe();
             this.isLoggedIn = true;
             this.flashMessageService.generalField = false;
             this.flashMessageService.error = false;
             this.flashMessageService.waiting = false;
             this.postLogin();
+        }
+    }
+
+    // Checks if the users account is connected with a company. If it is, it adds
+    // the company the this session. If not, it just updates the session as is.
+    public accountAdminCheck(res: ISession): Observable<ISession> {
+        if (res['session']['user']['values']['field_34']) {
+            const companyId = res['session']['user']['values']['field_34'][0];
+            return this.http.get(environment['BASEURL'] + '/api/company?id=' + companyId).map((company: ICompany) => {
+                res['session']['company'] = company;
+                this.setLocalStorage(res);
+                this.subject.next(res);
+                this.session = res;
+                return res;
+            }).share();
+        } else {
+            this.setLocalStorage(res);
+            this.subject.next(res);
+            return Observable.of(res);
         }
     }
 
