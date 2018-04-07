@@ -245,6 +245,11 @@ nav {
         background-size: 40px;
         left: 20px;
         top: 10px; }
+      nav #mobile-user-settings .nav-dropdown-list .company-setting-link:before {
+        background: url("/assets/icons/white_business.png") no-repeat;
+        background-size: 40px;
+        left: 20px;
+        top: 10px; }
       nav #mobile-user-settings .nav-dropdown-list .security-setting-link:before {
         background: url("/assets/icons/white_security_icon.png") no-repeat;
         left: 20px;

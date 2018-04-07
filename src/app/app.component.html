@@ -19,6 +19,7 @@
                 <span *ngIf="user" (click)="toggleDropdown()">{{user?.values.field_50}}</span>
                 <ul class="dropdown-list" [ngClass]="{'list-open': listOpen}">
                     <li (click)="toggleDropdown()" class="account-setting-link" routerLink="/account-settings">Account Settings</li>
+                    <li *ngIf="user?.values.field_34" routerLink="/company-settings">Company Settings</li>
                     <li (click)="toggleDropdown()" class="security-setting-link" routerLink="/">Security Settings</li>
                     <li (click)="toggleDropdown()" class="terms-setting-link" routerLink="/">Terms of Settings</li>
                     <li (click)="toggleDropdown()" class="privacy-setting-link" routerLink="/">Privacy Policy</li>
@@ -46,6 +47,7 @@
                 <br /><br />
                 <ul class="nav-dropdown-list mobile" [ngClass]="{'mobile-menu-open': mobileMenuOpen}">
                     <li (click)="openMobileMenu()" class="account-setting-link" routerLink="/account-settings">Account Settings</li>
+                    <li *ngIf="user?.values.field_34" class="company-setting-link" routerLink="/company-settings">Company Settings</li>
                     <li (click)="openMobileMenu()" class="security-setting-link" routerLink="/">Security Settings</li>
                     <li (click)="openMobileMenu()" class="terms-setting-link" routerLink="/">Terms of Settings</li>
                     <li (click)="openMobileMenu()" class="privacy-setting-link" routerLink="/">Privacy Policy</li>
