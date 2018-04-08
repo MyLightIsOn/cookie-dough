@@ -3,9 +3,10 @@
         <div class="login-field-container">
             <h4>Log in to Gempathy</h4>
             <span class="login-input-label">email address</span>
-            <form (ngSubmit)="login()" #loginForm="ngForm">
+            <form (ngSubmit)="login()" #loginForm="ngForm" autocomplete="on">
                 <input type="email"
                        name="email"
+                       autocomplete="email"
                        (focus)="appService.fieldFocus()"
                        (focusout)="appService.showNav()"
                        (keyup.enter)="login()"

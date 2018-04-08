@@ -3,7 +3,7 @@
         <div class="register-login-field-container">
             <h4>Your Account is verified! Log in below to continue.</h4>
             <span class="login-input-label">email address</span>
-            <form (ngSubmit)="loginService.login(email, password)" #loginForm="ngForm">
+            <form (ngSubmit)="loginService.login(email, password)" #loginForm="ngForm" autocomplete="on">
                 <input type="email"
                        name="email"
                        (focus)="appService.fieldFocus()"

@@ -60,7 +60,7 @@
                 
                 <!-- Desktop Login -->
                 <div id="desktop-nav-login" class="desktop">
-                    <form (ngSubmit)="login()" #navLoginForm="ngForm">
+                    <form (ngSubmit)="login()" #navLoginForm="ngForm" autocomplete="on">
                         <div class="form-container">
                             <span class="nav-form-label">email</span>
                             <input type="email"
@@ -72,7 +72,8 @@
     
                         <div class="form-container">
                             <span class="nav-form-label">password</span>
-                            <input type="password" src="" name="password"
+                            <input type="password"
+                                   name="password"
                                    [ngClass]="{'error-highlight': this.flashMessageService.generalField}"
                                    [(ngModel)]="password"
                                    class="nav-login-form">

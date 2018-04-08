@@ -23,7 +23,7 @@
         </div>
       </div>
 
-      <form (ngSubmit)="submitRegistration()" #registerForm="ngForm">
+      <form (ngSubmit)="submitRegistration()" #registerForm="ngForm" autocomplete="on">
         <span class="register-input-label">username</span>
         <input type="username" class="register-input-form"
                name="username"
