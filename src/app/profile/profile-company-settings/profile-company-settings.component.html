@@ -1,0 +1,124 @@
+<div class="account-settings-container">
+  <h5 class="page-title">Company Settings</h5>
+  <form (ngSubmit)="submitUpdate(); false" #updateInfoForm="ngForm" autocomplete="on">
+
+    <section class="form-section">
+      <h4 class="section-title">Basic Info</h4>
+
+      <!-- Company Name -->
+      <div class="settings-data-container" [ngClass]="{'edit-field': companyNameEdit}">
+        <span class="settings-icon companyName"></span>
+        <span *ngIf="!companyNameEdit; else editCompanyNameField" class="settings-value">{{company?.field_3}}</span>
+        <ng-template #editCompanyNameField>
+          <input type="text"
+                 name="companyName"
+                 (focus)="appService.fieldFocus()"
+                 (focusout)="appService.showNav()"
+                 [(ngModel)]="company.field_3"
+                 [ngClass]="{'error-highlight': this.flashMessageService.field_3}"
+                 class="account-settings-input-form"
+                 required>
+        </ng-template>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyNameEdit}" (click)="editField('companyName')"></span>
+      </div>
+
+      <!-- Company Address -->
+      <div class="settings-data-container" [ngClass]="{'edit-field': companyAddressEdit}">
+        <span class="settings-icon companyAddress"></span>
+        <span *ngIf="!companyAddressEdit; else editCompanyAddressField" class="settings-value" [innerHTML]="company?.field_4"></span>
+        <ng-template #editCompanyAddressField>
+
+          <!-- Company Address - Street1 -->
+          <div class="multi-field-container">
+            <label>address 1</label>
+            <input type="text"
+                   name="companyStreet1"
+                   (focus)="appService.fieldFocus()"
+                   (focusout)="appService.showNav()"
+                   [(ngModel)]="company.field_4_raw.street"
+                   [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
+                   class="account-settings-input-form"
+                   required>
+          </div>
+
+
+          <!-- Company Address - Street2 -->
+          <div class="multi-field-container">
+            <label>address 2</label>
+            <input type="text"
+                   name="companyStreet2"
+                   (focus)="appService.fieldFocus()"
+                   (focusout)="appService.showNav()"
+                   [(ngModel)]="company.field_4_raw.street2"
+                   [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
+                   class="account-settings-input-form"
+                   required>
+          </div>
+
+          <!-- Company Address - City -->
+          <div class="multi-field-container">
+            <label>city/town/village</label>
+            <input type="text"
+                   name="companyCity"
+                   (focus)="appService.fieldFocus()"
+                   (focusout)="appService.showNav()"
+                   [(ngModel)]="company.field_4_raw.city"
+                   [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
+                   class="account-settings-input-form"
+                   required>
+          </div>
+
+          <!-- Company Address - State -->
+          <div class="multi-field-container">
+            <label>state/province</label>
+            <input type="text"
+                   name="companyState"
+                   (focus)="appService.fieldFocus()"
+                   (focusout)="appService.showNav()"
+                   [(ngModel)]="company.field_4_raw.state"
+                   [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
+                   class="account-settings-input-form"
+                   required>
+          </div>
+
+          <!-- Company Address - Zip -->
+          <div class="multi-field-container">
+            <label>postal code/zip</label>
+            <input type="text"
+                   name="companyZip"
+                   (focus)="appService.fieldFocus()"
+                   (focusout)="appService.showNav()"
+                   [(ngModel)]="company.field_4_raw.zip"
+                   [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
+                   class="account-settings-input-form"
+                   required>
+          </div>
+
+          <!-- Company Address - Country -->
+          <div class="multi-field-container">
+            <label>country/region</label>
+            <input type="text"
+                   name="companyCountry"
+                   (focus)="appService.fieldFocus()"
+                   (focusout)="appService.showNav()"
+                   [(ngModel)]="company.field_4_raw.country"
+                   [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
+                   class="account-settings-input-form"
+                   required>
+          </div>
+
+        </ng-template>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyAddressEdit}" (click)="editField('companyAddress')"></span>
+      </div>
+
+    </section>
+
+    <div  *ngIf="saveEnabled" class="save-container">
+      <button class="cancel-button"><span (click)="cancel(); false">Cancel</span></button>
+      <button class="orange-button">Save</button>
+    </div>
+  </form>
+</div>
+
+
+

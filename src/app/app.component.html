@@ -47,7 +47,8 @@
                 <br /><br />
                 <ul class="nav-dropdown-list mobile" [ngClass]="{'mobile-menu-open': mobileMenuOpen}">
                     <li (click)="openMobileMenu()" class="account-setting-link" routerLink="/account-settings">Account Settings</li>
-                    <li *ngIf="user?.values.field_34" class="company-setting-link" routerLink="/company-settings">Company Settings</li>
+                    <li (click)="openMobileMenu()" *ngIf="user?.values.field_34"
+                        class="company-setting-link" routerLink="/company-settings">Company Settings</li>
                     <li (click)="openMobileMenu()" class="security-setting-link" routerLink="/">Security Settings</li>
                     <li (click)="openMobileMenu()" class="terms-setting-link" routerLink="/">Terms of Settings</li>
                     <li (click)="openMobileMenu()" class="privacy-setting-link" routerLink="/">Privacy Policy</li>

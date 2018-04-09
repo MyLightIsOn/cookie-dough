@@ -16,6 +16,8 @@ export class FlashMessagesService {
     public field_19: boolean; // email
     public field_20: boolean; // password
     public field_22: boolean; // account type
+    public field_3: boolean; // company name
+    public field_4: boolean; // company address
     public passwordConfirm: boolean; // password confirm
     public generalField: boolean; // general field errors
 
