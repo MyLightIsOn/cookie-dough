@@ -22,24 +22,24 @@ export class MockFilterPipe implements PipeTransform {
 }
 
 const dataArray = [
-    { id: '0', field_3: 'company 1', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.1},
-    { id: '1', field_3: 'company 2', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.4},
-    { id: '2', field_3: 'company 3', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.5},
-    { id: '3', field_3: 'company 4', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.7},
-    { id: '4', field_3: 'company 5', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 1},
-    { id: '5', field_3: 'company 6', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: undefined},
-    { id: '0', field_3: 'company 1', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.1},
-    { id: '1', field_3: 'company 2', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.4},
-    { id: '2', field_3: 'company 3', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.5},
-    { id: '3', field_3: 'company 4', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.7},
-    { id: '4', field_3: 'company 5', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 1},
-    { id: '5', field_3: 'company 6', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: undefined},
-    { id: '0', field_3: 'company 1', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.1},
-    { id: '1', field_3: 'company 2', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.4},
-    { id: '2', field_3: 'company 3', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.5},
-    { id: '3', field_3: 'company 4', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 0.7},
-    { id: '4', field_3: 'company 5', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: 1},
-    { id: '5', field_3: 'company 6', field_4_raw: {}, field_5_raw: { thumb_url: '/' }, field_29: true, field_32_raw: undefined}
+    { id: '0', field_1: 'company 1', field_2_raw: {}, field_3_raw: { thumb_url: '/' }, field_17: true, field_42_raw: 0.1},
+    { id: '1', field_1: 'company 2', field_2_raw: {}, field_3_raw: { thumb_url: '/' }, field_17: true, field_42_raw: 0.4},
+    { id: '2', field_1: 'company 3', field_2_raw: {}, field_3_raw: { thumb_url: '/' }, field_17: true, field_42_raw: 0.5},
+    { id: '3', field_1: 'company 4', field_2_raw: {}, field_3_raw: { thumb_url: '/' }, field_17: true, field_42_raw: 0.7},
+    { id: '4', field_1: 'company 5', field_2_raw: {}, field_3_raw: { thumb_url: '/' }, field_17: true, field_42_raw: 1},
+    { id: '5', field_1: 'company 6', field_2_raw: {}, field_3_raw: { thumb_url: '/' }, field_17: true, field_42_raw: undefined},
+    { id: '0', field_1: 'company 1', field_2_raw: {}, field_3_raw: { thumb_url: '/' }, field_17: true, field_42_raw: 0.1},
+    { id: '1', field_1: 'company 2', field_2_raw: {}, field_3_raw: { thumb_url: '/' }, field_17: true, field_42_raw: 0.4},
+    { id: '2', field_1: 'company 3', field_2_raw: {}, field_3_raw: { thumb_url: '/' }, field_17: true, field_42_raw: 0.5},
+    { id: '3', field_1: 'company 4', field_2_raw: {}, field_3_raw: { thumb_url: '/' }, field_17: true, field_42_raw: 0.7},
+    { id: '4', field_1: 'company 5', field_2_raw: {}, field_3_raw: { thumb_url: '/' }, field_17: true, field_42_raw: 1},
+    { id: '5', field_1: 'company 6', field_2_raw: {}, field_3_raw: { thumb_url: '/' }, field_17: true, field_42_raw: undefined},
+    { id: '0', field_1: 'company 1', field_2_raw: {}, field_3_raw: { thumb_url: '/' }, field_17: true, field_42_raw: 0.1},
+    { id: '1', field_1: 'company 2', field_2_raw: {}, field_3_raw: { thumb_url: '/' }, field_17: true, field_42_raw: 0.4},
+    { id: '2', field_1: 'company 3', field_2_raw: {}, field_3_raw: { thumb_url: '/' }, field_17: true, field_42_raw: 0.5},
+    { id: '3', field_1: 'company 4', field_2_raw: {}, field_3_raw: { thumb_url: '/' }, field_17: true, field_42_raw: 0.7},
+    { id: '4', field_1: 'company 5', field_2_raw: {}, field_3_raw: { thumb_url: '/' }, field_17: true, field_42_raw: 1},
+    { id: '5', field_1: 'company 6', field_2_raw: {}, field_3_raw: { thumb_url: '/' }, field_17: true, field_42_raw: undefined}
 ];
 
 
@@ -102,11 +102,11 @@ describe('SearchResultsComponent', () => {
 
         const company = {};
         company['id'] = '12345';
-        company['field_33_raw'] = 'name';
+        company['field_18'] = 'name';
 
         expect(component.setIdentifier(company)).toBe('name');
 
-        company['field_33_raw'] = undefined;
+        company['field_18'] = undefined;
         expect(component.setIdentifier(company)).toBe('12345');
     });
 
@@ -151,7 +151,7 @@ describe('SearchResultsComponent', () => {
         const component = fixture.debugElement.componentInstance;
 
         spyOn(component, 'sortBy');
-        mockSearchService.sortType = 'field_3';
+        mockSearchService.sortType = 'field_1';
         mockSearchService.sortOrder = 'desc';
         mockSearchService.paginationPage = 2;
 
@@ -179,7 +179,7 @@ describe('SearchResultsComponent', () => {
 
         component.resetData();
         expect(component.sortOpen).toBeFalsy();
-        expect(mockSearchService.sortType).toBe('field_3');
+        expect(mockSearchService.sortType).toBe('field_1');
         expect(mockSearchService.sortOrder).toBe('asc');
         expect(mockSearchService.paginationPage).toBe(1);
     }));
@@ -188,16 +188,16 @@ describe('SearchResultsComponent', () => {
         const fixture = TestBed.createComponent(SearchResultsComponent);
         const component = fixture.debugElement.componentInstance;
 
-        component.sortTypeText = 'field_3';
+        component.sortTypeText = 'field_1';
         expect(component.setSortName()).toBe('Name');
 
         component.sortTypeText = 'field_34';
         expect(component.setSortName()).toBe('Country');
 
-        component.sortTypeText = 'field_32_raw';
+        component.sortTypeText = 'field_42_raw';
         expect(component.setSortName()).toBe('Stars');
 
-        component.sortTypeText = 'field_31';
+        component.sortTypeText = 'field_43';
         expect(component.setSortName()).toBe('Reviews');
 
         component.sortTypeText = 'field_11';
@@ -216,11 +216,11 @@ describe('SearchResultsComponent', () => {
     it('should hide the nav when searching', inject([AppService], (service: AppService) => {
         service.device = 'mobile';
         const company = {
-            field_4_raw: {
+            field_2_raw: {
                 latitude: 1,
                 longitude: 2
             },
-            field_33_raw: '123456'
+            field_18: '123456'
         };
 
         const fixture = TestBed.createComponent(SearchResultsComponent);

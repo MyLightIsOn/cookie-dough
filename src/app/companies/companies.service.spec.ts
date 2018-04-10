@@ -17,7 +17,7 @@ describe('CompaniesService', () => {
         (companiesService: CompaniesService, backend: HttpTestingController) => {
 
             const mockCompanies = [
-                { id: '0', field_3: 'company 1', field_4_raw: {}, field_29: true, field_32_raw: 0.1},
+                { id: '0', field_3: 'company 1', field_4_raw: {}, field_29: true, field_42: 0.1},
             ];
 
             companiesService.getAllCompanies().subscribe();
@@ -34,21 +34,21 @@ describe('CompaniesService', () => {
             [CompaniesService],
             (companiesService: CompaniesService) => {
                 const mockCompanies = [
-                    { id: '0', field_3: 'company 1', field_4_raw: {}, field_29: true, field_32_raw: 0.1},
-                    { id: '1', field_3: 'company 1', field_4_raw: {}, field_29: true, field_32_raw: 0.4},
-                    { id: '2', field_3: 'company 2', field_4_raw: {}, field_29: true, field_32_raw: 0.5},
-                    { id: '3', field_3: 'company 2', field_4_raw: {}, field_29: true, field_32_raw: 0.7},
-                    { id: '4', field_3: 'company 2', field_4_raw: {}, field_29: true, field_32_raw: 1},
-                    { id: '5', field_3: 'company 2', field_4_raw: {}, field_29: true, field_32_raw: undefined}
+                    { id: '0', field_1: 'company 1', field_2: 'address', field_17: true, field_29: true, field_42: 0.1},
+                    { id: '1', field_1: 'company 1', field_2: 'address', field_17: true, field_29: true, field_42: 0.4},
+                    { id: '2', field_1: 'company 2', field_2: 'address', field_17: true, field_29: true, field_42: 0.5},
+                    { id: '3', field_1: 'company 2', field_2: 'address', field_17: true, field_29: true, field_42: 0.7},
+                    { id: '4', field_1: 'company 2', field_2: 'address', field_17: true, field_29: true, field_42: 1},
+                    { id: '5', field_1: 'company 2', field_2: 'address', field_17: true, field_29: true, field_42: undefined}
                 ];
 
                 companiesService['createReviewStars'](mockCompanies);
-                expect(mockCompanies[0]['field_32_raw']).toEqual(0);
-                expect(mockCompanies[1]['field_32_raw']).toEqual(0.5);
-                expect(mockCompanies[2]['field_32_raw']).toEqual(0.5);
-                expect(mockCompanies[3]['field_32_raw']).toEqual(1);
-                expect(mockCompanies[4]['field_32_raw']).toEqual(1);
-                expect(mockCompanies[5]['field_32_raw']).toEqual(0);
+                expect(mockCompanies[0]['field_42']).toEqual(0);
+                expect(mockCompanies[1]['field_42']).toEqual(0.5);
+                expect(mockCompanies[2]['field_42']).toEqual(0.5);
+                expect(mockCompanies[3]['field_42']).toEqual(1);
+                expect(mockCompanies[4]['field_42']).toEqual(1);
+                expect(mockCompanies[5]['field_42']).toEqual(0);
             }
         )
     );
@@ -59,7 +59,7 @@ describe('CompaniesService', () => {
             [CompaniesService],
             (companiesService: CompaniesService) => {
                 companiesService.companyData = [
-                    { id: '0', field_3: 'company 1', field_4_raw: {}, field_29: true, field_32_raw: 1},
+                    { id: '0', field_3: 'company 1', field_4_raw: {}, field_29: true, field_42: 1},
                     { id: '1', field_3: 'company 2', field_33_raw: 'test-1'},
                 ];
 
@@ -141,7 +141,7 @@ describe('CompaniesService', () => {
             (companiesService: CompaniesService) => {
                 const mockCompanies = [
                     {
-                        field_4_raw: {
+                        field_2_raw: {
                             country: 'Hong Kong'
                         }
                     },

@@ -14,6 +14,6 @@ export interface ISession {
                 field_51: string // company name
             }
         }
-        company: ICompany;
+        company?: ICompany;
     };
 }

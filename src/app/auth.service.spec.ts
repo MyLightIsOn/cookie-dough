@@ -22,8 +22,7 @@ const mockSessionWithCompany = {
                 field_50: 'lawrence',
                 field_51: 'company'
             }
-        },
-        company: {}
+        }
     }
 };
 
@@ -39,8 +38,7 @@ const mockSessionNoCopmany = {
                 field_50: 'lawrence',
                 field_51: 'company'
             }
-        },
-        company: {}
+        }
     }
 };
 

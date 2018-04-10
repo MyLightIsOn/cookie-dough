@@ -53,8 +53,8 @@ export class SearchResultsComponent implements OnInit {
 
     // Checks to see if company URL is set. If not, then ID will be used.
     public setIdentifier(company: ICompany) {
-        if (company['field_18_raw'] !== undefined) {
-            return company['field_18_raw'];
+        if (company['field_18'] !== undefined) {
+            return company['field_18'];
         } else {
             return company['id'];
         }
@@ -90,6 +90,7 @@ export class SearchResultsComponent implements OnInit {
     // Uses the sorting pipe to sort the companies and then reset the pagination
     public sortBy(sortType: string, order: string, page: number) {
         if (this.filteredCompanies) {
+            console.log(sortType);
             this.searchService.sortType = sortType;
             this.sortedCompanies = _.orderBy(this.filteredCompanies, [function(o) {return o[sortType]; }], [order]);
             this.sortTypeText = this.searchService.sortType;
@@ -144,7 +145,7 @@ export class SearchResultsComponent implements OnInit {
             return 'Name';
         }
 
-        if (this.sortTypeText === 'field_2_raw') {
+        if (this.sortTypeText === 'field_34') {
             return 'Country';
         }
 

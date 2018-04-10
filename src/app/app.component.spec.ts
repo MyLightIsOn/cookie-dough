@@ -8,7 +8,6 @@ import { CompaniesService} from './companies/companies.service';
 import { AuthService } from './auth.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FlashMessagesService } from './flash-messages.service';
-import {ICompany} from './_interfaces/companies';
 
 const mockSession = {
     session: {
@@ -23,8 +22,7 @@ const mockSession = {
                 field_50: 'lawrence',
                 field_51: 'company'
             }
-        },
-        company: {}
+        }
     }
 };
 

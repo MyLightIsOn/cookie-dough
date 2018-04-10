@@ -16,29 +16,29 @@ export class CompaniesService {
     public companyData: any;
 
     // Uses the review average to create the appropriate number of stars
-    private createReviewStars(companies$: ICompany) {
+    private createReviewStars(companies$: ICompany[]) {
 
         for (const company in companies$) {
 
             if (company) {
                 let reviewAvgParsed: string;
-                let reviewAvg: number = companies$[company]['field_42_raw'] % 1;
+                let reviewAvg: number = companies$[company]['field_42'] % 1;
                 reviewAvg = parseFloat(reviewAvg.toFixed(1));
 
                 // Uses the first decimal place to determine whether to round up, down, or set to 0.5 for stars
                 if (isNaN(reviewAvg)) {
-                    companies$[company]['field_42_raw'] = 0;
+                    companies$[company]['field_42'] = 0;
                 } else if (reviewAvg % 1 <= 0.2) {
-                    companies$[company]['field_42_raw'] = Math.floor(companies$[company]['field_42_raw']);
+                    companies$[company]['field_42'] = Math.floor(companies$[company]['field_42']);
                 } else if (reviewAvg % 1 >= 0.3 && reviewAvg % 1 <= 0.6) {
-                    companies$[company]['field_42_raw'] = Math.floor(companies$[company]['field_42_raw']) + 0.5;
+                    companies$[company]['field_42'] = Math.floor(companies$[company]['field_42']) + 0.5;
                 } else if (reviewAvg % 1 >= 0.7) {
-                    companies$[company]['field_42_raw'] = Math.ceil(companies$[company]['field_42_raw']);
+                    companies$[company]['field_42'] = Math.ceil(companies$[company]['field_42']);
                 }
 
                 // Turns the average into a string and replaces the decimal so it can be used for image urls
-                reviewAvgParsed = companies$[company]['field_42_raw'].toString();
-                companies$[company]['field_42_raw_image'] = reviewAvgParsed.replace('.', '-');
+                reviewAvgParsed = companies$[company]['field_42'].toString();
+                companies$[company]['field_42_image'] = reviewAvgParsed.replace('.', '-');
             }
 
         }
@@ -107,9 +107,10 @@ export class CompaniesService {
         for (const index in companyData) {
             if (companyData[index]) {
                 const company = companyData[index];
-                company['field_34'] = company['field_4_raw']['country'];
+                company['field_34'] = company['field_2_raw']['country'];
             }
         }
+        console.log(companyData);
         return companyData;
     }
 }

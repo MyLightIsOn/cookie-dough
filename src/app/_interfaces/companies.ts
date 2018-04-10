@@ -28,6 +28,6 @@ export interface ICompany {
     field_16_raw?: any; // Array strings Company Type
     field_17: boolean; // Verified
     field_18?: number; // Company URL
-    field_42: number; // Reviews Average
-    field_43: number; // Total Reviews
+    field_42?: number; // Reviews Average
+    field_43?: number; // Total Reviews
 }
