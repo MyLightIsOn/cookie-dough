@@ -53,8 +53,8 @@ export class SearchResultsComponent implements OnInit {
 
     // Checks to see if company URL is set. If not, then ID will be used.
     public setIdentifier(company: ICompany) {
-        if (company['field_33_raw'] !== undefined) {
-            return company['field_33_raw'];
+        if (company['field_18_raw'] !== undefined) {
+            return company['field_18_raw'];
         } else {
             return company['id'];
         }
@@ -133,26 +133,26 @@ export class SearchResultsComponent implements OnInit {
     // Clears the sorting data
     public resetData() {
         this.sortOpen = false;
-        this.searchService.sortType = 'field_3';
+        this.searchService.sortType = 'field_1';
         this.searchService.sortOrder = 'asc';
         this.searchService.paginationPage = 1;
     }
 
     // Sorts the search results by attribute
     public setSortName() {
-        if (this.sortTypeText === 'field_3') {
+        if (this.sortTypeText === 'field_1') {
             return 'Name';
         }
 
-        if (this.sortTypeText === 'field_34') {
+        if (this.sortTypeText === 'field_2_raw') {
             return 'Country';
         }
 
-        if (this.sortTypeText === 'field_32_raw') {
+        if (this.sortTypeText === 'field_42_raw') {
             return 'Stars';
         }
 
-        if (this.sortTypeText === 'field_31') {
+        if (this.sortTypeText === 'field_43') {
             return 'Reviews';
         }
     }
@@ -168,8 +168,8 @@ export class SearchResultsComponent implements OnInit {
             this.router.navigate(['/', this.setIdentifier(company)]);
         } else {
             this.companyPreview = company;
-            this.lat = company['field_4_raw']['latitude'];
-            this.lng = company['field_4_raw']['longitude'];
+            this.lat = company['field_2_raw']['latitude'];
+            this.lng = company['field_2_raw']['longitude'];
         }
     }
 }

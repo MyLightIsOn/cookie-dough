@@ -47,10 +47,10 @@
                     <div class="dropdown-container">
                         <span class="sort-type-button" (click)="openSort()">{{setSortName()}}</span>
                         <ul class="dropdown-list" [ngClass]="{'list-open': sortOpen}">
-                            <li (click)="sortBy('field_3', this.searchService.sortOrder, 1)">Name</li>
+                            <li (click)="sortBy('field_1', this.searchService.sortOrder, 1)">Name</li>
                             <li (click)="sortBy('field_34', this.searchService.sortOrder, 1)">Country</li>
-                            <li (click)="sortBy('field_32_raw', this.searchService.sortOrder, 1)">Stars</li>
-                            <li (click)="sortBy('field_31', this.searchService.sortOrder, 1)"># Reviews</li>
+                            <li (click)="sortBy('field_42_raw', this.searchService.sortOrder, 1)">Stars</li>
+                            <li (click)="sortBy('field_43', this.searchService.sortOrder, 1)"># Reviews</li>
                         </ul>
                         <span class="order-button" [ngClass]="{'desc': desc}" (click)="changeSortOrder()"></span>
                     </div>
@@ -79,21 +79,21 @@
                  [ngClass]="{'active-preview': companyPreview == company}"
                  (click)="previewCompany(company)">
                 <span class="company-logo desktop">
-                    <img *ngIf="company['field_5_raw']['thumb_url']; else genericIcon"
-                         src="{{company['field_5_raw']['thumb_url']}}"
+                    <img *ngIf="company['field_3_raw']['thumb_url']; else genericIcon"
+                         src="{{company['field_3_raw']['thumb_url']}}"
                          alt="{{company['field_3']}} Thumbnail Logo">
                     <ng-template #genericIcon>
                         <img src="/assets/icons/business.png">
                     </ng-template>
                 </span>
-                <span class="company-name">{{company['field_3']}}</span>
-                <span class="company-country">{{company['field_4_raw'].country}}</span>
-                <span class="reviews-avg reviews-avg-{{company['field_32_raw_image']}}"></span>
-                <span class="reviews-count">{{company['field_31']}} reviews</span>
+                <span class="company-name">{{company['field_1']}}</span>
+                <span class="company-country">{{company['field_2_raw'].country}}</span>
+                <span class="reviews-avg reviews-avg-{{company['field_42_raw_image']}}"></span>
+                <span class="reviews-count">{{company['field_43']}} reviews</span>
                 <!-- Tagline -->
-                <h2 class="desktop">{{company['field_6']}}</h2>
-                <div *ngIf="company['field_29'] === 'True'">
-                    <span class="verification" [ngClass]="{'verified': company['field_29']}"><span class="desktop">Verified</span></span>
+                <h2 class="desktop">{{company['field_4']}}</h2>
+                <div *ngIf="company['field_17_raw'] === true">
+                    <span class="verification" [ngClass]="{'verified': company['field_17_raw']}"><span class="desktop">Verified</span></span>
                 </div>
                 <span class="open-search-details medium-blue-button desktop" [routerLink]="['/', setIdentifier(company)]">View Profile</span>
                 <span class="open-showroom medium-blue-button desktop">Showroom</span>
@@ -114,9 +114,9 @@
                     </agm-map>
                 </div>
 
-                <span class="company-name">{{companyPreview['field_3']}}</span>
-                <span class="company-address" [innerHTML]="companyPreview['field_4']"></span>
-                <span class="company-description">{{companyPreview['field_6']}}</span>
+                <span class="company-name">{{companyPreview['field_1']}}</span>
+                <span class="company-address" [innerHTML]="companyPreview['field_2']"></span>
+                <span class="company-description">{{companyPreview['field_4']}}</span>
             </div>
         </div>
     </div>

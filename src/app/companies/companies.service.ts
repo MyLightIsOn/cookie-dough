@@ -22,23 +22,23 @@ export class CompaniesService {
 
             if (company) {
                 let reviewAvgParsed: string;
-                let reviewAvg: number = companies$[company]['field_32_raw'] % 1;
+                let reviewAvg: number = companies$[company]['field_42_raw'] % 1;
                 reviewAvg = parseFloat(reviewAvg.toFixed(1));
 
                 // Uses the first decimal place to determine whether to round up, down, or set to 0.5 for stars
                 if (isNaN(reviewAvg)) {
-                    companies$[company]['field_32_raw'] = 0;
+                    companies$[company]['field_42_raw'] = 0;
                 } else if (reviewAvg % 1 <= 0.2) {
-                    companies$[company]['field_32_raw'] = Math.floor(companies$[company]['field_32_raw']);
+                    companies$[company]['field_42_raw'] = Math.floor(companies$[company]['field_42_raw']);
                 } else if (reviewAvg % 1 >= 0.3 && reviewAvg % 1 <= 0.6) {
-                    companies$[company]['field_32_raw'] = Math.floor(companies$[company]['field_32_raw']) + 0.5;
+                    companies$[company]['field_42_raw'] = Math.floor(companies$[company]['field_42_raw']) + 0.5;
                 } else if (reviewAvg % 1 >= 0.7) {
-                    companies$[company]['field_32_raw'] = Math.ceil(companies$[company]['field_32_raw']);
+                    companies$[company]['field_42_raw'] = Math.ceil(companies$[company]['field_42_raw']);
                 }
 
                 // Turns the average into a string and replaces the decimal so it can be used for image urls
-                reviewAvgParsed = companies$[company]['field_32_raw'].toString();
-                companies$[company]['field_32_raw_image'] = reviewAvgParsed.replace('.', '-');
+                reviewAvgParsed = companies$[company]['field_42_raw'].toString();
+                companies$[company]['field_42_raw_image'] = reviewAvgParsed.replace('.', '-');
             }
 
         }
