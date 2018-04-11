@@ -6,12 +6,13 @@ export interface ISession {
             id: string; // ID
             token: string; // JWT
             values: {
-                field_19: {
+                field_22: {
                     email: string; // email address
                 }
-                field_34?: string[] // company id
-                field_50: string // username
-                field_51: string // company name
+                field_44: string // username
+                field_50: string // account type
+                field_52?: string[] // company id
+                field_53?: string // company name
             }
         }
         company?: ICompany;

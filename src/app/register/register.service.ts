@@ -37,7 +37,7 @@ export class RegisterService {
 
     verifiyUser(id): Observable<void> {
         const activate = {};
-        activate['field_21'] = 'active';
+        activate['field_24'] = 'active';
         return this.http.put(environment['BASEURL'] + '/api/verify?id=' + id, activate).map((res) => {
             if (res['error']) {
                 this.flashMessageService.createErrorMessage(res['error']['errors']);

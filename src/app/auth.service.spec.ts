@@ -15,12 +15,13 @@ const mockSessionWithCompany = {
             id: '1234',
             token: '4321',
             values: {
-                field_19: {
+                field_22: {
                     email: 'old@email.com'
                 },
-                field_34: ['111111111'],
-                field_50: 'lawrence',
-                field_51: 'company'
+                field_52: ['111111111'],
+                field_50: 'Admin',
+                field_44: 'lawrence',
+                field_53: 'company'
             }
         }
     }
@@ -32,22 +33,22 @@ const mockSessionNoCopmany = {
             id: '1234',
             token: '4321',
             values: {
-                field_19: {
+                field_22: {
                     email: 'old@email.com'
                 },
-                field_50: 'lawrence',
-                field_51: 'company'
+                field_44: 'lawrence',
+                field_50: 'Individual'
             }
         }
     }
 };
 
 const userUpdate = {
-    field_19: {
+    field_22: {
         email: 'new@email.com'
     },
-    field_22: 'individual',
-    field_50: 'test',
+    field_50: 'individual',
+    field_44: 'test',
 };
 
 describe('AuthService', () => {
@@ -139,8 +140,8 @@ describe('AuthService', () => {
         const updatedUser = JSON.parse(localStorage.getItem('currentUser'));
 
 
-        const oldUserName = mockSessionWithCompany['session']['user']['values']['field_50'];
-        const newUserName = updatedUser['session']['user']['values']['field_50'];
+        const oldUserName = mockSessionWithCompany['session']['user']['values']['field_44'];
+        const newUserName = updatedUser['session']['user']['values']['field_44'];
 
         expect(oldUserName).not.toBe(newUserName);
         expect(newUserName).toBe('test');

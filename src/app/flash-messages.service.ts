@@ -12,10 +12,10 @@ export class FlashMessagesService {
     public waiting: boolean;
 
     // field errors
-    public field_50: boolean; // username
-    public field_19: boolean; // email
-    public field_20: boolean; // password
-    public field_22: boolean; // account type
+    public field_44: boolean; // username
+    public field_22: boolean; // email
+    public field_23: boolean; // password
+    public field_50: boolean; // account type
     public field_3: boolean; // company name
     public field_4: boolean; // company address
     public passwordConfirm: boolean; // password confirm

@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
     public email: string;
     public password: string;
     public passwordMatch: string;
-    private accountType = 'Individual';
+    private accountType = 'individual';
     private individualRole: boolean;
     private user = {};
     private userEmail = {};
@@ -34,10 +34,10 @@ export class RegisterComponent implements OnInit {
     roleSelect(role: string): void {
         if (role === 'individual') {
             this.individualRole = true;
-            this.accountType = 'Individual';
+            this.accountType = 'individual';
         } else {
             this.individualRole = false;
-            this.accountType = 'Business Owner';
+            this.accountType = 'admin';
         }
     }
 
@@ -45,14 +45,14 @@ export class RegisterComponent implements OnInit {
     submitRegistration(): void {
         if (this.password !== this.passwordMatch) {
             this.flashMessageService.createErrorMessage('confirm passwords');
-            this.flashMessageService.field_20 = true;
+            this.flashMessageService.field_23 = true;
             this.flashMessageService.passwordConfirm = true;
         } else {
-            this.user['field_50'] = this.username;
+            this.user['field_44'] = this.username;
             this.userEmail['email'] = this.email;
-            this.user['field_19'] = this.userEmail;
-            this.user['field_20'] = this.password;
-            this.user['field_22'] = this.accountType;
+            this.user['field_22'] = this.userEmail;
+            this.user['field_23'] = this.password;
+            this.user['field_50'] = this.accountType;
             this.registerService.registerUser(this.user).subscribe();
         }
     }

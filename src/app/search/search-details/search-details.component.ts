@@ -32,15 +32,15 @@ export class SearchDetailsComponent implements OnInit {
     ngOnInit() {
         this.company = this.route.snapshot.data['company'];
         if (this.company) {
-            this.company['field_7_truncated'] = this.truncateDescription(this.company['field_7']);
-            this.company['country_flag'] = this.companyService.setFlag(this.company['field_4_raw']['country']);
+            this.company['field_5_truncated'] = this.truncateDescription(this.company['field_5']);
+            this.company['country_flag'] = this.companyService.setFlag(this.company['field_2_raw']['country']);
             this.companyService.setSocialMedia([
-                this.company['field_14_raw'],
-                this.company['field_15_raw'],
-                this.company['field_16_raw']
+                this.company['field_12_raw'],
+                this.company['field_13_raw'],
+                this.company['field_14_raw']
             ]);
-            this.lat = this.company['field_4_raw']['latitude'];
-            this.lng = this.company['field_4_raw']['longitude'];
+            this.lat = this.company['field_2_raw']['latitude'];
+            this.lng = this.company['field_2_raw']['longitude'];
             if (this.appService.device === 'mobile') {
                 this.mapOff = true;
             } else {

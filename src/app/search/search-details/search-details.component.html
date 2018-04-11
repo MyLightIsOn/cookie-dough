@@ -7,23 +7,23 @@
             <span class="close-details" (click)="closeDetails()"></span>
 
             <!-- Company Logo -->
-            <div *ngIf="company['field_5_raw']" class="company-logo-thumb-container">
-                <img src="{{company['field_5_raw']['thumb_url']}}" alt="{{company['field_3']}} Thumbnail Logo">
+            <div *ngIf="company['field_3_raw']" class="company-logo-thumb-container">
+                <img src="{{company['field_3_raw']['thumb_url']}}" alt="{{company['field_3']}} Thumbnail Logo">
             </div>
             <div class="company-info-header-container">
 
                 <!-- Company Name -->
-                <h1>{{company['field_3']}}</h1>
+                <h1>{{company['field_1']}}</h1>
 
                 <!-- Review Stars -->
-                <span class="reviews-avg reviews-avg-{{company['field_32_raw_image']}}"></span>
+                <span class="reviews-avg reviews-avg-{{company['field_42_raw_image']}}"></span>
 
                 <!-- Number of Reviews -->
-                <span class="reviews-count">{{company['field_31']}} reviews</span>
+                <span class="reviews-count">{{company['field_43']}} reviews</span>
 
                 <!-- Verified -->
-                <div *ngIf="company['field_29'] === 'True'" class="verified-details">
-                    <span>Verified</span> <span class="verification" [ngClass]="{'verified': company['field_29']}"></span>
+                <div *ngIf="company['field_17_raw'] === true" class="verified-details">
+                    <span>Verified</span> <span class="verification" [ngClass]="{'verified': company['field_17_raw']}"></span>
                 </div>
 
                 <!-- Country Flag -->
@@ -36,21 +36,21 @@
         <section class="detail-description">
 
             <!-- Tagline -->
-            <h2>{{company['field_6']}}</h2>
+            <h2>{{company['field_4']}}</h2>
 
             <!-- Truncated Description -->
             <div *ngIf="truncatedText">
-                <p>{{company['field_7_truncated']}}
+                <p>{{company['field_5_truncated']}}
                     <span (click)="toggleDescription()" class="truncate-toggle">More</span>
                 </p>
             </div>
 
             <!-- Long Description -->
             <div *ngIf="!truncatedText" >
-                <p *ngIf="!truncatedText">{{company['field_7']}}</p>
-                <p><span class="bold-text">Established:</span> {{company['field_8']}}</p>
+                <p *ngIf="!truncatedText">{{company['field_5']}}</p>
+                <p><span class="bold-text">Established:</span> {{company['field_6']}}</p>
                 <span *ngIf="!truncatedText">
-                    <span class="bold-text">Categories:</span> {{company['field_28_raw']}}</span>
+                    <span class="bold-text">Categories:</span> {{company['field_16_raw']}}</span>
                 <p *ngIf="!truncatedText && toggled" (click)="toggleDescription()" class="truncate-toggle">Less</p>
             </div>
 
@@ -62,24 +62,24 @@
             <span class="bold-text address">Address:</span>
             <div>
                 <!-- Address Street -->
-                <span class="address">{{company['field_4_raw']['street']}}</span>
+                <span class="address">{{company['field_2_raw']['street']}}</span>
             </div>
 
             <div>
                 <!-- Address Street 2-->
-                <span class="address">{{company['field_4_raw']['street2']}}</span>
+                <span class="address">{{company['field_2_raw']['street2']}}</span>
             </div>
 
             <div>
                 <!-- Address City -->
-                <span class="address">{{company['field_4_raw']['city']}}</span>
+                <span class="address">{{company['field_2_raw']['city']}}</span>
                 
                 <!-- Address State/Province -->
-                <span class="address">{{company['field_4_raw']['state']}}</span>
+                <span class="address">{{company['field_2_raw']['state']}}</span>
             </div>
 
             <!-- Address Country -->
-            <span class="address">{{company['field_4_raw']['country']}}</span>
+            <span class="address">{{company['field_2_raw']['country']}}</span>
 
             <!-- Country Flag -->
             <div class="country-flag mobile">
@@ -98,48 +98,48 @@
             <hr />
 
             <!-- Company Website -->
-            <span *ngIf="company['field_9']" class="website-url">
-                <a href="{{company['field_9_raw']['url']}}" target="_blank">{{company['field_9_raw']['url']}}</a>
+            <span *ngIf="company['field_7']" class="website-url">
+                <a href="{{company['field_7_raw']['url']}}" target="_blank">{{company['field_7_raw']['url']}}</a>
             </span>
 
             <!-- Email Address 1 -->
-            <span *ngIf="company['field_10']" class="email-address">
-                <a href="{{company['field_10_raw']['email']}}" target="_blank">{{company['field_10_raw']['email']}}</a>
+            <span *ngIf="company['field_8']" class="email-address">
+                <a href="{{company['field_8_raw']['email']}}" target="_blank">{{company['field_8_raw']['email']}}</a>
             </span>
 
             <!-- Email Address 2 -->
-            <span *ngIf="company['field_11']" class="email-address">
-                <a href="{{company['field_11_raw']['email']}}" target="_blank">{{company['field_11_raw']['email']}}</a>
+            <span *ngIf="company['field_9']" class="email-address">
+                <a href="{{company['field_9_raw']['email']}}" target="_blank">{{company['field_9_raw']['email']}}</a>
             </span>
 
             <!-- Phone Number 1 -->
-            <span *ngIf="company['field_12']" class="phone-number">
-                <a href="{{company['field_12_raw']['formatted']}}" target="_blank">{{company['field_12_raw']['formatted']}}</a>
+            <span *ngIf="company['field_10']" class="phone-number">
+                <a href="{{company['field_10_raw']['formatted']}}" target="_blank">{{company['field_10_raw']['formatted']}}</a>
             </span>
 
             <!-- Phone Number 2 -->
-            <span *ngIf="company['field_13']" class="phone-number">
-                <a href="{{company['field_13_raw']['formatted']}}" target="_blank">{{company['field_13_raw']['formatted']}}</a>
+            <span *ngIf="company['field_11']" class="phone-number">
+                <a href="{{company['field_11_raw']['formatted']}}" target="_blank">{{company['field_11_raw']['formatted']}}</a>
             </span>
 
             <!-- Social Media 1 -->
-            <span *ngIf="company['field_14']" class="social-media {{company['field_14_raw']['social-media-class']}}">
-                <a href="{{company['field_14_raw']['url']}}" target="_blank">{{company['field_14_raw']['url']}}</a>
+            <span *ngIf="company['field_12']" class="social-media {{company['field_12_raw']['social-media-class']}}">
+                <a href="{{company['field_12_raw']['url']}}" target="_blank">{{company['field_12_raw']['url']}}</a>
             </span>
 
             <!-- Social Media 2 -->
-            <span *ngIf="company['field_15']" class="social-media {{company['field_15_raw']['social-media-class']}}">
-                <a href="{{company['field_15_raw']['url']}}" target="_blank">{{company['field_15_raw']['url']}}</a>
+            <span *ngIf="company['field_13']" class="social-media {{company['field_13_raw']['social-media-class']}}">
+                <a href="{{company['field_13_raw']['url']}}" target="_blank">{{company['field_13_raw']['url']}}</a>
             </span>
 
             <!-- Social Media 3 -->
-            <span *ngIf="company['field_16']" class="social-media {{company['field_16_raw']['social-media-class']}}">
-                <a href="{{company['field_16_raw']['url']}}" target="_blank">{{company['field_16_raw']['url']}}</a>
+            <span *ngIf="company['field_14']" class="social-media {{company['field_14_raw']['social-media-class']}}">
+                <a href="{{company['field_14_raw']['url']}}" target="_blank">{{company['field_14_raw']['url']}}</a>
             </span>  <br />
 
-            <div *ngIf="company['field_17_raw']">
+            <div *ngIf="company['field_15_raw']">
                 <h4>Business Hours</h4>
-                <div [innerHTML]="company['field_17_raw']"></div>
+                <div [innerHTML]="company['field_15_raw']"></div>
             </div>
         </section>
     </div>

@@ -16,10 +16,10 @@
 
             <!-- User Settings Dropdown Desktop -->
             <div *ngIf="this.authService.isLoggedIn; else notLoggedIn" id="user-settings" class="dropdown-container desktop">
-                <span *ngIf="user" (click)="toggleDropdown()">{{user?.values.field_50}}</span>
+                <span *ngIf="user" (click)="toggleDropdown()">{{user?.values.field_44}}</span>
                 <ul class="dropdown-list" [ngClass]="{'list-open': listOpen}">
                     <li (click)="toggleDropdown()" class="account-setting-link" routerLink="/account-settings">Account Settings</li>
-                    <li *ngIf="user?.values.field_34" routerLink="/company-settings">Company Settings</li>
+                    <li *ngIf="user?.values.field_52" routerLink="/company-settings">Company Settings</li>
                     <li (click)="toggleDropdown()" class="security-setting-link" routerLink="/">Security Settings</li>
                     <li (click)="toggleDropdown()" class="terms-setting-link" routerLink="/">Terms of Settings</li>
                     <li (click)="toggleDropdown()" class="privacy-setting-link" routerLink="/">Privacy Policy</li>
@@ -32,7 +32,7 @@
 
                 <!-- Opens mobile menu-->
                 <div (click)="openMobileMenu()">
-                    <span class="mobile-user-name" *ngIf="user && !mobileMenuOpen">{{user?.values.field_50}}</span>
+                    <span class="mobile-user-name" *ngIf="user && !mobileMenuOpen">{{user?.values.field_44}}</span>
                     <span class="mobile menu-icon" *ngIf="user && !mobileMenuOpen"></span>
                 </div>
 
@@ -47,7 +47,7 @@
                 <br /><br />
                 <ul class="nav-dropdown-list mobile" [ngClass]="{'mobile-menu-open': mobileMenuOpen}">
                     <li (click)="openMobileMenu()" class="account-setting-link" routerLink="/account-settings">Account Settings</li>
-                    <li (click)="openMobileMenu()" *ngIf="user?.values.field_34"
+                    <li (click)="openMobileMenu()" *ngIf="user?.values.field_52"
                         class="company-setting-link" routerLink="/company-settings">Company Settings</li>
                     <li (click)="openMobileMenu()" class="security-setting-link" routerLink="/">Security Settings</li>
                     <li (click)="openMobileMenu()" class="terms-setting-link" routerLink="/">Terms of Settings</li>

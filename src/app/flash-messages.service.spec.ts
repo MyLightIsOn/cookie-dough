@@ -23,7 +23,7 @@ describe('FlashMessagesService', () => {
             errors: [
                 {
                     message: 'error message',
-                    field: 'field_22'
+                    field: 'field_50'
                 }
             ]
         };
@@ -32,7 +32,7 @@ describe('FlashMessagesService', () => {
         expect(service.messages[0]).toBe('error message');
         expect(service.error).toBeTruthy();
         expect(service.waiting).toBeFalsy();
-        expect(service.field_22).toBeTruthy();
+        expect(service.field_50).toBeTruthy();
     }));
 
     it('should create an error message based on a string', inject([FlashMessagesService], (service: FlashMessagesService) => {

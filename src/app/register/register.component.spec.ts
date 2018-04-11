@@ -42,11 +42,11 @@ describe('RegisterComponent', () => {
         component.roleSelect('individual');
 
         expect(component['individualRole']).toBeTruthy();
-        expect(component['accountType']).toBe('Individual');
+        expect(component['accountType']).toBe('individual');
 
-        component.roleSelect('business');
+        component.roleSelect('admin');
         expect(component['individualRole']).toBeFalsy();
-        expect(component['accountType']).toBe('Business Owner');
+        expect(component['accountType']).toBe('admin');
     });
 
     it('should tell the user that passwords need to match',  inject([FlashMessagesService], (flashService: FlashMessagesService) => {
@@ -59,7 +59,7 @@ describe('RegisterComponent', () => {
 
         component.submitRegistration();
         expect(flashService.passwordConfirm).toBeTruthy();
-        expect(flashService.field_20).toBeTruthy();
+        expect(flashService.field_23).toBeTruthy();
         expect(flashService.createErrorMessage).toHaveBeenCalledWith('confirm passwords');
     }));
 
@@ -72,10 +72,10 @@ describe('RegisterComponent', () => {
 
         component.submitRegistration();
 
-        expect(component['user']['field_50']).toBe('test user');
-        expect(component['user']['field_19']['email']).toBe('test');
-        expect(component['user']['field_20']).toBe('123');
-        expect(component['user']['field_22']).toBe('Individual');
-        expect(component['accountType']).toBe('Individual');
+        expect(component['user']['field_44']).toBe('test user');
+        expect(component['user']['field_22']['email']).toBe('test');
+        expect(component['user']['field_23']).toBe('123');
+        expect(component['user']['field_50']).toBe('individual');
+        expect(component['accountType']).toBe('individual');
     }));
 });

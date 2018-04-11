@@ -15,12 +15,13 @@ const mockSession = {
             id: '1234',
             token: '4321',
             values: {
-                field_19: {
+                field_22: {
                     email: 'lawrence2978@email.com'
                 },
-                field_34: ['111111111'],
-                field_50: 'lawrence',
-                field_51: 'company'
+                field_52: ['111111111'],
+                field_44: 'lawrence',
+                field_50: 'Admin',
+                field_53: 'company',
             }
         }
     }

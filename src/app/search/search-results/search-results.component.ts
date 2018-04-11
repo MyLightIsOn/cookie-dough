@@ -90,7 +90,6 @@ export class SearchResultsComponent implements OnInit {
     // Uses the sorting pipe to sort the companies and then reset the pagination
     public sortBy(sortType: string, order: string, page: number) {
         if (this.filteredCompanies) {
-            console.log(sortType);
             this.searchService.sortType = sortType;
             this.sortedCompanies = _.orderBy(this.filteredCompanies, [function(o) {return o[sortType]; }], [order]);
             this.sortTypeText = this.searchService.sortType;

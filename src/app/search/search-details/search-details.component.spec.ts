@@ -22,19 +22,19 @@ const mockSearchService = {
 
 const company = {
     id: 0,
-    field_7: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
+    field_5: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' +
     ' Nullam vel neque eget enim tempus cursus. Curabitur porta ' +
     'velit consequat pulvinar dignissim. Lorem ipsum dolor ' +
     'sit amet',
-    field_4_raw: {
+    field_2_raw: {
         country: 'HK'
     },
-    field_5_raw: {
+    field_3_raw: {
         thumb_url: ''
     },
-    field_14_raw: '',
-    field_15_raw: '',
-    field_16_raw: ''
+    field_12_raw: '',
+    field_13_raw: '',
+    field_14_raw: ''
 };
 
 const route = {
@@ -98,13 +98,13 @@ describe('SearchDetailsComponent', () => {
         spyOn(component, 'truncateDescription');
 
         component.ngOnInit();
-        expect(component.truncateDescription).toHaveBeenCalledWith(company['field_7']);
-        expect(mockCompanyService.setFlag).toHaveBeenCalledWith(company['field_4_raw']['country']);
-        expect(mockCompanyService.setFlag).toHaveBeenCalledWith(company['field_4_raw']['country']);
+        expect(component.truncateDescription).toHaveBeenCalledWith(company['field_5']);
+        expect(mockCompanyService.setFlag).toHaveBeenCalledWith(company['field_2_raw']['country']);
+        expect(mockCompanyService.setFlag).toHaveBeenCalledWith(company['field_2_raw']['country']);
         expect(mockCompanyService.setSocialMedia).toHaveBeenCalledWith([
-            company['field_14_raw'],
-            company['field_15_raw'],
-            company['field_16_raw']]
+            company['field_12_raw'],
+            company['field_13_raw'],
+            company['field_14_raw']]
         );
     });
 
@@ -130,7 +130,7 @@ describe('SearchDetailsComponent', () => {
             'adipiscing elit. Nullam vel neque eget enim tempus ' +
             'cursus. Curabitur porta velit consequat pulvinar' +
             ' dignissim. Lorem ipsum dolor sit amet';
-        const truncText = component.truncateDescription(company['field_7']);
+        const truncText = component.truncateDescription(company['field_5']);
 
         expect(truncText.length).toBe(153);
     });

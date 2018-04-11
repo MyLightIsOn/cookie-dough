@@ -112,8 +112,8 @@ export class AuthService {
     // Checks if the users account is connected with a company. If it is, it adds
     // the company the this session. If not, it just updates the session as is.
     public accountAdminCheck(res: ISession): Observable<ISession> {
-        if (res['session']['user']['values']['field_34']) {
-            const companyId = res['session']['user']['values']['field_34'][0];
+        if (res['session']['user']['values']['field_52']) {
+            const companyId = res['session']['user']['values']['field_52'][0];
             return this.http.get(environment['BASEURL'] + '/api/company?id=' + companyId).map((company: ICompany) => {
                 res['session']['company'] = company;
                 this.setLocalStorage(res);
