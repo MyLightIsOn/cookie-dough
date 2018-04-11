@@ -16,23 +16,23 @@ const mockSession = {
             id: '1234',
             token: '4321',
             values: {
-                field_19: {
+                field_22: {
                     email: 'old@email.com'
                 },
-                field_34: ['111111111'],
-                field_50: 'lawrence',
-                field_51: 'company'
+                field_52: ['111111111'],
+                field_44: 'lawrence',
+                field_53: 'company'
             }
         }
     }
 };
 
 const userUpdate = {
-    field_19: {
+    field_22: {
         email: 'new@email.com'
     },
-    field_22: 'individual',
-    field_50: 'test',
+    field_50: 'individual',
+    field_44: 'test',
 };
 
 const mockError = {

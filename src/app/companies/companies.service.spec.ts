@@ -17,7 +17,7 @@ describe('CompaniesService', () => {
         (companiesService: CompaniesService, backend: HttpTestingController) => {
 
             const mockCompanies = [
-                { id: '0', field_3: 'company 1', field_4_raw: {}, field_29: true, field_42: 0.1},
+                { id: '0', field_3: 'company 1', field_2_raw: {}, field_29: true, field_42: 0.1},
             ];
 
             companiesService.getAllCompanies().subscribe();
@@ -59,8 +59,8 @@ describe('CompaniesService', () => {
             [CompaniesService],
             (companiesService: CompaniesService) => {
                 companiesService.companyData = [
-                    { id: '0', field_3: 'company 1', field_4_raw: {}, field_29: true, field_42: 1},
-                    { id: '1', field_3: 'company 2', field_33_raw: 'test-1'},
+                    { id: '0', field_3: 'company 1', field_2_raw: {}, field_29: true, field_42: 1},
+                    { id: '1', field_3: 'company 2', field_18: 'test-1'},
                 ];
 
                 let selectedCompany = companiesService.getCompany('0');
@@ -79,15 +79,15 @@ describe('CompaniesService', () => {
             (companiesService: CompaniesService) => {
 
                 const company = {};
-                company['field_14_raw'] = {
+                company['field_12_raw'] = {
                     url: 'test@facebook.com'
                 };
 
-                company['field_15_raw'] = {
+                company['field_13_raw'] = {
                     url: 'test@pinterest.com'
                 };
 
-                company['field_16_raw'] = {
+                company['field_14_raw'] = {
                     url: 'test@instagram.com'
                 };
 
@@ -99,24 +99,24 @@ describe('CompaniesService', () => {
                     url: 'test@twitter.com'
                 };
 
-                company['field_19_raw'] = {
+                company['field_22_raw'] = {
                     url: 'test@youtube.com'
                 };
 
                 companiesService.setSocialMedia([
+                    company['field_12_raw'],
+                    company['field_13_raw'],
                     company['field_14_raw'],
-                    company['field_15_raw'],
-                    company['field_16_raw'],
                     company['field_17_raw'],
                     company['field_18_raw'],
-                    company['field_19_raw']
+                    company['field_22_raw']
                 ]);
-                expect(company['field_14_raw']['social-media-class']).toBe('facebook');
-                expect(company['field_15_raw']['social-media-class']).toBe('pinterest');
-                expect(company['field_16_raw']['social-media-class']).toBe('instagram');
+                expect(company['field_12_raw']['social-media-class']).toBe('facebook');
+                expect(company['field_13_raw']['social-media-class']).toBe('pinterest');
+                expect(company['field_14_raw']['social-media-class']).toBe('instagram');
                 expect(company['field_17_raw']['social-media-class']).toBe('wechat');
                 expect(company['field_18_raw']['social-media-class']).toBe('twitter');
-                expect(company['field_19_raw']['social-media-class']).toBe('youtube');
+                expect(company['field_22_raw']['social-media-class']).toBe('youtube');
             }
         )
     );

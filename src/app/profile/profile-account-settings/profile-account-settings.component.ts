@@ -42,11 +42,11 @@ export class ProfileAccountSettingsComponent implements OnInit {
     }
 
     checkAccountType(user: object): void {
-        if (user['field_22'] === 'admin') {
-            this.accountType = 'Business Admin';
+        if (user['field_50'] === 'admin') {
+            this.accountType = 'admin';
             this.individualAccount = false;
         } else {
-            this.accountType = 'Individual';
+            this.accountType = 'individual';
             this.individualAccount = true;
         }
     }
@@ -79,21 +79,21 @@ export class ProfileAccountSettingsComponent implements OnInit {
     }
 
     updateUser(): void {
-        this.updatedUser['field_19'] = {};
-        this.updatedUser['field_19']['email'] = this.user['field_19']['email'];
-        this.updatedUser['field_50'] = this.user['field_50'];
+        this.updatedUser['field_22'] = {};
+        this.updatedUser['field_22']['email'] = this.user['field_22']['email'];
+        this.updatedUser['field_44'] = this.user['field_44'];
         if (this.individualAccount) {
-            this.updatedUser['field_22'] = 'individual';
+            this.updatedUser['field_50'] = 'individual';
         } else {
-            this.updatedUser['field_22'] = 'admin';
+            this.updatedUser['field_50'] = 'admin';
         }
     }
 
     submitUpdate(): void {
         if (this.individualAccount) {
-            this.updatedUser['field_22'] = 'individual';
+            this.updatedUser['field_50'] = 'individual';
         } else {
-            this.updatedUser['field_22'] = 'admin';
+            this.updatedUser['field_50'] = 'admin';
         }
         this.profileService.updateAccountSettings(this.updatedUser, this.token, this.userId).subscribe(() => {
             if (!this.flashMessageService.error) {

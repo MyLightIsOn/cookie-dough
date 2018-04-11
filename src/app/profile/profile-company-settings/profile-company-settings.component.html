@@ -8,13 +8,13 @@
       <!-- Company Name -->
       <div class="settings-data-container" [ngClass]="{'edit-field': companyNameEdit}">
         <span class="settings-icon companyName"></span>
-        <span *ngIf="!companyNameEdit; else editCompanyNameField" class="settings-value">{{company?.field_3}}</span>
+        <span *ngIf="!companyNameEdit; else editCompanyNameField" class="settings-value">{{company?.field_1}}</span>
         <ng-template #editCompanyNameField>
           <input type="text"
                  name="companyName"
                  (focus)="appService.fieldFocus()"
                  (focusout)="appService.showNav()"
-                 [(ngModel)]="company.field_3"
+                 [(ngModel)]="company.field_1"
                  [ngClass]="{'error-highlight': this.flashMessageService.field_3}"
                  class="account-settings-input-form"
                  required>
@@ -25,7 +25,7 @@
       <!-- Company Address -->
       <div class="settings-data-container" [ngClass]="{'edit-field': companyAddressEdit}">
         <span class="settings-icon companyAddress"></span>
-        <span *ngIf="!companyAddressEdit; else editCompanyAddressField" class="settings-value" [innerHTML]="company?.field_4"></span>
+        <span *ngIf="!companyAddressEdit; else editCompanyAddressField" class="settings-value" [innerHTML]="company?.field_2"></span>
         <ng-template #editCompanyAddressField>
 
           <!-- Company Address - Street1 -->
@@ -35,7 +35,7 @@
                    name="companyStreet1"
                    (focus)="appService.fieldFocus()"
                    (focusout)="appService.showNav()"
-                   [(ngModel)]="company.field_4_raw.street"
+                   [(ngModel)]="company.field_2_raw.street"
                    [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
                    class="account-settings-input-form"
                    required>
@@ -49,7 +49,7 @@
                    name="companyStreet2"
                    (focus)="appService.fieldFocus()"
                    (focusout)="appService.showNav()"
-                   [(ngModel)]="company.field_4_raw.street2"
+                   [(ngModel)]="company.field_2_raw.street2"
                    [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
                    class="account-settings-input-form"
                    required>
@@ -62,7 +62,7 @@
                    name="companyCity"
                    (focus)="appService.fieldFocus()"
                    (focusout)="appService.showNav()"
-                   [(ngModel)]="company.field_4_raw.city"
+                   [(ngModel)]="company.field_2_raw.city"
                    [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
                    class="account-settings-input-form"
                    required>
@@ -75,7 +75,7 @@
                    name="companyState"
                    (focus)="appService.fieldFocus()"
                    (focusout)="appService.showNav()"
-                   [(ngModel)]="company.field_4_raw.state"
+                   [(ngModel)]="company.field_2_raw.state"
                    [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
                    class="account-settings-input-form"
                    required>
@@ -88,7 +88,7 @@
                    name="companyZip"
                    (focus)="appService.fieldFocus()"
                    (focusout)="appService.showNav()"
-                   [(ngModel)]="company.field_4_raw.zip"
+                   [(ngModel)]="company.field_2_raw.zip"
                    [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
                    class="account-settings-input-form"
                    required>
@@ -101,7 +101,7 @@
                    name="companyCountry"
                    (focus)="appService.fieldFocus()"
                    (focusout)="appService.showNav()"
-                   [(ngModel)]="company.field_4_raw.country"
+                   [(ngModel)]="company.field_2_raw.country"
                    [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
                    class="account-settings-input-form"
                    required>

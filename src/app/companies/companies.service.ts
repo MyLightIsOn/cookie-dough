@@ -59,7 +59,7 @@ export class CompaniesService {
     // Used by the search resolver to find the selected company
     public getCompany(id) {
         const selectedCompany = this.companyData.find(company => company.id === id);
-        const selectedCompanyUrl = this.companyData.find(company => company['field_33_raw'] === id);
+        const selectedCompanyUrl = this.companyData.find(company => company['field_18'] === id);
 
         if (selectedCompanyUrl) {
             return selectedCompanyUrl;
@@ -110,7 +110,6 @@ export class CompaniesService {
                 company['field_34'] = company['field_2_raw']['country'];
             }
         }
-        console.log(companyData);
         return companyData;
     }
 }

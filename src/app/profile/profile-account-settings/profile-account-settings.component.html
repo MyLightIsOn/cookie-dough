@@ -3,14 +3,14 @@
     <form (ngSubmit)="submitUpdate(); false" #updateInfoForm="ngForm" autocomplete="on">
         <div class="settings-data-container" [ngClass]="{'edit-field': editUserName}">
             <span class="settings-icon username"></span>
-            <span *ngIf="!editUserName; else editUserNameField" class="settings-value">{{user?.field_50}}</span>
+            <span *ngIf="!editUserName; else editUserNameField" class="settings-value">{{user?.field_44}}</span>
             <ng-template #editUserNameField>
                 <input type="text"
                        name="userName"
                        (focus)="appService.fieldFocus()"
                        (focusout)="appService.showNav()"
-                       [(ngModel)]="updatedUser['field_50']"
-                       [ngClass]="{'error-highlight': this.flashMessageService.field_50}"
+                       [(ngModel)]="updatedUser['field_44']"
+                       [ngClass]="{'error-highlight': this.flashMessageService.field_44}"
                        class="account-settings-input-form"
                        required>
             </ng-template>
@@ -19,14 +19,14 @@
 
         <div class="settings-data-container" [ngClass]="{'edit-field': editEmail}">
             <span class="settings-icon email"></span>
-            <span  *ngIf="!editEmail; else editEmailField" class="settings-value">{{user?.field_19.email}}</span>
+            <span  *ngIf="!editEmail; else editEmailField" class="settings-value">{{user?.field_22.email}}</span>
             <ng-template #editEmailField>
                 <input type="text"
                        name="email"
                        (focus)="appService.fieldFocus()"
                        (focusout)="appService.showNav()"
-                       [(ngModel)]="updatedUser['field_19']['email']"
-                       [ngClass]="{'error-highlight': this.flashMessageService.field_19}"
+                       [(ngModel)]="updatedUser['field_22']['email']"
+                       [ngClass]="{'error-highlight': this.flashMessageService.field_22}"
                        class="account-settings-input-form"
                        required>
             </ng-template>

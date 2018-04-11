@@ -40,20 +40,20 @@ describe('ProfileAccountSettingsComponent', () => {
 
     it('should check the account type', () => {
         const adminUser = {
-            field_22: 'admin'
+            field_50: 'admin'
         };
 
         const individualUser = {
-            field_22: 'individual'
+            field_50: 'individual'
         };
 
         component.checkAccountType(adminUser);
 
-        expect(component.accountType).toBe('Business Admin');
+        expect(component.accountType).toBe('admin');
         expect(component.individualAccount).toBeFalsy();
 
         component.checkAccountType(individualUser);
-        expect(component.accountType).toBe('Individual');
+        expect(component.accountType).toBe('individual');
         expect(component.individualAccount).toBeTruthy();
     });
 
@@ -89,47 +89,47 @@ describe('ProfileAccountSettingsComponent', () => {
 
     it('should cancel the edits', () => {
         const user = {
-            field_19: {
+            field_22: {
                 email: 'test@email.com'
             },
-            field_50: 'test',
-            field_22: 'individual'
+            field_44: 'test',
+            field_50: 'individual'
         };
 
         component.user = user;
         component.individualAccount = false;
         component.updateUser();
-        expect(component.updatedUser['field_22']).toEqual('admin');
+        expect(component.updatedUser['field_50']).toEqual('admin');
     });
 
     it('should check the account type before submitting', () => {
         const user = {
-            field_19: {
+            field_22: {
                 email: 'test@email.com'
             },
-            field_50: 'test',
-            field_22: 'individual'
+            field_44: 'test',
+            field_50: 'individual'
         };
 
         component.user = user;
         component.individualAccount = false;
         component.submitUpdate();
-        expect(component.updatedUser['field_22']).toEqual('admin');
+        expect(component.updatedUser['field_50']).toEqual('admin');
 
         component.individualAccount = true;
         component.updateUser();
         component.submitUpdate();
-        expect(component.updatedUser['field_22']).toEqual('individual');
+        expect(component.updatedUser['field_50']).toEqual('individual');
     });
 
     it('should make fields not editable after success', async(inject(
         [ProfileService], (service: ProfileService) => {
             const user = {
-                field_19: {
+                field_22: {
                     email: 'test@email.com'
                 },
-                field_50: 'test',
-                field_22: 'individual'
+                field_44: 'test',
+                field_50: 'individual'
             };
 
             component.user = user;
