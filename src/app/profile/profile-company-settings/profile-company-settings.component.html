@@ -113,6 +113,31 @@
 
     </section>
 
+
+    <section class="form-section">
+      <h4 class="section-title">Company Details</h4>
+
+      <!-- Company Logo -->
+      <div class="settings-data-container" [ngClass]="{'edit-field': companyLogoEdit}">
+        <span class="settings-icon companyLogo"></span>
+        <span *ngIf="!companyLogoEdit; else editCompanyLogoField" class="settings-value">
+          <img src="{{company?.field_3_raw.thumb_url}}">
+        </span>
+        <ng-template #editCompanyLogoField>
+          <input type="file"
+                 name="companyLogo"
+                 (focus)="appService.fieldFocus()"
+                 (focusout)="appService.showNav()"
+                 (change)="handleFileInput($event.target.files)"
+                 [ngClass]="{'error-highlight': this.flashMessageService.field_3_raw}"
+                 class="account-settings-input-form"
+                 required>
+        </ng-template>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyLogoEdit}" (click)="editField('companyLogo')"></span>
+      </div>
+
+    </section>
+
     <div  *ngIf="saveEnabled" class="save-container">
       <button class="cancel-button"><span (click)="cancel(); false">Cancel</span></button>
       <button class="orange-button">Save</button>

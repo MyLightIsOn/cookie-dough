@@ -1,4 +1,14 @@
 const routes = require('express').Router();
+const multer = require('multer');
+const upload = multer({ storage: multer.diskStorage({
+		destination: function (req, file, cb) {
+			cb(null, 'uploads/')
+		},
+		filename: function (req, file, cb) {
+			cb(null, file.fieldname + '-' + Date.now())
+		}
+    })
+});
 const companies = require('./services/companies/companies.service');
 const reviews = require('./services/reviews/reviews.service');
 const login = require('./services/login/login.service');
@@ -25,5 +35,7 @@ routes.put('/api/verify/:id?', function(req, res){ return register.verifyAccount
 
 // Account Settings Routes
 routes.put('/api/update-account', function(req, res){ return account.update(req, res)});
+routes.post('/api/upload-image', upload.single('image'),function(req, res){ return account.uploadImage(req, res)});
+
 
 module.exports = routes;

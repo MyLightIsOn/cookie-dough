@@ -96,6 +96,10 @@
     }
   }
 
+  .form-section {
+    margin-bottom: 40px;
+  }
+
   .settings-data-container:first-child, .form-section > .settings-data-container:first-of-type {
     border-radius: 6px 6px 0 0;
 
@@ -121,7 +125,7 @@
   .settings-icon:before {
     content: '';
     display: block;
-    width: 30px;
+    width: 37px;
     height: 30px;
     position: absolute;
   }
@@ -162,7 +166,7 @@
 
   .companyName:before {
     background: url("/assets/icons/dark_blue_business.png") no-repeat;
-    left: -40px;
+    left: -44px;
     top: -8px;
   }
 
@@ -170,6 +174,17 @@
     background: url("/assets/icons/dark_blue_location.png") no-repeat;
     left: -40px;
     top: -8px;
+  }
+
+  .companyLogo:before {
+    background: url("/assets/icons/dark_blue_image.png") no-repeat -7px -7px;
+    left: -49px;
+    top: -15px;
+    background-size: 47px;
+  }
+
+  .companyLogo:after {
+    content: 'company logo';
   }
 
   .companyAddress:after {

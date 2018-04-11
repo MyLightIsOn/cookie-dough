@@ -4,7 +4,7 @@ import {ProfileService} from '../profile.service';
 import {AuthService} from '../../auth.service';
 import {AppService} from '../../app.service';
 import {FlashMessagesService} from '../../flash-messages.service';
-import {ICompany} from '../../_interfaces/companies';
+import { ICompany } from '../../_interfaces/companies';
 
 @Component({
     selector: 'app-profile-company-settings',
@@ -20,6 +20,8 @@ export class ProfileCompanySettingsComponent implements OnInit {
     public saveEnabled = false;
     public companyNameEdit: boolean;
     public companyAddressEdit: boolean;
+    public companyLogoEdit: boolean;
+    public fileToUpload: any;
     private editedFields = [];
 
     constructor(
@@ -42,12 +44,16 @@ export class ProfileCompanySettingsComponent implements OnInit {
         this.enableSave();
     }
 
+    handleFileInput(files: FileList) {
+        this.fileToUpload = files.item(0);
+    }
+
     enableSave(): void {
         this.saveEnabled = true;
     }
 
     submitUpdate(): void {
-
+         this.profileService.uploadImage(this.fileToUpload).subscribe();
     }
 
     cancel(): void {

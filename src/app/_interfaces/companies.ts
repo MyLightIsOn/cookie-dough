@@ -10,8 +10,17 @@ export interface ICompany {
         zip: string,
         country: string
     };
-    field_3_raw?: object; // Company logo Object:
-    // id, application id, s3, type, filename, url, thumb_url, size, field_key
+    field_3_raw?: {
+        id: string,
+        application_id: string,
+        s3: boolean,
+        type: string,
+        filename: string,
+        url: string
+        thumb_url: string,
+        size: number,
+        field_key: string
+    };
     field_4?: string; // Tagline
     field_5?: string; // Description
     field_6?: number; // Year Established
