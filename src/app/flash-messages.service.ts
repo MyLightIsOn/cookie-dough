@@ -78,6 +78,10 @@ export class FlashMessagesService {
             case 'account update':
                 this.messages.push('Account update is successful');
                 break;
+
+            case 'company update':
+                this.messages.push('Company info update is successful');
+                break;
         }
 
         const flashMessageService = this;

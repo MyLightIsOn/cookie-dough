@@ -41,19 +41,24 @@ export class AuthService {
 
     // Updates the local storage by iterating through the update and the current user
     // looking for matches in properties. If there's is a match, an update is made.
-    public updateLocalStorage(update: object): void {
+    public updateLocalStorage(update: object, type: string): void {
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        const currentUserValues = currentUser['session']['user']['values'];
+        let objectToUpdate;
+        if ( type === 'user') {
+            objectToUpdate = currentUser['session']['user']['values'];
+        } else {
+            objectToUpdate = currentUser['session']['company'];
+        }
 
         // Iterate through the current user properties
-        for (const prop in currentUserValues) {
-            if (currentUserValues.hasOwnProperty(prop)) {
+        for (const prop in objectToUpdate) {
+            if (objectToUpdate.hasOwnProperty(prop)) {
 
                 // Looking for a match in the updated properties
                 for (const updatedProp in update) {
                     if (update.hasOwnProperty(updatedProp)) {
                         if (prop === updatedProp) {
-                            currentUserValues[prop] = update[updatedProp];
+                            objectToUpdate[prop] = update[updatedProp];
                         }
                     }
                 }

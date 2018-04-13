@@ -16,11 +16,13 @@ import { ICompany } from '../../_interfaces/companies';
 })
 export class ProfileCompanySettingsComponent implements OnInit {
     public company: ICompany;
-    public updatedCompany: object;
+    public updatedCompany = {};
     public saveEnabled = false;
     public companyNameEdit: boolean;
     public companyAddressEdit: boolean;
     public companyLogoEdit: boolean;
+    public token: string;
+    public userId: string;
     public fileToUpload: any;
     private editedFields = [];
 
@@ -32,7 +34,11 @@ export class ProfileCompanySettingsComponent implements OnInit {
 
     ngOnInit(): void {
         this.authService.subject.subscribe(res => {
+            this.token = res['session']['user']['token'];
+            this.userId = res['session']['user']['id'];
             this.company =  res['session']['company'];
+            this.updatedCompany = {};
+            this.updatedCompany['field_2'] = res['session']['company']['field_2_raw'];
         });
         this.authService.getLocalStorage();
     }
@@ -53,7 +59,27 @@ export class ProfileCompanySettingsComponent implements OnInit {
     }
 
     submitUpdate(): void {
-         this.profileService.uploadImage(this.fileToUpload).subscribe();
+        if (this.fileToUpload) {
+            this.profileService.uploadImage(this.fileToUpload).subscribe( res => {
+                this.profileService.updateCompanySettings(this.updatedCompany, this.company.id, res).subscribe();
+                if (!this.flashMessageService.error) {
+                    this.updateSuccess();
+                }
+            });
+        } else {
+            this.profileService.updateCompanySettings(this.updatedCompany, this.company.id).subscribe(() => {
+                if (!this.flashMessageService.error) {
+                    this.updateSuccess();
+                }
+            });
+        }
+    }
+
+    updateSuccess() {
+        this.companyAddressEdit = false;
+        this.companyNameEdit = false;
+        this.companyLogoEdit = false;
+        this.saveEnabled = false;
     }
 
     cancel(): void {

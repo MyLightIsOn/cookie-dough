@@ -24,21 +24,35 @@ export class ProfileService {
                 this.flashMessageService.createErrorMessage(res['error']['errors']);
             } else {
                 this.flashMessageService.createSuccessMessage('account update');
-                this.authService.updateLocalStorage(updatedUser);
+                this.authService.updateLocalStorage(updatedUser, 'user');
             }
         });
     }
 
-    uploadImage(fileToUpload) {
+    uploadImage(fileToUpload): Observable<Object> {
         const formData = new FormData();
         formData.append('image', fileToUpload);
         return this.http.post(environment['BASEURL'] + '/api/upload-image', formData).map((res) => {
             if (res['error']) {
                 this.flashMessageService.createErrorMessage(res['error']['errors']);
             } else {
-                console.log(res);
+                return res;
+            }
+        });
+    }
+
+    updateCompanySettings(updatedCompany, id, updatedImage?) {
+        if (updatedImage) {
+            updatedCompany['field_3'] = updatedImage['id'];
+        }
+
+        return this.http.put(environment['BASEURL'] + '/api/update-company?id=' + id, [updatedCompany]).map((res) => {
+            if (res['error']) {
+                this.flashMessageService.createErrorMessage(res['error']['errors']);
+            } else {
+                this.authService.updateLocalStorage(res, 'company');
+                this.flashMessageService.createSuccessMessage('company update');
             }
         });
     }
 }
-

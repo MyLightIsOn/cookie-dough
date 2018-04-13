@@ -10,6 +10,7 @@ export interface ICompany {
         zip: string,
         country: string
     };
+    field_3?: string;
     field_3_raw?: {
         id: string,
         application_id: string,
