@@ -79,6 +79,7 @@ module.exports = {
 
 		request(options)
 			.then(function (parsedBody) {
+				fs.unlink('uploads/' + req.file.filename);
 				return res.send(parsedBody);
 			})
 			.catch(function (err) {
