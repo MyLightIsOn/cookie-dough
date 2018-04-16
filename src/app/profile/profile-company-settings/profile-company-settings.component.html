@@ -15,11 +15,11 @@
                  (focus)="appService.fieldFocus()"
                  (focusout)="appService.showNav()"
                  [(ngModel)]="updatedCompany['field_1']"
-                 [ngClass]="{'error-highlight': this.flashMessageService.field_3}"
+                 [ngClass]="{'error-highlight': this.flashMessageService.field_1}"
                  class="account-settings-input-form"
                  required>
         </ng-template>
-        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyNameEdit}" (click)="editField('companyName')"></span>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyNameEdit}" (click)="editField('companyName', 'field_1')"></span>
       </div>
 
       <!-- Company Address -->
@@ -36,7 +36,7 @@
                    (focus)="appService.fieldFocus()"
                    (focusout)="appService.showNav()"
                    [(ngModel)]="updatedCompany['field_2']['street']"
-                   [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
+                   [ngClass]="{'error-highlight': this.flashMessageService.field_2}"
                    class="account-settings-input-form"
                    required>
           </div>
@@ -50,7 +50,7 @@
                    (focus)="appService.fieldFocus()"
                    (focusout)="appService.showNav()"
                    [(ngModel)]="updatedCompany['field_2']['street2']"
-                   [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
+                   [ngClass]="{'error-highlight': this.flashMessageService.field_2}"
                    class="account-settings-input-form"
                    required>
           </div>
@@ -63,9 +63,25 @@
                    (focus)="appService.fieldFocus()"
                    (focusout)="appService.showNav()"
                    [(ngModel)]="updatedCompany['field_2']['city']"
-                   [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
+                   [ngClass]="{'error-highlight': this.flashMessageService.field_2}"
                    class="account-settings-input-form"
                    required>
+          </div>
+
+          <!-- Company Address - Country -->
+          <div class="multi-field-container">
+            <label>country/region</label>
+            <select type="text"
+                   name="companyCountry"
+                   (focus)="appService.fieldFocus()"
+                   (focusout)="appService.showNav()"
+                   [(ngModel)]="updatedCompany['field_2']['country']"
+                   [ngClass]="{'error-highlight': this.flashMessageService.field_2}"
+                   class="account-settings-input-form"
+                   required>
+              <option>Hi</option>
+              <option>Ho</option>
+            </select>
           </div>
 
           <!-- Company Address - State -->
@@ -76,7 +92,7 @@
                    (focus)="appService.fieldFocus()"
                    (focusout)="appService.showNav()"
                    [(ngModel)]="updatedCompany['field_2']['state']"
-                   [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
+                   [ngClass]="{'error-highlight': this.flashMessageService.field_2}"
                    class="account-settings-input-form"
                    required>
           </div>
@@ -89,26 +105,13 @@
                    (focus)="appService.fieldFocus()"
                    (focusout)="appService.showNav()"
                    [(ngModel)]="updatedCompany['field_2']['zip']"
-                   [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
-                   class="account-settings-input-form"
-                   required>
-          </div>
-
-          <!-- Company Address - Country -->
-          <div class="multi-field-container">
-            <label>country/region</label>
-            <input type="text"
-                   name="companyCountry"
-                   (focus)="appService.fieldFocus()"
-                   (focusout)="appService.showNav()"
-                   [(ngModel)]="updatedCompany['field_2']['country']"
-                   [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
+                   [ngClass]="{'error-highlight': this.flashMessageService.field_2}"
                    class="account-settings-input-form"
                    required>
           </div>
 
         </ng-template>
-        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyAddressEdit}" (click)="editField('companyAddress')"></span>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyAddressEdit}" (click)="editField('companyAddress', 'field_2_raw')"></span>
       </div>
 
     </section>
@@ -134,6 +137,23 @@
                  required>
         </ng-template>
         <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyLogoEdit}" (click)="editField('companyLogo')"></span>
+      </div>
+
+      <div class="settings-data-container" [ngClass]="{'edit-field': companyDescriptionEdit}">
+        <span class="settings-icon companyDescription"></span>
+        <span *ngIf="!companyDescriptionEdit; else editCompanyDescriptionField" class="settings-value">{{ company?.field_5 }}</span>
+        <ng-template #editCompanyDescriptionField>
+          <textarea type="text"
+                 name="companyDescription"
+                 (focus)="appService.fieldFocus()"
+                 (focusout)="appService.showNav()"
+                 [(ngModel)]="updatedCompany['field_5']"
+                 [ngClass]="{'error-highlight': this.flashMessageService.field_5}"
+                 class="account-settings-input-form text-area"
+                    required>
+          </textarea>
+        </ng-template>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyDescriptionEdit}" (click)="editField('companyDescription', 'field_5')"></span>
       </div>
 
     </section>

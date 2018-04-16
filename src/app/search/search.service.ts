@@ -5,7 +5,7 @@ export class SearchService {
     public paginationPage: number;
     public searchValueText: string;
     public startAtDetails: boolean;
-    public sortType = 'field_3';
+    public sortType = 'field_1';
     public sortOrder = 'asc';
 
     constructor() {}

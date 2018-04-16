@@ -21,6 +21,7 @@ export class ProfileCompanySettingsComponent implements OnInit {
     public companyNameEdit: boolean;
     public companyAddressEdit: boolean;
     public companyLogoEdit: boolean;
+    public companyDescriptionEdit: boolean;
     public token: string;
     public userId: string;
     public fileToUpload: any;
@@ -38,13 +39,15 @@ export class ProfileCompanySettingsComponent implements OnInit {
             this.userId = res['session']['user']['id'];
             this.company =  res['session']['company'];
             this.updatedCompany = {};
-            this.updatedCompany['field_2'] = res['session']['company']['field_2_raw'];
         });
         this.authService.getLocalStorage();
     }
 
-    editField(field): void {
-        const fieldToEdit = field + 'Edit';
+    editField(fieldName, field?) {
+        const fieldToEdit = fieldName + 'Edit';
+        const updatedField = field.replace('_raw', '');
+
+        this.updatedCompany[updatedField] = this.company[field];
         this.editedFields.push(fieldToEdit);
         this[fieldToEdit] = true;
         this.enableSave();
@@ -63,26 +66,28 @@ export class ProfileCompanySettingsComponent implements OnInit {
             this.profileService.uploadImage(this.fileToUpload).subscribe( res => {
                 this.profileService.updateCompanySettings(this.updatedCompany, this.company.id, res).subscribe();
                 if (!this.flashMessageService.error) {
-                    this.updateSuccess();
+                    this.closeEditFields();
                 }
             });
         } else {
             this.profileService.updateCompanySettings(this.updatedCompany, this.company.id).subscribe(() => {
                 if (!this.flashMessageService.error) {
-                    this.updateSuccess();
+                    this.closeEditFields();
                 }
             });
         }
     }
 
-    updateSuccess() {
-        this.companyAddressEdit = false;
-        this.companyNameEdit = false;
-        this.companyLogoEdit = false;
+    closeEditFields() {
+        for (const fields of Object.keys(this.editedFields)) {
+            const fieldToClose = this.editedFields[fields];
+            this[fieldToClose] = false;
+        }
         this.saveEnabled = false;
+        this.editedFields = [];
     }
 
     cancel(): void {
-
+        this.closeEditFields();
     }
 }

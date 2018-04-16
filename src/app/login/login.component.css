@@ -160,7 +160,7 @@
     border: 0;
     display: block;
     margin: auto;
-    max-height: 46px;
+    min-height: 46px;
     width: 90%;
     padding: 13px 10px;
     font-size: 17px;
