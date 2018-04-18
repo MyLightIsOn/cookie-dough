@@ -59,8 +59,10 @@ export class ProfileCompanySettingsComponent implements OnInit {
     }
 
     countryTypeHead(): void {
+        const filteredCountriesLength = this.profileService.filteredCountries.length;
         this.searchCountryText = this.updatedCompany['field_2']['country'];
-        if (this.searchCountryText.length > 1) {
+
+        if (this.searchCountryText.length > 1 && filteredCountriesLength > 0) {
             this.openDropdown = true;
         } else {
             this.openDropdown = false;

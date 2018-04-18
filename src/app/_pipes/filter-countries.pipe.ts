@@ -1,4 +1,5 @@
 import {Pipe, PipeTransform, Injectable} from '@angular/core';
+import { ProfileService } from '../profile/profile.service';
 
 @Pipe({
     name: 'filterCountry',
@@ -6,6 +7,8 @@ import {Pipe, PipeTransform, Injectable} from '@angular/core';
 })
 @Injectable()
 export class FilterCountriesPipe implements PipeTransform {
+    constructor(
+        public profileService: ProfileService) {}
 
     transform(items: any[], filter: string): any {
         let text;
@@ -16,8 +19,8 @@ export class FilterCountriesPipe implements PipeTransform {
         if (!items || !text) {
             return items;
         }
-        // filter items array, items which match and return true will be
-        // kept, false will be filtered out
-        return items.filter(item => item.name.toUpperCase().indexOf(filter.toUpperCase()) !== -1);
+
+        this.profileService.filteredCountries = items.filter(item => item.name.toUpperCase().indexOf(filter.toUpperCase()) !== -1);
+        return this.profileService.filteredCountries;
     }
 }

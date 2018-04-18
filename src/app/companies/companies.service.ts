@@ -97,11 +97,6 @@ export class CompaniesService {
         });
     }
 
-    // Sets the image for the company's country flag
-    public setFlag(text: string) {
-        return text.replace(' ', '_').toLowerCase();
-    }
-
     public setCountrySortName(companyData) {
 
         for (const index in companyData) {

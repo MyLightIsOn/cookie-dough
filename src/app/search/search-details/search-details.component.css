@@ -239,7 +239,7 @@
     position: relative; }
   .search-details-container .country-flag {
     position: absolute;
-    top: 10px;
+    top: 0px;
     right: 10px; }
   .search-details-container agm-map {
     width: 99%;
@@ -260,6 +260,8 @@
   .search-details-container #map-container.hidden {
     height: 0;
     opacity: 0;
+    margin: 0;
+    padding: 0;
     transition: 0.3s height; }
 
 .social-media,

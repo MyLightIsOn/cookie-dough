@@ -122,19 +122,6 @@ describe('CompaniesService', () => {
     );
 
     it(
-        'should return the country name without spaces',
-        inject(
-            [CompaniesService],
-            (companiesService: CompaniesService) => {
-                const countryName = 'Hong Kong';
-
-                const noSpaces = companiesService.setFlag(countryName);
-                expect(noSpaces).toBe('hong_kong');
-            }
-        )
-    );
-
-    it(
         'should return country data with new field',
         inject(
             [CompaniesService],

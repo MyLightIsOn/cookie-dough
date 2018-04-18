@@ -28,7 +28,7 @@
 
                 <!-- Country Flag -->
                 <div class="country-flag desktop">
-                    <i class="f48_{{company['country_flag']}}"></i>
+                    <img src="/assets/images/blank.gif" [ngClass]="'flag flag-' + companyISOCode" alt="{{companyCountryName}}" />
                 </div>
             </div>
             <span class="drop-shadow-effect"></span>
@@ -83,7 +83,7 @@
 
             <!-- Country Flag -->
             <div class="country-flag mobile">
-                <i class="f48_{{company['country_flag']}}"></i>
+                <img src="/assets/images/blank.gif" [ngClass]="'flag flag-' + companyISOCode" alt="{{companyCountryName}}" />
             </div>
 
             <!--  Map Toggle -->

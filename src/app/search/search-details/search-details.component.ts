@@ -5,6 +5,7 @@ import { ICompany } from '../../_interfaces/companies';
 import { CompaniesService } from '../../companies/companies.service';
 import { SearchService } from '../search.service';
 import { AppService } from '../../app.service';
+import * as countries from '../../json/countries.json';
 
 @Component({
     selector: 'app-search-details',
@@ -19,6 +20,8 @@ export class SearchDetailsComponent implements OnInit {
     public lng: number;
     public mapOff: boolean;
     public mapButtonText = 'Map';
+    public companyCountryName: string;
+    public companyISOCode: string;
 
     constructor(
         private route: ActivatedRoute,
@@ -33,7 +36,6 @@ export class SearchDetailsComponent implements OnInit {
         this.company = this.route.snapshot.data['company'];
         if (this.company) {
             this.company['field_5_truncated'] = this.truncateDescription(this.company['field_5']);
-            this.company['country_flag'] = this.companyService.setFlag(this.company['field_2_raw']['country']);
             this.companyService.setSocialMedia([
                 this.company['field_12_raw'],
                 this.company['field_13_raw'],
@@ -41,6 +43,7 @@ export class SearchDetailsComponent implements OnInit {
             ]);
             this.lat = this.company['field_2_raw']['latitude'];
             this.lng = this.company['field_2_raw']['longitude'];
+            this.setFlag(this.company['field_2_raw']['country'])
             if (this.appService.device === 'mobile') {
                 this.mapOff = true;
             } else {
@@ -86,6 +89,15 @@ export class SearchDetailsComponent implements OnInit {
             this.mapButtonText = 'Map';
         } else {
             this.mapButtonText = 'Close Map';
+        }
+    }
+
+    setFlag(country: string) {
+        for (const index of Object.keys(countries[0])) {
+            if (countries[index].name === country) {
+                this.companyCountryName = countries[index].name;
+                this.companyISOCode = countries[index].alpha2.toLowerCase();
+            }
         }
     }
 }

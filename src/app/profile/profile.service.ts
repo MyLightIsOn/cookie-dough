@@ -12,6 +12,7 @@ import { FlashMessagesService } from '../flash-messages.service';
 
 @Injectable()
 export class ProfileService {
+    public filteredCountries;
 
     constructor(
         public authService: AuthService,

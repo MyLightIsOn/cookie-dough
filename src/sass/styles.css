@@ -181,7 +181,7 @@ button, input[type="submit"], input[type="reset"] {
   width: 100%; }
 
 .dropdown-container {
-  position: relative; }
+  position: absolute; }
   .dropdown-container span {
     position: absolute;
     right: 0;
