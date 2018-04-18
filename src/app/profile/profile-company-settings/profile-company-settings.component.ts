@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import {ProfileService} from '../profile.service';
-import {AuthService} from '../../auth.service';
-import {AppService} from '../../app.service';
-import {FlashMessagesService} from '../../flash-messages.service';
+import { ProfileService } from '../profile.service';
+import { AuthService } from '../../auth.service';
+import { AppService } from '../../app.service';
+import { FlashMessagesService } from '../../flash-messages.service';
+
 import { ICompany } from '../../_interfaces/companies';
+import * as countries from '../../json/countries.json';
 
 @Component({
     selector: 'app-profile-company-settings',
@@ -22,9 +24,12 @@ export class ProfileCompanySettingsComponent implements OnInit {
     public companyAddressEdit: boolean;
     public companyLogoEdit: boolean;
     public companyDescriptionEdit: boolean;
+    public countries = countries[0];
+    public searchCountryText: string;
     public token: string;
     public userId: string;
     public fileToUpload: any;
+    public openDropdown: boolean;
     private editedFields = [];
 
     constructor(
@@ -39,18 +44,32 @@ export class ProfileCompanySettingsComponent implements OnInit {
             this.userId = res['session']['user']['id'];
             this.company =  res['session']['company'];
             this.updatedCompany = {};
+            this.updatedCompany['field_2'] = this.company['field_2_raw'];
         });
         this.authService.getLocalStorage();
     }
 
-    editField(fieldName, field?) {
+    editField(fieldName, field?): void {
         const fieldToEdit = fieldName + 'Edit';
         const updatedField = field.replace('_raw', '');
-
         this.updatedCompany[updatedField] = this.company[field];
         this.editedFields.push(fieldToEdit);
         this[fieldToEdit] = true;
         this.enableSave();
+    }
+
+    countryTypeHead(): void {
+        this.searchCountryText = this.updatedCompany['field_2']['country'];
+        if (this.searchCountryText.length > 1) {
+            this.openDropdown = true;
+        } else {
+            this.openDropdown = false;
+        }
+    }
+
+    setCountryValue(countryName: string): void {
+        this.updatedCompany['field_2']['country'] = countryName;
+        this.openDropdown = false;
     }
 
     handleFileInput(files: FileList) {
@@ -78,7 +97,7 @@ export class ProfileCompanySettingsComponent implements OnInit {
         }
     }
 
-    closeEditFields() {
+    closeEditFields(): void {
         for (const fields of Object.keys(this.editedFields)) {
             const fieldToClose = this.editedFields[fields];
             this[fieldToClose] = false;

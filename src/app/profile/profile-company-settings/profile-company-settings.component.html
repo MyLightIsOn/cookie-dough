@@ -71,17 +71,23 @@
           <!-- Company Address - Country -->
           <div class="multi-field-container">
             <label>country/region</label>
-            <select type="text"
+            <input type="text"
                    name="companyCountry"
                    (focus)="appService.fieldFocus()"
                    (focusout)="appService.showNav()"
+                   (keyup)="countryTypeHead()"
                    [(ngModel)]="updatedCompany['field_2']['country']"
                    [ngClass]="{'error-highlight': this.flashMessageService.field_2}"
-                   class="account-settings-input-form"
-                   required>
-              <option>Hi</option>
-              <option>Ho</option>
-            </select>
+                   class="account-settings-input-form">
+
+            <div class="dropdown-container">
+              <ul class="dropdown-list" [ngClass]="{'list-open left': this.openDropdown}">
+                <li *ngFor="let country of countries | filterCountry : updatedCompany['field_2']['country']"
+                    [attr.data-country-code]="country.alpha2"
+                    (click)="setCountryValue(country.name)">{{country.name}}</li>
+              </ul>
+            </div>
+
           </div>
 
           <!-- Company Address - State -->

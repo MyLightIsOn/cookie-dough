@@ -9,6 +9,8 @@ import { ProfileService } from './profile.service';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileCompanySettingsComponent } from './profile-company-settings/profile-company-settings.component';
 
+import { FilterCountriesPipe } from '../_pipes/filter-countries.pipe';
+
 @NgModule({
     imports: [
         FormsModule,
@@ -18,7 +20,8 @@ import { ProfileCompanySettingsComponent } from './profile-company-settings/prof
     declarations: [
         ProfileComponent,
         ProfileAccountSettingsComponent,
-        ProfileCompanySettingsComponent
+        ProfileCompanySettingsComponent,
+        FilterCountriesPipe
     ],
     providers: [
         ProfileService

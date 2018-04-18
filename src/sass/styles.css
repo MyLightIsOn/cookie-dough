@@ -188,29 +188,53 @@ button, input[type="submit"], input[type="reset"] {
     cursor: pointer; }
   .dropdown-container .dropdown-list {
     display: none; }
-  .dropdown-container .dropdown-list.list-open {
-    display: block;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    z-index: 5;
-    position: relative;
-    top: 40px; }
-    .dropdown-container .dropdown-list.list-open li {
-      list-style: none;
+    .dropdown-container .dropdown-list.list-open {
       display: block;
-      padding: 14px 0 14px 14px;
-      background-color: #CCD1EB;
-      color: #191E50;
-      border: 1px solid #616697; }
-    .dropdown-container .dropdown-list.list-open li:hover {
-      background-color: #FF9018;
-      color: #F9FCFE;
-      cursor: pointer; }
-    .dropdown-container .dropdown-list.list-open li:active {
+      margin: 0;
+      padding: 3px;
+      width: 200px;
+      z-index: 5;
+      position: relative;
       background-color: #191E50;
-      color: #F9FCFE;
-      cursor: pointer; }
+      border-radius: 4px;
+      top: 9px; }
+      .dropdown-container .dropdown-list.list-open li {
+        list-style: none;
+        display: block;
+        padding: 14px;
+        margin: auto;
+        color: #F9FCFE;
+        border-radius: 4px; }
+      .dropdown-container .dropdown-list.list-open li:hover {
+        background-color: #FF9018;
+        color: #F9FCFE;
+        cursor: pointer; }
+      .dropdown-container .dropdown-list.list-open li:active {
+        background-color: #191E50;
+        color: #F9FCFE;
+        cursor: pointer; }
+      .dropdown-container .dropdown-list.list-open.left:before {
+        display: block;
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid #191E50;
+        position: absolute;
+        top: -7px;
+        left: 10px; }
+      .dropdown-container .dropdown-list.list-open.right:before {
+        display: block;
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid #191E50;
+        position: absolute;
+        top: -7px;
+        right: 10px; }
 
 .save-container {
   border-top: 1px solid #191E50;

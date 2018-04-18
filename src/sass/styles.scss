@@ -97,36 +97,65 @@ button, input[type="submit"], input[type="reset"] {
 
   .dropdown-list {
     display: none;
-  }
 
-  .dropdown-list.list-open {
-    display: block;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    z-index: 5;
-    position: relative;
-    top: 40px;
-
-    li {
-      list-style: none;
+    &.list-open {
       display: block;
-      padding: 14px 0 14px 14px;
-      background-color: $light-blue;
-      color: $dark-blue;
-      border: 1px solid $medium-blue;
-    }
-
-    li:hover {
-      background-color: $orange;
-      color: $white;
-      cursor: pointer;
-    }
-
-    li:active {
+      margin: 0;
+      padding: 3px;
+      width: 200px;
+      z-index: 5;
+      position: relative;
       background-color: $dark-blue;
-      color: $white;
-      cursor: pointer;
+      border-radius: 4px;
+      top: 9px;
+
+      li {
+        list-style: none;
+        display: block;
+        padding: 14px;
+        margin: auto;
+        color: $white;
+        border-radius: 4px;
+      }
+
+      li:hover {
+        background-color: $orange;
+        color: $white;
+        cursor: pointer;
+      }
+
+      li:active {
+        background-color: $dark-blue;
+        color: $white;
+        cursor: pointer;
+
+      }
+
+      &.left:before {
+        display: block;
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid $dark-blue;
+        position: absolute;
+        top: -7px;
+        left: 10px;
+      }
+
+      &.right:before {
+        display: block;
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid $dark-blue;
+        position: absolute;
+        top: -7px;
+        right: 10px;
+      }
     }
   }
 }

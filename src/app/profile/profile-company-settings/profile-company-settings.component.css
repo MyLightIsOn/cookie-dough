@@ -113,4 +113,8 @@
   min-height: 100vh;
   display: block; }
 
+.dropdown-container .dropdown-list .list-open {
+  position: absolute;
+  top: 10px; }
+
 /*# sourceMappingURL=profile-company-settings.component.css.map */
