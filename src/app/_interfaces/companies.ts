@@ -2,7 +2,7 @@ export interface ICompany {
     id: string; // ID
     field_1: string; // Name
     field_2: string; // Address
-    field_2_raw?: {
+    field_2_raw?: { // Address Object
         street: string,
         street2: string,
         city: string,
@@ -10,8 +10,8 @@ export interface ICompany {
         zip: string,
         country: string
     };
-    field_3?: string;
-    field_3_raw?: {
+    field_3?: string; // Logo
+    field_3_raw?: { // Logo Object
         id: string,
         application_id: string,
         s3: boolean,
@@ -26,9 +26,17 @@ export interface ICompany {
     field_5?: string; // Description
     field_6?: number; // Year Established
     field_7?: string; // Website
-    field_7_raw?: string; // Website Object: url
-    field_8_raw?: string; // Email Object 1: email
-    field_9_raw?: string; // Email Object 2: email
+    field_7_raw?: {
+        url: string
+    };
+    field_8?: string; // Email 1
+    field_8_raw?: {  // Email 1 Object
+        email: string
+    };
+    field_9?: string; // Email 2
+    field_9_raw?: {   // Email 2 Object
+        email: string
+    };
     field_10_raw?: string; // Phone Number Object 1: area, country, formatted, full, numbers
     field_11_raw?: string; // Phone Number Object 2: area, country, formatted, full, numbers
     field_12_raw?: string; // Social Media 1

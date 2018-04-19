@@ -234,6 +234,35 @@
     left: -49px;
     top: -15px;
     background-size: 29px; }
+  .account-settings-container .companyTagline:before {
+    background: url("/assets/icons/dark_blue_description_icon.png") no-repeat 4px 1px;
+    left: -49px;
+    top: -15px;
+    background-size: 29px; }
+  .account-settings-container .companyEstablishedDate:before {
+    background: url("/assets/icons/dark_blue_date_icon.png") no-repeat 4px 1px;
+    left: -49px;
+    top: -15px;
+    background-size: 26px; }
+  .account-settings-container .companyWebsite:before {
+    background: url("/assets/icons/dark_blue_globe_icon.png") no-repeat 4px 1px;
+    left: -49px;
+    top: -15px;
+    background-size: 26px; }
+  .account-settings-container .companyEmail_1:before, .account-settings-container .companyEmail_2:before {
+    background: url("/assets/icons/dark_blue_email.png") no-repeat;
+    left: -40px;
+    top: -1px; }
+  .account-settings-container .companyEmail_2:after {
+    content: 'email 2'; }
+  .account-settings-container .companyEmail_1:after {
+    content: 'email 1'; }
+  .account-settings-container .companyWebsite:after {
+    content: 'website'; }
+  .account-settings-container .companyEstablishedDate:after {
+    content: 'year established'; }
+  .account-settings-container .companyTagline:after {
+    content: 'tagline'; }
   .account-settings-container .companyDescription:after {
     content: 'company description'; }
   .account-settings-container .companyLogo:after {

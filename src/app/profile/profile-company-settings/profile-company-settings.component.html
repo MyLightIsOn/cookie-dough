@@ -142,9 +142,27 @@
                  class="account-settings-input-form"
                  required>
         </ng-template>
-        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyLogoEdit}" (click)="editField('companyLogo')"></span>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyLogoEdit}" (click)="editField('companyLogo', 'field_3')"></span>
       </div>
 
+      <!-- Tagline -->
+      <div class="settings-data-container" [ngClass]="{'edit-field': companyTaglineEdit}">
+        <span class="settings-icon companyTagline"></span>
+        <span *ngIf="!companyTaglineEdit; else editCompanyTaglineField" class="settings-value">{{ company?.field_4 }}</span>
+        <ng-template #editCompanyTaglineField>
+          <input type="text"
+                 name="companyTagline"
+                 (focus)="appService.fieldFocus()"
+                 (focusout)="appService.showNav()"
+                 [(ngModel)]="updatedCompany['field_4']"
+                 [ngClass]="{'error-highlight': this.flashMessageService.field_4}"
+                 class="account-settings-input-form"
+                 required>
+        </ng-template>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyTaglineEdit}" (click)="editField('companyTagline', 'field_4')"></span>
+      </div>
+
+      <!-- Company Description-->
       <div class="settings-data-container" [ngClass]="{'edit-field': companyDescriptionEdit}">
         <span class="settings-icon companyDescription"></span>
         <span *ngIf="!companyDescriptionEdit; else editCompanyDescriptionField" class="settings-value">{{ company?.field_5 }}</span>
@@ -162,6 +180,77 @@
         <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyDescriptionEdit}" (click)="editField('companyDescription', 'field_5')"></span>
       </div>
 
+      <!-- Date Established -->
+      <div class="settings-data-container" [ngClass]="{'edit-field': companyEstablishedDateEdit}">
+        <span class="settings-icon companyEstablishedDate"></span>
+        <span *ngIf="!companyEstablishedDateEdit; else editCompanyEstablishedDateField" class="settings-value">{{ company?.field_6 }}</span>
+        <ng-template #editCompanyEstablishedDateField>
+          <input type="text"
+                 name="companyEstablishedDate"
+                 (focus)="appService.fieldFocus()"
+                 (focusout)="appService.showNav()"
+                 [(ngModel)]="updatedCompany['field_6']"
+                 [ngClass]="{'error-highlight': this.flashMessageService.field_6}"
+                 class="account-settings-input-form"
+                 required>
+        </ng-template>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyEstablishedDateEdit}" (click)="editField('companyEstablishedDate', 'field_6')"></span>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <h4 class="section-title">Company Contact Info</h4>
+
+      <!-- Website -->
+      <div class="settings-data-container" [ngClass]="{'edit-field': companyWebsiteEdit}">
+        <span class="settings-icon companyWebsite"></span>
+        <span *ngIf="!companyWebsiteEdit; else editCompanyWebsiteEditField" class="settings-value" [innerHTML]="company?.field_7_raw['url']"></span>
+        <ng-template #editCompanyWebsiteEditField>
+          <input type="text"
+                 name="companyWebsite"
+                 (focus)="appService.fieldFocus()"
+                 (focusout)="appService.showNav()"
+                 [(ngModel)]="updatedCompany['field_7']['url']"
+                 [ngClass]="{'error-highlight': this.flashMessageService.field_7}"
+                 class="account-settings-input-form"
+                 required>
+        </ng-template>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyWebsiteEdit}" (click)="editField('companyWebsite', 'field_7_raw')"></span>
+      </div>
+
+      <!-- Email 1 -->
+      <div class="settings-data-container" [ngClass]="{'edit-field': companyEmail_1_Edit}">
+        <span class="settings-icon companyEmail_1"></span>
+        <span *ngIf="!companyEmail_1_Edit; else editCompanyEmailEdit_1_Field" class="settings-value" [innerHTML]="company?.field_8_raw['email']"></span>
+        <ng-template #editCompanyEmailEdit_1_Field>
+          <input type="text"
+                 name="companyEmail_1_"
+                 (focus)="appService.fieldFocus()"
+                 (focusout)="appService.showNav()"
+                 [(ngModel)]="updatedCompany['field_8']['email']"
+                 [ngClass]="{'error-highlight': this.flashMessageService.field_8}"
+                 class="account-settings-input-form"
+                 required>
+        </ng-template>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyEmail_1_Edit}" (click)="editField('companyEmail_1_', 'field_8_raw')"></span>
+      </div>
+
+      <!-- Email 2 -->
+      <div class="settings-data-container" [ngClass]="{'edit-field': companyEmail_2_Edit}">
+        <span class="settings-icon companyEmail_2"></span>
+        <span *ngIf="!companyEmail_2_Edit; else editCompanyEmailEdit_2_Field" class="settings-value" [innerHTML]="company?.field_9_raw['email']"></span>
+        <ng-template #editCompanyEmailEdit_2_Field>
+          <input type="text"
+                 name="companyEmail_2_"
+                 (focus)="appService.fieldFocus()"
+                 (focusout)="appService.showNav()"
+                 [(ngModel)]="updatedCompany['field_9']['email']"
+                 [ngClass]="{'error-highlight': this.flashMessageService.field_9}"
+                 class="account-settings-input-form"
+                 required>
+        </ng-template>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyEmail_2_Edit}" (click)="editField('companyEmail_2_', 'field_9_raw')"></span>
+      </div>
     </section>
 
     <div  *ngIf="saveEnabled" class="save-container">

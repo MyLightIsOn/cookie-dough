@@ -24,6 +24,11 @@ export class ProfileCompanySettingsComponent implements OnInit {
     public companyAddressEdit: boolean;
     public companyLogoEdit: boolean;
     public companyDescriptionEdit: boolean;
+    public companyTaglineEdit: boolean;
+    public companyEstablishedDateEdit: boolean;
+    public companyWebsiteEdit: boolean;
+    public companyEmail_1_Edit: boolean;
+    public companyEmail_2_Edit: boolean;
     public countries = countries[0];
     public searchCountryText: string;
     public token: string;
@@ -45,6 +50,7 @@ export class ProfileCompanySettingsComponent implements OnInit {
             this.company =  res['session']['company'];
             this.updatedCompany = {};
             this.updatedCompany['field_2'] = this.company['field_2_raw'];
+            this.updatedCompany['field_7'] = this.company['field_7_raw']['url'];
         });
         this.authService.getLocalStorage();
     }
