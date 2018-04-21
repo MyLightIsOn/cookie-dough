@@ -169,7 +169,8 @@
       margin-bottom: 20px; }
       .account-settings-container .settings-data-container .multi-field-container label {
         display: block;
-        font-size: 13px; }
+        font-size: 13px;
+        position: relative; }
     .account-settings-container .settings-data-container .multi-field-container:first-of-type {
       padding-top: 15px; }
   .account-settings-container .form-section {
@@ -253,6 +254,15 @@
     background: url("/assets/icons/dark_blue_email.png") no-repeat;
     left: -40px;
     top: -1px; }
+  .account-settings-container .companyPhone_1:before, .account-settings-container .companyPhone_2:before {
+    background: url("/assets/icons/dark_blue_phone_icon.png") no-repeat;
+    left: -40px;
+    top: -10px;
+    background-size: 27px; }
+  .account-settings-container .companyPhone_2:after {
+    content: 'phone 2'; }
+  .account-settings-container .companyPhone_1:after {
+    content: 'phone 1'; }
   .account-settings-container .companyEmail_2:after {
     content: 'email 2'; }
   .account-settings-container .companyEmail_1:after {
@@ -310,6 +320,18 @@
       height: 200px; }
     .account-settings-container .account-settings-input-form.multi {
       margin-bottom: 10px; }
+    .account-settings-container .account-settings-input-form.country-code {
+      width: 55px;
+      position: relative; }
+  .account-settings-container .country-code-label:before {
+    content: '+';
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 32px;
+    font-size: 22px;
+    left: -20px; }
   .account-settings-container .account-settings-type-select {
     padding-left: 15px;
     position: relative;

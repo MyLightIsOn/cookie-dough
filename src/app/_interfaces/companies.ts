@@ -37,8 +37,18 @@ export interface ICompany {
     field_9_raw?: {   // Email 2 Object
         email: string
     };
-    field_10_raw?: string; // Phone Number Object 1: area, country, formatted, full, numbers
-    field_11_raw?: string; // Phone Number Object 2: area, country, formatted, full, numbers
+    field_10?: string; // Phone Number 1
+    field_10_raw: {
+        formatted: string;
+        full: string;
+        numbers: string;
+    };
+    field_11?: string;
+    field_11_raw: {
+        formatted: string;
+        full: string;
+        numbers: string;
+    };
     field_12_raw?: string; // Social Media 1
     field_13_raw?: string; // Social Media 2
     field_14_raw?: string; // Social Media 3

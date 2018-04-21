@@ -29,6 +29,12 @@ export class ProfileCompanySettingsComponent implements OnInit {
     public companyWebsiteEdit: boolean;
     public companyEmail_1_Edit: boolean;
     public companyEmail_2_Edit: boolean;
+    public companyPhone_1_Edit: boolean;
+    public companyPhone_1_CountryCode: string;
+    public companyPhone_1_Number: string;
+    public companyPhone_2_Edit: boolean;
+    public companyPhone_2_CountryCode: string;
+    public companyPhone_2_Number: string;
     public countries = countries[0];
     public searchCountryText: string;
     public token: string;
@@ -49,16 +55,30 @@ export class ProfileCompanySettingsComponent implements OnInit {
             this.userId = res['session']['user']['id'];
             this.company =  res['session']['company'];
             this.updatedCompany = {};
-            this.updatedCompany['field_2'] = this.company['field_2_raw'];
-            this.updatedCompany['field_7'] = this.company['field_7_raw']['url'];
+            this.formatPhoneField('field_10', 1);
+            this.formatPhoneField('field_11', 2);
         });
         this.authService.getLocalStorage();
     }
 
-    editField(fieldName, field?): void {
+    formatPhoneField(field, number) {
+        const countryCode = 'companyPhone_' + number.toString() + '_CountryCode';
+        const phoneNumber = 'companyPhone_' + number.toString() + '_Number';
+        this[countryCode] = this.company[field + '_raw']['full']
+            .split('+')[1]
+            .substr(0, this.company['field_10_raw']['full'].indexOf(' '));
+        this[phoneNumber] = this.company['field_10_raw']['full'].split(' ')[1];
+        this.company[field] = '+' + this[countryCode] + ' ' + this[phoneNumber];
+    }
+
+    editField(fieldName, field?, object?): void {
         const fieldToEdit = fieldName + 'Edit';
         const updatedField = field.replace('_raw', '');
-        this.updatedCompany[updatedField] = this.company[field];
+        if (object) {
+            this.updatedCompany[updatedField] = this.company[field][object];
+        } else {
+            this.updatedCompany[updatedField] = this.company[field];
+        }
         this.editedFields.push(fieldToEdit);
         this[fieldToEdit] = true;
         this.enableSave();
@@ -89,6 +109,7 @@ export class ProfileCompanySettingsComponent implements OnInit {
     }
 
     submitUpdate(): void {
+        console.log(this.updatedCompany);
         if (this.fileToUpload) {
             this.profileService.uploadImage(this.fileToUpload).subscribe( res => {
                 this.profileService.updateCompanySettings(this.updatedCompany, this.company.id, res).subscribe();

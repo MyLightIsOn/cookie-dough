@@ -168,12 +168,12 @@
         <span *ngIf="!companyDescriptionEdit; else editCompanyDescriptionField" class="settings-value">{{ company?.field_5 }}</span>
         <ng-template #editCompanyDescriptionField>
           <textarea type="text"
-                 name="companyDescription"
-                 (focus)="appService.fieldFocus()"
-                 (focusout)="appService.showNav()"
-                 [(ngModel)]="updatedCompany['field_5']"
-                 [ngClass]="{'error-highlight': this.flashMessageService.field_5}"
-                 class="account-settings-input-form text-area"
+                    name="companyDescription"
+                    (focus)="appService.fieldFocus()"
+                    (focusout)="appService.showNav()"
+                    [(ngModel)]="updatedCompany['field_5']"
+                    [ngClass]="{'error-highlight': this.flashMessageService.field_5}"
+                    class="account-settings-input-form text-area"
                     required>
           </textarea>
         </ng-template>
@@ -210,12 +210,12 @@
                  name="companyWebsite"
                  (focus)="appService.fieldFocus()"
                  (focusout)="appService.showNav()"
-                 [(ngModel)]="updatedCompany['field_7']['url']"
+                 [(ngModel)]="updatedCompany['field_7']"
                  [ngClass]="{'error-highlight': this.flashMessageService.field_7}"
                  class="account-settings-input-form"
                  required>
         </ng-template>
-        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyWebsiteEdit}" (click)="editField('companyWebsite', 'field_7_raw')"></span>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyWebsiteEdit}" (click)="editField('companyWebsite', 'field_7_raw', 'url')"></span>
       </div>
 
       <!-- Email 1 -->
@@ -227,12 +227,12 @@
                  name="companyEmail_1_"
                  (focus)="appService.fieldFocus()"
                  (focusout)="appService.showNav()"
-                 [(ngModel)]="updatedCompany['field_8']['email']"
+                 [(ngModel)]="updatedCompany['field_8']"
                  [ngClass]="{'error-highlight': this.flashMessageService.field_8}"
                  class="account-settings-input-form"
                  required>
         </ng-template>
-        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyEmail_1_Edit}" (click)="editField('companyEmail_1_', 'field_8_raw')"></span>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyEmail_1_Edit}" (click)="editField('companyEmail_1_', 'field_8_raw', 'email')"></span>
       </div>
 
       <!-- Email 2 -->
@@ -244,12 +244,76 @@
                  name="companyEmail_2_"
                  (focus)="appService.fieldFocus()"
                  (focusout)="appService.showNav()"
-                 [(ngModel)]="updatedCompany['field_9']['email']"
+                 [(ngModel)]="updatedCompany['field_9']"
                  [ngClass]="{'error-highlight': this.flashMessageService.field_9}"
                  class="account-settings-input-form"
                  required>
         </ng-template>
-        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyEmail_2_Edit}" (click)="editField('companyEmail_2_', 'field_9_raw')"></span>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyEmail_2_Edit}" (click)="editField('companyEmail_2_', 'field_9_raw', 'email')"></span>
+      </div>
+
+      <!-- Phone 1 -->
+      <div class="settings-data-container" [ngClass]="{'edit-field': companyPhone_1_Edit}">
+        <span class="settings-icon companyPhone_1"></span>
+        <span *ngIf="!companyPhone_1_Edit; else editCompanyPhoneEdit_1_Field" class="settings-value" [innerHTML]="company?.field_10_raw['full']"></span>
+        <ng-template #editCompanyPhoneEdit_1_Field>
+          <div class="multi-field-container">
+            <label class="country-code-label">country code</label>
+            <input type="text"
+                   name="companyPhone_1_CountryCode"
+                   (focus)="appService.fieldFocus()"
+                   (focusout)="appService.showNav()"
+                   [(ngModel)]="companyPhone_1_CountryCode"
+                   [ngClass]="{'error-highlight': this.flashMessageService.field_10}"
+                   class="account-settings-input-form country-code"
+                   required>
+          </div>
+
+          <div class="multi-field-container">
+            <label>number</label>
+            <input type="text"
+                   name="companyPhone_1_Number"
+                   (focus)="appService.fieldFocus()"
+                   (focusout)="appService.showNav()"
+                   [(ngModel)]="companyPhone_1_Number"
+                   [ngClass]="{'error-highlight': this.flashMessageService.field_10}"
+                   class="account-settings-input-form"
+                   required>
+          </div>
+        </ng-template>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyPhone_1_Edit}" (click)="editField('companyPhone_1_', 'field_10')"></span>
+      </div>
+
+      <!-- Phone 2 -->
+      <div class="settings-data-container" [ngClass]="{'edit-field': companyPhone_2_Edit}">
+        <span class="settings-icon companyPhone_2"></span>
+        <span *ngIf="!companyPhone_2_Edit; else editCompanyPhoneEdit_2_Field" class="settings-value" [innerHTML]="company?.field_11_raw['full']"></span>
+        <ng-template #editCompanyPhoneEdit_2_Field>
+          <div class="multi-field-container">
+            <label class="country-code-label">country code</label>
+            <input type="text"
+                   name="companyPhone_2_CountryCode"
+                   (focus)="appService.fieldFocus()"
+                   (focusout)="appService.showNav()"
+                   [(ngModel)]="companyPhone_2_CountryCode"
+                   [ngClass]="{'error-highlight': this.flashMessageService.field_11}"
+                   class="account-settings-input-form country-code"
+                   required>
+          </div>
+
+          <div class="multi-field-container">
+            <label>number</label>
+            <input type="text"
+                   name="companyPhone_2_Number"
+                   (focus)="appService.fieldFocus()"
+                   (focusout)="appService.showNav()"
+                   [(ngModel)]="companyPhone_2_Number"
+                   [ngClass]="{'error-highlight': this.flashMessageService.field_11}"
+                   class="account-settings-input-form"
+                   required>
+          </div>
+        </ng-template>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyPhone_2_Edit}" (click)="editField('companyPhone_2_', 'field_11')"></span>
       </div>
     </section>
 
