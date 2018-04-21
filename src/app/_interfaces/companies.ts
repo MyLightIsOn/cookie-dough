@@ -38,20 +38,29 @@ export interface ICompany {
         email: string
     };
     field_10?: string; // Phone Number 1
-    field_10_raw: {
+    field_10_raw: {    // Phone Number Object 1
         formatted: string;
         full: string;
         numbers: string;
     };
-    field_11?: string;
-    field_11_raw: {
+    field_11?: string;  // Phone Number
+    field_11_raw: {     // Phone Number Object 2
         formatted: string;
         full: string;
         numbers: string;
     };
-    field_12_raw?: string; // Social Media 1
-    field_13_raw?: string; // Social Media 2
-    field_14_raw?: string; // Social Media 3
+    field_12?: string; // Social Media 1
+    field_12_raw?: {   // Social Media Object 1
+        url: string
+    };
+    field_13?: string; // Social Media 2
+    field_13_raw?: {   // Social Media Object 2
+        url: string
+    };
+    field_14?: string; // Social Media 3
+    field_14_raw?: {   // Social Media Object 3
+        url: string
+    };
     field_15_raw?: string; // Business Hours
     field_16_raw?: any; // Array strings Company Type
     field_17: boolean; // Verified

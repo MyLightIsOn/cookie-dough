@@ -225,6 +225,25 @@
     background-size: 27px;
   }
 
+  .companySocial_1:before, .companySocial_2:before, .companySocial_3:before  {
+    background: url("/assets/icons/dark_blue_globe_icon.png") no-repeat 4px 1px;
+    left: -49px;
+    top: -15px;
+    background-size: 26px;
+  }
+
+  .companySocial_3:after {
+    content: 'social 3';
+  }
+
+  .companySocial_2:after {
+    content: 'social 2';
+  }
+
+  .companySocial_1:after {
+    content: 'social 1';
+  }
+
   .companyPhone_2:after {
     content: 'phone 2';
   }

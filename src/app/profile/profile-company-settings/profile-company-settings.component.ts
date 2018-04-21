@@ -35,6 +35,9 @@ export class ProfileCompanySettingsComponent implements OnInit {
     public companyPhone_2_Edit: boolean;
     public companyPhone_2_CountryCode: string;
     public companyPhone_2_Number: string;
+    public companySocial_1_Edit: boolean;
+    public companySocial_2_Edit: boolean;
+    public companySocial_3_Edit: boolean;
     public countries = countries[0];
     public searchCountryText: string;
     public token: string;

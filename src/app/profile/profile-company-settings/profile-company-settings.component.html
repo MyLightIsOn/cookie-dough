@@ -317,6 +317,62 @@
       </div>
     </section>
 
+    <section class="form-section">
+      <h4 class="section-title">Social Media Info</h4>
+
+      <!-- Social 1 -->
+      <div class="settings-data-container" [ngClass]="{'edit-field': companySocial_1_Edit}">
+        <span class="settings-icon companySocial_1"></span>
+        <span *ngIf="!companySocial_1_Edit; else editCompanySocial_1_EditField" class="settings-value" [innerHTML]="company?.field_12_raw['url']"></span>
+        <ng-template #editCompanySocial_1_EditField>
+          <input type="text"
+                 name="companySocial_1"
+                 (focus)="appService.fieldFocus()"
+                 (focusout)="appService.showNav()"
+                 [(ngModel)]="updatedCompany['field_12']"
+                 [ngClass]="{'error-highlight': this.flashMessageService.field_12}"
+                 class="account-settings-input-form"
+                 required>
+        </ng-template>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companySocial_1_Edit}" (click)="editField('companySocial_1_', 'field_12_raw', 'url')"></span>
+      </div>
+
+      <!-- Social 2 -->
+      <div class="settings-data-container" [ngClass]="{'edit-field': companySocial_2_Edit}">
+        <span class="settings-icon companySocial_2"></span>
+        <span *ngIf="!companySocial_2_Edit; else editCompanySocial_2_EditField" class="settings-value" [innerHTML]="company?.field_13_raw['url']"></span>
+        <ng-template #editCompanySocial_2_EditField>
+          <input type="text"
+                 name="companySocial_2"
+                 (focus)="appService.fieldFocus()"
+                 (focusout)="appService.showNav()"
+                 [(ngModel)]="updatedCompany['field_13']"
+                 [ngClass]="{'error-highlight': this.flashMessageService.field_13}"
+                 class="account-settings-input-form"
+                 required>
+        </ng-template>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companySocial_2_Edit}" (click)="editField('companySocial_2_', 'field_13_raw', 'url')"></span>
+      </div>
+
+      <!-- Social 3 -->
+      <div class="settings-data-container" [ngClass]="{'edit-field': companySocial_3_Edit}">
+        <span class="settings-icon companySocial_3"></span>
+        <span *ngIf="!companySocial_3_Edit; else editCompanySocial_3_EditField" class="settings-value" [innerHTML]="company?.field_14_raw['url']"></span>
+        <ng-template #editCompanySocial_3_EditField>
+          <input type="text"
+                 name="companySocial_3"
+                 (focus)="appService.fieldFocus()"
+                 (focusout)="appService.showNav()"
+                 [(ngModel)]="updatedCompany['field_14']"
+                 [ngClass]="{'error-highlight': this.flashMessageService.field_14}"
+                 class="account-settings-input-form"
+                 required>
+        </ng-template>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companySocial_3_Edit}" (click)="editField('companySocial_3_', 'field_14_raw', 'url')"></span>
+      </div>
+
+    </section>
+
     <div  *ngIf="saveEnabled" class="save-container">
       <button class="cancel-button"><span (click)="cancel(); false">Cancel</span></button>
       <button class="orange-button">Save</button>
