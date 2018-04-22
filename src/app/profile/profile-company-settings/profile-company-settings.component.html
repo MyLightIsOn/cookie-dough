@@ -373,6 +373,48 @@
 
     </section>
 
+    <section class="form-section">
+      <h4 class="section-title">Business Hours</h4>
+
+      <!-- Business Hours -->
+      <div class="settings-data-container" [ngClass]="{'edit-field': companyHoursEdit}">
+        <span class="settings-icon companySocial_3"></span>
+        <div *ngIf="!companyHoursEdit; else editCompanyHoursEditField" class="settings-value">
+          <div class="business-hours-container">
+            <div *ngFor="let days of time" class="hours-container">
+              <span class="day">{{days.day}}</span>
+              <div *ngIf="days['open']; else businessClosed">
+                <span class="open-time">
+                  {{days['openTime']['hours']}}:
+                  {{days['openTime']['minutes']}}
+                  {{days['openTime']['period']}}
+                </span> -
+                <span class="close-time">
+                  {{days['closeTime']['hours']}}:
+                  {{days['closeTime']['minutes']}}
+                  {{days['closeTime']['period']}}
+                </span>
+              </div>
+              <ng-template #businessClosed>
+                <span>Closed</span>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+        <ng-template #editCompanyHoursEditField>
+          <input type="text"
+                 name="companyHours"
+                 (focus)="appService.fieldFocus()"
+                 (focusout)="appService.showNav()"
+                 [(ngModel)]="updatedCompany['field_15']"
+                 [ngClass]="{'error-highlight': this.flashMessageService.field_15}"
+                 class="account-settings-input-form"
+                 required>
+        </ng-template>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyHoursEdit}" (click)="editField('companyHoursEdit', 'field_15')"></span>
+      </div>
+    </section>
+
     <div  *ngIf="saveEnabled" class="save-container">
       <button class="cancel-button"><span (click)="cancel(); false">Cancel</span></button>
       <button class="orange-button">Save</button>

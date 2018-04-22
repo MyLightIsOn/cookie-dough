@@ -113,6 +113,15 @@
   min-height: 100vh;
   display: block; }
 
+.account-settings-container .business-hours-container {
+  padding-top: 5px; }
+  .account-settings-container .business-hours-container .day {
+    font-size: 18px;
+    font-weight: bold;
+    display: block; }
+.account-settings-container .hours-container {
+  margin-bottom: 20px; }
+
 .dropdown-container .dropdown-list .list-open {
   position: absolute;
   top: 10px; }

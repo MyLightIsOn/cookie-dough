@@ -61,6 +61,7 @@ export interface ICompany {
     field_14_raw?: {   // Social Media Object 3
         url: string
     };
+    field_15?: string;
     field_15_raw?: string; // Business Hours
     field_16_raw?: any; // Array strings Company Type
     field_17: boolean; // Verified

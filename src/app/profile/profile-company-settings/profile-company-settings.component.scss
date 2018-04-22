@@ -6,6 +6,23 @@
   display: block;
 }
 
+.account-settings-container {
+
+  .business-hours-container {
+    padding-top: 5px;
+    
+    .day {
+      font-size: 18px;
+      font-weight: bold;
+      display: block;
+    }
+  }
+
+  .hours-container {
+    margin-bottom: 20px;
+  }
+}
+
 .dropdown-container {
 
   .dropdown-list {

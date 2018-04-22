@@ -7,6 +7,7 @@ import { FlashMessagesService } from '../../flash-messages.service';
 
 import { ICompany } from '../../_interfaces/companies';
 import * as countries from '../../json/countries.json';
+import * as time from '../../json/time.json';
 
 @Component({
     selector: 'app-profile-company-settings',
@@ -38,7 +39,9 @@ export class ProfileCompanySettingsComponent implements OnInit {
     public companySocial_1_Edit: boolean;
     public companySocial_2_Edit: boolean;
     public companySocial_3_Edit: boolean;
+    public companyHoursEdit;
     public countries = countries[0];
+    public time = time;
     public searchCountryText: string;
     public token: string;
     public userId: string;
@@ -62,6 +65,7 @@ export class ProfileCompanySettingsComponent implements OnInit {
             this.formatPhoneField('field_11', 2);
         });
         this.authService.getLocalStorage();
+        console.log(time);
     }
 
     formatPhoneField(field, number) {
@@ -112,7 +116,6 @@ export class ProfileCompanySettingsComponent implements OnInit {
     }
 
     submitUpdate(): void {
-        console.log(this.updatedCompany);
         if (this.fileToUpload) {
             this.profileService.uploadImage(this.fileToUpload).subscribe( res => {
                 this.profileService.updateCompanySettings(this.updatedCompany, this.company.id, res).subscribe();
