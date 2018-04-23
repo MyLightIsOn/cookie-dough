@@ -113,14 +113,33 @@
   min-height: 100vh;
   display: block; }
 
+.account-settings-container .day {
+  font-size: 18px;
+  font-weight: bold;
+  display: block; }
 .account-settings-container .business-hours-container {
   padding-top: 5px; }
-  .account-settings-container .business-hours-container .day {
-    font-size: 18px;
-    font-weight: bold;
-    display: block; }
 .account-settings-container .hours-container {
   margin-bottom: 20px; }
+.account-settings-container .business-hours-edit-fields {
+  margin-bottom: 50px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #191E50; }
+  .account-settings-container .business-hours-edit-fields .day {
+    margin-bottom: 10px; }
+  .account-settings-container .business-hours-edit-fields .time-button {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 0;
+    width: 40px;
+    position: relative; }
+  .account-settings-container .business-hours-edit-fields .time-container {
+    padding: 20px 0 0;
+    position: relative; }
+  .account-settings-container .business-hours-edit-fields .time-container:first-of-type .time-button {
+    left: 10px; }
+  .account-settings-container .business-hours-edit-fields .time-container:nth-of-type(2) .time-button {
+    left: 17px; }
 
 .dropdown-container .dropdown-list .list-open {
   position: absolute;

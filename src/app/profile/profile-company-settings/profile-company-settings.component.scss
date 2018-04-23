@@ -7,19 +7,52 @@
 }
 
 .account-settings-container {
+  .day {
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+  }
 
   .business-hours-container {
     padding-top: 5px;
-    
-    .day {
-      font-size: 18px;
-      font-weight: bold;
-      display: block;
-    }
   }
 
   .hours-container {
     margin-bottom: 20px;
+  }
+
+  .business-hours-edit-fields {
+    margin-bottom: 50px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $dark-blue;
+    
+    .day {
+      margin-bottom: 10px;
+    }
+    
+    .time-button {
+      display: inline-block;
+      text-align: center;
+      padding: 10px 0;
+      width: 40px;
+      position: relative;
+    }
+
+    .time-container {
+      padding: 20px 0 0;
+      position: relative;
+    }
+
+    .time-container:first-of-type {
+      .time-button {
+         left: 10px;
+      }
+    }
+    .time-container:nth-of-type(2) {
+      .time-button {
+        left: 17px;
+      }
+    }
   }
 }
 

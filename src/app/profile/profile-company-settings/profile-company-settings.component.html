@@ -402,16 +402,30 @@
           </div>
         </div>
         <ng-template #editCompanyHoursEditField>
-          <input type="text"
-                 name="companyHours"
-                 (focus)="appService.fieldFocus()"
-                 (focusout)="appService.showNav()"
-                 [(ngModel)]="updatedCompany['field_15']"
-                 [ngClass]="{'error-highlight': this.flashMessageService.field_15}"
-                 class="account-settings-input-form"
-                 required>
+          <div  *ngFor="let days of time" class="business-hours-edit-fields">
+            <div class="day">{{days['day']}}</div>
+            <div class="switch-container time-switch" (click)="toggleSwitch(days)" [ngClass]="{'on': days['open']}">
+              <div class="switch" [ngClass]="{'on': days['open']}"></div>
+            </div>
+            <div *ngIf="days['open']">
+              <div class="time-container">
+                <span class="time-label">Opening Time</span>
+                <span class="time-hours time-button medium-blue-button">{{days['openTime']['hours']}}</span>
+                <span class="time-divider">:</span>
+                <span class="time-minutes time-button medium-blue-button">{{days['openTime']['minutes']}}</span>
+                <span class="time-period time-button medium-blue-button">{{days['openTime']['period']}}</span>
+              </div>
+              <div class="time-container">
+                <span class="time-label">Closing Time</span>
+                <span class="time-hours time-button medium-blue-button">{{days['closeTime']['hours']}}</span>
+                <span class="time-divider">:</span>
+                <span class="time-minutes time-button medium-blue-button">{{days['closeTime']['minutes']}}</span>
+                <span class="time-period time-button medium-blue-button">{{days['closeTime']['period']}}</span>
+              </div>
+            </div>
+          </div>
         </ng-template>
-        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyHoursEdit}" (click)="editField('companyHoursEdit', 'field_15')"></span>
+        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyHoursEdit}" (click)="editField('companyHours', 'field_15')"></span>
       </div>
     </section>
 

@@ -7,7 +7,6 @@ import { FlashMessagesService } from '../../flash-messages.service';
 
 import { ICompany } from '../../_interfaces/companies';
 import * as countries from '../../json/countries.json';
-import * as time from '../../json/time.json';
 
 @Component({
     selector: 'app-profile-company-settings',
@@ -39,9 +38,9 @@ export class ProfileCompanySettingsComponent implements OnInit {
     public companySocial_1_Edit: boolean;
     public companySocial_2_Edit: boolean;
     public companySocial_3_Edit: boolean;
-    public companyHoursEdit;
+    public companyHoursEdit = true;
     public countries = countries[0];
-    public time = time;
+    public time;
     public searchCountryText: string;
     public token: string;
     public userId: string;
@@ -61,11 +60,18 @@ export class ProfileCompanySettingsComponent implements OnInit {
             this.userId = res['session']['user']['id'];
             this.company =  res['session']['company'];
             this.updatedCompany = {};
+            this.formatBusinessHours(this.company['field_15']);
             this.formatPhoneField('field_10', 1);
             this.formatPhoneField('field_11', 2);
         });
         this.authService.getLocalStorage();
-        console.log(time);
+    }
+
+    formatBusinessHours(field) {
+        if (field) {
+            this.time = JSON.parse(field);
+            console.log(this.time);
+        }
     }
 
     formatPhoneField(field, number) {
@@ -113,6 +119,10 @@ export class ProfileCompanySettingsComponent implements OnInit {
 
     enableSave(): void {
         this.saveEnabled = true;
+    }
+
+    toggleSwitch(toggle: boolean): void {
+        toggle['open'] = !toggle['open'];
     }
 
     submitUpdate(): void {
