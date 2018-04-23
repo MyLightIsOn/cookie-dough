@@ -232,6 +232,10 @@
     background-size: 26px;
   }
 
+  .companyBusinessHours:after {
+    content: 'business hours'
+  }
+
   .companySocial_3:after {
     content: 'social 3';
   }

@@ -375,10 +375,55 @@
 
     <section class="form-section">
       <h4 class="section-title">Business Hours</h4>
-
+      <div *ngFor="let days of time" class="settings-data-container time-container"
+           [ngClass]="{'edit-field': this['company' + days['day'] + 'HoursEdit']}">
+        <span class="day">{{days.day}}</span>
+        <div *ngIf="!this['company' + days['day'] + 'HoursEdit']; else editFields" class="business-hours-container">
+          <div *ngIf="days['open']; else businessClosed">
+            <span class="open-time">
+              {{days['openTime']['hours']}}:
+              {{days['openTime']['minutes']}}
+              {{days['openTime']['period']}}
+            </span> -
+            <span class="close-time">
+              {{days['closeTime']['hours']}}:
+              {{days['closeTime']['minutes']}}
+              {{days['closeTime']['period']}}
+            </span>
+          </div>
+          <ng-template #businessClosed>
+            <span>Closed</span>
+          </ng-template>
+        </div>
+        <span class="edit medium-blue-button"
+              [ngClass]="{'edit-field': this['company' + days['day'] + 'HoursEdit']}"
+              (click)="editBusinessHours(days)"></span>
+        <ng-template #editFields>
+          <div class="switch-container time-switch" (click)="toggleSwitch(days)" [ngClass]="{'on': days['open']}">
+            <div class="switch" [ngClass]="{'on': days['open']}"></div>
+          </div>
+          <div *ngIf="days['open']" class="business-hours-edit-fields">
+            <span class="time-label">Opening Time</span>
+            <div class="time-edit-container">
+              <span class="time-hours time-button medium-blue-button">{{days['openTime']['hours']}}</span>
+              <span class="time-divider">:</span>
+              <span class="time-minutes time-button medium-blue-button">{{days['openTime']['minutes']}}</span>
+              <span class="time-period time-button medium-blue-button">{{days['openTime']['period']}}</span>
+            </div>
+            <span class="time-label">Closing Time</span>
+            <div class="time-edit-container">
+              <span class="time-hours time-button medium-blue-button">{{days['closeTime']['hours']}}</span>
+              <span class="time-divider">:</span>
+              <span class="time-minutes time-button medium-blue-button">{{days['closeTime']['minutes']}}</span>
+              <span class="time-period time-button medium-blue-button">{{days['closeTime']['period']}}</span>
+            </div>
+          </div>
+        </ng-template>
+      </div>
       <!-- Business Hours -->
-      <div class="settings-data-container" [ngClass]="{'edit-field': companyHoursEdit}">
-        <span class="settings-icon companySocial_3"></span>
+     <!-- <div class="settings-data-container" [ngClass]="{'edit-field': companyHoursEdit}">
+        <span class="settings-icon companyBusinessHours"></span>
+
         <div *ngIf="!companyHoursEdit; else editCompanyHoursEditField" class="settings-value">
           <div class="business-hours-container">
             <div *ngFor="let days of time" class="hours-container">
@@ -426,7 +471,7 @@
           </div>
         </ng-template>
         <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyHoursEdit}" (click)="editField('companyHours', 'field_15')"></span>
-      </div>
+      </div>-->
     </section>
 
     <div  *ngIf="saveEnabled" class="save-container">

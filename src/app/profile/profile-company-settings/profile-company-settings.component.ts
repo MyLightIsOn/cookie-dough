@@ -38,7 +38,6 @@ export class ProfileCompanySettingsComponent implements OnInit {
     public companySocial_1_Edit: boolean;
     public companySocial_2_Edit: boolean;
     public companySocial_3_Edit: boolean;
-    public companyHoursEdit = true;
     public countries = countries[0];
     public time;
     public searchCountryText: string;
@@ -95,6 +94,10 @@ export class ProfileCompanySettingsComponent implements OnInit {
         this.editedFields.push(fieldToEdit);
         this[fieldToEdit] = true;
         this.enableSave();
+    }
+
+    editBusinessHours(day): void {
+        this['company' + day['day'] + 'HoursEdit'] = true;
     }
 
     countryTypeHead(): void {

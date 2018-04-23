@@ -22,10 +22,8 @@
   }
 
   .business-hours-edit-fields {
-    margin-bottom: 50px;
     padding-bottom: 10px;
-    border-bottom: 1px solid $dark-blue;
-    
+
     .day {
       margin-bottom: 10px;
     }
@@ -37,22 +35,27 @@
       width: 40px;
       position: relative;
     }
+  }
 
-    .time-container {
-      padding: 20px 0 0;
+  .settings-data-container {
+
+    &.time-container {
+      padding: 20px 0 20px 50px;
       position: relative;
     }
+  }
 
-    .time-container:first-of-type {
-      .time-button {
-         left: 10px;
-      }
-    }
-    .time-container:nth-of-type(2) {
-      .time-button {
-        left: 17px;
-      }
-    }
+  .time-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .time-edit-container:first-of-type {
+    margin-bottom: 20px;
+  }
+
+  .switch-container {
+    margin: 15px 0px 25px;
   }
 }
 

@@ -264,6 +264,8 @@
     left: -49px;
     top: -15px;
     background-size: 26px; }
+  .account-settings-container .companyBusinessHours:after {
+    content: "business hours"; }
   .account-settings-container .companySocial_3:after {
     content: 'social 3'; }
   .account-settings-container .companySocial_2:after {
