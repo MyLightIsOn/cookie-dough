@@ -38,6 +38,7 @@ export class ProfileCompanySettingsComponent implements OnInit {
     public companySocial_1_Edit: boolean;
     public companySocial_2_Edit: boolean;
     public companySocial_3_Edit: boolean;
+    public timeEdits = [];
     public countries = countries[0];
     public time;
     public searchCountryText: string;
@@ -69,7 +70,6 @@ export class ProfileCompanySettingsComponent implements OnInit {
     formatBusinessHours(field) {
         if (field) {
             this.time = JSON.parse(field);
-            console.log(this.time);
         }
     }
 
@@ -98,6 +98,27 @@ export class ProfileCompanySettingsComponent implements OnInit {
 
     editBusinessHours(day): void {
         this['company' + day['day'] + 'HoursEdit'] = true;
+    }
+
+    editTime(day, unit, type): void {
+        const fieldToEdit = day + type + unit + 'Edit';
+        this[fieldToEdit] = true;
+        this.timeEdits.push(fieldToEdit);
+    }
+
+    editPeriod(period, type): void {
+        if (period[type]['period'] === 'am') {
+            period[type]['period'] = 'pm';
+        } else {
+            period[type]['period'] = 'am';
+        }
+    }
+
+    closeEditTime(): void {
+        for (const index of Object.keys(this.timeEdits)) {
+            const fieldToClose = this.timeEdits[index];
+            this[fieldToClose] = false;
+        }
     }
 
     countryTypeHead(): void {

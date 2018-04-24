@@ -371,8 +371,8 @@
         <span class="edit medium-blue-button" [ngClass]="{'edit-field': companySocial_3_Edit}" (click)="editField('companySocial_3_', 'field_14_raw', 'url')"></span>
       </div>
 
+      <!-- Business Hours -->
     </section>
-
     <section class="form-section">
       <h4 class="section-title">Business Hours</h4>
       <div *ngFor="let days of time" class="settings-data-container time-container"
@@ -398,6 +398,8 @@
         <span class="edit medium-blue-button"
               [ngClass]="{'edit-field': this['company' + days['day'] + 'HoursEdit']}"
               (click)="editBusinessHours(days)"></span>
+
+        <!-- Business Hours Edit FIelds-->
         <ng-template #editFields>
           <div class="switch-container time-switch" (click)="toggleSwitch(days)" [ngClass]="{'on': days['open']}">
             <div class="switch" [ngClass]="{'on': days['open']}"></div>
@@ -405,73 +407,153 @@
           <div *ngIf="days['open']" class="business-hours-edit-fields">
             <span class="time-label">Opening Time</span>
             <div class="time-edit-container">
-              <span class="time-hours time-button medium-blue-button">{{days['openTime']['hours']}}</span>
+              <span class="time-hours time-button medium-blue-button" (click)="editTime(days['day'], 'Hours', 'OpenTime')">{{days['openTime']['hours']}}</span>
+              <div class="time-selector-border" [ngClass]="{'on': this[days['day'] + 'OpenTimeHoursEdit']}">
+                <div class="time-selector">
+                  <span class="close-time-container" (click)="closeEditTime()"></span>
+                  <span class="twelve-hour" (click)="days['openTime']['hours'] = '12'; closeEditTime()"></span>
+
+                  <div class="time-row second-row">
+                    <span class="eleven-hour" (click)="days['openTime']['hours'] = '11'; closeEditTime()"></span>
+                    <span class="one-hour" (click)="days['openTime']['hours'] = '1'; closeEditTime()"></span>
+                  </div>
+
+                  <div class="time-row third-row">
+                    <span class="ten-hour" (click)="days['openTime']['hours'] = '10'; closeEditTime()"></span>
+                    <span class="two-hour" (click)="days['openTime']['hours'] = '2'; closeEditTime()"></span>
+                  </div>
+
+                  <div class="time-row fourth-row">
+                    <span class="nine-hour" (click)="days['openTime']['hours'] = '9'; closeEditTime()"></span>
+                    <span class="three-hour" (click)="days['openTime']['hours'] = '3'; closeEditTime()"></span>
+                  </div>
+
+                  <div class="time-row fifth-row">
+                    <span class="eight-hour" (click)="days['openTime']['hours'] = '8'; closeEditTime()"></span>
+                    <span class="four-hour" (click)="days['openTime']['hours'] = '4'; closeEditTime()"></span>
+                  </div>
+
+                  <div class="time-row sixth-row">
+                    <span class="seven-hour" (click)="days['openTime']['hours'] = '7'; closeEditTime()"></span>
+                    <span class="five-hour" (click)="days['openTime']['hours'] = '5'; closeEditTime()"></span>
+                  </div>
+
+                  <span class="six-hour" (click)="days['openTime']['hours'] = '6'; closeEditTime()"></span>
+                </div>
+              </div>
               <span class="time-divider">:</span>
-              <span class="time-minutes time-button medium-blue-button">{{days['openTime']['minutes']}}</span>
-              <span class="time-period time-button medium-blue-button">{{days['openTime']['period']}}</span>
+              <span class="time-minutes time-button medium-blue-button" (click)="editTime(days['day'], 'Minutes', 'OpenTime')">{{days['openTime']['minutes']}}</span>
+              <div class="time-selector-border" [ngClass]="{'on': this[days['day'] + 'OpenTimeMinutesEdit']}">
+                <div class="time-selector">
+                  <span class="close-time-container" (click)="closeEditTime()"></span>
+                  <span class="zero-minute" (click)="days['openTime']['minutes'] = '00'; closeEditTime()"></span>
+                  
+                  <div class="time-row second-row">
+                    <span class="fifty-five-minute" (click)="days['openTime']['minutes'] = '55'; closeEditTime()"></span>
+                    <span class="five-minute" (click)="days['openTime']['minutes'] = '05'; closeEditTime()"></span>
+                  </div>
+
+                  <div class="time-row third-row">
+                    <span class="fifty-minute" (click)="days['openTime']['minutes'] = '50'; closeEditTime()"></span>
+                    <span class="ten-minute" (click)="days['openTime']['minutes'] = '10'; closeEditTime()"></span>
+                  </div>
+
+                  <div class="time-row fourth-row">
+                    <span class="forty-five-minute" (click)="days['openTime']['minutes'] = '45'; closeEditTime()"></span>
+                    <span class="fifteen-minute" (click)="days['openTime']['minutes'] = '15'; closeEditTime()"></span>
+                  </div>
+
+                  <div class="time-row fifth-row">
+                    <span class="forty-minute" (click)="days['openTime']['minutes'] = '40'; closeEditTime()"></span>
+                    <span class="twenty-minute" (click)="days['openTime']['minutes'] = '20'; closeEditTime()"></span>
+                  </div>
+
+                  <div class="time-row sixth-row">
+                    <span class="thirty-five-minute" (click)="days['openTime']['minutes'] = '35'; closeEditTime()"></span>
+                    <span class="twenty-five-minute" (click)="days['openTime']['minutes'] = '25'; closeEditTime()"></span>
+                  </div>
+
+                  <span class="thirty-minute" (click)="days['openTime']['minutes'] = '30'; closeEditTime()"></span>
+                </div>
+              </div>
+              <span class="time-period time-button medium-blue-button" (click)="editPeriod(days, 'openTime')">{{days['openTime']['period']}}</span>
             </div>
             <span class="time-label">Closing Time</span>
             <div class="time-edit-container">
-              <span class="time-hours time-button medium-blue-button">{{days['closeTime']['hours']}}</span>
+              <span class="time-hours time-button medium-blue-button" (click)="editTime(days['day'], 'Hours', 'CloseTime')">{{days['closeTime']['hours']}}</span>
+              <div class="time-selector-border" [ngClass]="{'on': this[days['day'] + 'CloseTimeHoursEdit']}">
+                <div class="time-selector">
+                  <span class="close-time-container" (click)="closeEditTime()"></span>
+                  <span class="twelve-hour" (click)="days['closeTime']['hours'] = '12'; closeEditTime()"></span>
+
+                  <div class="time-row second-row">
+                    <span class="eleven-hour" (click)="days['closeTime']['hours'] = '11'; closeEditTime()"></span>
+                    <span class="one-hour" (click)="days['closeTime']['hours'] = '1'; closeEditTime()"></span>
+                  </div>
+
+                  <div class="time-row third-row">
+                    <span class="ten-hour" (click)="days['closeTime']['hours'] = '10'; closeEditTime()"></span>
+                    <span class="two-hour" (click)="days['closeTime']['hours'] = '2'; closeEditTime()"></span>
+                  </div>
+
+                  <div class="time-row fourth-row">
+                    <span class="nine-hour" (click)="days['closeTime']['hours'] = '9'; closeEditTime()"></span>
+                    <span class="three-hour" (click)="days['closeTime']['hours'] = '3'; closeEditTime()"></span>
+                  </div>
+
+                  <div class="time-row fifth-row">
+                    <span class="eight-hour" (click)="days['closeTime']['hours'] = '8'; closeEditTime()"></span>
+                    <span class="four-hour" (click)="days['closeTime']['hours'] = '4'; closeEditTime()"></span>
+                  </div>
+
+                  <div class="time-row sixth-row">
+                    <span class="seven-hour" (click)="days['closeTime']['hours'] = '7'; closeEditTime()"></span>
+                    <span class="five-hour" (click)="days['closeTime']['hours'] = '5'; closeEditTime()"></span>
+                  </div>
+
+                  <span class="six-hour" (click)="days['closeTime']['hours'] = '6'; closeEditTime()"></span>
+                </div>
+              </div>
               <span class="time-divider">:</span>
-              <span class="time-minutes time-button medium-blue-button">{{days['closeTime']['minutes']}}</span>
-              <span class="time-period time-button medium-blue-button">{{days['closeTime']['period']}}</span>
+              <span class="time-minutes time-button medium-blue-button" (click)="editTime(days['day'], 'Minutes', 'CloseTime')">{{days['closeTime']['minutes']}}</span>
+              <div class="time-selector-border" [ngClass]="{'on': this[days['day'] + 'CloseTimeMinutesEdit']}">
+                <div class="time-selector">
+                  <span class="close-time-container" (click)="closeEditTime()"></span>
+                  <span class="zero-minute" (click)="days['closeTime']['minutes'] = '00'; closeEditTime()"></span>
+
+                  <div class="time-row second-row">
+                    <span class="fifty-five-minute" (click)="days['closeTime']['minutes'] = '55'; closeEditTime()"></span>
+                    <span class="five-minute" (click)="days['closeTime']['minutes'] = '05'; closeEditTime()"></span>
+                  </div>
+
+                  <div class="time-row third-row">
+                    <span class="fifty-minute" (click)="days['closeTime']['minutes'] = '50'; closeEditTime()"></span>
+                    <span class="ten-minute" (click)="days['closeTime']['minutes'] = '10'; closeEditTime()"></span>
+                  </div>
+
+                  <div class="time-row fourth-row">
+                    <span class="forty-five-minute" (click)="days['closeTime']['minutes'] = '45'; closeEditTime()"></span>
+                    <span class="fifteen-minute" (click)="days['closeTime']['minutes'] = '15'; closeEditTime()"></span>
+                  </div>
+
+                  <div class="time-row fifth-row">
+                    <span class="forty-minute" (click)="days['closeTime']['minutes'] = '40'; closeEditTime()"></span>
+                    <span class="twenty-minute" (click)="days['closeTime']['minutes'] = '20'; closeEditTime()"></span>
+                  </div>
+
+                  <div class="time-row sixth-row">
+                    <span class="thirty-five-minute" (click)="days['closeTime']['minutes'] = '35'; closeEditTime()"></span>
+                    <span class="twenty-five-minute" (click)="days['closeTime']['minutes'] = '25'; closeEditTime()"></span>
+                  </div>
+
+                  <span class="thirty-minute" (click)="days['closeTime']['minutes'] = '30'; closeEditTime()"></span>
+                </div>
+              </div>
+              <span class="time-period time-button medium-blue-button" (click)="editPeriod(days, 'closeTime')">{{days['closeTime']['period']}}</span>
             </div>
           </div>
         </ng-template>
       </div>
-      <!-- Business Hours -->
-     <!-- <div class="settings-data-container" [ngClass]="{'edit-field': companyHoursEdit}">
-        <span class="settings-icon companyBusinessHours"></span>
-
-        <div *ngIf="!companyHoursEdit; else editCompanyHoursEditField" class="settings-value">
-          <div class="business-hours-container">
-            <div *ngFor="let days of time" class="hours-container">
-              <span class="day">{{days.day}}</span>
-              <div *ngIf="days['open']; else businessClosed">
-                <span class="open-time">
-                  {{days['openTime']['hours']}}:
-                  {{days['openTime']['minutes']}}
-                  {{days['openTime']['period']}}
-                </span> -
-                <span class="close-time">
-                  {{days['closeTime']['hours']}}:
-                  {{days['closeTime']['minutes']}}
-                  {{days['closeTime']['period']}}
-                </span>
-              </div>
-              <ng-template #businessClosed>
-                <span>Closed</span>
-              </ng-template>
-            </div>
-          </div>
-        </div>
-        <ng-template #editCompanyHoursEditField>
-          <div  *ngFor="let days of time" class="business-hours-edit-fields">
-            <div class="day">{{days['day']}}</div>
-            <div class="switch-container time-switch" (click)="toggleSwitch(days)" [ngClass]="{'on': days['open']}">
-              <div class="switch" [ngClass]="{'on': days['open']}"></div>
-            </div>
-            <div *ngIf="days['open']">
-              <div class="time-container">
-                <span class="time-label">Opening Time</span>
-                <span class="time-hours time-button medium-blue-button">{{days['openTime']['hours']}}</span>
-                <span class="time-divider">:</span>
-                <span class="time-minutes time-button medium-blue-button">{{days['openTime']['minutes']}}</span>
-                <span class="time-period time-button medium-blue-button">{{days['openTime']['period']}}</span>
-              </div>
-              <div class="time-container">
-                <span class="time-label">Closing Time</span>
-                <span class="time-hours time-button medium-blue-button">{{days['closeTime']['hours']}}</span>
-                <span class="time-divider">:</span>
-                <span class="time-minutes time-button medium-blue-button">{{days['closeTime']['minutes']}}</span>
-                <span class="time-period time-button medium-blue-button">{{days['closeTime']['period']}}</span>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-        <span class="edit medium-blue-button" [ngClass]="{'edit-field': companyHoursEdit}" (click)="editField('companyHours', 'field_15')"></span>
-      </div>-->
     </section>
 
     <div  *ngIf="saveEnabled" class="save-container">

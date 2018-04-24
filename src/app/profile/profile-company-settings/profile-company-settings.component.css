@@ -137,10 +137,141 @@
 .account-settings-container .time-label {
   display: block;
   margin-bottom: 5px; }
+.account-settings-container .time-edit-container {
+  position: relative; }
 .account-settings-container .time-edit-container:first-of-type {
   margin-bottom: 20px; }
+.account-settings-container .time-selector-border {
+  position: absolute;
+  top: -80px;
+  left: -46px;
+  border-radius: 100px;
+  z-index: -1;
+  opacity: 0;
+  transition: 0.2s;
+  width: 35px;
+  height: 35px; }
+.account-settings-container .time-selector-border.on {
+  width: 210px;
+  height: 210px;
+  border: 5px solid #191E50;
+  z-index: 5;
+  opacity: 1;
+  -webkit-box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0.34);
+  -moz-box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0.34);
+  box-shadow: 4px 3px 5px 0px rgba(0, 0, 0, 0.34);
+  background-color: #616697; }
+.account-settings-container .time-selector {
+  position: relative;
+  border-radius: 100px;
+  height: 100%;
+  background-color: #616697;
+  margin: auto; }
+  .account-settings-container .time-selector span {
+    position: absolute;
+    display: block;
+    width: 35px;
+    height: 35px;
+    background-color: #191E50;
+    color: #F9FCFE;
+    border-radius: 50px;
+    text-align: center; }
+  .account-settings-container .time-selector .second-row {
+    width: 58%;
+    position: relative;
+    top: 6%;
+    margin: auto; }
+  .account-settings-container .time-selector .third-row {
+    width: 87%;
+    position: relative;
+    top: 20%;
+    margin: auto; }
+  .account-settings-container .time-selector .fourth-row {
+    width: 100%;
+    position: relative;
+    top: 40%; }
+  .account-settings-container .time-selector .fifth-row {
+    width: 89%;
+    position: relative;
+    top: 61%;
+    margin: auto; }
+  .account-settings-container .time-selector .sixth-row {
+    width: 58%;
+    position: relative;
+    top: 77%;
+    margin: auto; }
+  .account-settings-container .time-selector .time-row span:first-of-type {
+    left: 0; }
+  .account-settings-container .time-selector .time-row span:last-of-type {
+    right: 0; }
+  .account-settings-container .time-selector span:before {
+    position: relative;
+    top: 9px; }
+  .account-settings-container .time-selector .twelve-hour, .account-settings-container .time-selector .zero-minute {
+    top: 0;
+    left: 50%;
+    margin-left: -17.5px; }
+  .account-settings-container .time-selector .six-hour, .account-settings-container .time-selector .thirty-minute {
+    bottom: 0;
+    left: 50%;
+    margin-left: -17.5px; }
+  .account-settings-container .time-selector .zero-minute:before {
+    content: '00'; }
+  .account-settings-container .time-selector .five-minute:before {
+    content: '05'; }
+  .account-settings-container .time-selector .ten-minute:before {
+    content: '10'; }
+  .account-settings-container .time-selector .fifteen-minute:before {
+    content: '15'; }
+  .account-settings-container .time-selector .twenty-minute:before {
+    content: '20'; }
+  .account-settings-container .time-selector .twenty-five-minute:before {
+    content: '25'; }
+  .account-settings-container .time-selector .thirty-minute:before {
+    content: '30'; }
+  .account-settings-container .time-selector .thirty-five-minute:before {
+    content: '35'; }
+  .account-settings-container .time-selector .forty-minute:before {
+    content: '40'; }
+  .account-settings-container .time-selector .forty-five-minute:before {
+    content: '45'; }
+  .account-settings-container .time-selector .fifty-minute:before {
+    content: '50'; }
+  .account-settings-container .time-selector .fifty-five-minute:before {
+    content: '55'; }
+  .account-settings-container .time-selector .one-hour:before {
+    content: '1'; }
+  .account-settings-container .time-selector .two-hour:before {
+    content: '2'; }
+  .account-settings-container .time-selector .three-hour:before {
+    content: '3'; }
+  .account-settings-container .time-selector .four-hour:before {
+    content: '4'; }
+  .account-settings-container .time-selector .five-hour:before {
+    content: '5'; }
+  .account-settings-container .time-selector .six-hour:before {
+    content: '6'; }
+  .account-settings-container .time-selector .seven-hour:before {
+    content: '7'; }
+  .account-settings-container .time-selector .eight-hour:before {
+    content: '8'; }
+  .account-settings-container .time-selector .nine-hour:before {
+    content: '9'; }
+  .account-settings-container .time-selector .ten-hour:before {
+    content: '10'; }
+  .account-settings-container .time-selector .eleven-hour:before {
+    content: '11'; }
+  .account-settings-container .time-selector .twelve-hour:before {
+    content: '12'; }
 .account-settings-container .switch-container {
   margin: 15px 0px 25px; }
+.account-settings-container .close-time-container {
+  left: 195px;
+  transition: 0.2s; }
+.account-settings-container .close-time-container:before {
+  content: 'X';
+  position: relative;
+  left: 0; }
 
 .dropdown-container .dropdown-list .list-open {
   position: absolute;
