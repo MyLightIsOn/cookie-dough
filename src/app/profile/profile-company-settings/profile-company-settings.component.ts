@@ -39,6 +39,7 @@ export class ProfileCompanySettingsComponent implements OnInit {
     public companySocial_2_Edit: boolean;
     public companySocial_3_Edit: boolean;
     public timeEdits = [];
+    public unitEdits = [];
     public countries = countries[0];
     public time;
     public searchCountryText: string;
@@ -96,28 +97,32 @@ export class ProfileCompanySettingsComponent implements OnInit {
         this.enableSave();
     }
 
-    editBusinessHours(day): void {
-        this['company' + day['day'] + 'HoursEdit'] = true;
+    editBusinessDayHours(day): void {
+        const fieldToEdit = 'company' + day['day'] + 'HoursEdit';
+        this[fieldToEdit] = true;
+        this.editedFields.push(fieldToEdit);
+        this.updatedCompany['field_15'] = JSON.parse(this.company['field_15']);
+        this.enableSave();
     }
 
     editTime(day, unit, type): void {
         const fieldToEdit = day + type + unit + 'Edit';
+        const editButton = day + type + unit + 'EditTimeButton';
+        this[editButton] = true;
         this[fieldToEdit] = true;
         this.timeEdits.push(fieldToEdit);
+        this.unitEdits.push(editButton);
     }
 
     editPeriod(period, type): void {
+        const upperCaseType = type.charAt(0).toUpperCase() + type.slice(1);
+        const editButton = period['day'] + upperCaseType + 'PeriodEditTimeButton';
+        this[editButton] = true;
+        this.unitEdits.push(editButton);
         if (period[type]['period'] === 'am') {
             period[type]['period'] = 'pm';
         } else {
             period[type]['period'] = 'am';
-        }
-    }
-
-    closeEditTime(): void {
-        for (const index of Object.keys(this.timeEdits)) {
-            const fieldToClose = this.timeEdits[index];
-            this[fieldToClose] = false;
         }
     }
 
@@ -150,19 +155,34 @@ export class ProfileCompanySettingsComponent implements OnInit {
     }
 
     submitUpdate(): void {
-        if (this.fileToUpload) {
+        console.log(this.updatedCompany);
+        /*if (this.fileToUpload) {
             this.profileService.uploadImage(this.fileToUpload).subscribe( res => {
                 this.profileService.updateCompanySettings(this.updatedCompany, this.company.id, res).subscribe();
                 if (!this.flashMessageService.error) {
-                    this.closeEditFields();
+                    this.cancel();
                 }
             });
         } else {
             this.profileService.updateCompanySettings(this.updatedCompany, this.company.id).subscribe(() => {
                 if (!this.flashMessageService.error) {
-                    this.closeEditFields();
+                    this.cancel();
                 }
             });
+        }*/
+    }
+
+    closeEditTime(): void {
+        for (const index of Object.keys(this.timeEdits)) {
+            const fieldToClose = this.timeEdits[index];
+            this[fieldToClose] = false;
+        }
+    }
+
+    turnOffUnitEdit(): void {
+        for (const index of Object.keys(this.unitEdits)) {
+            const fieldToClose = this.unitEdits[index];
+            this[fieldToClose] = false;
         }
     }
 
@@ -176,6 +196,9 @@ export class ProfileCompanySettingsComponent implements OnInit {
     }
 
     cancel(): void {
+        this.updatedCompany = {};
+        this.closeEditTime();
+        this.turnOffUnitEdit();
         this.closeEditFields();
     }
 }

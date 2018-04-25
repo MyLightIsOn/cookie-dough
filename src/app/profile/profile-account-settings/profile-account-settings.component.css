@@ -177,11 +177,11 @@
     margin-bottom: 40px; }
   .account-settings-container .settings-data-container:first-child, .account-settings-container .form-section > .settings-data-container:first-of-type {
     border-radius: 6px 6px 0 0; }
-    .account-settings-container .settings-data-container:first-child .edit, .account-settings-container .settings-data-container:first-child .medium-blue-button:before, .account-settings-container .form-section > .settings-data-container:first-of-type .edit, .account-settings-container .form-section > .settings-data-container:first-of-type .medium-blue-button:before {
+    .account-settings-container .settings-data-container:first-child .edit:before, .account-settings-container .form-section > .settings-data-container:first-of-type .edit:before {
       border-radius: 0 6px 0 0 !important; }
   .account-settings-container .settings-data-container:last-child, .account-settings-container .form-section > .settings-data-container:last-of-type {
     border-radius: 0 0 6px 6px; }
-    .account-settings-container .settings-data-container:last-child .edit, .account-settings-container .settings-data-container:last-child .medium-blue-button:before, .account-settings-container .form-section > .settings-data-container:last-of-type .edit, .account-settings-container .form-section > .settings-data-container:last-of-type .medium-blue-button:before {
+    .account-settings-container .settings-data-container:last-child .edit:before, .account-settings-container .form-section > .settings-data-container:last-of-type .edit:before {
       border-radius: 0 0 6px 0 !important; }
   .account-settings-container .settings-icon {
     display: block;

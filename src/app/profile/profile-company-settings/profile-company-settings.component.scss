@@ -34,6 +34,11 @@
       padding: 10px 0;
       width: 40px;
       position: relative;
+
+      &.on {
+        background-color: $orange;
+        background-image: none;
+      }
     }
   }
 

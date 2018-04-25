@@ -104,7 +104,7 @@
   .settings-data-container:first-child, .form-section > .settings-data-container:first-of-type {
     border-radius: 6px 6px 0 0;
 
-    .edit, .medium-blue-button:before {
+    .edit:before {
       border-radius: 0 6px 0 0 !important;
     }
   }
@@ -112,7 +112,7 @@
   .settings-data-container:last-child,  .form-section > .settings-data-container:last-of-type{
     border-radius: 0 0 6px 6px;
 
-    .edit, .medium-blue-button:before {
+    .edit:before {
       border-radius: 0 0 6px 0 !important;;
     }
   }

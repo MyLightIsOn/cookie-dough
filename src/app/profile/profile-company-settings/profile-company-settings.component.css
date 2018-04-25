@@ -131,6 +131,9 @@
     padding: 10px 0;
     width: 40px;
     position: relative; }
+    .account-settings-container .business-hours-edit-fields .time-button.on {
+      background-color: #FF9018;
+      background-image: none; }
 .account-settings-container .settings-data-container.time-container {
   padding: 20px 0 20px 50px;
   position: relative; }
