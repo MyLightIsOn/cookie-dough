@@ -99,9 +99,12 @@ export class ProfileCompanySettingsComponent implements OnInit {
 
     editBusinessDayHours(day): void {
         const fieldToEdit = 'company' + day['day'] + 'HoursEdit';
+        if (this.updatedCompany['field_15'] === undefined) {
+            this.updatedCompany['field_15'] = JSON.parse(this.company['field_15']);
+        }
+
         this[fieldToEdit] = true;
         this.editedFields.push(fieldToEdit);
-        this.updatedCompany['field_15'] = JSON.parse(this.company['field_15']);
         this.enableSave();
     }
 
@@ -154,51 +157,54 @@ export class ProfileCompanySettingsComponent implements OnInit {
         toggle['open'] = !toggle['open'];
     }
 
+    stringifyTimes() {
+        if (this.updatedCompany['field_15']) {
+            const timeObj = this.updatedCompany['field_15'];
+            this.updatedCompany['field_15'] = JSON.stringify(timeObj);
+        }
+    }
+
     submitUpdate(): void {
-        console.log(this.updatedCompany);
-        /*if (this.fileToUpload) {
-            this.profileService.uploadImage(this.fileToUpload).subscribe( res => {
+        this.stringifyTimes();
+        if (this.fileToUpload) {
+            this.profileService.uploadImage(this.fileToUpload).subscribe(
+                res => {
                 this.profileService.updateCompanySettings(this.updatedCompany, this.company.id, res).subscribe();
+            },
+                () => {},
+                () => {
                 if (!this.flashMessageService.error) {
                     this.cancel();
                 }
             });
         } else {
-            this.profileService.updateCompanySettings(this.updatedCompany, this.company.id).subscribe(() => {
-                if (!this.flashMessageService.error) {
-                    this.cancel();
-                }
-            });
-        }*/
+            this.profileService.updateCompanySettings(this.updatedCompany, this.company.id).subscribe(
+                () => {},
+                () => {},
+                () => {
+                    if (!this.flashMessageService.error) {
+                        this.cancel();
+                    }
+                });
+        }
     }
 
     closeEditTime(): void {
-        for (const index of Object.keys(this.timeEdits)) {
-            const fieldToClose = this.timeEdits[index];
-            this[fieldToClose] = false;
-        }
+        this.closeAllEditFields.apply(this, [this.timeEdits]);
     }
 
-    turnOffUnitEdit(): void {
-        for (const index of Object.keys(this.unitEdits)) {
-            const fieldToClose = this.unitEdits[index];
+    closeAllEditFields(fields): void {
+        for (const field of Object.keys(fields)) {
+            const fieldToClose = fields[field];
             this[fieldToClose] = false;
         }
-    }
-
-    closeEditFields(): void {
-        for (const fields of Object.keys(this.editedFields)) {
-            const fieldToClose = this.editedFields[fields];
-            this[fieldToClose] = false;
-        }
-        this.saveEnabled = false;
-        this.editedFields = [];
     }
 
     cancel(): void {
+        this.saveEnabled = false;
+        this.closeAllEditFields.apply(this, [this.editedFields, this.unitEdits, this.timeEdits]);
+        this.editedFields = [];
         this.updatedCompany = {};
-        this.closeEditTime();
-        this.turnOffUnitEdit();
-        this.closeEditFields();
+        this.ngOnInit();
     }
 }

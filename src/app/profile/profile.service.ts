@@ -20,6 +20,7 @@ export class ProfileService {
         public flashMessageService: FlashMessagesService) {}
 
     public updateAccountSettings(updatedUser: object, token: string, id: string): Observable<void> {
+        this.flashMessageService.waiting = true;
         return this.http.put(environment['BASEURL'] + '/api/update-account', [updatedUser, token, id]).map((res) => {
             if (res['error']) {
                 this.flashMessageService.createErrorMessage(res['error']['errors']);
@@ -46,7 +47,7 @@ export class ProfileService {
         if (updatedImage) {
             updatedCompany['field_3'] = updatedImage['id'];
         }
-
+        this.flashMessageService.waiting = true;
         return this.http.put(environment['BASEURL'] + '/api/update-company?id=' + id, [updatedCompany]).map((res) => {
             if (res['error']) {
                 this.flashMessageService.createErrorMessage(res['error']['errors']);

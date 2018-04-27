@@ -408,12 +408,12 @@
                 <ng-template #editFields>
 
                     <!-- Open and Close Toggle -->
-                    <div class="switch-container time-switch" (click)="toggleSwitch(days)" [ngClass]="{'on': days['open']}">
-                        <div class="switch" [ngClass]="{'on': days['open']}"></div>
+                    <div class="switch-container time-switch" (click)="toggleSwitch(this.updatedCompany['field_15'][i])" [ngClass]="{'on': this.updatedCompany['field_15'][i]['open']}">
+                        <div class="switch" [ngClass]="{'on': this.updatedCompany['field_15'][i]['open']}"></div>
                     </div>
 
                     <!-- Opening Times -->
-                    <div *ngIf="days['open']" class="business-hours-edit-fields">
+                    <div *ngIf="this.updatedCompany['field_15'][i]['open']" class="business-hours-edit-fields">
                         <span class="time-label">Opening Time</span>
 
                         <!-- Opening Times Hour Edit -->
