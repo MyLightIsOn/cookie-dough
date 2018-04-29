@@ -59,7 +59,6 @@ export class SearchDetailsComponent implements OnInit {
   formatBusinessHours(field) {
     if (field) {
       this.time = JSON.parse(field);
-      console.log(this.time);
     }
   }
 
