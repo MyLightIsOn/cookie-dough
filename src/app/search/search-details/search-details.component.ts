@@ -93,7 +93,7 @@ export class SearchDetailsComponent implements OnInit {
     }
 
     setFlag(country: string) {
-        for (const index of Object.keys(countries[0])) {
+        for (const index of Object.keys(countries)) {
             if (countries[index].name === country) {
                 this.companyCountryName = countries[index].name;
                 this.companyISOCode = countries[index].alpha2.toLowerCase();

@@ -40,7 +40,7 @@ export class ProfileCompanySettingsComponent implements OnInit {
     public companySocial_3_Edit: boolean;
     public timeEdits = [];
     public unitEdits = [];
-    public countries = countries[0];
+    public countries = countries;
     public time;
     public searchCountryText: string;
     public token: string;
