@@ -73,7 +73,7 @@
             <div>
                 <!-- Address City -->
                 <span class="address">{{company['field_2_raw']['city']}}</span>
-                
+
                 <!-- Address State/Province -->
                 <span class="address">{{company['field_2_raw']['state']}}</span>
             </div>
@@ -139,7 +139,30 @@
 
             <div *ngIf="company['field_15_raw']">
                 <h4>Business Hours</h4>
-                <div [innerHTML]="company['field_15_raw']"></div>
+
+              <div *ngFor="let days of time; let i = index" class="settings-data-container time-container"
+                   [ngClass]="{'edit-field': this['company' + days['day'] + 'HoursEdit']}">
+                <span class="day">{{days.day}}</span>
+                <div *ngIf="!this['company' + days['day'] + 'HoursEdit']" class="business-hours-container">
+                  <div *ngIf="days['open']; else businessClosed">
+                    <!-- Original Times -->
+                    <span class="open-time">
+                            {{days['openTime']['hours']}}:
+                            {{days['openTime']['minutes']}}
+                            {{days['openTime']['period']}}
+                        </span> -
+                    <span class="close-time">
+                            {{days['closeTime']['hours']}}:
+                            {{days['closeTime']['minutes']}}
+                            {{days['closeTime']['period']}}
+                        </span>
+                  </div>
+                  <ng-template #businessClosed>
+                    <span>Closed</span>
+                  </ng-template>
+                </div>
+              </div>
+
             </div>
         </section>
     </div>

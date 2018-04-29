@@ -22,6 +22,7 @@ export class SearchDetailsComponent implements OnInit {
     public mapButtonText = 'Map';
     public companyCountryName: string;
     public companyISOCode: string;
+    public time;
 
     constructor(
         private route: ActivatedRoute,
@@ -43,7 +44,8 @@ export class SearchDetailsComponent implements OnInit {
             ]);
             this.lat = this.company['field_2_raw']['latitude'];
             this.lng = this.company['field_2_raw']['longitude'];
-            this.setFlag(this.company['field_2_raw']['country'])
+            this.setFlag(this.company['field_2_raw']['country']);
+          this.formatBusinessHours(this.company['field_15']);
             if (this.appService.device === 'mobile') {
                 this.mapOff = true;
             } else {
@@ -53,6 +55,13 @@ export class SearchDetailsComponent implements OnInit {
             this.router.navigate(['/not-found']);
         }
     }
+
+  formatBusinessHours(field) {
+    if (field) {
+      this.time = JSON.parse(field);
+      console.log(this.time);
+    }
+  }
 
     // Checks to see if the details page was visited first.
     // If so, closing details takes the user to the homepage and if not

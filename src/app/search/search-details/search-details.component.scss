@@ -134,6 +134,16 @@
     }
   }
 
+  .day {
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+  }
+
+  .business-hours-container {
+    margin: 3px 0 20px 0;
+  }
+
   .verified-details {
     display: flex;
     position: absolute;
@@ -182,7 +192,7 @@
     padding: 10px;
     position: relative;
   }
-  
+
   .country-flag {
     position: absolute;
     top: 0px;
@@ -313,7 +323,7 @@
       .company-logo-thumb-container {
         margin: 0 15px 0 0;
         background-color: $white;
-        
+
         img {
           display: block;
           width: 150px;
@@ -351,7 +361,7 @@
         top: -2px;
       }
     }
-    
+
     .detail-description {
       width: 1195px;
       margin: 215px auto 0;

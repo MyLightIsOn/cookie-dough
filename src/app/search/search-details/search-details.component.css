@@ -204,6 +204,12 @@
       background: url("/assets/icons/verified.png");
       background-size: contain;
       position: relative; }
+  .search-details-container .day {
+    font-size: 14px;
+    font-weight: bold;
+    display: block; }
+  .search-details-container .business-hours-container {
+    margin: 3px 0 20px 0; }
   .search-details-container .verified-details {
     display: flex;
     position: absolute;
